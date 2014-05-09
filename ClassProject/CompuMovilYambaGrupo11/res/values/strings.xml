@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Yamba / Grupo 11</string>
+    <!-- Global Application Text -->
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Yamba / Grupo 11</string>
+
+    <!-- Status Activity -->
+    <string name="hint_status_edit_text">Hey, what Happen?</string>
+    <string name="maximum_chars_text_view">140</string>
+    <string name="post_text_progress_dialog">Posteando Nigga, así que espera&#8230;</string>
+    <string name="post_title_progress_dialog">Let\'s Yamba!!</string>
+    <string name="tweet_text_button">Let\'s Yamba!!!</string>
 
 </resources>

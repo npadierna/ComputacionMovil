@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Status Activity -->
+    <integer name="maximun_chars_for_status">10</integer>
+
+</resources>

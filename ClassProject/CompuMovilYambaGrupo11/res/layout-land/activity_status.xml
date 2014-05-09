@@ -24,8 +24,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/yambaButton"
-        android:layout_marginTop="10dp"
+        android:layout_alignTop="@+id/yambaButton"
+        android:layout_toLeftOf="@+id/yambaButton"
         android:ems="10"
         android:hint="@string/hint_status_edit_text"
         android:inputType="textMultiLine" >
@@ -38,8 +38,9 @@
         android:id="@+id/counterTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/statusEditText"
-        android:layout_alignTop="@+id/yambaButton"
+        android:layout_alignRight="@+id/yambaButton"
+        android:layout_below="@+id/yambaButton"
+        android:layout_marginRight="17dp"
         android:text="@string/maximum_chars_text_view"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" >
