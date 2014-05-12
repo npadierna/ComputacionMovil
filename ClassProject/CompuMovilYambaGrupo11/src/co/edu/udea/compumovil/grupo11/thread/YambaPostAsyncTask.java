@@ -2,6 +2,11 @@ package co.edu.udea.compumovil.grupo11.thread;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.widget.Toast;
+
+import co.edu.udea.compumovil.grupo11.activity.StatusActivity;
+
+import com.marakana.android.yamba.clientlib.YambaClient;
 
 public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 
@@ -18,9 +23,20 @@ public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 
 	@Override()
 	protected String doInBackground(String... args) {
-		// FIXME: Checking the args[0] must be a String instance and not null and not empty.
-
-		return (null);
+		YambaClient yambaCloud = new YambaClient("Grupo11", "password");
+		
+		if((args[0] instanceof String) && (args[0] != null)
+				&& (args[0] != "")){
+			try {
+				yambaCloud.postStatus(args[0]);
+				return OK_RESULT;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return FAIL_RESULT;
+			}
+		}
+		
+		return FAIL_RESULT;
 	}
 
 	@Override()
@@ -35,6 +51,7 @@ public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 		super.onPostExecute(result);
 
 		this.progressDialog.dismiss();
+		
 	}
 
 	@Override()

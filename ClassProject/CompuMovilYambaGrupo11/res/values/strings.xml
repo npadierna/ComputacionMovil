@@ -8,7 +8,7 @@
     <!-- Status Activity -->
     <string name="hint_status_edit_text">Hey, what Happen?</string>
     <string name="maximum_chars_text_view">140</string>
-    <string name="post_text_progress_dialog">Posteando Nigga, así que espera&#8230;</string>
+    <string name="post_text_progress_dialog">Posteando, por favor espere&#8230;</string>
     <string name="post_title_progress_dialog">Let\'s Yamba!!</string>
     <string name="tweet_text_button">Let\'s Yamba!!!</string>
 

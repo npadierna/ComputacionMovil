@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import co.edu.udea.compumovil.grupo11.R;
 import co.edu.udea.compumovil.grupo11.activity.util.ProgressBarCustomized;
 import co.edu.udea.compumovil.grupo11.thread.YambaPostAsyncTask;
@@ -92,6 +93,7 @@ public class StatusActivity extends Activity {
 		YambaPostAsyncTask yambaPostAsyncTask = new YambaPostAsyncTask(
 				progressDialog);
 		yambaPostAsyncTask.execute(statusText);
+		this.statusEditText.setText("");
 		// try {
 		// String resultForTask = yambaPostAsyncTask.get();
 		// } catch (InterruptedException e) {
@@ -100,4 +102,5 @@ public class StatusActivity extends Activity {
 		// e.printStackTrace();
 		// }
 	}
+	
 }
