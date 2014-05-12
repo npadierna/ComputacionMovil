@@ -23,7 +23,7 @@ public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 
 	@Override()
 	protected String doInBackground(String... args) {
-		YambaClient yambaCloud = new YambaClient("Grupo11", "password");
+		YambaClient yambaCloud = new YambaClient("student", "password");
 		
 		if((args[0] instanceof String) && (args[0] != null)
 				&& (args[0] != "")){
