@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/statusEditText"
         android:layout_alignTop="@+id/yambaButton"
-        android:text="@string/maximum_chars_text_view"
+        android:text="@integer/maximun_chars_for_status"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" >
     </TextView>

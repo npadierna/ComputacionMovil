@@ -41,7 +41,7 @@
         android:layout_alignRight="@+id/yambaButton"
         android:layout_below="@+id/yambaButton"
         android:layout_marginRight="17dp"
-        android:text="@string/maximum_chars_text_view"
+        android:text="@integer/maximun_chars_for_status"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textStyle="bold" >
     </TextView>

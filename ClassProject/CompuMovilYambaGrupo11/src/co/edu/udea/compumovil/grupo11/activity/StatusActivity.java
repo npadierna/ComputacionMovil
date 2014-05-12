@@ -1,5 +1,7 @@
 package co.edu.udea.compumovil.grupo11.activity;
 
+import java.util.concurrent.ExecutionException;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Color;
@@ -56,7 +58,9 @@ public class StatusActivity extends Activity {
 
 			@Override()
 			public void afterTextChanged(Editable s) {
-				int counter = 140 - statusEditText.length();
+				int counter = getResources().getInteger(
+						R.integer.maximun_chars_for_status)
+						- statusEditText.length();
 
 				counterTextView.setText(Integer.toString(counter));
 				counterTextView.setTextColor(Color.GREEN);
@@ -80,7 +84,7 @@ public class StatusActivity extends Activity {
 	public void onLetsYamba(View view) {
 		String statusText = this.statusEditText.getText().toString();
 
-		Log.v(TAG, "Let's Yamba my Nigga!!!! -> " + statusText);
+		Log.v(TAG, "Let's Yamba my Nigga!! -> " + statusText);
 
 		ProgressDialog progressDialog = (new ProgressBarCustomized(this))
 				.createProgressDialog(
@@ -93,14 +97,28 @@ public class StatusActivity extends Activity {
 		YambaPostAsyncTask yambaPostAsyncTask = new YambaPostAsyncTask(
 				progressDialog);
 		yambaPostAsyncTask.execute(statusText);
-		this.statusEditText.setText("");
-		// try {
-		// String resultForTask = yambaPostAsyncTask.get();
-		// } catch (InterruptedException e) {
-		// e.printStackTrace();
-		// } catch (ExecutionException e) {
-		// e.printStackTrace();
-		// }
+		try {
+			String resultForTask = yambaPostAsyncTask.get();
+
+			if (resultForTask.equals(YambaPostAsyncTask.OK_RESULT)) {
+				Toast.makeText(super.getApplicationContext(),
+						R.string.post_successful_toast_text, Toast.LENGTH_LONG)
+						.show();
+
+				this.statusEditText.setText("");
+			} else {
+				Toast.makeText(super.getApplicationContext(),
+						R.string.post_failure_toast_text, Toast.LENGTH_LONG)
+						.show();
+			}
+		} catch (InterruptedException e) {
+			Log.e(TAG,
+					"A exception was thrown while the results for Thread were requested",
+					e);
+		} catch (ExecutionException e) {
+			Log.e(TAG,
+					"A exception was thrown while the results for Thread were requested",
+					e);
+		}
 	}
-	
 }

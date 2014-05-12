@@ -2,6 +2,6 @@
 <resources>
 
     <!-- Status Activity -->
-    <integer name="maximun_chars_for_status">10</integer>
+    <integer name="maximun_chars_for_status">140</integer>
 
 </resources>

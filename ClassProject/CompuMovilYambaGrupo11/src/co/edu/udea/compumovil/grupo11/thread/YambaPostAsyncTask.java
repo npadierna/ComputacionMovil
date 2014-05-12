@@ -2,16 +2,16 @@ package co.edu.udea.compumovil.grupo11.thread;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.widget.Toast;
-
-import co.edu.udea.compumovil.grupo11.activity.StatusActivity;
+import android.util.Log;
 
 import com.marakana.android.yamba.clientlib.YambaClient;
 
 public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 
-	public static String FAIL_RESULT = "Posted Fail";
-	public static String OK_RESULT = "Posted Ok";
+	private static final String TAG = YambaPostAsyncTask.class.getSimpleName();
+
+	public static final String FAIL_RESULT = "Posted Fail";
+	public static final String OK_RESULT = "Posted Ok";
 
 	private ProgressDialog progressDialog;
 
@@ -23,20 +23,21 @@ public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 
 	@Override()
 	protected String doInBackground(String... args) {
-		YambaClient yambaCloud = new YambaClient("student", "password");
-		
-		if((args[0] instanceof String) && (args[0] != null)
-				&& (args[0] != "")){
+		YambaClient yambaClient = new YambaClient("student", "password");
+
+		if ((args[0] instanceof String) && (args[0] != null) && (args[0] != "")) {
 			try {
-				yambaCloud.postStatus(args[0]);
-				return OK_RESULT;
+				yambaClient.postStatus(args[0]);
+
+				return (OK_RESULT);
 			} catch (Exception e) {
-				e.printStackTrace();
-				return FAIL_RESULT;
+				Log.e(TAG, "A exception was thrown while posting process", e);
+
+				return (FAIL_RESULT);
 			}
 		}
-		
-		return FAIL_RESULT;
+
+		return (FAIL_RESULT);
 	}
 
 	@Override()
@@ -51,7 +52,7 @@ public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 		super.onPostExecute(result);
 
 		this.progressDialog.dismiss();
-		
+
 	}
 
 	@Override()

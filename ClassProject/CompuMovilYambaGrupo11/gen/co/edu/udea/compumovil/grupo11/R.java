@@ -48,10 +48,13 @@ public final class R {
         /**  Status Activity 
          */
         public static final int hint_status_edit_text=0x7f060002;
-        public static final int maximum_chars_text_view=0x7f060003;
-        public static final int post_text_progress_dialog=0x7f060004;
-        public static final int post_title_progress_dialog=0x7f060005;
-        public static final int tweet_text_button=0x7f060006;
+        public static final int post_failure_toast_text=0x7f060004;
+        /**      <string name="maximum_chars_text_view">140</string> 
+         */
+        public static final int post_successful_toast_text=0x7f060003;
+        public static final int post_text_progress_dialog=0x7f060005;
+        public static final int post_title_progress_dialog=0x7f060006;
+        public static final int tweet_text_button=0x7f060007;
     }
     public static final class style {
         /** 
