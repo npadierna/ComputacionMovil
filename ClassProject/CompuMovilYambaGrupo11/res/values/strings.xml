@@ -3,13 +3,13 @@
 
     <!-- Global Application Text -->
     <string name="action_settings">Settings</string>
-    <string name="app_name">Yamba / Grupo 11</string>
+    <string name="app_name">Yamba / Group 11</string>
 
     <!-- Status Activity -->
     <string name="hint_status_edit_text">Hey, what Happen?</string>
-    <string name="post_successful_toast_text">El Post ha sido publicado exitosamente.</string>
-    <string name="post_failure_toast_text">El Post no se ha publicado exitosamente. Por favor, intente luego.</string>
-    <string name="post_text_progress_dialog">Posteando, por favor espere&#8230;</string>
+    <string name="post_successful_toast_text">The Post has been posted successfully.</string>
+    <string name="post_failure_toast_text">The Post has not been posted successfully. Please, try later.</string>
+    <string name="post_text_progress_dialog">Posting, please wait&#8230;</string>
     <string name="post_title_progress_dialog">Let\'s Yamba!!</string>
     <string name="tweet_text_button">Let\'s Yamba!!</string>
 

@@ -42,15 +42,15 @@ public final class R {
     }
     public static final class string {
         /**  Global Application Text 
+ Global Application Text 
          */
         public static final int action_settings=0x7f060000;
         public static final int app_name=0x7f060001;
         /**  Status Activity 
+ Status Activity 
          */
         public static final int hint_status_edit_text=0x7f060002;
         public static final int post_failure_toast_text=0x7f060004;
-        /**      <string name="maximum_chars_text_view">140</string> 
-         */
         public static final int post_successful_toast_text=0x7f060003;
         public static final int post_text_progress_dialog=0x7f060005;
         public static final int post_title_progress_dialog=0x7f060006;
