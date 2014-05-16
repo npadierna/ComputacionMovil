@@ -1,49 +1,62 @@
-package co.edu.udea.compumovil.grupo11.activity;
+package co.edu.udea.compumovil.grupo11.yamba2.activity;
 
 import java.util.concurrent.ExecutionException;
 
-import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.Menu;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import co.edu.udea.compumovil.grupo11.R;
-import co.edu.udea.compumovil.grupo11.activity.util.ProgressBarCustomized;
-import co.edu.udea.compumovil.grupo11.thread.YambaPostAsyncTask;
+import co.edu.udea.compumovil.grupo11.yamba2.R;
+import co.edu.udea.compumovil.grupo11.yamba2.activity.util.ProgressBarCustomized;
+import co.edu.udea.compumovil.grupo11.yamba2.thread.YambaPostAsyncTask;
 
-public class StatusActivity extends Activity {
+public class StatusFragment extends Fragment implements OnClickListener {
 
-	private static final String TAG = StatusActivity.class.getSimpleName();
+	private static final String TAG = StatusFragment.class.getSimpleName();
 
 	private int defaultTextColor;
 
 	private EditText statusEditText;
 	private TextView counterTextView;
+	private Button yambaButton;
 
 	@Override()
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		super.setContentView(R.layout.activity_status);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		Log.i(TAG, "onCreateView(LayoutInflater, ViewGroup, Bundle)");
 
-		this.createComponents();
+		View view = inflater
+				.inflate(R.layout.fragment_status, container, false);
+
+		this.createComponents(view);
+
+		return (view);
 	}
 
-	private void createComponents() {
-		this.counterTextView = (TextView) super
+	private void createComponents(View view) {
+		Log.i(TAG, "createComponents(View)");
+
+		this.yambaButton = (Button) view.findViewById(R.id.yambaButton);
+		this.yambaButton.setOnClickListener(this);
+
+		this.counterTextView = (TextView) view
 				.findViewById(R.id.counterTextView);
 
 		this.defaultTextColor = this.counterTextView.getTextColors()
 				.getDefaultColor();
 
-		this.statusEditText = (EditText) super
-				.findViewById(R.id.statusEditText);
+		this.statusEditText = (EditText) view.findViewById(R.id.statusEditText);
 		this.statusEditText.addTextChangedListener(new TextWatcher() {
 
 			@Override()
@@ -75,24 +88,16 @@ public class StatusActivity extends Activity {
 	}
 
 	@Override()
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.getMenuInflater().inflate(R.menu.status, menu);
-
-		return (true);
-	}
-
-	public void onLetsYamba(View view) {
+	public void onClick(View view) {
 		String statusText = this.statusEditText.getText().toString();
 
-		Log.v(TAG, "Let's Yamba my Nigga!! -> " + statusText);
+		Log.v(TAG, "onLetsYamba(View) -> " + statusText);
 
-		ProgressDialog progressDialog = (new ProgressBarCustomized(this))
-				.createProgressDialog(
-						super.getResources().getString(
-								R.string.post_title_progress_dialog),
-						super.getResources().getString(
-								R.string.post_text_progress_dialog),
-						ProgressDialog.STYLE_SPINNER, false);
+		ProgressDialog progressDialog = (new ProgressBarCustomized(
+				super.getActivity())).createProgressDialog(super.getResources()
+				.getString(R.string.post_title_progress_dialog), super
+				.getResources().getString(R.string.post_text_progress_dialog),
+				ProgressDialog.STYLE_SPINNER, false);
 
 		YambaPostAsyncTask yambaPostAsyncTask = new YambaPostAsyncTask(
 				progressDialog);
@@ -101,13 +106,13 @@ public class StatusActivity extends Activity {
 			String resultForTask = yambaPostAsyncTask.get();
 
 			if (resultForTask.equals(YambaPostAsyncTask.OK_RESULT)) {
-				Toast.makeText(super.getApplicationContext(),
+				Toast.makeText(super.getActivity().getApplicationContext(),
 						R.string.post_successful_toast_text, Toast.LENGTH_LONG)
 						.show();
 
 				this.statusEditText.setText("");
 			} else {
-				Toast.makeText(super.getApplicationContext(),
+				Toast.makeText(super.getActivity().getApplicationContext(),
 						R.string.post_failure_toast_text, Toast.LENGTH_LONG)
 						.show();
 			}

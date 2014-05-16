@@ -5,7 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="app_name">Yamba / Group 11</string>
 
-    <!-- Status Activity -->
+    <!-- Status Fragment -->
     <string name="hint_status_edit_text">Hey, what Happen?</string>
     <string name="post_successful_toast_text">The Post has been posted successfully.</string>
     <string name="post_failure_toast_text">The Post has not been posted successfully. Please, try later.</string>
@@ -13,4 +13,6 @@
     <string name="post_title_progress_dialog">Let\'s Yamba!!</string>
     <string name="tweet_text_button">Let\'s Yamba!!</string>
 
-</resources>
+    <!-- Banner Fragment -->
+    <string name="banner_image_content_descripton">This is the banner\'s image.</string>
+</resources>
