@@ -25,9 +25,16 @@ public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... args) {
 		YambaClient yambaClient = new YambaClient("grupo11", "grupo11");
 
-		if ((args[0] instanceof String) && (args[0] != null) && (args[0] != "")) {
+		if ((args == null) || (args.length != 1)
+				|| !(args[0] instanceof String)) {
+
+			return (FAIL_RESULT);
+		}
+
+		String message = args[0].trim();
+		if (!message.equals("")) {
 			try {
-				yambaClient.postStatus(args[0]);
+				yambaClient.postStatus(message);
 
 				return (OK_RESULT);
 			} catch (Exception e) {
