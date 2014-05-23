@@ -57,6 +57,11 @@ public final class R {
         public static final int action_refresh_main_activity=0x7f070003;
         public static final int action_settings_main_activity=0x7f070004;
         public static final int action_yamba_main_activity=0x7f070005;
+        /**  Settings Activity 
+ Settings Activity 
+         */
+        public static final int api_root_summary_settings=0x7f07000d;
+        public static final int api_root_title_settings=0x7f07000e;
         /**  Global Application Text 
  Global Application Text 
          */
@@ -69,20 +74,17 @@ public final class R {
  Status Fragment 
          */
         public static final int hint_status_edit_text=0x7f070006;
-        /**  Settings Activity 
- Settings Activity 
-         */
-        public static final int password_summary_settings=0x7f07000d;
-        public static final int password_title_settings=0x7f07000e;
+        public static final int password_summary_settings=0x7f07000f;
+        public static final int password_title_settings=0x7f070010;
         public static final int post_failure_toast_text=0x7f070008;
         public static final int post_successful_toast_text=0x7f070007;
         public static final int post_text_progress_dialog=0x7f070009;
         public static final int post_title_progress_dialog=0x7f07000a;
-        public static final int settings_activity_title=0x7f07000f;
+        public static final int settings_activity_title=0x7f070011;
         public static final int status_activity_title=0x7f07000b;
         public static final int tweet_text_button=0x7f07000c;
-        public static final int user_name_summary_settings=0x7f070010;
-        public static final int user_name_title_settings=0x7f070011;
+        public static final int user_name_summary_settings=0x7f070012;
+        public static final int user_name_title_settings=0x7f070013;
     }
     public static final class style {
         /** 

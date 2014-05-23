@@ -12,5 +12,10 @@
         android:summary="@string/password_summary_settings"
         android:title="@string/password_title_settings" >
     </EditTextPreference>
+    <EditTextPreference
+        android:key="apiRoot"
+        android:summary="@string/api_root_summary_settings"
+        android:title="@string/api_root_title_settings" >
+    </EditTextPreference>
 
 </PreferenceScreen>

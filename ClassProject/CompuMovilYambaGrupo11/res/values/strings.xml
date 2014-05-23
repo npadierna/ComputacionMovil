@@ -23,6 +23,8 @@
     <string name="tweet_text_button">Let\'s Yamba!!</string>
 
     <!-- Settings Activity -->
+    <string name="api_root_summary_settings">Service\'s URL</string>
+    <string name="api_root_title_settings">URL</string>
     <string name="password_summary_settings">Password for Yamba</string>
     <string name="password_title_settings">Password</string>
     <string name="settings_activity_title">Settings</string>
