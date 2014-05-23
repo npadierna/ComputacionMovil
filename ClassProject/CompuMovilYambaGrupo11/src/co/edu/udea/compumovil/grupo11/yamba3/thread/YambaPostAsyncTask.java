@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.grupo11.yamba2.thread;
+package co.edu.udea.compumovil.grupo11.yamba3.thread;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
@@ -23,15 +23,13 @@ public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 
 	@Override()
 	protected String doInBackground(String... args) {
-		YambaClient yambaClient = new YambaClient("grupo11", "grupo11");
-
-		if ((args == null) || (args.length != 1)
-				|| !(args[0] instanceof String)) {
+		if ((args == null) || (args.length != 3)) {
 
 			return (FAIL_RESULT);
 		}
 
-		String message = args[0].trim();
+		YambaClient yambaClient = new YambaClient(args[0], args[1]);
+		String message = args[2].trim();
 		if (!message.equals("")) {
 			try {
 				yambaClient.postStatus(message);

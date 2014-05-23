@@ -1,6 +1,6 @@
-package co.edu.udea.compumovil.grupo11.yamba2.activity;
+package co.edu.udea.compumovil.grupo11.yamba3.activity.status;
 
-import co.edu.udea.compumovil.grupo11.yamba2.R;
+import co.edu.udea.compumovil.grupo11.yamba3.R;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;

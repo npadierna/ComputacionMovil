@@ -1,12 +1,16 @@
-package co.edu.udea.compumovil.grupo11.yamba2.activity;
+package co.edu.udea.compumovil.grupo11.yamba3.activity.status;
 
 import java.util.concurrent.ExecutionException;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,9 +21,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import co.edu.udea.compumovil.grupo11.yamba2.R;
-import co.edu.udea.compumovil.grupo11.yamba2.activity.util.ProgressBarCustomized;
-import co.edu.udea.compumovil.grupo11.yamba2.thread.YambaPostAsyncTask;
+import co.edu.udea.compumovil.grupo11.yamba3.R;
+import co.edu.udea.compumovil.grupo11.yamba3.activity.setting.SettingsActivity;
+import co.edu.udea.compumovil.grupo11.yamba3.activity.util.ProgressBarCustomized;
+import co.edu.udea.compumovil.grupo11.yamba3.thread.YambaPostAsyncTask;
 
 public class StatusFragment extends Fragment implements OnClickListener {
 
@@ -99,9 +104,21 @@ public class StatusFragment extends Fragment implements OnClickListener {
 				.getResources().getString(R.string.post_text_progress_dialog),
 				ProgressDialog.STYLE_SPINNER, false);
 
+		SharedPreferences sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(super.getActivity());
+		String userName = sharedPreferences.getString("userName", ""); //
+		String password = sharedPreferences.getString("password", "");
+
+		if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
+			super.getActivity().startActivity(
+					new Intent(super.getActivity(), SettingsActivity.class));
+			return;
+		}
+
 		YambaPostAsyncTask yambaPostAsyncTask = new YambaPostAsyncTask(
 				progressDialog);
-		yambaPostAsyncTask.execute(statusText);
+		yambaPostAsyncTask.execute(new String[] { userName, password,
+				statusText });
 		try {
 			String resultForTask = yambaPostAsyncTask.get();
 

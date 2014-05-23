@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.grupo11.yamba2.activity.util;
+package co.edu.udea.compumovil.grupo11.yamba3.activity.util;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

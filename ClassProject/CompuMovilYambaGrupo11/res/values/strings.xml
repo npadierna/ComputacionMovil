@@ -2,8 +2,16 @@
 <resources>
 
     <!-- Global Application Text -->
-    <string name="action_settings">Settings</string>
     <string name="app_name">Yamba / Group 11</string>
+
+    <!-- Banner Fragment -->
+    <string name="banner_image_content_descripton">This is the banner\'s image.</string>
+
+    <!-- Main Activity -->
+    <string name="action_purge_main_activity">Delete</string>
+    <string name="action_refresh_main_activity">Update</string>
+    <string name="action_settings_main_activity">Settings</string>
+    <string name="action_yamba_main_activity">Let\'s Yamba</string>
 
     <!-- Status Fragment -->
     <string name="hint_status_edit_text">Hey, what Happen?</string>
@@ -11,8 +19,14 @@
     <string name="post_failure_toast_text">The Post has not been posted successfully. Please, try later.</string>
     <string name="post_text_progress_dialog">Posting, please wait&#8230;</string>
     <string name="post_title_progress_dialog">Let\'s Yamba!!</string>
+    <string name="status_activity_title">Let\'s Yamba</string>
     <string name="tweet_text_button">Let\'s Yamba!!</string>
 
-    <!-- Banner Fragment -->
-    <string name="banner_image_content_descripton">This is the banner\'s image.</string>
-</resources>
+    <!-- Settings Activity -->
+    <string name="password_summary_settings">Password for Yamba</string>
+    <string name="password_title_settings">Password</string>
+    <string name="settings_activity_title">Settings</string>
+    <string name="user_name_summary_settings">User name for Yamba</string>
+    <string name="user_name_title_settings">User Name</string>
+
+</resources>

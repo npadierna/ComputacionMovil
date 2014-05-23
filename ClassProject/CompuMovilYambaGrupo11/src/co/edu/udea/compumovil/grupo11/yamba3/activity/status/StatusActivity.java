@@ -1,11 +1,9 @@
-package co.edu.udea.compumovil.grupo11.yamba2.activity;
+package co.edu.udea.compumovil.grupo11.yamba3.activity.status;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import co.edu.udea.compumovil.grupo11.yamba2.R;
 
 public class StatusActivity extends Activity {
 
@@ -32,13 +30,6 @@ public class StatusActivity extends Activity {
 							bannerFragment.getClass().getSimpleName()).commit();
 		}
 	}
-
-	@Override()
-	public boolean onCreateOptionsMenu(Menu menu) {
-		Log.i(TAG, "onCreateOptionsMenu(Menu)");
-
-		super.getMenuInflater().inflate(R.menu.status, menu);
-
-		return (true);
-	}
+	
+	
 }
