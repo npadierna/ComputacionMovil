@@ -15,13 +15,12 @@ public class SettingsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		if (savedInstanceState == null) {
-			PreferenceFragment preferenceFragment = new SettingsPreferenceFragment(); //
-			getFragmentManager()
+			PreferenceFragment preferenceFragment = new SettingsPreferenceFragment();
+			super.getFragmentManager()
 					.beginTransaction()
 					.add(android.R.id.content, preferenceFragment,
 							preferenceFragment.getClass().getSimpleName())
 					.commit();
 		}
 	}
-
 }

@@ -106,19 +106,23 @@ public class StatusFragment extends Fragment implements OnClickListener {
 
 		SharedPreferences sharedPreferences = PreferenceManager
 				.getDefaultSharedPreferences(super.getActivity());
-		String userName = sharedPreferences.getString("userName", ""); //
+		String userName = sharedPreferences.getString("userName", "");
 		String password = sharedPreferences.getString("password", "");
+		String apiRoot = sharedPreferences.getString("apiRoot",
+				"http://yamba.marakana.com/api");
 
-		if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password)) {
+		if ((TextUtils.isEmpty(userName)) || (TextUtils.isEmpty(password))
+				|| (TextUtils.isEmpty(apiRoot))) {
 			super.getActivity().startActivity(
 					new Intent(super.getActivity(), SettingsActivity.class));
+
 			return;
 		}
 
 		YambaPostAsyncTask yambaPostAsyncTask = new YambaPostAsyncTask(
 				progressDialog);
 		yambaPostAsyncTask.execute(new String[] { userName, password,
-				statusText });
+				statusText, apiRoot });
 		try {
 			String resultForTask = yambaPostAsyncTask.get();
 

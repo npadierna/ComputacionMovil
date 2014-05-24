@@ -23,12 +23,12 @@ public class YambaPostAsyncTask extends AsyncTask<String, Void, String> {
 
 	@Override()
 	protected String doInBackground(String... args) {
-		if ((args == null) || (args.length != 3)) {
+		if ((args == null) || (args.length != 4)) {
 
 			return (FAIL_RESULT);
 		}
 
-		YambaClient yambaClient = new YambaClient(args[0], args[1]);
+		YambaClient yambaClient = new YambaClient(args[0], args[1], args[3]);
 		String message = args[2].trim();
 		if (!message.equals("")) {
 			try {

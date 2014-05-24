@@ -12,24 +12,23 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements
 
 	private SharedPreferences sharedPreferences;
 
-	@Override
+	@Override()
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.addPreferencesFromResource(R.xml.settings);
 	}
 
-	@Override
+	@Override()
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
 			String key) {
-
 	}
 
 	@Override()
 	public void onStart() {
 		super.onStart();
-		sharedPreferences = PreferenceManager
-				.getDefaultSharedPreferences(getActivity());
-		sharedPreferences.registerOnSharedPreferenceChangeListener(this);
-	}
 
+		this.sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(getActivity());
+		this.sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+	}
 }
