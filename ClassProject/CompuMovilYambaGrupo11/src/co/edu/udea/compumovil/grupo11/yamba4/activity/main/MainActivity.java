@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.grupo11.yamba3.activity.main;
+package co.edu.udea.compumovil.grupo11.yamba4.activity.main;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,9 +8,10 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import co.edu.udea.compumovil.grupo11.yamba3.R;
-import co.edu.udea.compumovil.grupo11.yamba3.activity.setting.SettingsActivity;
-import co.edu.udea.compumovil.grupo11.yamba3.activity.status.StatusActivity;
+import co.edu.udea.compumovil.grupo11.yamba4.R;
+import co.edu.udea.compumovil.grupo11.yamba4.activity.setting.SettingsActivity;
+import co.edu.udea.compumovil.grupo11.yamba4.activity.status.StatusActivity;
+import co.edu.udea.compumovil.grupo11.yamba4.service.RefreshIntentService;
 
 public class MainActivity extends Activity {
 
@@ -50,7 +51,8 @@ public class MainActivity extends Activity {
 			return (true);
 
 		case R.id.action_refresh_main_activity:
-			Log.i(TAG, "Action Refresh Selected");
+			super.startService(new Intent(super.getApplicationContext(),
+					RefreshIntentService.class));
 
 			return (true);
 

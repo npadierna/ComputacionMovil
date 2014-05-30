@@ -13,6 +13,9 @@
     <string name="action_settings_main_activity">Configuración</string>
     <string name="action_yamba_main_activity">Haz Yamba</string>
 
+    <!-- Refresh Intent Service -->
+    <string name="fail_intent_refresh_service">Por favor, actualice sus datos de cuenta en las Configuraciones.</string>
+
     <!-- Settings Activity -->
     <string name="api_root_summary_settings">URL del servicio</string>
     <string name="api_root_title_settings">URL</string>

@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.grupo11.yamba3.activity.status;
+package co.edu.udea.compumovil.grupo11.yamba4.activity.status;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -30,6 +30,4 @@ public class StatusActivity extends Activity {
 							bannerFragment.getClass().getSimpleName()).commit();
 		}
 	}
-	
-	
 }
