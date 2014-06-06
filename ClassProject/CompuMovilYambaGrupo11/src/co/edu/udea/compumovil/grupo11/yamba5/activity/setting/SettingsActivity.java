@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.grupo11.yamba4.activity.setting;
+package co.edu.udea.compumovil.grupo11.yamba5.activity.setting;
 
 import android.app.Activity;
 import android.os.Bundle;

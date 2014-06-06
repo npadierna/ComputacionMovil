@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="co.edu.udea.compumovil.grupo11.yamba4"
+    package="co.edu.udea.compumovil.grupo11.yamba5"
     android:versionCode="3"
     android:versionName="1.0" >
 
@@ -37,6 +37,12 @@
                 </category>
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".provider.StatusContentProvider"
+            android:authorities="co.edu.udea.compumovil.grupo11.yamba.provider.StatusContentProvider"
+            android:exported="false" >
+        </provider>
 
         <service android:name=".service.RefreshIntentService" >
         </service>

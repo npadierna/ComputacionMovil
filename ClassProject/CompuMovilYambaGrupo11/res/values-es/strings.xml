@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Global Application Text -->
-    <string name="application_name">Yamba / Grupo 11</string>
+    <string name="application_name">Yamba 5 / Grupo 11</string>
 
     <!-- Banner Fragment -->
     <string name="banner_image_content_descripton">Esta es la imagen para el Banner.</string>

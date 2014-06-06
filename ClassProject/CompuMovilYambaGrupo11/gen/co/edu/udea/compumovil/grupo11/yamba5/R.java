@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package co.edu.udea.compumovil.grupo11.yamba4;
+package co.edu.udea.compumovil.grupo11.yamba5;
 
 public final class R {
     public static final class attr {

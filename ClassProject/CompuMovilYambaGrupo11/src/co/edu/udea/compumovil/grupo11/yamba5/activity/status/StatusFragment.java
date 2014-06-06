@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.grupo11.yamba4.activity.status;
+package co.edu.udea.compumovil.grupo11.yamba5.activity.status;
 
 import java.util.concurrent.ExecutionException;
 
@@ -21,10 +21,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import co.edu.udea.compumovil.grupo11.yamba4.R;
-import co.edu.udea.compumovil.grupo11.yamba4.activity.setting.SettingsActivity;
-import co.edu.udea.compumovil.grupo11.yamba4.activity.util.ProgressBarCustomized;
-import co.edu.udea.compumovil.grupo11.yamba4.thread.YambaPostAsyncTask;
+import co.edu.udea.compumovil.grupo11.yamba5.R;
+import co.edu.udea.compumovil.grupo11.yamba5.activity.setting.SettingsActivity;
+import co.edu.udea.compumovil.grupo11.yamba5.activity.util.ProgressBarCustomized;
+import co.edu.udea.compumovil.grupo11.yamba5.thread.YambaPostAsyncTask;
 
 public class StatusFragment extends Fragment implements OnClickListener {
 

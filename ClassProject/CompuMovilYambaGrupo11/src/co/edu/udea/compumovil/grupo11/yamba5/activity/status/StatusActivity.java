@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.grupo11.yamba4.activity.status;
+package co.edu.udea.compumovil.grupo11.yamba5.activity.status;
 
 import android.app.Activity;
 import android.app.Fragment;

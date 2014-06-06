@@ -1,6 +1,6 @@
-package co.edu.udea.compumovil.grupo11.yamba4.activity.setting;
+package co.edu.udea.compumovil.grupo11.yamba5.activity.setting;
 
-import co.edu.udea.compumovil.grupo11.yamba4.R;
+import co.edu.udea.compumovil.grupo11.yamba5.R;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;

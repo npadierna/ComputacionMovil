@@ -1,18 +1,21 @@
-package co.edu.udea.compumovil.grupo11.yamba4.service;
+package co.edu.udea.compumovil.grupo11.yamba5.service;
 
 import java.util.List;
 
-import com.marakana.android.yamba.clientlib.YambaClient;
-import com.marakana.android.yamba.clientlib.YambaClient.Status;
-
-import co.edu.udea.compumovil.grupo11.yamba4.R;
 import android.app.IntentService;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+import co.edu.udea.compumovil.grupo11.yamba5.R;
+import co.edu.udea.compumovil.grupo11.yamba5.database.contract.StatusContract;
+
+import com.marakana.android.yamba.clientlib.YambaClient;
+import com.marakana.android.yamba.clientlib.YambaClient.Status;
 
 public class RefreshIntentService extends IntentService {
 
@@ -38,12 +41,11 @@ public class RefreshIntentService extends IntentService {
 				.getDefaultSharedPreferences(super.getApplicationContext());
 		final String userName = sharedPreferences.getString("userName", "");
 		final String password = sharedPreferences.getString("password", "");
-		// final String apiRoot = sharedPreferences.getString("apiRoot",
-		// "http://yamba.marakana.com/api");
+		final String apiRoot = sharedPreferences.getString("apiRoot",
+				"http://yamba.marakana.com/api");
 
-		// if ((TextUtils.isEmpty(apiRoot)) || (TextUtils.isEmpty(password))
-		// || (TextUtils.isEmpty(userName))) {
-		if ((TextUtils.isEmpty(password)) || (TextUtils.isEmpty(userName))) {
+		if ((TextUtils.isEmpty(apiRoot)) || (TextUtils.isEmpty(password))
+				|| (TextUtils.isEmpty(userName))) {
 			Toast.makeText(super.getApplicationContext(),
 					R.string.fail_intent_refresh_service, Toast.LENGTH_LONG)
 					.show();
@@ -51,14 +53,30 @@ public class RefreshIntentService extends IntentService {
 			return;
 		}
 
-		// YambaClient yambaClient = new YambaClient(userName, password,
-		// apiRoot);
-		YambaClient yambaClient = new YambaClient(userName, password);
+		ContentValues contentValues = new ContentValues();
+		YambaClient yambaClient = new YambaClient(userName, password, apiRoot);
 		try {
-			List<Status> statusTimeLineList = yambaClient.getTimeline(MAX_TIME_LINE);
-			Log.d(TAG,
-					"Status Time Line List size: " + statusTimeLineList.size());
+			List<Status> statusTimeLineList = yambaClient
+					.getTimeline(MAX_TIME_LINE);
 			for (Status status : statusTimeLineList) {
+				contentValues.clear();
+				contentValues.put(StatusContract.DataBaseColumn.ID,
+						status.getId());
+				contentValues.put(StatusContract.DataBaseColumn.USER,
+						status.getUser());
+				contentValues.put(StatusContract.DataBaseColumn.MESSAGE,
+						status.getMessage());
+				contentValues.put(StatusContract.DataBaseColumn.CREATED_AT,
+						status.getCreatedAt().getTime());
+
+				Uri uri = getContentResolver().insert(
+						StatusContract.CONTENT_URI, contentValues);
+				if (uri != null) {
+					Log.d(TAG,
+							String.format("%s: %s", status.getUser(),
+									status.getMessage()));
+				}
+
 				Log.i(TAG,
 						String.format("%s -> %s", status.getUser(),
 								status.getMessage()));
