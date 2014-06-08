@@ -10,7 +10,6 @@ public class StatusContract {
 	public static final String TABLE = "STATUS";
 	public static final String DEFAULT_SORT = DataBaseColumn.CREATED_AT
 			+ " DESC";
-	
 
 	public static final String AUTHORITY = "co.edu.udea.compumovil.grupo11.yamba.provider.StatusContentProvider";
 	public static final String STATUS_LEVEL = "status";

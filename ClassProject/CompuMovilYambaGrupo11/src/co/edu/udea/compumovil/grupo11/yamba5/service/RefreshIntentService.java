@@ -69,7 +69,7 @@ public class RefreshIntentService extends IntentService {
 				contentValues.put(StatusContract.DataBaseColumn.CREATED_AT,
 						status.getCreatedAt().getTime());
 
-				Uri uri = getContentResolver().insert(
+				Uri uri = super.getContentResolver().insert(
 						StatusContract.CONTENT_URI, contentValues);
 				if (uri != null) {
 					Log.d(TAG,

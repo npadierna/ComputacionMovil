@@ -20,11 +20,11 @@ public class StatusContentProvider extends ContentProvider {
 	private static final UriMatcher URI_MATCHER = new UriMatcher(
 			UriMatcher.NO_MATCH);
 	static {
-		URI_MATCHER.addURI(StatusContract.AUTHORITY, StatusContract.STATUS_LEVEL,
-				StatusContract.STATUS_DIR);
+		URI_MATCHER.addURI(StatusContract.AUTHORITY,
+				StatusContract.STATUS_LEVEL, StatusContract.STATUS_DIR);
 
-		URI_MATCHER.addURI(StatusContract.AUTHORITY, StatusContract.STATUS_LEVEL
-				+ "/#", StatusContract.STATUS_ITEM);
+		URI_MATCHER.addURI(StatusContract.AUTHORITY,
+				StatusContract.STATUS_LEVEL + "/#", StatusContract.STATUS_ITEM);
 	}
 
 	private AccessorDataBaseHelper accessorDataBaseHelper;
@@ -37,6 +37,7 @@ public class StatusContentProvider extends ContentProvider {
 		case StatusContract.STATUS_DIR:
 			where = (selection == null) ? "1" : selection;
 			break;
+
 		case StatusContract.STATUS_ITEM:
 			long id = ContentUris.parseId(uri);
 			where = StatusContract.DataBaseColumn.ID
@@ -45,31 +46,33 @@ public class StatusContentProvider extends ContentProvider {
 					+ (TextUtils.isEmpty(selection) ? "" : " and ( "
 							+ selection + " )");
 			break;
+
 		default:
 			throw new IllegalArgumentException("Illegal uri: " + uri);
 		}
 
-		SQLiteDatabase db = accessorDataBaseHelper.getWritableDatabase();
+		SQLiteDatabase db = this.accessorDataBaseHelper.getWritableDatabase();
 		int result = db.delete(StatusContract.TABLE, where, selectionArgs);
 		if (result > 0) {
-			getContext().getContentResolver().notifyChange(uri, null);
+			super.getContext().getContentResolver().notifyChange(uri, null);
 		}
 
 		Log.d(TAG, "deleted records: " + result);
 
-		return result;
+		return (result);
 	}
 
 	@Override()
 	public String getType(Uri uri) {
-
 		switch (URI_MATCHER.match(uri)) {
 		case StatusContract.STATUS_DIR:
 			Log.d(TAG, "gotType: " + StatusContract.STATUS_TYPE_DIR);
-			return StatusContract.STATUS_TYPE_DIR;
+			return (StatusContract.STATUS_TYPE_DIR);
+
 		case StatusContract.STATUS_ITEM:
 			Log.d(TAG, "gotType: " + StatusContract.STATUS_TYPE_ITEM);
-			return StatusContract.STATUS_TYPE_ITEM;
+			return (StatusContract.STATUS_TYPE_ITEM);
+
 		default:
 			throw new IllegalArgumentException("Illegal uri: " + uri);
 		}
@@ -95,7 +98,8 @@ public class StatusContentProvider extends ContentProvider {
 
 			Log.d(TAG, "inserted uri: " + ret);
 		}
-		return ret;
+
+		return (ret);
 	}
 
 	@Override()
@@ -103,7 +107,7 @@ public class StatusContentProvider extends ContentProvider {
 		this.accessorDataBaseHelper = new AccessorDataBaseHelper(
 				super.getContext());
 
-		return true;
+		return (true);
 	}
 
 	@Override()
@@ -127,17 +131,17 @@ public class StatusContentProvider extends ContentProvider {
 
 		String orderBy = (TextUtils.isEmpty(sortOrder)) ? StatusContract.DEFAULT_SORT
 				: sortOrder;
-		SQLiteDatabase db = accessorDataBaseHelper.getReadableDatabase();
+		SQLiteDatabase db = this.accessorDataBaseHelper.getReadableDatabase();
 		Cursor cursor = qb.query(db, projection, selection, selectionArgs,
 				null, null, orderBy);
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);
 
 		Log.d(TAG, "queried records: " + cursor.getCount());
 
-		return cursor;
+		return (cursor);
 	}
 
-	@Override
+	@Override()
 	public int update(Uri uri, ContentValues values, String selection,
 			String[] selectionArgs) {
 		String where;
@@ -146,6 +150,7 @@ public class StatusContentProvider extends ContentProvider {
 		case StatusContract.STATUS_DIR:
 			where = selection;
 			break;
+
 		case StatusContract.STATUS_ITEM:
 			long id = ContentUris.parseId(uri);
 			where = StatusContract.DataBaseColumn.ID
@@ -154,21 +159,20 @@ public class StatusContentProvider extends ContentProvider {
 					+ (TextUtils.isEmpty(selection) ? "" : " and ( "
 							+ selection + " )");
 			break;
+
 		default:
 			throw new IllegalArgumentException("Illegal uri: " + uri);
 		}
 
-		SQLiteDatabase db = accessorDataBaseHelper.getWritableDatabase();
+		SQLiteDatabase db = this.accessorDataBaseHelper.getWritableDatabase();
 		int result = db.update(StatusContract.TABLE, values, where,
 				selectionArgs);
-
 		if (result > 0) {
-			getContext().getContentResolver().notifyChange(uri, null);
+			super.getContext().getContentResolver().notifyChange(uri, null);
 		}
 
 		Log.d(TAG, "updated records: " + result);
 
-		return result;
+		return (result);
 	}
-
 }
