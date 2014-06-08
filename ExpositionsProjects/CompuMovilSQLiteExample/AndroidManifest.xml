@@ -6,20 +6,24 @@
 
     <uses-sdk
         android:minSdkVersion="9"
-        android:targetSdkVersion="9" />
+        android:targetSdkVersion="9" >
+    </uses-sdk>
 
     <application
         android:allowBackup="true"
+        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="co.edu.udea.compumovil.grupo11.example1.DashboardMainActivity"
+            android:name=".activity.dashboard.DashboardMainActivity"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" >
+                </action>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" >
+                </category>
             </intent-filter>
         </activity>
     </application>
