@@ -1,107 +1,137 @@
 package co.edu.udea.compumovil.grupo11.example1.database.sqlite.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.text.format.DateFormat;
 import android.util.Log;
 import co.edu.udea.compumovil.grupo11.example1.database.contract.PersonContract;
 import co.edu.udea.compumovil.grupo11.example1.database.dao.IPersonDAO;
 import co.edu.udea.compumovil.grupo11.example1.database.sqlite.PersonDatabaseHelper;
-import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.PersonPK;
-import co.edu.udea.compumovil.grupo11.example1.model.enums.DocumentTypeEnum;
 
 public class PersonDAOImpl implements IPersonDAO {
 
 	private static final String TAG = PersonDAOImpl.class.getSimpleName();
 
+	private static PersonDAOImpl instance = null;
 	private PersonDatabaseHelper personDatabaseHelper;
 
-	public PersonDAOImpl(Context context) {
+	private PersonDAOImpl(Context context) {
 		super();
 		this.personDatabaseHelper = new PersonDatabaseHelper(context);
 	}
 
+	public static synchronized PersonDAOImpl getInstance(Context context) {
+		if (instance == null) {
+			instance = new PersonDAOImpl(context);
+		}
+
+		return (instance);
+	}
+
 	@Override()
-	public Person deletePerson(PersonPK personPK) {
+	public Integer deletePersons(String whereClause, String[] whereArgs) {
+		Log.i(TAG, "deletePerson(String, String[]):Long");
+
+		SQLiteDatabase sqliteDatabase = this.personDatabaseHelper
+				.getWritableDatabase();
+		int affectedRows = sqliteDatabase.delete(PersonContract.TABLE_NAME,
+				whereClause, whereArgs);
+
+		return (Integer.valueOf(affectedRows));
+	}
+
+	@Override()
+	public List<ContentValues> findPersons(Boolean distinct, String[] columns,
+			String selection, String[] selectionArgs, String groupBy,
+			String having, String orderBy, String limit) {
+		Log.i(TAG,
+				"findPersons(Boolean, String[], String, String[], String, String, String, String):Cursor");
+
+		SQLiteDatabase sqliteDatabase = this.personDatabaseHelper
+				.getReadableDatabase();
+		Cursor cursor = sqliteDatabase.query(distinct.booleanValue(),
+				PersonContract.TABLE_NAME, columns, selection, selectionArgs,
+				groupBy, having, orderBy, limit);
+		List<ContentValues> contentValuesList = this.cursorToContentValues(
+				cursor, columns);
+
+		cursor.close();
+
+		return (contentValuesList);
+	}
+
+	@Override()
+	public ContentValues findPerson(PersonPK personPK) {
+		Log.i(TAG, "findPerson(PersonPK):Cursor");
 
 		return null;
 	}
 
 	@Override()
-	public List<Person> findAllPersons() {
+	public List<ContentValues> findPersonsByAgeRange(Short lower, Short upper) {
+		Log.i(TAG, "findPersonsByAgeRange(Short, Short):Cursor");
 
 		return null;
 	}
 
 	@Override()
-	public Person findPerson(PersonPK personPK) {
+	public List<ContentValues> findPersonsByDocumentType(String documentType) {
+		Log.i(TAG, "findPersonsByDocumentType(String):Cursor");
 
 		return null;
 	}
 
 	@Override()
-	public List<Person> findPersonsByAgeRange(short lower, short upper) {
-
-		return null;
-	}
-
-	@Override()
-	public List<Person> findPersonsByDocumentType(
-			DocumentTypeEnum documentTypeEnum) {
-
-		return null;
-	}
-
-	@Override()
-	public Person savePerson(Person person) {
-		Log.i(TAG, String.format("savePerson(Person):Person -> %s", person
-				.getPersonPK().toString()));
+	public ContentValues savePerson(ContentValues personContentValues) {
+		Log.i(TAG, "savePerson(ContentValues):ContentValues");
 
 		SQLiteDatabase sqliteDatabase = this.personDatabaseHelper
 				.getWritableDatabase();
 		long rowId = sqliteDatabase.insertWithOnConflict(
-				PersonContract.TABLE_NAME, null, this.convertTo(person),
+				PersonContract.TABLE_NAME, null, personContentValues,
 				SQLiteDatabase.CONFLICT_IGNORE);
 
-		return ((rowId != -1) ? person : null);
+		return ((rowId != -1L) ? personContentValues : null);
 	}
 
 	@Override()
-	public Person updatePerson(Person person) {
+	public ContentValues updatePerson(ContentValues personContentValues) {
+		Log.i(TAG, "updatePerson(ContentValues):ContentValues");
 
 		return null;
 	}
 
 	@Override()
-	public long countPersons() {
+	public Long countPersons() {
+		Log.i(TAG, "countPersons():Long");
 
-		return 0;
+		return (Long.valueOf(-1));
 	}
 
-	private ContentValues convertTo(Person person) {
+	private List<ContentValues> cursorToContentValues(Cursor cursor,
+			String[] columns) {
+		List<ContentValues> contentValuesList = new ArrayList<ContentValues>();
+
+		if ((cursor == null) || (cursor.isClosed())) {
+
+			return (contentValuesList);
+		}
+
 		ContentValues contentValues = new ContentValues();
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			contentValues.clear();
 
-		contentValues.put(PersonContract.Column.AGE, person.getAge());
-		contentValues.put(PersonContract.Column.BIRTHDAY,
-				DateFormat.format("dd/MM/yyyy", person.getBirthday())
-						.toString());
-		contentValues.put(PersonContract.Column.DOCUMENT_TYPE, person
-				.getPersonPK().getDocumentTypeEnum().toString());
-		contentValues.put(PersonContract.Column.E_MAIL, person.getEMail());
-		contentValues.put(PersonContract.Column.FIRST_NAMES,
-				person.getFirstNames());
-		contentValues.put(PersonContract.Column.HEIGHT, person.getHeight());
-		contentValues.put(PersonContract.Column.ID_NUMBER, person.getPersonPK()
-				.getIdNumber());
-		contentValues.put(PersonContract.Column.LAST_NAMES,
-				person.getLastNames());
-		contentValues.put(PersonContract.Column.PHONE_NUMBER,
-				person.getPhoneNumber());
+			// FIXME: What is about if the user has selected a set of columns?
 
-		return (contentValues);
+			contentValuesList.add(contentValues);
+		}
+
+		return (contentValuesList);
 	}
 }

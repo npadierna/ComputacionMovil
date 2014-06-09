@@ -13,17 +13,16 @@ public class Person implements Serializable {
 	private String eMail;
 	private Date birthday;
 	private String phoneNumber;
-	private short age;
+	private short weight;
 	private float height;
 
 	public Person(PersonPK personPK, String firstNames, String lastNames,
-			Date birthday, short age) {
+			Date birthday) {
 		super();
 		this.personPK = personPK;
 		this.firstNames = firstNames;
 		this.lastNames = lastNames;
 		this.birthday = birthday;
-		this.age = age;
 	}
 
 	public PersonPK getPersonPK() {
@@ -80,13 +79,13 @@ public class Person implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public short getAge() {
+	public short getWeight() {
 
-		return (this.age);
+		return (this.weight);
 	}
 
-	public void setAge(short age) {
-		this.age = age;
+	public void setWeight(short weight) {
+		this.weight = weight;
 	}
 
 	public float getHeight() {

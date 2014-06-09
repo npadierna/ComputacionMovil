@@ -19,7 +19,7 @@ public final class PersonContract {
 		public static final String E_MAIL = "E_MAIL";
 		public static final String BIRTHDAY = "BIRTHDAY";
 		public static final String PHONE_NUMBER = "PHONE_NUMBER";
-		public static final String AGE = "AGE";
+		public static final String WEIGHT = "WEIGHT";
 		public static final String HEIGHT = "HEIGHT";
 
 		public Column() {

@@ -19,7 +19,7 @@ public final class PersonDatabaseHelper extends SQLiteOpenHelper {
 	@Override()
 	public void onCreate(SQLiteDatabase db) {
 		String sql = String
-				.format("CREATE TABLE %s (%s TEXT, %s TEXT, %s TEXT NOT NULL, %s TEXT NOT NULL, %s TEXT NOT NULL, %s TEXT, %s TEXT, %s INTEGER NOT NULL, %s REAL, PRIMARY KEY (%s, %s))",
+				.format("CREATE TABLE %s (%s TEXT, %s TEXT, %s TEXT NOT NULL, %s TEXT NOT NULL, %s TEXT NOT NULL, %s TEXT, %s TEXT, %s INTEGER, %s REAL, PRIMARY KEY (%s, %s))",
 						PersonContract.TABLE_NAME,
 						PersonContract.Column.DOCUMENT_TYPE,
 						PersonContract.Column.ID_NUMBER,
@@ -28,7 +28,7 @@ public final class PersonDatabaseHelper extends SQLiteOpenHelper {
 						PersonContract.Column.BIRTHDAY,
 						PersonContract.Column.E_MAIL,
 						PersonContract.Column.PHONE_NUMBER,
-						PersonContract.Column.AGE,
+						PersonContract.Column.WEIGHT,
 						PersonContract.Column.HEIGHT,
 						PersonContract.Column.DOCUMENT_TYPE,
 						PersonContract.Column.ID_NUMBER);
