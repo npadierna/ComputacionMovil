@@ -50,8 +50,8 @@ public final class R {
         public static final int app_name=0x7f050000;
         public static final int create_person_button_text=0x7f050004;
         public static final int delete_person_button_text=0x7f050005;
-        public static final int find_person_by_age_range_menu=0x7f050003;
         public static final int find_person_by_document_type_menu=0x7f050002;
+        public static final int find_person_by_height_range_menu=0x7f050003;
         public static final int retrieve_person_button_text=0x7f050006;
         public static final int update_person_button_text=0x7f050007;
     }

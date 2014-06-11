@@ -24,5 +24,5 @@ public interface IPersonProcess {
 
 	public Person updatePerson(Person person);
 
-	// public long countPersons();
+	public long countPersons();
 }

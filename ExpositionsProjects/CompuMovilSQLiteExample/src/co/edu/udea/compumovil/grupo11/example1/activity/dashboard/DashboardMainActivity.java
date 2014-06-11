@@ -44,8 +44,9 @@ public class DashboardMainActivity extends Activity {
 		case (R.id.about_us_menu):
 			Log.i(TAG, String.format("Selected Item: \"%s\"", "About us"));
 
-			// Invocation to a Window or fragment to display information about
-			// us.
+			// FIXME: Invocation to a Window or fragment to display information
+			// about us.
+			this.countPersons();
 
 			return (true);
 
@@ -66,7 +67,7 @@ public class DashboardMainActivity extends Activity {
 			return (true);
 
 		default:
-			return super.onOptionsItemSelected(item);
+			return (super.onOptionsItemSelected(item));
 		}
 	}
 
@@ -74,58 +75,67 @@ public class DashboardMainActivity extends Activity {
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onCreatePerson(View):void"));
 
-		// Person neiber = new Person(new PersonPK(
-		// DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1022095657"),
-		// "Neiber de Jesús", "Padierna Pérez", new Date());
-		// neiber.setEMail("npadierna@gmail.com");
-		// neiber.setHeight(1.75F);
-		// neiber.setPhoneNumber("+(123) 456 78 90");
-		// neiber.setWeight((short) 12);
-		//
-		// Person yefry = new Person(new PersonPK(
-		// DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"),
-		// "Yefry Alexis", "Calderón Yepes", new Date());
-		//
-		// Person p = this.personProcess.savePerson(neiber);
-		// p = this.personProcess.savePerson(yefry);
+		Person neiber = new Person(new PersonPK(
+				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1022095657"),
+				"Neiber de Jesús", "Padierna Pérez", new Date());
+		neiber.setEMail("npadierna@gmail.com");
+		neiber.setHeight(1.75F);
+		neiber.setPhoneNumber("+(123) 456 78 90");
+		neiber.setWeight((short) 12);
+
+		Person yefry = new Person(new PersonPK(
+				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"),
+				"Yefry Alexis", "Calderón Yepes", new Date());
+
+		Person p = this.personProcess.savePerson(neiber);
+		p = this.personProcess.savePerson(yefry);
 	}
 
 	public void onDeletePerson(View view) {
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onDeletePerson(View):void"));
 
-		// Person neiber = new Person(new PersonPK(
-		// DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1022095657"),
-		// "Neiber de Jesús", "Padierna Pérez", new Date());
-		// neiber.setEMail("npadierna@gmail.com");
-		// neiber.setHeight(1.75F);
-		// neiber.setPhoneNumber("+(123) 123 45 67");
-		// neiber.setWeight((short) 12);
-		//
-		// int affectedRows = this.personProcess.deletePerson(neiber);
+		Person neiber = new Person(new PersonPK(
+				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1022095657"),
+				"Neiber de Jesús", "Padierna Pérez", new Date());
+		neiber.setEMail("npadierna@gmail.com");
+		neiber.setHeight(1.75F);
+		neiber.setPhoneNumber("+(123) 123 45 67");
+		neiber.setWeight((short) 12);
+
+		int affectedRows = this.personProcess.deletePerson(neiber);
 	}
 
 	public void onRetrievePerson(View view) {
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onRetrievePerson(View):void"));
 
-		// Person person = this.personProcess.findPerson(new PersonPK(
-		// DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"));
+		Person person = this.personProcess.findPerson(new PersonPK(
+				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"));
 	}
 
 	public void onUpdatePerson(View view) {
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onUpdatePerson(View):void"));
 
-		// Person yefry = new Person(new PersonPK(
-		// DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"),
-		// "Yefry Alexis", "Calderón Yepes", new Date());
-		// yefry.setEMail("alexis.cal.y@gmail.com");
-		// yefry.setHeight(1.70F);
-		// yefry.setPhoneNumber("+(987) 654 32 10");
-		// yefry.setWeight((short) 34);
-		//
-		// Person person = this.personProcess.updatePerson(yefry);
+		Person yefry = new Person(new PersonPK(
+				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"),
+				"Yefry Alexis", "Calderón Yepes", new Date());
+		yefry.setEMail("alexis.cal.y@gmail.com");
+		yefry.setHeight(1.70F);
+		yefry.setPhoneNumber("+(987) 654 32 10");
+		yefry.setWeight((short) 34);
+
+		Person person = this.personProcess.updatePerson(yefry);
+	}
+
+	private void countPersons() {
+		Log.i(TAG, String.format("Selected Menu Item Method: %s",
+				"countPersons():void"));
+
+		// FIXME: This method is not useful for now.
+
+		long personsAmout = this.personProcess.countPersons();
 	}
 
 	private void findPersonsByAgeRange() {

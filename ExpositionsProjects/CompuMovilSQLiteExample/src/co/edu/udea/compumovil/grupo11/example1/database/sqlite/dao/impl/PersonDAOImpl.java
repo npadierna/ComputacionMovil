@@ -134,7 +134,20 @@ public class PersonDAOImpl implements IPersonDAO {
 	public Long countPersons() {
 		Log.i(TAG, "countPersons():Long");
 
-		return (Long.valueOf(-1));
+		SQLiteDatabase sqliteDatabase = this.personDatabaseHelper
+				.getReadableDatabase();
+		Cursor cursor = sqliteDatabase.rawQuery(String.format(
+				"SELECT COUNT(*) FROM %s", PersonContract.TABLE_NAME), null);
+		Long rowsAmount = Long.valueOf(-1L);
+
+		cursor.moveToFirst();
+		if (!cursor.isAfterLast()) {
+			rowsAmount = cursor.getLong(0);
+		}
+
+		cursor.close();
+
+		return (rowsAmount);
 	}
 
 	private List<ContentValues> cursorToContentValues(Cursor cursor,
@@ -150,10 +163,10 @@ public class PersonDAOImpl implements IPersonDAO {
 			columns = PersonContract.Column.getAllColumns();
 		}
 
-		ContentValues contentValues = new ContentValues();
+		ContentValues contentValues = null;
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
-			contentValues.clear();
+			contentValues = new ContentValues();
 
 			for (String column : columns) {
 				contentValues.put(column,

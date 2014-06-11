@@ -177,6 +177,13 @@ public class PersonProcessImpl implements IPersonProcess {
 		return (null);
 	}
 
+	@Override()
+	public long countPersons() {
+		Log.i(TAG, "countPersons():void");
+
+		return (this.personDAO.countPersons().longValue());
+	}
+
 	private Person convertContentValuesToPerson(ContentValues contentValues)
 			throws ParseException {
 		PersonPK personPK = new PersonPK(

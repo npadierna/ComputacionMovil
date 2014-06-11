@@ -7,7 +7,7 @@
     <!-- Dashboard Activity -->
     <string name="about_us_menu">About us</string>
     <string name="find_person_by_document_type_menu">Find by Document Type</string>
-    <string name="find_person_by_heigth_range_menu">Find by Height range</string>
+    <string name="find_person_by_height_range_menu">Find by Height range</string>
     <string name="create_person_button_text">CREATE</string>
     <string name="delete_person_button_text">DELETE</string>
     <string name="retrieve_person_button_text">RETRIEVE</string>
