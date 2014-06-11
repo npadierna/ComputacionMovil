@@ -30,8 +30,8 @@ public final class R {
         public static final int about_us_menu=0x7f080006;
         public static final int create_person_button=0x7f080000;
         public static final int delete_person_button=0x7f080003;
-        public static final int find_by_age_range_menu=0x7f080005;
         public static final int find_by_document_type_menu=0x7f080004;
+        public static final int find_by_height_range_menu=0x7f080005;
         public static final int retrieve_person_button=0x7f080001;
         public static final int update_person_button=0x7f080002;
     }

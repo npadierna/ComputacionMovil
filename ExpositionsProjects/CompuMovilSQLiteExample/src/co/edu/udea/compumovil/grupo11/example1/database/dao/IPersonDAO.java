@@ -3,7 +3,6 @@ package co.edu.udea.compumovil.grupo11.example1.database.dao;
 import java.util.List;
 
 import android.content.ContentValues;
-import co.edu.udea.compumovil.grupo11.example1.model.entity.PersonPK;
 
 public interface IPersonDAO {
 
@@ -13,15 +12,15 @@ public interface IPersonDAO {
 			String selection, String[] selectionArgs, String groupBy,
 			String having, String orderBy, String limit);
 
-	public ContentValues findPerson(PersonPK personPK);
-
-	public List<ContentValues> findPersonsByAgeRange(Short lower, Short upper);
+	public List<ContentValues> findPersonsByHeightRange(Float lowerHeight,
+			Float upperHeight);
 
 	public List<ContentValues> findPersonsByDocumentType(String documentType);
 
 	public ContentValues savePerson(ContentValues personContentValues);
 
-	public ContentValues updatePerson(ContentValues personContentValues);
+	public ContentValues updatePerson(ContentValues personContentValues,
+			String whereClause, String[] whereArgs);
 
 	public Long countPersons();
 }

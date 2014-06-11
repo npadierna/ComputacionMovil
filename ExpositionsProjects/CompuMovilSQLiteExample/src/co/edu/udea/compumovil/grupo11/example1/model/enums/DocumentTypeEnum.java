@@ -24,6 +24,30 @@ public enum DocumentTypeEnum {
 		this.documentType = documentType;
 	}
 
+	public static DocumentTypeEnum findDocumentTypeEmunByDocumentType(
+			String documentType) {
+
+		if (documentType.equals(CEDULA_DE_CIUDADANIA.getDocumentType())) {
+
+			return (CEDULA_DE_CIUDADANIA);
+		} else if (documentType.equals(CEDULA_DE_EXTRANJERIA.getDocumentType())) {
+
+			return (CEDULA_DE_EXTRANJERIA);
+		} else if (documentType.equals(NUMERO_IDENTIFICACION_PERSONAL
+				.getDocumentType())) {
+
+			return (NUMERO_IDENTIFICACION_PERSONAL);
+		} else if (documentType.equals(REGISTRO_CIVIL.getDocumentType())) {
+
+			return (REGISTRO_CIVIL);
+		} else if (documentType.equals(TARJETA_DE_IDENTIDAD.getDocumentType())) {
+
+			return (TARJETA_DE_IDENTIDAD);
+		}
+
+		return (null);
+	}
+
 	public static List<String> obtainDocumentsTypesList() {
 		List<String> documentsTypeList = new ArrayList<String>();
 

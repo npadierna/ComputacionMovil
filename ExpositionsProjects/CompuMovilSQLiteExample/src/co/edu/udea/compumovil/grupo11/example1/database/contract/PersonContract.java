@@ -10,7 +10,7 @@ public final class PersonContract {
 		super();
 	}
 
-	public final class Column {
+	public final static class Column {
 
 		public static final String DOCUMENT_TYPE = "DOCUMENT_TYPE";
 		public static final String ID_NUMBER = "ID_NUMBER";
@@ -24,6 +24,12 @@ public final class PersonContract {
 
 		public Column() {
 			super();
+		}
+
+		public static String[] getAllColumns() {
+
+			return (new String[] { DOCUMENT_TYPE, ID_NUMBER, FIRST_NAMES,
+					LAST_NAMES, E_MAIL, BIRTHDAY, PHONE_NUMBER, WEIGHT, HEIGHT });
 		}
 	}
 }
