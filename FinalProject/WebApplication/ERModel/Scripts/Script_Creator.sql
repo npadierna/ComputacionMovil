@@ -9,7 +9,7 @@ USE `AhorcaTooth` ;
 -- Table `AhorcaTooth`.`LANGUAGES`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `AhorcaTooth`.`LANGUAGES` (
-  `iso_code` VARCHAR(2) NOT NULL COMMENT 'Agree with: ISO 639-1' ,
+  `iso_code` VARCHAR(3) NOT NULL COMMENT 'Agree with: ISO 639-1' ,
   `tongue` VARCHAR(25) NOT NULL ,
   `description` VARCHAR(250) NULL ,
   PRIMARY KEY (`iso_code`) ,
@@ -19,25 +19,22 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `AhorcaTooth`.`WORD`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `AhorcaTooth`.`WORD` (
-  `word_name` VARCHAR(15) NOT NULL ,
-  `description` VARCHAR(250) NULL ,
-  PRIMARY KEY (`word_name`) ,
-  UNIQUE INDEX `WORD_NAME_UNIQUE` (`word_name` ASC) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `AhorcaTooth`.`CATEGORY`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `AhorcaTooth`.`CATEGORY` (
   `category_name` VARCHAR(25) NOT NULL ,
+  `languages_iso_code` VARCHAR(3) NOT NULL ,
   `image_name` VARCHAR(35) NOT NULL ,
   `description` VARCHAR(250) NULL ,
-  PRIMARY KEY (`category_name`) ,
-  UNIQUE INDEX `category_name_UNIQUE` (`category_name` ASC) )
+  PRIMARY KEY (`category_name`, `languages_iso_code`) ,
+  UNIQUE INDEX `category_name_UNIQUE` (`category_name` ASC) ,
+  INDEX `fk_CATEGORY_LANGUAGES_idx` (`languages_iso_code` ASC) ,
+  UNIQUE INDEX `languages_iso_code_UNIQUE` (`languages_iso_code` ASC) ,
+  CONSTRAINT `fk_CATEGORY_LANGUAGES`
+    FOREIGN KEY (`languages_iso_code` )
+    REFERENCES `AhorcaTooth`.`LANGUAGES` (`iso_code` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -46,26 +43,16 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `AhorcaTooth`.`HANGMAN_WORD` (
   `id` BIGINT NOT NULL AUTO_INCREMENT ,
-  `iso_code` VARCHAR(2) NOT NULL ,
   `word_name` VARCHAR(15) NOT NULL ,
+  `description` VARCHAR(250) NULL ,
   `category_name` VARCHAR(25) NOT NULL ,
-  INDEX `fk_table1_WORD1_idx` (`word_name` ASC) ,
-  INDEX `fk_LANGUAGE_WORD_CATEGORY1_idx` (`category_name` ASC) ,
+  `languages_iso_code` VARCHAR(3) NOT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
-  CONSTRAINT `fk_table1_LANGUAGE`
-    FOREIGN KEY (`iso_code` )
-    REFERENCES `AhorcaTooth`.`LANGUAGES` (`iso_code` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_table1_WORD1`
-    FOREIGN KEY (`word_name` )
-    REFERENCES `AhorcaTooth`.`WORD` (`word_name` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_LANGUAGE_WORD_CATEGORY1`
-    FOREIGN KEY (`category_name` )
-    REFERENCES `AhorcaTooth`.`CATEGORY` (`category_name` )
+  INDEX `fk_HANGMAN_WORD_CATEGORY1_idx` (`category_name` ASC, `languages_iso_code` ASC) ,
+  CONSTRAINT `fk_HANGMAN_WORD_CATEGORY1`
+    FOREIGN KEY (`category_name` , `languages_iso_code` )
+    REFERENCES `AhorcaTooth`.`CATEGORY` (`category_name` , `languages_iso_code` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
