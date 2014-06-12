@@ -1,6 +1,7 @@
 package co.edu.udea.compumovil.grupo11.example1.activity.dashboard;
 
 import java.util.Date;
+import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -27,8 +28,10 @@ public class DashboardMainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_dashboard_main);
 
-		this.personProcess = new PersonProcessImpl(
-				super.getApplicationContext());
+		if (savedInstanceState == null) {
+			this.personProcess = new PersonProcessImpl(
+					super.getApplicationContext());
+		}
 	}
 
 	@Override()
@@ -89,6 +92,8 @@ public class DashboardMainActivity extends Activity {
 
 		Person p = this.personProcess.savePerson(neiber);
 		p = this.personProcess.savePerson(yefry);
+
+		List<Person> personsFoundList = this.personProcess.findAllPersons();
 	}
 
 	public void onDeletePerson(View view) {

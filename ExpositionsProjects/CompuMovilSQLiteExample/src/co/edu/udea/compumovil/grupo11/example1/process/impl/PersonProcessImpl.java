@@ -54,8 +54,22 @@ public class PersonProcessImpl implements IPersonProcess {
 
 	@Override()
 	public List<Person> findAllPersons() {
+		Log.i(TAG, "findAllPersons():List<Person>");
 
-		return (null);
+		List<ContentValues> contentValuesList = this.personDAO.findPersons(
+				Boolean.FALSE, null, null, null, null, null, null, null);
+		List<Person> personsFoundList = new ArrayList<Person>();
+
+		for (ContentValues contentValues : contentValuesList) {
+			try {
+				personsFoundList.add(this
+						.convertContentValuesToPerson(contentValues));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return (personsFoundList);
 	}
 
 	public Person findPerson(PersonPK personPK) {
