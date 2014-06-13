@@ -8,4 +8,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.main.MainActivity" >
 
+    <fragment
+        android:id="@+id/fragment_timeline"
+        android:name="co.edu.udea.compumovil.grupo11.yamba5.activity.main.TimelineListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true" >
+    </fragment>
+
 </RelativeLayout>

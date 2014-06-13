@@ -24,16 +24,22 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_purge_main_activity=0x7f0a0009;
-        public static final int action_refresh_main_activity=0x7f0a0008;
-        public static final int action_settings_main_activity=0x7f0a0006;
-        public static final int action_yamba_main_activity=0x7f0a0007;
-        public static final int bannerImageView=0x7f0a0002;
-        public static final int counterTextView=0x7f0a0003;
-        public static final int fragment_banner=0x7f0a0000;
-        public static final int fragment_status=0x7f0a0001;
-        public static final int statusEditText=0x7f0a0005;
-        public static final int yambaButton=0x7f0a0004;
+        public static final int action_purge_main_activity=0x7f0a000f;
+        public static final int action_refresh_main_activity=0x7f0a000e;
+        public static final int action_settings_main_activity=0x7f0a000c;
+        public static final int action_yamba_main_activity=0x7f0a000d;
+        public static final int bannerImageView=0x7f0a0004;
+        public static final int counterTextView=0x7f0a0005;
+        public static final int fragment_banner=0x7f0a0002;
+        public static final int fragment_details=0x7f0a0001;
+        public static final int fragment_status=0x7f0a0003;
+        public static final int fragment_timeline=0x7f0a0000;
+        public static final int list_item_content=0x7f0a0008;
+        public static final int statusEditText=0x7f0a0007;
+        public static final int yambaButton=0x7f0a0006;
+        public static final int yamba_list_item_text_created_at=0x7f0a000a;
+        public static final int yamba_list_item_text_message=0x7f0a000b;
+        public static final int yamba_list_item_text_user=0x7f0a0009;
     }
     public static final class integer {
         /**  Status Activity 
@@ -45,6 +51,7 @@ public final class R {
         public static final int activity_status=0x7f030001;
         public static final int fragment_banner=0x7f030002;
         public static final int fragment_status=0x7f030003;
+        public static final int yamba_list_item=0x7f030004;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -78,6 +85,10 @@ public final class R {
  Status Fragment 
          */
         public static final int hint_status_edit_text=0x7f07000e;
+        /**  Timeline List Fragment 
+ Timeline List Fragment 
+         */
+        public static final int loading_data_message=0x7f070015;
         public static final int password_summary_settings=0x7f070009;
         public static final int password_title_settings=0x7f07000a;
         public static final int post_failure_toast_text=0x7f070010;

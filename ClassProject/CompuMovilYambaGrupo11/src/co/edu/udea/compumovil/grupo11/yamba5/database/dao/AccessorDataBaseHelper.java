@@ -19,10 +19,10 @@ public class AccessorDataBaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		String sql = String
 				.format("CREATE TABLE %s (%s INT PRIMARY KEY, %s TEXT, %s TEXT, %s INT)",
-						StatusContract.TABLE, StatusContract.DataBaseColumn.ID,
-						StatusContract.DataBaseColumn.USER,
-						StatusContract.DataBaseColumn.MESSAGE,
-						StatusContract.DataBaseColumn.CREATED_AT);
+						StatusContract.TABLE, StatusContract.Column.ID,
+						StatusContract.Column.USER,
+						StatusContract.Column.MESSAGE,
+						StatusContract.Column.CREATED_AT);
 
 		Log.d(TAG, "onCreate with SQL: " + sql);
 

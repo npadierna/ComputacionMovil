@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/fragment_banner"
-        android:name=".activity.BannerFragment"
+        android:name=".activity.status.BannerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="6" >
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/fragment_status"
-        android:name=".activity.StatusFragment"
+        android:name=".activity.status.StatusFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2" >

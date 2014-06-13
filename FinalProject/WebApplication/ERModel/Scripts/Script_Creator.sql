@@ -13,8 +13,7 @@ CREATE  TABLE IF NOT EXISTS `AhorcaTooth`.`LANGUAGES` (
   `tongue` VARCHAR(25) NOT NULL ,
   `description` VARCHAR(250) NULL ,
   PRIMARY KEY (`iso_code`) ,
-  UNIQUE INDEX `ISO_CODE_UNIQUE` (`iso_code` ASC) ,
-  UNIQUE INDEX `TONGUE_UNIQUE` (`tongue` ASC) )
+  UNIQUE INDEX `ISO_CODE_UNIQUE` (`iso_code` ASC) )
 ENGINE = InnoDB;
 
 
@@ -29,7 +28,6 @@ CREATE  TABLE IF NOT EXISTS `AhorcaTooth`.`CATEGORY` (
   PRIMARY KEY (`category_name`, `languages_iso_code`) ,
   UNIQUE INDEX `category_name_UNIQUE` (`category_name` ASC) ,
   INDEX `fk_CATEGORY_LANGUAGES_idx` (`languages_iso_code` ASC) ,
-  UNIQUE INDEX `languages_iso_code_UNIQUE` (`languages_iso_code` ASC) ,
   CONSTRAINT `fk_CATEGORY_LANGUAGES`
     FOREIGN KEY (`languages_iso_code` )
     REFERENCES `AhorcaTooth`.`LANGUAGES` (`iso_code` )

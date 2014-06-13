@@ -60,13 +60,13 @@ public class RefreshIntentService extends IntentService {
 					.getTimeline(MAX_TIME_LINE);
 			for (Status status : statusTimeLineList) {
 				contentValues.clear();
-				contentValues.put(StatusContract.DataBaseColumn.ID,
+				contentValues.put(StatusContract.Column.ID,
 						status.getId());
-				contentValues.put(StatusContract.DataBaseColumn.USER,
+				contentValues.put(StatusContract.Column.USER,
 						status.getUser());
-				contentValues.put(StatusContract.DataBaseColumn.MESSAGE,
+				contentValues.put(StatusContract.Column.MESSAGE,
 						status.getMessage());
-				contentValues.put(StatusContract.DataBaseColumn.CREATED_AT,
+				contentValues.put(StatusContract.Column.CREATED_AT,
 						status.getCreatedAt().getTime());
 
 				Uri uri = super.getContentResolver().insert(

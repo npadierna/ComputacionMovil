@@ -14,13 +14,23 @@
 
     <application
         android:allowBackup="true"
-        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/application_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name=".activity.status.StatusActivity"
             android:label="@string/status_activity_title" >
+            <intent-filter>
+                <action android:name="co.edu.udea.compumovil.grupo11.yamba.action.yamba" >
+                </action>
+
+                <category android:name="android.intent.category.DEFAULT" >
+                </category>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.main.detail.DetailsActivity"
+            android:label="@string/settings_activity_title" >
         </activity>
         <activity
             android:name=".activity.setting.SettingsActivity"

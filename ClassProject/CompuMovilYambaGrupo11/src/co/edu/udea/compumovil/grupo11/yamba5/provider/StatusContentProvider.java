@@ -40,7 +40,7 @@ public class StatusContentProvider extends ContentProvider {
 
 		case StatusContract.STATUS_ITEM:
 			long id = ContentUris.parseId(uri);
-			where = StatusContract.DataBaseColumn.ID
+			where = StatusContract.Column.ID
 					+ "="
 					+ id
 					+ (TextUtils.isEmpty(selection) ? "" : " and ( "
@@ -91,7 +91,7 @@ public class StatusContentProvider extends ContentProvider {
 				values, SQLiteDatabase.CONFLICT_IGNORE);
 
 		if (rowId != -1) {
-			long id = values.getAsLong(StatusContract.DataBaseColumn.ID);
+			long id = values.getAsLong(StatusContract.Column.ID);
 
 			ret = ContentUris.withAppendedId(uri, id);
 			getContext().getContentResolver().notifyChange(uri, null);
@@ -121,7 +121,7 @@ public class StatusContentProvider extends ContentProvider {
 			break;
 
 		case StatusContract.STATUS_ITEM:
-			qb.appendWhere(StatusContract.DataBaseColumn.ID + "="
+			qb.appendWhere(StatusContract.Column.ID + "="
 					+ uri.getLastPathSegment());
 			break;
 
@@ -153,7 +153,7 @@ public class StatusContentProvider extends ContentProvider {
 
 		case StatusContract.STATUS_ITEM:
 			long id = ContentUris.parseId(uri);
-			where = StatusContract.DataBaseColumn.ID
+			where = StatusContract.Column.ID
 					+ "="
 					+ id
 					+ (TextUtils.isEmpty(selection) ? "" : " and ( "

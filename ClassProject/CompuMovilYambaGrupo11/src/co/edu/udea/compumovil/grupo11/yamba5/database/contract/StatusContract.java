@@ -8,7 +8,7 @@ public class StatusContract {
 	public static final String DB_NAME = "Status_Timeline.db";
 	public static final int DB_VERSION = 1;
 	public static final String TABLE = "STATUS";
-	public static final String DEFAULT_SORT = DataBaseColumn.CREATED_AT
+	public static final String DEFAULT_SORT = Column.CREATED_AT
 			+ " DESC";
 
 	public static final String AUTHORITY = "co.edu.udea.compumovil.grupo11.yamba.provider.StatusContentProvider";
@@ -24,14 +24,14 @@ public class StatusContract {
 		super();
 	}
 
-	public class DataBaseColumn {
+	public class Column {
 
 		public static final String ID = BaseColumns._ID;
 		public static final String USER = "USER";
 		public static final String MESSAGE = "MESSAGE";
 		public static final String CREATED_AT = "CREATED_AT";
 
-		private DataBaseColumn() {
+		private Column() {
 			super();
 		}
 	}

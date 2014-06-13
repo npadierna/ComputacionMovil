@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import co.edu.udea.compumovil.grupo11.yamba5.R;
 import co.edu.udea.compumovil.grupo11.yamba5.activity.setting.SettingsActivity;
-import co.edu.udea.compumovil.grupo11.yamba5.activity.status.StatusActivity;
+import co.edu.udea.compumovil.grupo11.yamba5.database.contract.StatusContract;
 import co.edu.udea.compumovil.grupo11.yamba5.service.RefreshIntentService;
 
 public class MainActivity extends Activity {
@@ -48,6 +48,11 @@ public class MainActivity extends Activity {
 		case R.id.action_purge_main_activity:
 			Log.i(TAG, "Action Purge Selected");
 
+			int rows = super.getContentResolver().delete(
+					StatusContract.CONTENT_URI, null, null);
+
+			Log.d(TAG, String.format("Delete rows: %s", rows));
+
 			return (true);
 
 		case R.id.action_refresh_main_activity:
@@ -66,8 +71,11 @@ public class MainActivity extends Activity {
 		case R.id.action_yamba_main_activity:
 			Log.i(TAG, "Action Yamba Selected");
 
-			super.startActivity(new Intent(super.getApplicationContext(),
-					StatusActivity.class));
+			// super.startActivity(new Intent(super.getApplicationContext(),
+			// StatusActivity.class));
+			super.startActivity(new Intent(
+					"co.edu.udea.compumovil.grupo11.yamba.action.yamba"));
+
 			return (true);
 		}
 

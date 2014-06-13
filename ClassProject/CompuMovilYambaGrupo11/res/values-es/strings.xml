@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Global Application Text -->
-    <string name="application_name">Yamba 5 / Grupo 11</string>
+    <string name="application_name">Yamba 6 / Grupo 11</string>
 
     <!-- Banner Fragment -->
     <string name="banner_image_content_descripton">Esta es la imagen para el Banner.</string>
@@ -33,5 +33,8 @@
     <string name="post_title_progress_dialog">Haz Yamba!!</string>
     <string name="status_activity_title">Haz Yamba</string>
     <string name="tweet_text_button">Haz Yamba!!</string>
+
+    <!-- Timeline List Fragment -->
+    <string name="loading_data_message">Cargando datos . . .</string>
 
 </resources>

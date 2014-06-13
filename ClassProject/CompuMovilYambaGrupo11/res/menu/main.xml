@@ -15,12 +15,13 @@
     <item
         android:id="@+id/action_refresh_main_activity"
         android:icon="@android:drawable/ic_menu_rotate"
-        android:showAsAction="always"
+        android:showAsAction="always|withText"
         android:title="@string/action_refresh_main_activity">
     </item>
     <item
         android:id="@+id/action_purge_main_activity"
         android:icon="@android:drawable/ic_menu_delete"
+        android:showAsAction="always|withText"
         android:title="@string/action_purge_main_activity">
     </item>
 
