@@ -8,10 +8,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity()
@@ -19,7 +22,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HangmanWord.findAll",
             query = "SELECT h FROM HangmanWord h"),
     @NamedQuery(name = "HangmanWord.findById",
-            query = "SELECT h FROM HangmanWord h WHERE h.id = :id")})
+            query = "SELECT h FROM HangmanWord h WHERE h.id = :id"),
+    @NamedQuery(name = "HangmanWord.findByWordName",
+            query = "SELECT h FROM HangmanWord h WHERE h.wordName = :wordName"),
+    @NamedQuery(name = "HangmanWord.findByDescription",
+            query = "SELECT h FROM HangmanWord h WHERE h.description = :description")})
 @Table(name = "HANGMAN_WORD")
 //@XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement()
@@ -31,15 +38,21 @@ public class HangmanWord implements IEntityContext, Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Long id;
-    @JoinColumn(name = "category_name", referencedColumnName = "category_name")
+    @Basic(optional = false)
+    @NotNull()
+    @Size(min = 1, max = 15)
+    @Column(name = "word_name")
+    private String wordName;
+    @Size(max = 250)
+    @Column(name = "description")
+    private String description;
+    @JoinColumns({
+        @JoinColumn(name = "category_name",
+                referencedColumnName = "category_name"),
+        @JoinColumn(name = "languages_iso_code",
+                referencedColumnName = "languages_iso_code")})
     @ManyToOne(optional = false)
-    private Category categoryName;
-    @JoinColumn(name = "word_name", referencedColumnName = "word_name")
-    @ManyToOne(optional = false)
-    private Word wordName;
-    @JoinColumn(name = "iso_code", referencedColumnName = "iso_code")
-    @ManyToOne(optional = false)
-    private Languages isoCode;
+    private Category category;
 
     public HangmanWord() {
         super();
@@ -47,6 +60,11 @@ public class HangmanWord implements IEntityContext, Serializable {
 
     public HangmanWord(Long id) {
         this.id = id;
+    }
+
+    public HangmanWord(Long id, String wordName) {
+        this.id = id;
+        this.wordName = wordName;
     }
 
     public Long getId() {
@@ -58,31 +76,31 @@ public class HangmanWord implements IEntityContext, Serializable {
         this.id = id;
     }
 
-    public Category getCategoryName() {
-
-        return (this.categoryName);
-    }
-
-    public void setCategoryName(Category categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public Word getWordName() {
+    public String getWordName() {
 
         return (this.wordName);
     }
 
-    public void setWordName(Word wordName) {
+    public void setWordName(String wordName) {
         this.wordName = wordName;
     }
 
-    public Languages getIsoCode() {
+    public String getDescription() {
 
-        return (this.isoCode);
+        return (this.description);
     }
 
-    public void setIsoCode(Languages isoCode) {
-        this.isoCode = isoCode;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Category getCategory() {
+
+        return (this.category);
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override()
@@ -102,7 +120,7 @@ public class HangmanWord implements IEntityContext, Serializable {
 
         hash += ((this.getId() != null) ? this.getId().hashCode() : 0);
 
-        return hash;
+        return (hash);
     }
 
     @Override()

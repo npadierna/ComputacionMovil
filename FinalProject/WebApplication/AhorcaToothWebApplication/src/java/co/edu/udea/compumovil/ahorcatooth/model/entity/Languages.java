@@ -1,7 +1,6 @@
 package co.edu.udea.compumovil.ahorcatooth.model.entity;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,12 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity()
 @NamedQueries({
@@ -34,7 +32,7 @@ public class Languages implements IEntityContext, Serializable {
     @Id()
     @Basic(optional = false)
     @NotNull()
-    @Size(min = 1, max = 2)
+    @Size(min = 1, max = 3)
     @Column(name = "iso_code")
     private String isoCode;
     @Basic(optional = false)
@@ -45,8 +43,8 @@ public class Languages implements IEntityContext, Serializable {
     @Size(max = 250)
     @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "isoCode")
-    private List<HangmanWord> hangmanWordList;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "languages")
+    private Category category;
 
     public Languages() {
         super();
@@ -88,14 +86,13 @@ public class Languages implements IEntityContext, Serializable {
         this.description = description;
     }
 
-    @XmlTransient()
-    public List<HangmanWord> getHangmanWordList() {
+    public Category getCategory() {
 
-        return (this.hangmanWordList);
+        return (this.category);
     }
 
-    public void setHangmanWordList(List<HangmanWord> hangmanWordList) {
-        this.hangmanWordList = hangmanWordList;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override()
@@ -139,7 +136,7 @@ public class Languages implements IEntityContext, Serializable {
     @Override()
     public String toString() {
 
-        return ("co.edu.udea.compumovil.ahorcatooth.model.entity.Language[ isoCode="
+        return ("co.edu.udea.compumovil.ahorcatooth.model.entity.Languages[ isoCode="
                 + this.getIsoCode() + " ]");
     }
 }

@@ -16,8 +16,4 @@
     <bean name="languagesDAO"
           class="co.edu.udea.compumovil.ahorcatooth.database.dao.hibernate.impl.LanguaguesDAOImpl" >
     </bean>
-
-    <bean name="wordDAO"
-          class="co.edu.udea.compumovil.ahorcatooth.database.dao.hibernate.impl.WordDAOImpl" >
-    </bean>
 </beans>

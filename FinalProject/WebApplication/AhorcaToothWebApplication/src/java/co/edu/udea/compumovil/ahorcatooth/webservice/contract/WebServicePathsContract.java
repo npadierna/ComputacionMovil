@@ -38,14 +38,4 @@ public final class WebServicePathsContract {
             super();
         }
     }
-
-    public static final class WordContract {
-
-        public static final String END_POINT_INTERFACE = "co.edu.udea.compumovil.ahorcatooth.webservice.IWordWS";
-        public static final String ROOT_PATH = "/words";
-
-        private WordContract() {
-            super();
-        }
-    }
 }

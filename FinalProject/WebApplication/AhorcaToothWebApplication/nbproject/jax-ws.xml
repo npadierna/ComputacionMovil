@@ -10,9 +10,6 @@
     <service name="LanguagesWSImpl">
       <implementation-class>co.edu.udea.compumovil.ahorcatooth.webservice.restful.impl.LanguagesWSImpl</implementation-class>
     </service>
-    <service name="WordWSImpl">
-      <implementation-class>co.edu.udea.compumovil.ahorcatooth.webservice.restful.impl.WordWSImpl</implementation-class>
-    </service>
   </services>
   <clients/>
 </jax-ws>

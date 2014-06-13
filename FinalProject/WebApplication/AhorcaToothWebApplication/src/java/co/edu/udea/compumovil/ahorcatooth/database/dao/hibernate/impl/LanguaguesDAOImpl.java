@@ -9,7 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository()
 @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
-public class LanguaguesDAOImpl implements ILanguagesDAO {
+public class LanguaguesDAOImpl extends AbstractEntityContext
+        implements ILanguagesDAO {
 
     public LanguaguesDAOImpl() {
         super();
@@ -17,7 +18,8 @@ public class LanguaguesDAOImpl implements ILanguagesDAO {
 
     @Override()
     public Long countLanguagess() {
-        throw new UnsupportedOperationException("Not supported yet.");
+
+        return (super.countEntities(Languages.class));
     }
 
     @Override()

@@ -10,7 +10,6 @@
         <class>co.edu.udea.compumovil.ahorcatooth.model.entity.Category</class>
         <class>co.edu.udea.compumovil.ahorcatooth.model.entity.HangmanWord</class>
         <class>co.edu.udea.compumovil.ahorcatooth.model.entity.Languages</class>
-        <class>co.edu.udea.compumovil.ahorcatooth.model.entity.Word</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect"
