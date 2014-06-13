@@ -7,23 +7,23 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="8"
+    android:weightSum="7"
     tools:context=".activity.StatusActivity" >
 
     <fragment
         android:id="@+id/fragment_banner"
-        android:name=".activity.status.BannerFragment"
+        android:name="co.edu.udea.compumovil.grupo11.yamba.activity.status.BannerFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="6" >
+        android:layout_weight="2" >
     </fragment>
 
     <fragment
         android:id="@+id/fragment_status"
-        android:name=".activity.status.StatusFragment"
+        android:name="co.edu.udea.compumovil.grupo11.yamba.activity.status.StatusFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="2" >
+        android:layout_weight="5" >
     </fragment>
 
 </LinearLayout>
