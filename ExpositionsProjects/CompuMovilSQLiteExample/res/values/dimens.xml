@@ -6,4 +6,20 @@
 
     <!-- Dashboard Activity -->
     <dimen name="dashboard_button_height">120dp</dimen>
-</resources>
+
+    <!-- Person List Item -->
+    <dimen name="birthday_padding_left">7dip</dimen>
+    <dimen name="details_person_text_size">14sp</dimen>
+    <dimen name="id_number_text_size">15sp</dimen>
+    <dimen name="document_type_padding_left">40dip</dimen>
+    <dimen name="document_type_text_size">15sp</dimen>
+    <dimen name="e_mail_padding_left">11dip</dimen>
+    <dimen name="first_names_padding_left">40dip</dimen>
+    <dimen name="first_names_text_size">20sp</dimen>
+    <dimen name="last_names_padding_left">5dip</dimen>
+    <dimen name="last_names_text_size">20sp</dimen>
+    <dimen name="phone_number_padding_left">7dip</dimen>
+    <dimen name="height_padding_left">7dip</dimen>
+    <dimen name="weight_padding_left">7dip</dimen>
+
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="details_person_title_text_color">#000000</color>
+    <color name="details_person_value_text_color">#4C68B6</color>
+    <color name="document_type_text_color">#000000</color>
+    <color name="first_names_text_color">#000000</color>
+    <color name="id_number_text_color">#000000</color>
+    <color name="last_names_text_color">#000000</color>
+
+</resources>

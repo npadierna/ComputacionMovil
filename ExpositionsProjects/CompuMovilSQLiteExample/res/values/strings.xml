@@ -6,11 +6,34 @@
 
     <!-- Dashboard Activity -->
     <string name="about_us_menu">About us</string>
+    <string name="find_all_persons_menu">Find all Persons</string>
     <string name="find_person_by_document_type_menu">Find by Document Type</string>
     <string name="find_person_by_height_range_menu">Find by Height range</string>
     <string name="create_person_button_text">CREATE</string>
     <string name="delete_person_button_text">DELETE</string>
     <string name="retrieve_person_button_text">RETRIEVE</string>
     <string name="update_person_button_text">UPDATE</string>
+
+    <!-- Create Person Activity -->
+    <string name="document_type">Tipo documento</string>
+    <string name="document_number">Número documento</string>
+    <string name="first_name">Nombres</string>
+    <string name="last_name">Apellidos</string>
+    <string name="e_mail">E-mail</string>
+    <string name="birthday">Fecha Nacimiento</string>
+    <string name="bithday_button">fecha nacimiento</string>
+    <string name="phone_number">Teléfono</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso</string>
+    <string name="clean_button">Limpiar</string>
+    <string name="create_button">Crear</string>
+    <string name="create_person_title">Crear Persona</string>
+
+    <!-- Person List Item -->
+    <string name="person_birthday_title">Nacimiento:</string>
+    <string name="person_e_mail_title">E-Mail:</string>
+    <string name="person_phone_number_title">Teléfono:</string>
+    <string name="person_height_title">Altura [m]:</string>
+    <string name="person_weight_title">Peso [Kg]:</string>
 
 </resources>

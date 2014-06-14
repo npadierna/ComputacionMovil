@@ -11,7 +11,6 @@
 
     <application
         android:allowBackup="true"
-        android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
@@ -26,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" >
                 </category>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.person.create.CreatePersonActivity"
+            android:label="@string/create_person_title"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

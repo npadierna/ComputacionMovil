@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/person_weight_title"
+            android:textColor="@color/details_person_title_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/weight_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/weight_padding_left"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="12"
+            android:textColor="@color/details_person_value_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/person_height_title"
+            android:textColor="@color/details_person_title_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/height_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/height_padding_left"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="1.23"
+            android:textColor="@color/details_person_value_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+    </LinearLayout>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/e_mail_padding_left"
+            android:gravity="right"
+            android:text="@string/person_e_mail_title"
+            android:textColor="@color/details_person_title_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/e_mail_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/e_mail_padding_left"
+            android:gravity="left"
+            android:text="npadierna@gmail.com"
+            android:textColor="@color/details_person_value_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/person_birthday_title"
+            android:textColor="@color/details_person_title_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/birthday_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/birthday_padding_left"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="12/34/5678"
+            android:textColor="@color/details_person_value_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/person_phone_number_title"
+            android:textColor="@color/details_person_title_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/phone_number_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/phone_number_padding_left"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="+(123) 456 78 90"
+            android:textColor="@color/details_person_value_text_color"
+            android:textSize="@dimen/details_person_text_size" >
+        </TextView>
+    </LinearLayout>
+
+</TableLayout>

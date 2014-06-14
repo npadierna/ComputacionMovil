@@ -4,12 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import co.edu.udea.compumovil.grupo11.example1.R;
+import co.edu.udea.compumovil.grupo11.example1.activity.person.create.CreatePersonActivity;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.PersonPK;
 import co.edu.udea.compumovil.grupo11.example1.model.enums.DocumentTypeEnum;
@@ -53,6 +55,14 @@ public class DashboardMainActivity extends Activity {
 
 			return (true);
 
+		case (R.id.find_all_menu):
+			Log.i(TAG,
+					String.format("Selected Item: \"%s\"", "Find all Persons"));
+
+			// FIXME:
+		
+			return (true);
+
 		case (R.id.find_by_height_range_menu):
 			Log.i(TAG,
 					String.format("Selected Item: \"%s\"", "Find by Age range"));
@@ -75,25 +85,13 @@ public class DashboardMainActivity extends Activity {
 	}
 
 	public void onCreatePerson(View view) {
+		
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onCreatePerson(View):void"));
-
-		Person neiber = new Person(new PersonPK(
-				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1022095657"),
-				"Neiber de Jesús", "Padierna Pérez", new Date());
-		neiber.setEMail("npadierna@gmail.com");
-		neiber.setHeight(1.75F);
-		neiber.setPhoneNumber("+(123) 456 78 90");
-		neiber.setWeight((short) 12);
-
-		Person yefry = new Person(new PersonPK(
-				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"),
-				"Yefry Alexis", "Calderón Yepes", new Date());
-
-		Person p = this.personProcess.savePerson(neiber);
-		p = this.personProcess.savePerson(yefry);
-
-		List<Person> personsFoundList = this.personProcess.findAllPersons();
+		
+		Intent intent = new Intent(this, CreatePersonActivity.class);
+		startActivity(intent);
+		
 	}
 
 	public void onDeletePerson(View view) {

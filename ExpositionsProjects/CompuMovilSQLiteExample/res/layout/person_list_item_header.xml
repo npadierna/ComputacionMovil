@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/first_names_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/first_names_padding_left"
+            android:text="Neiber De Jesús"
+            android:textColor="@color/first_names_text_color"
+            android:textSize="@dimen/first_names_text_size"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/last_names_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/last_names_padding_left"
+            android:text="Padierna Pérez"
+            android:textColor="@color/last_names_text_color"
+            android:textSize="@dimen/last_names_text_size"
+            android:textStyle="bold" >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/document_type_text_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/document_type_padding_left"
+            android:text="Cédula de Ciudadanía"
+            android:textColor="@color/document_type_text_color"
+            android:textSize="@dimen/document_type_text_size" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/id_number_text_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1022095657"
+            android:textColor="@color/id_number_text_color"
+            android:textSize="@dimen/id_number_text_size" >
+        </TextView>
+    </LinearLayout>
+
+</TableLayout>
