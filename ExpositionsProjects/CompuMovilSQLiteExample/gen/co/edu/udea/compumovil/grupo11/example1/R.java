@@ -50,55 +50,39 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int about_us_menu=0x7f09002c;
-        public static final int birthday_button=0x7f09000f;
-        public static final int birthday_text_view=0x7f090023;
-        public static final int birthday_textview=0x7f09000e;
-        public static final int clean_button=0x7f09001a;
-        public static final int create_button=0x7f09001b;
-        public static final int create_person_button=0x7f09001c;
-        public static final int delete_person_button=0x7f09001f;
-        public static final int document_number_edittext=0x7f090003;
-        public static final int document_number_textview=0x7f090002;
-        public static final int document_type_spinner=0x7f090001;
-        public static final int document_type_text_view=0x7f090027;
-        public static final int e_mail_edittext=0x7f09000c;
-        public static final int e_mail_text_view=0x7f090022;
-        public static final int email_textview=0x7f09000b;
-        public static final int find_all_menu=0x7f090029;
-        public static final int find_by_document_type_menu=0x7f09002a;
-        public static final int find_by_height_range_menu=0x7f09002b;
+        public static final int about_us_menu=0x7f09001c;
+        public static final int birthday_button=0x7f090009;
+        public static final int birthday_text_view=0x7f090013;
+        public static final int clean_button=0x7f09000e;
+        public static final int create_button=0x7f09000f;
+        public static final int create_person_button=0x7f090000;
+        public static final int delete_person_button=0x7f090003;
+        public static final int document_number_edittext=0x7f090005;
+        public static final int document_type_spinner=0x7f090004;
+        public static final int document_type_text_view=0x7f090017;
+        public static final int e_mail_edittext=0x7f090008;
+        public static final int e_mail_text_view=0x7f090012;
+        public static final int find_all_menu=0x7f090019;
+        public static final int find_by_document_type_menu=0x7f09001a;
+        public static final int find_by_height_range_menu=0x7f09001b;
         public static final int first_name_edittext=0x7f090006;
-        public static final int first_name_textview=0x7f090005;
-        public static final int first_names_text_view=0x7f090025;
-        public static final int height_edittext=0x7f090018;
-        public static final int height_text_view=0x7f090021;
-        public static final int height_textview=0x7f090017;
-        public static final int id_number_text_view=0x7f090028;
-        public static final int last_name_text_view=0x7f090008;
-        public static final int last_names_edit_text=0x7f090009;
-        public static final int last_names_text_view=0x7f090026;
-        public static final int phone_number_edittext=0x7f090012;
-        public static final int phone_number_text_view=0x7f090024;
-        public static final int phone_number_textview=0x7f090011;
-        public static final int retrieve_person_button=0x7f09001d;
-        public static final int tableRow2=0x7f090004;
-        public static final int tableRow3=0x7f090007;
-        public static final int tableRow4=0x7f09000a;
-        public static final int tableRow5=0x7f09000d;
-        public static final int tableRow6=0x7f090010;
-        public static final int tableRow7=0x7f090013;
-        public static final int tableRow8=0x7f090016;
-        public static final int tableRow9=0x7f090019;
-        public static final int textView1=0x7f090000;
-        public static final int update_person_button=0x7f09001e;
-        public static final int weight_edittext=0x7f090015;
-        public static final int weight_text_view=0x7f090020;
-        public static final int weight_textview=0x7f090014;
+        public static final int first_names_text_view=0x7f090015;
+        public static final int height_edittext=0x7f09000d;
+        public static final int height_text_view=0x7f090011;
+        public static final int height_textview=0x7f09000c;
+        public static final int id_number_text_view=0x7f090018;
+        public static final int last_names_edit_text=0x7f090007;
+        public static final int last_names_text_view=0x7f090016;
+        public static final int phone_number_edittext=0x7f09000a;
+        public static final int phone_number_text_view=0x7f090014;
+        public static final int retrieve_person_button=0x7f090001;
+        public static final int update_person_button=0x7f090002;
+        public static final int weight_edittext=0x7f09000b;
+        public static final int weight_text_view=0x7f090010;
     }
     public static final class layout {
-        public static final int activity_create_person=0x7f030000;
-        public static final int activity_dashboard_main=0x7f030001;
+        public static final int activity_dashboard_main=0x7f030000;
+        public static final int activity_person_creator=0x7f030001;
         public static final int expandable_list_activity_person=0x7f030002;
         public static final int person_list_item_detail=0x7f030003;
         public static final int person_list_item_header=0x7f030004;
@@ -112,36 +96,39 @@ public final class R {
         public static final int about_us_menu=0x7f060001;
         /**  Application Global Strings 
          */
-        public static final int app_name=0x7f060000;
-        public static final int birthday=0x7f06000e;
+        public static final int application_name=0x7f060000;
+        public static final int birthday_text_view=0x7f06000e;
         public static final int bithday_button=0x7f06000f;
         public static final int clean_button=0x7f060013;
         public static final int create_button=0x7f060014;
+        public static final int create_person_activity_title=0x7f060015;
         public static final int create_person_button_text=0x7f060005;
-        public static final int create_person_title=0x7f060015;
         public static final int delete_person_button_text=0x7f060006;
-        public static final int document_number=0x7f06000a;
+        public static final int document_number_text_view=0x7f06000a;
         /**  Create Person Activity 
          */
-        public static final int document_type=0x7f060009;
-        public static final int e_mail=0x7f06000d;
+        public static final int document_type_text_view=0x7f060009;
+        public static final int e_mail_text_view=0x7f06000d;
         public static final int find_all_persons_menu=0x7f060002;
         public static final int find_person_by_document_type_menu=0x7f060003;
         public static final int find_person_by_height_range_menu=0x7f060004;
-        public static final int first_name=0x7f06000b;
-        public static final int height=0x7f060011;
-        public static final int last_name=0x7f06000c;
+        public static final int first_names_text_view=0x7f06000b;
+        public static final int height_text_view=0x7f060011;
+        public static final int last_names_text_view=0x7f06000c;
         /**  Person List Item 
          */
-        public static final int person_birthday_title=0x7f060016;
-        public static final int person_e_mail_title=0x7f060017;
-        public static final int person_height_title=0x7f060019;
-        public static final int person_phone_number_title=0x7f060018;
-        public static final int person_weight_title=0x7f06001a;
-        public static final int phone_number=0x7f060010;
+        public static final int person_birthday_title=0x7f060017;
+        public static final int person_e_mail_title=0x7f060018;
+        /**  Person Expandable List Activity 
+         */
+        public static final int person_exampdable_list_activity_title=0x7f060016;
+        public static final int person_height_title=0x7f06001a;
+        public static final int person_phone_number_title=0x7f060019;
+        public static final int person_weight_title=0x7f06001b;
+        public static final int phone_number_text_view=0x7f060010;
         public static final int retrieve_person_button_text=0x7f060007;
         public static final int update_person_button_text=0x7f060008;
-        public static final int weight=0x7f060012;
+        public static final int weight_text_view=0x7f060012;
     }
     public static final class style {
         /** 

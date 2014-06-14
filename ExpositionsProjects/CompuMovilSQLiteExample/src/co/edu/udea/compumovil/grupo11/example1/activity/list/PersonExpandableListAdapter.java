@@ -1,6 +1,9 @@
 package co.edu.udea.compumovil.grupo11.example1.activity.list;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +15,9 @@ import co.edu.udea.compumovil.grupo11.example1.R;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
 
 public class PersonExpandableListAdapter extends BaseExpandableListAdapter {
+
+	private static final DateFormat DATE_FORMAT = new SimpleDateFormat(
+			"dd/MM/yyyy", Locale.getDefault());
 
 	private Context context;
 	private List<Person> personsList;
@@ -154,9 +160,8 @@ public class PersonExpandableListAdapter extends BaseExpandableListAdapter {
 			PersonListItemDetail personListItemDetail) {
 		Person person = (Person) this.getGroup(groupPosition);
 
-		// FIXME: We need use DateFormater.
 		personListItemDetail.getBirthdayTextView().setText(
-				person.getBirthday().toString());
+				DATE_FORMAT.format(person.getBirthday()));
 		personListItemDetail.getEMailTextView().setText(person.getEMail());
 		personListItemDetail.getHeightTextView().setText(
 				(person.getHeight() != 0.0F) ? String.valueOf(person

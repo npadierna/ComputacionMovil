@@ -3,7 +3,10 @@ package co.edu.udea.compumovil.grupo11.example1.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Person implements Serializable {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Person implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = -2712375203727001082L;
 
@@ -15,6 +18,18 @@ public class Person implements Serializable {
 	private String phoneNumber;
 	private short weight;
 	private float height;
+
+	public Person(Parcel parcel) {
+		this.setPersonPK((PersonPK) parcel.readParcelable(PersonPK.class
+				.getClassLoader()));
+		this.setFirstNames(parcel.readString());
+		this.setLastNames(parcel.readString());
+		this.setBirthday((Date) parcel.readSerializable());
+		this.setEMail(parcel.readString());
+		this.setPhoneNumber(parcel.readString());
+		this.setHeight(parcel.readFloat());
+		this.setWeight((short) parcel.readInt());
+	}
 
 	public Person(PersonPK personPK, String firstNames, String lastNames,
 			Date birthday) {
@@ -96,4 +111,37 @@ public class Person implements Serializable {
 	public void setHeight(float height) {
 		this.height = height;
 	}
+
+	@Override()
+	public int describeContents() {
+
+		return (0);
+	}
+
+	@Override()
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeParcelable(this.getPersonPK(), 0);
+		dest.writeString(this.getFirstNames());
+		dest.writeString(this.getLastNames());
+		dest.writeSerializable(this.getBirthday());
+		dest.writeString(this.getEMail());
+		dest.writeString(this.getPhoneNumber());
+		dest.writeFloat(this.getHeight());
+		dest.writeInt(this.getWeight());
+	}
+
+	public static final Parcelable.Creator<Person> CREATOR = new Parcelable.Creator<Person>() {
+
+		@Override()
+		public Person createFromParcel(Parcel source) {
+
+			return (new Person(source));
+		}
+
+		@Override()
+		public Person[] newArray(int size) {
+
+			return (new Person[size]);
+		}
+	};
 }
