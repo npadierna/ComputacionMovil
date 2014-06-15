@@ -33,8 +33,23 @@
         </activity>
         <activity
             android:name=".activity.person.create.PersonCreatorActivity"
-            android:label="@string/create_person_activity_title"
+            android:label="@string/person_creator_activity_title"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.person.find.PersonDocumentTypeFinderActivity"
+            android:label="@string/person_document_type_activity_title"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name=".activity.person.find.PersonHeightRangeFinderActivity"
+            android:label="@string/person_height_range_finder_activity_title"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+         <activity
+            android:name=".activity.about.AboutActivity"
+            android:label="@string/about_us_activity"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>
 

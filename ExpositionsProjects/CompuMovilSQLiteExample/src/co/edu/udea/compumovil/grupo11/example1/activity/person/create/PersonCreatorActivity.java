@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.grupo11.example1.activity.person.create;
 import java.util.Date;
 import java.util.List;
 
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -12,9 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import co.edu.udea.compumovil.grupo11.example1.R;
-import co.edu.udea.compumovil.grupo11.example1.activity.person.create.util.MessageAlertDialog;
 import co.edu.udea.compumovil.grupo11.example1.activity.person.create.util.DatePickerDialogFragment;
+import co.edu.udea.compumovil.grupo11.example1.activity.person.create.util.MessageAlertDialog;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.PersonPK;
 import co.edu.udea.compumovil.grupo11.example1.model.enums.DocumentTypeEnum;
@@ -73,10 +75,10 @@ public class PersonCreatorActivity extends FragmentActivity {
 		this.documentTypeSpinner = (Spinner) super
 				.findViewById(R.id.document_type_spinner);
 
-		ArrayAdapter<String> documentTypeAdapter = new ArrayAdapter<String>(
+		SpinnerAdapter documentTypeSpinnerAdapter = new ArrayAdapter<String>(
 				this, android.R.layout.simple_spinner_item,
 				DocumentTypeEnum.obtainDocumentsTypesList());
-		documentTypeSpinner.setAdapter(documentTypeAdapter);
+		documentTypeSpinner.setAdapter(documentTypeSpinnerAdapter);
 		documentTypeSpinner
 				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -138,21 +140,20 @@ public class PersonCreatorActivity extends FragmentActivity {
 
 		this.personProcess.savePerson(person);
 
-		MessageAlertDialog message = new MessageAlertDialog(this);
+		AlertDialog.Builder messageAlertDialog = new MessageAlertDialog(this)
+				.createAlertDialog("Confirmación", person.getFirstNames()
+						+ " fue creado exitosamente");
+		messageAlertDialog.setPositiveButton("Aceptar",
+				new DialogInterface.OnClickListener() {
 
-		// FIXME: This message must be in Strings.xml
-		message.createAlertDialog("Confirmación",
-				person.getFirstNames() + " fue creado exitosamente")
-				.setPositiveButton("Aceptar",
-						new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+					}
+				});
 
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								// FIXME:Determinar que hacer en la actividad
-								dialog.cancel();
-							}
-						}).show();
+		(messageAlertDialog.create()).show();
+
 	}
 
 	private void clearField() {

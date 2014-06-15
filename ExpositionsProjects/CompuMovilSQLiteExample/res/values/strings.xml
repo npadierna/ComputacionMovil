@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- About us Activity -->
+    <string name="about_us_activity">Acerca de</string>
+    <string name="autores_text">Autores:</string>
+    <string name="neiber_text">Neiber de Jesus Padierna Pérez</string>
+    <string name="yefry_text">Yefry Alexis Calderón Yepes</string>
+    <string name="couse_name_text">Curso:</string>
+    <string name="computacion_movil_text">Computación móvil</string>
+    <string name="university_name_text">Universidad de Antioquia</string>
+    <string name="medellin_text">Medellín</string>
+    <string name="year_text">2014</string>
+
     <!-- Application Global Strings -->
     <string name="application_name">SQLite Example</string>
+    <string name="clean_text">Limpiar</string>
+    <string name="create_text">Crear</string>
 
     <!-- Dashboard Activity -->
     <string name="about_us_menu">About us</string>
@@ -22,12 +35,20 @@
     <string name="e_mail_text_view">E-mail:</string>
     <string name="birthday_text_view">Fecha Nacimiento:</string>
     <string name="bithday_button">fecha nacimiento</string>
+    <string name="person_creator_activity_title">Crear Nueva Persona</string>
     <string name="phone_number_text_view">Teléfono:</string>
     <string name="height_text_view">Altura:</string>
     <string name="weight_text_view">Peso:</string>
-    <string name="clean_button">Limpiar</string>
-    <string name="create_button">Crear</string>
-    <string name="create_person_activity_title">Crear Nueva Persona</string>
+
+    <!-- Person Height Range Finder Activity -->
+    <string name="height_range_dialog_text_view">Por favor, seleccione el Rango de Altura en el cual desea realizar la búsqueda:</string>
+    <string name="lower_height_range_text_view">Rango inferior:</string>
+    <string name="person_height_range_finder_activity_title">Buscar Por Rango</string>
+    <string name="upper_height_range_text_view">Rango superior:</string>
+
+    <!-- Person Document Type Finder Activity -->
+    <string name="document_type_dialog_text_view">Por favor, seleccione un Tipo de Documento de la lista inferior:</string>
+    <string name="person_document_type_activity_title">Buscar Por Tipo De Documento</string>
 
     <!-- Person Expandable List Activity -->
     <string name="person_exampdable_list_activity_title">Listado de Personas</string>
@@ -38,5 +59,7 @@
     <string name="person_phone_number_title">Teléfono:</string>
     <string name="person_height_title">Altura [m]:</string>
     <string name="person_weight_title">Peso [Kg]:</string>
+    <string name="accept_text">Aceptar</string>
+    <string name="cancel_text">Cancelar</string>
 
 </resources>
