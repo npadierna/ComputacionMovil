@@ -121,17 +121,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/birthday_text_view" >
+                android:text="@string/birthday_text_view" 
+                android:gravity="center">
             </TextView>
 
-            <Button
-                android:id="@+id/birthday_button"
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
                 android:onClick="showDatePickerDialog"
-                android:text="@string/bithday_button" >
-            </Button>
+                android:src="@drawable/calendar" 
+                android:layout_weight="1"/>
         </TableRow>
 
         <TableRow

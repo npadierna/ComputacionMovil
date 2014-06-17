@@ -47,12 +47,12 @@ public final class R {
         public static final int weight_padding_left=0x7f05000f;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int calendar=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
         public static final int about_us_menu=0x7f090026;
         public static final int autores_textview=0x7f090000;
-        public static final int birthday_button=0x7f090011;
         public static final int birthday_text_view=0x7f09001d;
         public static final int city_name_textview=0x7f090006;
         public static final int clean_button=0x7f090016;
@@ -75,6 +75,7 @@ public final class R {
         public static final int height_text_view=0x7f09001b;
         public static final int height_textview=0x7f090014;
         public static final int id_number_text_view=0x7f090022;
+        public static final int imageView1=0x7f090011;
         public static final int last_names_edit_text=0x7f09000f;
         public static final int last_names_text_view=0x7f090020;
         public static final int lower_age_range_spinner=0x7f090018;
@@ -126,6 +127,7 @@ public final class R {
         public static final int couse_name_text=0x7f060004;
         public static final int create_person_button_text=0x7f060010;
         public static final int create_text=0x7f06000b;
+        public static final int date_selected_text=0x7f06002d;
         public static final int delete_person_button_text=0x7f060011;
         public static final int document_number_text_view=0x7f060015;
         /**  Person Document Type Finder Activity 

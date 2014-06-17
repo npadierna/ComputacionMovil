@@ -13,8 +13,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 import co.edu.udea.compumovil.grupo11.example1.R;
 import co.edu.udea.compumovil.grupo11.example1.activity.person.create.util.DatePickerDialogFragment;
 import co.edu.udea.compumovil.grupo11.example1.activity.person.create.util.MessageAlertDialog;
@@ -39,6 +41,7 @@ public class PersonCreatorActivity extends FragmentActivity {
 	private EditText phoneNumberEditText;
 	private EditText heighEditText;
 	private EditText weightEditText;
+	private TextView dateSelectedTextVIew;
 	private Date birthdayDate;
 
 	private String documentType;
@@ -49,6 +52,7 @@ public class PersonCreatorActivity extends FragmentActivity {
 	private String phoneNumber;
 	private float height;
 	private short weight;
+	private String dateSelected;
 
 	@Override()
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +112,7 @@ public class PersonCreatorActivity extends FragmentActivity {
 				.findViewById(R.id.weight_edittext);
 		this.heighEditText = (EditText) super
 				.findViewById(R.id.height_edittext);
-
+	
 	}
 
 	public void setBirthdayDate(Date birthdayDate) {
