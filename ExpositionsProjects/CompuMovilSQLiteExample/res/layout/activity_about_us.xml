@@ -14,19 +14,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/autores_text"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </TextView>
 
     <TextView
         android:id="@+id/neiber_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/neiber_text" />
+        android:text="@string/neiber_text" >
+    </TextView>
 
     <TextView
         android:id="@+id/yefry_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/yefry_text" />
+        android:text="@string/yefry_text" >
+    </TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,13 +42,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="@string/couse_name_text"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge" >
+        </TextView>
 
         <TextView
             android:id="@+id/computacion_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/computacion_movil_text" />
+            android:text="@string/computacion_movil_text" >
+        </TextView>
     </LinearLayout>
 
     <LinearLayout
@@ -59,21 +64,24 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:text="@string/university_name_text" />
+            android:text="@string/university_name_text" >
+        </TextView>
 
         <TextView
             android:id="@+id/city_name_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/medellin_text" />
+            android:text="@string/medellin_text" >
+        </TextView>
 
         <TextView
             android:id="@+id/year_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/year_text" />
+            android:text="@string/year_text" >
+        </TextView>
     </LinearLayout>
 
 </LinearLayout>

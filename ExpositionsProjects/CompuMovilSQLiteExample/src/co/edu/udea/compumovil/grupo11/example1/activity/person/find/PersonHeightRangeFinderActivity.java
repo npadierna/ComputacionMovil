@@ -17,7 +17,6 @@ import android.widget.SpinnerAdapter;
 import co.edu.udea.compumovil.grupo11.example1.R;
 import co.edu.udea.compumovil.grupo11.example1.activity.list.PersonExpandableListActivity;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
-import co.edu.udea.compumovil.grupo11.example1.model.enums.DocumentTypeEnum;
 import co.edu.udea.compumovil.grupo11.example1.process.IPersonProcess;
 import co.edu.udea.compumovil.grupo11.example1.process.impl.PersonProcessImpl;
 
@@ -29,10 +28,10 @@ public class PersonHeightRangeFinderActivity extends Activity {
 
 	// FIXME: Read from the integers.xml
 	private static final short MAX_HEIGHT = (short) 99;
-	private static final Short[] HEIGHT_RAGE = new Short[MAX_HEIGHT];
+	private static final Float[] HEIGHT_RAGE = new Float[MAX_HEIGHT];
 	static {
-		for (short age = 1; age <= MAX_HEIGHT; age++) {
-			HEIGHT_RAGE[age - 1] = Short.valueOf(age);
+		for (short height = 1; height <= MAX_HEIGHT; height++) {
+			HEIGHT_RAGE[height - 1] = Float.valueOf(height);
 		}
 	}
 
@@ -61,11 +60,12 @@ public class PersonHeightRangeFinderActivity extends Activity {
 	public void onStartFinder(View view) {
 		Log.i(TAG, "onStartFinder(View):void");
 
-		this.findPersonsByHeightRange(this.lowerHeightRange,this.upperHeightRange);
+		this.findPersonsByHeightRange(this.lowerHeightRange,
+				this.upperHeightRange);
 	}
 
 	private void createElements() {
-		SpinnerAdapter ageRangeSpinnerAdapter = new ArrayAdapter<Short>(
+		SpinnerAdapter ageRangeSpinnerAdapter = new ArrayAdapter<Float>(
 				super.getApplicationContext(),
 				android.R.layout.simple_spinner_item, HEIGHT_RAGE);
 
@@ -80,7 +80,7 @@ public class PersonHeightRangeFinderActivity extends Activity {
 		this.upperHeightRangeSpinner.setAdapter(ageRangeSpinnerAdapter);
 		this.upperHeightRangeSpinner
 				.setOnItemSelectedListener(this.onItemSelectedListener);
-		
+
 		this.personProcess = new PersonProcessImpl(
 				super.getApplicationContext());
 	}
@@ -114,10 +114,11 @@ public class PersonHeightRangeFinderActivity extends Activity {
 
 	private void findPersonsByHeightRange(float lowerHeight, float upperHeight) {
 		Log.i(TAG, "findPersonsByHeightRange(short, short):void");
-		
-		if(upperHeight >= lowerHeight){
+
+		if (upperHeight >= lowerHeight) {
 			List<Person> personsFoundList = this.personProcess
 					.findPersonsByHeightRange(lowerHeight, upperHeight);
+
 			Intent intent = new Intent(super.getApplicationContext(),
 					PersonExpandableListActivity.class);
 			intent.putParcelableArrayListExtra(
@@ -126,6 +127,5 @@ public class PersonHeightRangeFinderActivity extends Activity {
 
 			super.startActivity(intent);
 		}
-
 	}
 }

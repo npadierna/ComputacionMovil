@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- About us Activity -->
+    <!-- About Us Activity -->
     <string name="about_us_activity">Acerca de</string>
     <string name="autores_text">Autores:</string>
-    <string name="neiber_text">Neiber de Jesus Padierna Pérez</string>
+    <string name="neiber_text">Neiber Padierna Pérez</string>
     <string name="yefry_text">Yefry Alexis Calderón Yepes</string>
     <string name="couse_name_text">Curso:</string>
-    <string name="computacion_movil_text">Computación móvil</string>
+    <string name="computacion_movil_text">Computación Móvil</string>
     <string name="university_name_text">Universidad de Antioquia</string>
     <string name="medellin_text">Medellín</string>
     <string name="year_text">2014</string>

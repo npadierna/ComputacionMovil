@@ -16,8 +16,11 @@ import co.edu.udea.compumovil.grupo11.example1.R;
 import co.edu.udea.compumovil.grupo11.example1.activity.about.AboutActivity;
 import co.edu.udea.compumovil.grupo11.example1.activity.list.PersonExpandableListActivity;
 import co.edu.udea.compumovil.grupo11.example1.activity.person.create.PersonCreatorActivity;
-import co.edu.udea.compumovil.grupo11.example1.activity.person.find.PersonHeightRangeFinderActivity;
+import co.edu.udea.compumovil.grupo11.example1.activity.person.delete.PersonDeleterActivity;
 import co.edu.udea.compumovil.grupo11.example1.activity.person.find.PersonDocumentTypeFinderActivity;
+import co.edu.udea.compumovil.grupo11.example1.activity.person.find.PersonHeightRangeFinderActivity;
+import co.edu.udea.compumovil.grupo11.example1.activity.person.retrieve.PersonRetrieverActivity;
+import co.edu.udea.compumovil.grupo11.example1.activity.person.update.PersonUpdaterActivity;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.PersonPK;
 import co.edu.udea.compumovil.grupo11.example1.model.enums.DocumentTypeEnum;
@@ -55,11 +58,8 @@ public class DashboardMainActivity extends Activity {
 		case (R.id.about_us_menu):
 			Log.i(TAG, String.format("Selected Item: \"%s\"", "About us"));
 
-			// FIXME: Invocation to a Window or fragment to display information
-			// about us.
-			startActivity(new Intent(this.getApplicationContext(),
+			super.startActivity(new Intent(super.getApplicationContext(),
 					AboutActivity.class));
-			this.countPersons();
 
 			return (true);
 
@@ -108,10 +108,6 @@ public class DashboardMainActivity extends Activity {
 		Person yefry = new Person(new PersonPK(
 				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1234567890"), "Yefry",
 				"Calderón", new Date());
-		yefry.setEMail("yefry@gmail.com");
-		yefry.setHeight(1.75F);
-		yefry.setPhoneNumber("+(123) 123 45 67");
-		yefry.setWeight((short) 12);
 
 		this.personProcess.savePerson(yefry);
 		this.personProcess.savePerson(neiber);
@@ -124,47 +120,45 @@ public class DashboardMainActivity extends Activity {
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onDeletePerson(View):void"));
 
-		Person neiber = new Person(new PersonPK(
-				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1022095657"),
-				"Neiber de Jesús", "Padierna Pérez", new Date());
-		neiber.setEMail("npadierna@gmail.com");
-		neiber.setHeight(1.75F);
-		neiber.setPhoneNumber("+(123) 123 45 67");
-		neiber.setWeight((short) 12);
+		// Person neiber = new Person(new PersonPK(
+		// DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1022095657"),
+		// "Neiber de Jesús", "Padierna Pérez", new Date());
+		// neiber.setEMail("npadierna@gmail.com");
+		// neiber.setHeight(1.75F);
+		// neiber.setPhoneNumber("+(123) 123 45 67");
+		// neiber.setWeight((short) 12);
+		//
+		// int affectedRows = this.personProcess.deletePerson(neiber);
 
-		int affectedRows = this.personProcess.deletePerson(neiber);
+		super.startActivity(new Intent(super.getApplicationContext(),
+				PersonDeleterActivity.class));
 	}
 
 	public void onRetrievePerson(View view) {
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onRetrievePerson(View):void"));
 
-		Person person = this.personProcess.findPerson(new PersonPK(
-				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"));
+		super.startActivity(new Intent(super.getApplicationContext(),
+				PersonRetrieverActivity.class));
 	}
 
 	public void onUpdatePerson(View view) {
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onUpdatePerson(View):void"));
 
-		Person yefry = new Person(new PersonPK(
-				DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"),
-				"Yefry Alexis", "Calderón Yepes", new Date());
-		yefry.setEMail("alexis.cal.y@gmail.com");
-		yefry.setHeight(1.70F);
-		yefry.setPhoneNumber("+(987) 654 32 10");
-		yefry.setWeight((short) 34);
+		// Person yefry = new Person(new PersonPK(
+		// DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1020448936"),
+		// "Yefry Alexis", "Calderón Yepes", new Date());
+		// yefry.setEMail("alexis.cal.y@gmail.com");
+		// yefry.setHeight(1.70F);
+		// yefry.setPhoneNumber("+(987) 654 32 10");
+		// yefry.setWeight((short) 34);
+		//
+		// Person person = this.personProcess.updatePerson(yefry);
 
-		Person person = this.personProcess.updatePerson(yefry);
-	}
-
-	private void countPersons() {
-		Log.i(TAG, String.format("Selected Menu Item Method: %s",
-				"countPersons():void"));
-
-		// FIXME: This method is not useful for now.
-
-		long personsAmout = this.personProcess.countPersons();
+		// FIXME: Think more about this.
+		super.startActivity(new Intent(super.getApplicationContext(),
+				PersonUpdaterActivity.class));
 	}
 
 	private void findAllPersons() {

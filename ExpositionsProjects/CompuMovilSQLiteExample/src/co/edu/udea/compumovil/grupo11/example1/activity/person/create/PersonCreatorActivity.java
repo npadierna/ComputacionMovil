@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -78,8 +79,8 @@ public class PersonCreatorActivity extends FragmentActivity {
 		SpinnerAdapter documentTypeSpinnerAdapter = new ArrayAdapter<String>(
 				this, android.R.layout.simple_spinner_item,
 				DocumentTypeEnum.obtainDocumentsTypesList());
-		documentTypeSpinner.setAdapter(documentTypeSpinnerAdapter);
-		documentTypeSpinner
+		this.documentTypeSpinner.setAdapter(documentTypeSpinnerAdapter);
+		this.documentTypeSpinner
 				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 					@Override()
@@ -115,12 +116,15 @@ public class PersonCreatorActivity extends FragmentActivity {
 	}
 
 	public void onCreatePerson(View view) {
+		Log.i(TAG, "onCreatePerson(View):void");
+
 		this.documentNumber = this.documentNumberEditText.getText().toString();
 
 		PersonPK personPK = new PersonPK(
 				DocumentTypeEnum
 						.findDocumentTypeEmunByDocumentType(this.documentType),
 				documentNumber);
+
 		this.firstNames = this.firstNameEditText.getText().toString();
 		this.lastNames = this.lastNameEditText.getText().toString();
 		this.eMail = this.eMailEditText.getText().toString();
@@ -151,7 +155,6 @@ public class PersonCreatorActivity extends FragmentActivity {
 						dialog.cancel();
 					}
 				});
-
 		(messageAlertDialog.create()).show();
 
 	}
