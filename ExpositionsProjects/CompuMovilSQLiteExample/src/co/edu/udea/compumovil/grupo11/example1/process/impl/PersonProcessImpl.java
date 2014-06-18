@@ -30,6 +30,7 @@ public class PersonProcessImpl implements IPersonProcess {
 
 	public PersonProcessImpl(Context context) {
 		super();
+
 		this.personDAO = PersonDAOImpl.getInstance(context);
 	}
 

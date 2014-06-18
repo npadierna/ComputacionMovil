@@ -13,7 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import co.edu.udea.compumovil.grupo11.example1.R;
-import co.edu.udea.compumovil.grupo11.example1.activity.about.AboutActivity;
+import co.edu.udea.compumovil.grupo11.example1.activity.about.AboutUsActivity;
 import co.edu.udea.compumovil.grupo11.example1.activity.list.PersonExpandableListActivity;
 import co.edu.udea.compumovil.grupo11.example1.activity.person.create.PersonCreatorActivity;
 import co.edu.udea.compumovil.grupo11.example1.activity.person.delete.PersonDeleterActivity;
@@ -39,10 +39,8 @@ public class DashboardMainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_dashboard_main);
 
-		if (savedInstanceState == null) {
-			this.personProcess = new PersonProcessImpl(
-					super.getApplicationContext());
-		}
+		this.personProcess = new PersonProcessImpl(
+				super.getApplicationContext());
 	}
 
 	@Override()
@@ -59,7 +57,7 @@ public class DashboardMainActivity extends Activity {
 			Log.i(TAG, String.format("Selected Item: \"%s\"", "About us"));
 
 			super.startActivity(new Intent(super.getApplicationContext(),
-					AboutActivity.class));
+					AboutUsActivity.class));
 
 			return (true);
 
@@ -75,7 +73,7 @@ public class DashboardMainActivity extends Activity {
 			Log.i(TAG,
 					String.format("Selected Item: \"%s\"", "Find by Age range"));
 
-			this.findPersonsByAgeRange();
+			this.findPersonsByHeightRange();
 
 			return (true);
 
@@ -91,6 +89,36 @@ public class DashboardMainActivity extends Activity {
 
 			return (super.onOptionsItemSelected(item));
 		}
+	}
+
+	private void findAllPersons() {
+		Log.i(TAG, String.format("Selected Menu Item Method: %s",
+				"findAllPersons():void"));
+
+		List<Person> personsFoundList = this.personProcess.findAllPersons();
+		Intent intent = new Intent(super.getApplicationContext(),
+				PersonExpandableListActivity.class);
+		intent.putParcelableArrayListExtra(
+				PersonExpandableListActivity.PERSONS_LIST_KEY,
+				(ArrayList<? extends Parcelable>) personsFoundList);
+
+		super.startActivity(intent);
+	}
+
+	private void findPersonsByHeightRange() {
+		Log.i(TAG, String.format("Selected Menu Item Method: %s",
+				"findPersonsByHeightRange():void"));
+
+		super.startActivity(new Intent(super.getApplicationContext(),
+				PersonHeightRangeFinderActivity.class));
+	}
+
+	private void findPersonsByDocumentType() {
+		Log.i(TAG, String.format("Selected Menu Item Method: %s",
+				"findPersonsByDocumentType():void"));
+
+		super.startActivity(new Intent(super.getApplicationContext(),
+				PersonDocumentTypeFinderActivity.class));
 	}
 
 	public void onCreatePerson(View view) {
@@ -119,16 +147,6 @@ public class DashboardMainActivity extends Activity {
 	public void onDeletePerson(View view) {
 		Log.i(TAG, String.format("Selected Dashboard Method: %s",
 				"onDeletePerson(View):void"));
-
-		// Person neiber = new Person(new PersonPK(
-		// DocumentTypeEnum.CEDULA_DE_CIUDADANIA, "1022095657"),
-		// "Neiber de Jesús", "Padierna Pérez", new Date());
-		// neiber.setEMail("npadierna@gmail.com");
-		// neiber.setHeight(1.75F);
-		// neiber.setPhoneNumber("+(123) 123 45 67");
-		// neiber.setWeight((short) 12);
-		//
-		// int affectedRows = this.personProcess.deletePerson(neiber);
 
 		super.startActivity(new Intent(super.getApplicationContext(),
 				PersonDeleterActivity.class));
@@ -159,35 +177,5 @@ public class DashboardMainActivity extends Activity {
 		// FIXME: Think more about this.
 		super.startActivity(new Intent(super.getApplicationContext(),
 				PersonUpdaterActivity.class));
-	}
-
-	private void findAllPersons() {
-		Log.i(TAG, String.format("Selected Menu Item Method: %s",
-				"findAllPersons():void"));
-
-		List<Person> personsFoundList = this.personProcess.findAllPersons();
-		Intent intent = new Intent(super.getApplicationContext(),
-				PersonExpandableListActivity.class);
-		intent.putParcelableArrayListExtra(
-				PersonExpandableListActivity.PERSONS_LIST_KEY,
-				(ArrayList<? extends Parcelable>) personsFoundList);
-
-		super.startActivity(intent);
-	}
-
-	private void findPersonsByAgeRange() {
-		Log.i(TAG, String.format("Selected Menu Item Method: %s",
-				"findPersonsByAgeRange():void"));
-
-		super.startActivity(new Intent(super.getApplicationContext(),
-				PersonHeightRangeFinderActivity.class));
-	}
-
-	private void findPersonsByDocumentType() {
-		Log.i(TAG, String.format("Selected Menu Item Method: %s",
-				"findPersonsByDocumentType():void"));
-
-		super.startActivity(new Intent(super.getApplicationContext(),
-				PersonDocumentTypeFinderActivity.class));
 	}
 }

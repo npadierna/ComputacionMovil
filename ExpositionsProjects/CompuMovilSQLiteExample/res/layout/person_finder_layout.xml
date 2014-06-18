@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/person_finder_layout_text_view"
+        android:textAppearance="?android:attr/textAppearanceMedium" >
+    </TextView>
+
+    <Spinner
+        android:id="@+id/person_finder_document_type_spinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+    </Spinner>
+
+    <EditText
+        android:id="@+id/person_finder_id_number_edit_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/person_finder_layout_id_number_hint_edit_text"
+        android:inputType="number" >
+
+        <requestFocus>
+        </requestFocus>
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/person_finder_negative_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onNegativeButtonClick"
+            android:text="@string/cancel_text" >
+        </Button>
+
+        <Button
+            android:id="@+id/person_finder_possitive_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPossitiveButtonClick"
+            android:text="@string/accept_text" >
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

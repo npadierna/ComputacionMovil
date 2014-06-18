@@ -47,47 +47,49 @@ public final class R {
         public static final int weight_padding_left=0x7f05000f;
     }
     public static final class drawable {
-        public static final int calendar=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int about_us_menu=0x7f090026;
+        public static final int about_us_menu=0x7f090029;
         public static final int autores_textview=0x7f090000;
-        public static final int birthday_text_view=0x7f09001d;
+        public static final int birthday_text_view=0x7f090020;
         public static final int city_name_textview=0x7f090006;
-        public static final int clean_button=0x7f090016;
+        public static final int clean_button=0x7f090015;
         public static final int computacion_text=0x7f090004;
         public static final int course_name_text=0x7f090003;
-        public static final int create_button=0x7f090017;
+        public static final int create_button=0x7f090016;
         public static final int create_person_button=0x7f090008;
         public static final int delete_person_button=0x7f09000b;
-        public static final int document_number_edittext=0x7f09000d;
+        public static final int document_number_edit_text=0x7f09000d;
         public static final int document_type_spinner=0x7f09000c;
-        public static final int document_type_text_view=0x7f090021;
-        public static final int e_mail_edittext=0x7f090010;
-        public static final int e_mail_text_view=0x7f09001c;
-        public static final int find_all_menu=0x7f090023;
-        public static final int find_by_document_type_menu=0x7f090024;
-        public static final int find_by_height_range_menu=0x7f090025;
-        public static final int first_name_edittext=0x7f09000e;
-        public static final int first_names_text_view=0x7f09001f;
-        public static final int height_edittext=0x7f090015;
-        public static final int height_text_view=0x7f09001b;
-        public static final int height_textview=0x7f090014;
-        public static final int id_number_text_view=0x7f090022;
-        public static final int imageView1=0x7f090011;
+        public static final int document_type_text_view=0x7f090024;
+        public static final int e_mail_edit_text=0x7f090010;
+        public static final int e_mail_text_view=0x7f09001f;
+        public static final int empty_persons_list_text_view=0x7f090019;
+        public static final int find_all_menu=0x7f090026;
+        public static final int find_by_document_type_menu=0x7f090027;
+        public static final int find_by_height_range_menu=0x7f090028;
+        public static final int first_name_edit_text=0x7f09000e;
+        public static final int first_names_text_view=0x7f090022;
+        public static final int height_edit_text=0x7f090014;
+        public static final int height_text_view=0x7f090013;
+        public static final int id_number_text_view=0x7f090025;
         public static final int last_names_edit_text=0x7f09000f;
-        public static final int last_names_text_view=0x7f090020;
-        public static final int lower_age_range_spinner=0x7f090018;
+        public static final int last_names_text_view=0x7f090023;
+        public static final int lower_age_range_spinner=0x7f090017;
         public static final int neiber_textview=0x7f090001;
-        public static final int phone_number_edittext=0x7f090012;
-        public static final int phone_number_text_view=0x7f09001e;
+        public static final int person_finder_document_type_spinner=0x7f09001a;
+        public static final int person_finder_id_number_edit_text=0x7f09001b;
+        public static final int person_finder_negative_button=0x7f09001c;
+        public static final int person_finder_possitive_button=0x7f09001d;
+        public static final int phone_number_edit_text=0x7f090011;
+        public static final int phone_number_text_view=0x7f090021;
         public static final int retrieve_person_button=0x7f090009;
         public static final int university_text=0x7f090005;
         public static final int update_person_button=0x7f09000a;
-        public static final int upper_age_range_spinner=0x7f090019;
-        public static final int weight_edittext=0x7f090013;
-        public static final int weight_text_view=0x7f09001a;
+        public static final int upper_age_range_spinner=0x7f090018;
+        public static final int weight_edit_text=0x7f090012;
+        public static final int weight_text_view=0x7f09001e;
         public static final int year_textview=0x7f090007;
         public static final int yefry_textview=0x7f090002;
     }
@@ -101,8 +103,9 @@ public final class R {
         public static final int activity_person_retiever=0x7f030006;
         public static final int activity_person_updater=0x7f030007;
         public static final int expandable_list_activity_person=0x7f030008;
-        public static final int person_list_item_detail=0x7f030009;
-        public static final int person_list_item_header=0x7f03000a;
+        public static final int person_finder_layout=0x7f030009;
+        public static final int person_list_item_detail=0x7f03000a;
+        public static final int person_list_item_header=0x7f03000b;
     }
     public static final class menu {
         public static final int dashboard_main=0x7f080000;
@@ -114,60 +117,78 @@ public final class R {
         /**  Dashboard Activity 
          */
         public static final int about_us_menu=0x7f06000c;
-        public static final int accept_text=0x7f06002b;
+        public static final int accept_text=0x7f060036;
         /**  Application Global Strings 
          */
         public static final int application_name=0x7f060009;
         public static final int autores_text=0x7f060001;
-        public static final int birthday_text_view=0x7f060019;
-        public static final int bithday_button=0x7f06001a;
-        public static final int cancel_text=0x7f06002c;
+        /**  Person Height Range Finder Activity 
+         */
+        public static final int bad_range_text_alert_dialog=0x7f06002b;
+        public static final int bad_range_title_alert_dialog=0x7f06002c;
+        public static final int birthday_text_view=0x7f06001c;
+        public static final int bithday_button=0x7f06001d;
+        public static final int calendar_content_description_image_view=0x7f060016;
+        public static final int cancel_text=0x7f060037;
         public static final int clean_text=0x7f06000a;
         public static final int computacion_movil_text=0x7f060005;
         public static final int couse_name_text=0x7f060004;
         public static final int create_person_button_text=0x7f060010;
         public static final int create_text=0x7f06000b;
-        public static final int date_selected_text=0x7f06002d;
+        public static final int date_selected_text=0x7f060038;
         public static final int delete_person_button_text=0x7f060011;
-        public static final int document_number_text_view=0x7f060015;
+        public static final int document_number_text_view=0x7f060018;
         /**  Person Document Type Finder Activity 
          */
-        public static final int document_type_dialog_text_view=0x7f060023;
-        /**  Create Person Activity 
-         */
-        public static final int document_type_text_view=0x7f060014;
-        public static final int e_mail_text_view=0x7f060018;
+        public static final int document_type_dialog_text_view=0x7f060025;
+        public static final int document_type_text_view=0x7f060017;
+        public static final int e_mail_text_view=0x7f06001b;
+        public static final int empty_persons_list_text_view=0x7f060028;
         public static final int find_all_persons_menu=0x7f06000d;
         public static final int find_person_by_document_type_menu=0x7f06000e;
         public static final int find_person_by_height_range_menu=0x7f06000f;
-        public static final int first_names_text_view=0x7f060016;
-        /**  Person Height Range Finder Activity 
-         */
-        public static final int height_range_dialog_text_view=0x7f06001f;
-        public static final int height_text_view=0x7f06001d;
-        public static final int last_names_text_view=0x7f060017;
-        public static final int lower_height_range_text_view=0x7f060020;
+        public static final int first_names_text_view=0x7f060019;
+        public static final int height_range_dialog_text_view=0x7f06002d;
+        public static final int height_text_view=0x7f060020;
+        public static final int last_names_text_view=0x7f06001a;
+        public static final int lower_height_range_text_view=0x7f06002e;
         public static final int medellin_text=0x7f060007;
         public static final int neiber_text=0x7f060002;
         /**  Person List Item 
          */
-        public static final int person_birthday_title=0x7f060026;
-        public static final int person_creator_activity_title=0x7f06001b;
-        public static final int person_document_type_activity_title=0x7f060024;
-        public static final int person_e_mail_title=0x7f060027;
+        public static final int person_birthday_title=0x7f060031;
+        public static final int person_creator_activity_title=0x7f06001e;
+        /**  Person Creator Activity 
+         */
+        public static final int person_creator_text_dialog=0x7f060014;
+        public static final int person_creator_title_dialog=0x7f060015;
+        public static final int person_deleter_activity_title=0x7f060024;
+        /**  Person Deleter Activity 
+         */
+        public static final int person_deleter_text_dialog=0x7f060022;
+        public static final int person_deleter_title_dialog=0x7f060023;
+        public static final int person_document_type_activity_title=0x7f060026;
+        public static final int person_e_mail_title=0x7f060032;
         /**  Person Expandable List Activity 
          */
-        public static final int person_exampdable_list_activity_title=0x7f060025;
-        public static final int person_height_range_finder_activity_title=0x7f060021;
-        public static final int person_height_title=0x7f060029;
-        public static final int person_phone_number_title=0x7f060028;
-        public static final int person_weight_title=0x7f06002a;
-        public static final int phone_number_text_view=0x7f06001c;
+        public static final int person_exampdable_list_activity_title=0x7f060027;
+        public static final int person_finder_layout_id_number_hint_edit_text=0x7f06002a;
+        /**  Person Finder Layout 
+         */
+        public static final int person_finder_layout_text_view=0x7f060029;
+        public static final int person_height_range_finder_activity_title=0x7f06002f;
+        public static final int person_height_title=0x7f060034;
+        public static final int person_phone_number_title=0x7f060033;
+        /**  Person Retriever Activity 
+         */
+        public static final int person_retriever_activity_title=0x7f060039;
+        public static final int person_weight_title=0x7f060035;
+        public static final int phone_number_text_view=0x7f06001f;
         public static final int retrieve_person_button_text=0x7f060012;
         public static final int university_name_text=0x7f060006;
         public static final int update_person_button_text=0x7f060013;
-        public static final int upper_height_range_text_view=0x7f060022;
-        public static final int weight_text_view=0x7f06001e;
+        public static final int upper_height_range_text_view=0x7f060030;
+        public static final int weight_text_view=0x7f060021;
         public static final int year_text=0x7f060008;
         public static final int yefry_text=0x7f060003;
     }

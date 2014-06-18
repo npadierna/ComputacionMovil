@@ -1,9 +1,9 @@
 package co.edu.udea.compumovil.grupo11.example1.activity.person.update;
 
-import co.edu.udea.compumovil.grupo11.example1.R;
-import co.edu.udea.compumovil.grupo11.example1.process.IPersonProcess;
 import android.app.Activity;
 import android.os.Bundle;
+import co.edu.udea.compumovil.grupo11.example1.R;
+import co.edu.udea.compumovil.grupo11.example1.process.IPersonProcess;
 
 public class PersonUpdaterActivity extends Activity {
 

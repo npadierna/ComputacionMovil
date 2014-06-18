@@ -39,16 +39,31 @@
         <activity
             android:name=".activity.person.find.PersonDocumentTypeFinderActivity"
             android:label="@string/person_document_type_activity_title"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
             android:name=".activity.person.find.PersonHeightRangeFinderActivity"
             android:label="@string/person_height_range_finder_activity_title"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
-         <activity
-            android:name=".activity.about.AboutActivity"
+        <activity
+            android:name=".activity.about.AboutUsActivity"
             android:label="@string/about_us_activity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name=".activity.person.retrieve.PersonRetrieverActivity"
+            android:label="@string/person_retriever_activity_title"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name=".activity.person.delete.PersonDeleterActivity"
+            android:label="@string/person_deleter_activity_title"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>

@@ -1,9 +1,25 @@
 package co.edu.udea.compumovil.grupo11.example1.activity.person.delete;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import co.edu.udea.compumovil.grupo11.example1.R;
+import co.edu.udea.compumovil.grupo11.example1.activity.util.MessageAlertDialog;
+import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
+import co.edu.udea.compumovil.grupo11.example1.model.entity.PersonPK;
+import co.edu.udea.compumovil.grupo11.example1.model.enums.DocumentTypeEnum;
 import co.edu.udea.compumovil.grupo11.example1.process.IPersonProcess;
+import co.edu.udea.compumovil.grupo11.example1.process.impl.PersonProcessImpl;
 
 public class PersonDeleterActivity extends Activity {
 
@@ -12,13 +28,99 @@ public class PersonDeleterActivity extends Activity {
 
 	private IPersonProcess personProcess;
 
+	private String documentType;
+
+	private EditText idNumberEditText;
+	private Spinner documentTypeSpinner;
+
 	@Override()
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		super.setContentView(R.layout.activity_person_updater);
+		super.setContentView(R.layout.activity_person_deleter);
 
-		if (savedInstanceState == null) {
+		this.createComponents();
+	}
 
+	private void createComponents() {
+		SpinnerAdapter documentTypeSpinnerAdapter = new ArrayAdapter<String>(
+				super.getApplicationContext(),
+				android.R.layout.simple_spinner_item,
+				DocumentTypeEnum.obtainDocumentsTypesList());
+
+		this.documentTypeSpinner = (Spinner) super
+				.findViewById(R.id.person_finder_document_type_spinner);
+		this.documentTypeSpinner.setAdapter(documentTypeSpinnerAdapter);
+		this.documentTypeSpinner
+				.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+					@Override()
+					public void onItemSelected(AdapterView<?> parent,
+							View view, int position, long id) {
+						Log.i(TAG,
+								"onItemSelected(AdapterView<?>, View, int, long):void");
+
+						documentType = DocumentTypeEnum
+								.obtainDocumentsTypesList().get(position);
+					}
+
+					@Override()
+					public void onNothingSelected(AdapterView<?> parent) {
+					}
+				});
+
+		this.idNumberEditText = (EditText) super
+				.findViewById(R.id.person_finder_id_number_edit_text);
+
+		this.personProcess = new PersonProcessImpl(
+				super.getApplicationContext());
+	}
+
+	private void deletePerson() {
+		String idNumber = this.idNumberEditText.getText().toString();
+		if (!TextUtils.isEmpty(idNumber)) {
+			PersonPK personPK = new PersonPK(
+					DocumentTypeEnum
+							.findDocumentTypeEmunByDocumentType(this.documentType),
+					idNumber);
+			int deletedPersons = this.personProcess.deletePerson(new Person(
+					personPK, null, null, null));
+
+			AlertDialog.Builder messageAlertDialog = new MessageAlertDialog(
+					this).createAlertDialog(
+					super.getResources().getString(
+							R.string.person_deleter_title_dialog),
+					String.format(
+							"%s %d",
+							super.getResources().getString(
+									R.string.person_deleter_text_dialog),
+							deletedPersons));
+			messageAlertDialog.setPositiveButton("Aceptar",
+					new DialogInterface.OnClickListener() {
+
+						@Override()
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					});
+			(messageAlertDialog.create()).show();
+
+			this.clearWidgetsFields();
 		}
+	}
+
+	private void clearWidgetsFields() {
+		this.idNumberEditText.setText("");
+	}
+	
+	public void onNegativeButtonClick(View view) {
+		Log.i(TAG, "onNegativeButtonClick(View):void");
+
+		super.finish();
+	}
+
+	public void onPossitiveButtonClick(View view) {
+		Log.i(TAG, "onPossitiveButtonClick(View):void");
+
+		this.deletePerson();
 	}
 }

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import co.edu.udea.compumovil.grupo11.example1.R;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
 
-public class PersonExpandableListAdapter extends BaseExpandableListAdapter {
+class PersonExpandableListAdapter extends BaseExpandableListAdapter {
 
 	private static final DateFormat DATE_FORMAT = new SimpleDateFormat(
 			"dd/MM/yyyy", Locale.getDefault());
@@ -30,9 +30,9 @@ public class PersonExpandableListAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override()
-	public int getGroupCount() {
+	public Object getChild(int groupPosition, int childPosition) {
 
-		return (this.personsList.size());
+		return (this.personsList.get(groupPosition));
 	}
 
 	@Override()
@@ -42,65 +42,9 @@ public class PersonExpandableListAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override()
-	public Object getGroup(int groupPosition) {
-
-		return (this.personsList.get(groupPosition));
-	}
-
-	@Override()
-	public Object getChild(int groupPosition, int childPosition) {
-
-		return (this.personsList.get(groupPosition));
-	}
-
-	@Override()
-	public long getGroupId(int groupPosition) {
-
-		return (groupPosition);
-	}
-
-	@Override()
 	public long getChildId(int groupPosition, int childPosition) {
 
 		return (childPosition);
-	}
-
-	@Override()
-	public boolean hasStableIds() {
-
-		return (false);
-	}
-
-	@Override()
-	public View getGroupView(int groupPosition, boolean isExpanded,
-			View convertView, ViewGroup parent) {
-		PersonListItemHeader personListItemHeader;
-
-		if (convertView == null) {
-			LayoutInflater layoutInflater = (LayoutInflater) this.context
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-			convertView = layoutInflater.inflate(
-					R.layout.person_list_item_header, null);
-
-			personListItemHeader = new PersonListItemHeader();
-			personListItemHeader.setDocumentTypeTextView((TextView) convertView
-					.findViewById(R.id.document_type_text_view));
-			personListItemHeader.setFistNamesTextView((TextView) convertView
-					.findViewById(R.id.first_names_text_view));
-			personListItemHeader.setIdNumTextView((TextView) convertView
-					.findViewById(R.id.id_number_text_view));
-			personListItemHeader.setLastNamesTextView((TextView) convertView
-					.findViewById(R.id.last_names_text_view));
-
-			convertView.setTag(personListItemHeader);
-		} else {
-			personListItemHeader = (PersonListItemHeader) convertView.getTag();
-		}
-
-		this.fillGroupHeader(groupPosition, personListItemHeader);
-
-		return (convertView);
 	}
 
 	@Override()
@@ -137,23 +81,65 @@ public class PersonExpandableListAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override()
-	public boolean isChildSelectable(int groupPosition, int childPosition) {
+	public Object getGroup(int groupPosition) {
+
+		return (this.personsList.get(groupPosition));
+	}
+
+	@Override()
+	public int getGroupCount() {
+
+		return (this.personsList.size());
+	}
+
+	@Override()
+	public long getGroupId(int groupPosition) {
+
+		return (groupPosition);
+	}
+
+	@Override()
+	public View getGroupView(int groupPosition, boolean isExpanded,
+			View convertView, ViewGroup parent) {
+		PersonListItemHeader personListItemHeader;
+
+		if (convertView == null) {
+			LayoutInflater layoutInflater = (LayoutInflater) this.context
+					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+			convertView = layoutInflater.inflate(
+					R.layout.person_list_item_header, null);
+
+			personListItemHeader = new PersonListItemHeader();
+			personListItemHeader.setDocumentTypeTextView((TextView) convertView
+					.findViewById(R.id.document_type_text_view));
+			personListItemHeader.setFistNamesTextView((TextView) convertView
+					.findViewById(R.id.first_names_text_view));
+			personListItemHeader.setIdNumTextView((TextView) convertView
+					.findViewById(R.id.id_number_text_view));
+			personListItemHeader.setLastNamesTextView((TextView) convertView
+					.findViewById(R.id.last_names_text_view));
+
+			convertView.setTag(personListItemHeader);
+		} else {
+			personListItemHeader = (PersonListItemHeader) convertView.getTag();
+		}
+
+		this.fillGroupHeader(groupPosition, personListItemHeader);
+
+		return (convertView);
+	}
+
+	@Override()
+	public boolean hasStableIds() {
 
 		return (false);
 	}
 
-	private void fillGroupHeader(int groupPosition,
-			PersonListItemHeader personListItemHeader) {
-		Person person = (Person) this.getGroup(groupPosition);
+	@Override()
+	public boolean isChildSelectable(int groupPosition, int childPosition) {
 
-		personListItemHeader.getDocumentTypeTextView().setText(
-				person.getPersonPK().getDocumentTypeEnum().getDocumentType());
-		personListItemHeader.getFistNamesTextView().setText(
-				person.getFirstNames());
-		personListItemHeader.getIdNumTextView().setText(
-				person.getPersonPK().getIdNumber());
-		personListItemHeader.getLastNamesTextView().setText(
-				person.getLastNames());
+		return (false);
 	}
 
 	private void fillGroupDetails(int groupPosition,
@@ -171,5 +157,19 @@ public class PersonExpandableListAdapter extends BaseExpandableListAdapter {
 		personListItemDetail.getWeightTextView().setText(
 				(person.getWeight() != (short) 0) ? String.valueOf(person
 						.getWeight()) : "");
+	}
+
+	private void fillGroupHeader(int groupPosition,
+			PersonListItemHeader personListItemHeader) {
+		Person person = (Person) this.getGroup(groupPosition);
+
+		personListItemHeader.getDocumentTypeTextView().setText(
+				person.getPersonPK().getDocumentTypeEnum().getDocumentType());
+		personListItemHeader.getFistNamesTextView().setText(
+				person.getFirstNames());
+		personListItemHeader.getIdNumTextView().setText(
+				person.getPersonPK().getIdNumber());
+		personListItemHeader.getLastNamesTextView().setText(
+				person.getLastNames());
 	}
 }

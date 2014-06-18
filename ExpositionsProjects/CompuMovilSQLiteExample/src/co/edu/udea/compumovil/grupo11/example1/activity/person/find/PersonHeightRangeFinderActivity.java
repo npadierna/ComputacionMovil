@@ -24,16 +24,17 @@ public class PersonHeightRangeFinderActivity extends Activity {
 
 	private static final String TAG = PersonHeightRangeFinderActivity.class
 			.getSimpleName();
-	private IPersonProcess personProcess;
 
-	// FIXME: Read from the integers.xml
-	private static final short MAX_HEIGHT = (short) 99;
-	private static final Float[] HEIGHT_RAGE = new Float[MAX_HEIGHT];
+	private static final float MIN_HEIGHT = 5.0F;
+	private static final float MAX_HEIGHT = 99.0F;
+	private static final Float[] HEIGHT_RAGE = new Float[(int) (MAX_HEIGHT - MIN_HEIGHT)];
 	static {
-		for (short height = 1; height <= MAX_HEIGHT; height++) {
-			HEIGHT_RAGE[height - 1] = Float.valueOf(height);
+		for (short height = 0; height < HEIGHT_RAGE.length; height++) {
+			HEIGHT_RAGE[height] = Float.valueOf(MIN_HEIGHT + height);
 		}
 	}
+
+	private IPersonProcess personProcess;
 
 	private float lowerHeightRange;
 	private float upperHeightRange;
@@ -46,25 +47,10 @@ public class PersonHeightRangeFinderActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_person_height_range_finder);
 
-		if (savedInstanceState == null) {
-			this.createElements();
-		}
+		this.createComponents();
 	}
 
-	public void onCancelFinder(View view) {
-		Log.i(TAG, "onCancelFinder(View):void");
-
-		super.finish();
-	}
-
-	public void onStartFinder(View view) {
-		Log.i(TAG, "onStartFinder(View):void");
-
-		this.findPersonsByHeightRange(this.lowerHeightRange,
-				this.upperHeightRange);
-	}
-
-	private void createElements() {
+	private void createComponents() {
 		SpinnerAdapter ageRangeSpinnerAdapter = new ArrayAdapter<Float>(
 				super.getApplicationContext(),
 				android.R.layout.simple_spinner_item, HEIGHT_RAGE);
@@ -83,6 +69,37 @@ public class PersonHeightRangeFinderActivity extends Activity {
 
 		this.personProcess = new PersonProcessImpl(
 				super.getApplicationContext());
+	}
+
+	private void findPersonsByHeightRange(float lowerHeight, float upperHeight) {
+		Log.i(TAG, "findPersonsByHeightRange(float, float):void");
+
+		if (upperHeight >= lowerHeight) {
+			List<Person> personsFoundList = this.personProcess
+					.findPersonsByHeightRange(lowerHeight, upperHeight);
+
+			Intent intent = new Intent(super.getApplicationContext(),
+					PersonExpandableListActivity.class);
+			intent.putParcelableArrayListExtra(
+					PersonExpandableListActivity.PERSONS_LIST_KEY,
+					(ArrayList<? extends Parcelable>) personsFoundList);
+
+			super.startActivity(intent);
+			super.finish();
+		}
+	}
+
+	public void onCancelFinder(View view) {
+		Log.i(TAG, "onCancelFinder(View):void");
+
+		super.finish();
+	}
+
+	public void onStartFinder(View view) {
+		Log.i(TAG, "onStartFinder(View):void");
+
+		this.findPersonsByHeightRange(this.lowerHeightRange,
+				this.upperHeightRange);
 	}
 
 	private final OnItemSelectedListener onItemSelectedListener = new OnItemSelectedListener() {
@@ -111,21 +128,4 @@ public class PersonHeightRangeFinderActivity extends Activity {
 		public void onNothingSelected(AdapterView<?> parent) {
 		}
 	};
-
-	private void findPersonsByHeightRange(float lowerHeight, float upperHeight) {
-		Log.i(TAG, "findPersonsByHeightRange(short, short):void");
-
-		if (upperHeight >= lowerHeight) {
-			List<Person> personsFoundList = this.personProcess
-					.findPersonsByHeightRange(lowerHeight, upperHeight);
-
-			Intent intent = new Intent(super.getApplicationContext(),
-					PersonExpandableListActivity.class);
-			intent.putParcelableArrayListExtra(
-					PersonExpandableListActivity.PERSONS_LIST_KEY,
-					(ArrayList<? extends Parcelable>) personsFoundList);
-
-			super.startActivity(intent);
-		}
-	}
 }

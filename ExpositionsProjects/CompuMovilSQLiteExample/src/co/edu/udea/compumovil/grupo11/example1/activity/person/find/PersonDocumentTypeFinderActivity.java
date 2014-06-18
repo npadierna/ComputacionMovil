@@ -27,6 +27,7 @@ public class PersonDocumentTypeFinderActivity extends Activity {
 			.getSimpleName();
 
 	private IPersonProcess personProcess;
+
 	private Spinner documentTypeSpinner;
 	private String documentType;
 
@@ -35,12 +36,10 @@ public class PersonDocumentTypeFinderActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_person_document_type_finder);
 
-		if (savedInstanceState == null) {
-			this.createElements();
-		}
+		this.createComponents();
 	}
 
-	private void createElements() {
+	private void createComponents() {
 		SpinnerAdapter documentTypeSpinnerAdapter = new ArrayAdapter<String>(
 				super.getApplicationContext(),
 				android.R.layout.simple_spinner_item,
@@ -71,18 +70,6 @@ public class PersonDocumentTypeFinderActivity extends Activity {
 				super.getApplicationContext());
 	}
 
-	public void onCancelFinder(View view) {
-		Log.i(TAG, "onCancelFinder(View):void");
-
-		super.finish();
-	}
-
-	public void onStartFinder(View view) {
-		Log.i(TAG, "onStartFinder(View):void");
-		findPersonsByDocumentType(documentType);
-
-	}
-
 	private void findPersonsByDocumentType(String documentType) {
 		Log.i(TAG, "findPersonsByDocumentType(String):void");
 
@@ -96,5 +83,18 @@ public class PersonDocumentTypeFinderActivity extends Activity {
 				(ArrayList<? extends Parcelable>) personsFoundList);
 
 		super.startActivity(intent);
+		super.finish();
+	}
+
+	public void onCancelFinder(View view) {
+		Log.i(TAG, "onCancelFinder(View):void");
+
+		super.finish();
+	}
+
+	public void onStartFinder(View view) {
+		Log.i(TAG, "onStartFinder(View):void");
+		findPersonsByDocumentType(documentType);
+
 	}
 }

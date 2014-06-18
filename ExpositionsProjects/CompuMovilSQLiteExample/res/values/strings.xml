@@ -13,21 +13,24 @@
     <string name="year_text">2014</string>
 
     <!-- Application Global Strings -->
-    <string name="application_name">SQLite Example</string>
+    <string name="application_name">Ejemplo SQLite</string>
     <string name="clean_text">Limpiar</string>
     <string name="create_text">Crear</string>
 
     <!-- Dashboard Activity -->
-    <string name="about_us_menu">About us</string>
-    <string name="find_all_persons_menu">Find all Persons</string>
-    <string name="find_person_by_document_type_menu">Find by Document Type</string>
-    <string name="find_person_by_height_range_menu">Find by Height range</string>
+    <string name="about_us_menu">Acerca de</string>
+    <string name="find_all_persons_menu">Buscar Todas</string>
+    <string name="find_person_by_document_type_menu">Buscar por Tipo de Documento</string>
+    <string name="find_person_by_height_range_menu">Buscar por Rango de Altura</string>
     <string name="create_person_button_text">CREATE</string>
     <string name="delete_person_button_text">DELETE</string>
     <string name="retrieve_person_button_text">RETRIEVE</string>
     <string name="update_person_button_text">UPDATE</string>
 
-    <!-- Create Person Activity -->
+    <!-- Person Creator Activity -->
+    <string name="person_creator_text_dialog">La Persona fue guardada exitosamente en la Base de Datos.</string>
+    <string name="person_creator_title_dialog">Guardado Exitoso</string>
+    <string name="calendar_content_description_image_view">Imagen para ejecutar el evento de mostrar un Calendario.</string>
     <string name="document_type_text_view">Tipo Documento:</string>
     <string name="document_number_text_view">Número Documento:</string>
     <string name="first_names_text_view">Nombres:</string>
@@ -40,11 +43,10 @@
     <string name="height_text_view">Altura:</string>
     <string name="weight_text_view">Peso:</string>
 
-    <!-- Person Height Range Finder Activity -->
-    <string name="height_range_dialog_text_view">Por favor, seleccione el Rango de Altura en el cual desea realizar la búsqueda:</string>
-    <string name="lower_height_range_text_view">Rango inferior:</string>
-    <string name="person_height_range_finder_activity_title">Buscar Por Rango</string>
-    <string name="upper_height_range_text_view">Rango superior:</string>
+    <!-- Person Deleter Activity -->
+    <string name="person_deleter_text_dialog">Cantidad de Personas borradas exitosamente:</string>
+    <string name="person_deleter_title_dialog">Borrados Exitosos</string>
+    <string name="person_deleter_activity_title">Borrar Persona</string>
 
     <!-- Person Document Type Finder Activity -->
     <string name="document_type_dialog_text_view">Por favor, seleccione un Tipo de Documento de la lista inferior:</string>
@@ -52,6 +54,19 @@
 
     <!-- Person Expandable List Activity -->
     <string name="person_exampdable_list_activity_title">Listado de Personas</string>
+    <string name="empty_persons_list_text_view">Sin datos de Personas . . .</string>
+
+    <!-- Person Finder Layout -->
+    <string name="person_finder_layout_text_view">Por favor, especifique los siguientes valores para realizar la búsqueda:</string>
+    <string name="person_finder_layout_id_number_hint_edit_text">Número de Identificación</string>
+
+    <!-- Person Height Range Finder Activity -->
+    <string name="bad_range_text_alert_dialog">El rango especificado no cumple los criterios.</string>
+    <string name="bad_range_title_alert_dialog">Mal Rango</string>
+    <string name="height_range_dialog_text_view">Por favor, seleccione el Rango de Altura en el cual desea realizar la búsqueda:</string>
+    <string name="lower_height_range_text_view">Rango inferior:</string>
+    <string name="person_height_range_finder_activity_title">Buscar Por Rango de Altura</string>
+    <string name="upper_height_range_text_view">Rango superior:</string>
 
     <!-- Person List Item -->
     <string name="person_birthday_title">Nacimiento:</string>
@@ -62,5 +77,8 @@
     <string name="accept_text">Aceptar</string>
     <string name="cancel_text">Cancelar</string>
     <string name="date_selected_text"></string>
+
+    <!-- Person Retriever Activity -->
+    <string name="person_retriever_activity_title">Buscar Persona</string>
 
 </resources>

@@ -15,7 +15,8 @@ class PersonListItemDetail {
 	}
 
 	public TextView getHeightTextView() {
-		return heightTextView;
+
+		return (this.heightTextView);
 	}
 
 	public void setHeightTextView(TextView heightTextView) {

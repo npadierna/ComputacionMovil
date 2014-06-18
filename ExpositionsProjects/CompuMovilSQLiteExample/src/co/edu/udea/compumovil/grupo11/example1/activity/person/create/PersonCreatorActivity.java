@@ -13,13 +13,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
-import android.widget.TextView;
 import co.edu.udea.compumovil.grupo11.example1.R;
 import co.edu.udea.compumovil.grupo11.example1.activity.person.create.util.DatePickerDialogFragment;
-import co.edu.udea.compumovil.grupo11.example1.activity.person.create.util.MessageAlertDialog;
+import co.edu.udea.compumovil.grupo11.example1.activity.util.MessageAlertDialog;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.Person;
 import co.edu.udea.compumovil.grupo11.example1.model.entity.PersonPK;
 import co.edu.udea.compumovil.grupo11.example1.model.enums.DocumentTypeEnum;
@@ -33,26 +31,24 @@ public class PersonCreatorActivity extends FragmentActivity {
 
 	private IPersonProcess personProcess;
 
-	private Spinner documentTypeSpinner;
-	private EditText documentNumberEditText;
-	private EditText firstNameEditText;
-	private EditText lastNameEditText;
 	private EditText eMailEditText;
-	private EditText phoneNumberEditText;
+	private EditText firstNameEditText;
 	private EditText heighEditText;
+	private EditText idNumberEditText;
+	private EditText lastNameEditText;
+	private EditText phoneNumberEditText;
 	private EditText weightEditText;
-	private TextView dateSelectedTextVIew;
-	private Date birthdayDate;
+	private Spinner documentTypeSpinner;
 
-	private String documentType;
-	private String documentNumber;
-	private String firstNames;
-	private String lastNames;
-	private String eMail;
-	private String phoneNumber;
 	private float height;
 	private short weight;
-	private String dateSelected;
+	private Date birthdayDate;
+	private String documentType;
+	private String eMail;
+	private String firstNames;
+	private String idNumber;
+	private String lastNames;
+	private String phoneNumber;
 
 	@Override()
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,16 +60,24 @@ public class PersonCreatorActivity extends FragmentActivity {
 					super.getApplicationContext());
 		}
 
-		this.createElements();
+		this.createComponents();
 	}
 
-	public void showDatePickerDialog(View v) {
-		DialogFragment datePickerDialogFragment = new DatePickerDialogFragment();
-		datePickerDialogFragment.show(super.getSupportFragmentManager(),
-				"datePicker");
+	public void setBirthdayDate(Date birthdayDate) {
+		this.birthdayDate = birthdayDate;
 	}
 
-	public void createElements() {
+	private void clearWidgetsFields() {
+		this.idNumberEditText.setText("");
+		this.firstNameEditText.setText("");
+		this.lastNameEditText.setText("");
+		this.eMailEditText.setText("");
+		this.phoneNumberEditText.setText("");
+		this.heighEditText.setText("");
+		this.weightEditText.setText("");
+	}
+
+	private void createComponents() {
 		final List<String> documentTypes = DocumentTypeEnum
 				.obtainDocumentsTypesList();
 
@@ -98,36 +102,29 @@ public class PersonCreatorActivity extends FragmentActivity {
 					}
 				});
 
-		this.documentNumberEditText = (EditText) super
-				.findViewById(R.id.document_number_edittext);
+		this.idNumberEditText = (EditText) super
+				.findViewById(R.id.document_number_edit_text);
 		this.eMailEditText = (EditText) super
-				.findViewById(R.id.e_mail_edittext);
+				.findViewById(R.id.e_mail_edit_text);
 		this.firstNameEditText = (EditText) super
-				.findViewById(R.id.first_name_edittext);
+				.findViewById(R.id.first_name_edit_text);
 		this.lastNameEditText = (EditText) super
 				.findViewById(R.id.last_names_edit_text);
 		this.phoneNumberEditText = (EditText) super
-				.findViewById(R.id.phone_number_edittext);
+				.findViewById(R.id.phone_number_edit_text);
 		this.weightEditText = (EditText) super
-				.findViewById(R.id.weight_edittext);
+				.findViewById(R.id.weight_edit_text);
 		this.heighEditText = (EditText) super
-				.findViewById(R.id.height_edittext);
-	
+				.findViewById(R.id.height_edit_text);
 	}
 
-	public void setBirthdayDate(Date birthdayDate) {
-		this.birthdayDate = birthdayDate;
-	}
-
-	public void onCreatePerson(View view) {
-		Log.i(TAG, "onCreatePerson(View):void");
-
-		this.documentNumber = this.documentNumberEditText.getText().toString();
+	private void savePerson() {
+		this.idNumber = this.idNumberEditText.getText().toString();
 
 		PersonPK personPK = new PersonPK(
 				DocumentTypeEnum
 						.findDocumentTypeEmunByDocumentType(this.documentType),
-				documentNumber);
+				idNumber);
 
 		this.firstNames = this.firstNameEditText.getText().toString();
 		this.lastNames = this.lastNameEditText.getText().toString();
@@ -144,32 +141,36 @@ public class PersonCreatorActivity extends FragmentActivity {
 		person.setWeight(this.weight);
 		person.setPhoneNumber(this.phoneNumber);
 
-		this.clearField();
+		this.clearWidgetsFields();
 
 		this.personProcess.savePerson(person);
 
 		AlertDialog.Builder messageAlertDialog = new MessageAlertDialog(this)
-				.createAlertDialog("Confirmación", person.getFirstNames()
-						+ " fue creado exitosamente");
+				.createAlertDialog(
+						super.getResources().getString(
+								R.string.person_creator_title_dialog),
+						super.getResources().getString(
+								R.string.person_creator_text_dialog));
 		messageAlertDialog.setPositiveButton("Aceptar",
 				new DialogInterface.OnClickListener() {
 
-					@Override
+					@Override()
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.cancel();
 					}
 				});
 		(messageAlertDialog.create()).show();
-
 	}
 
-	private void clearField() {
-		this.documentNumberEditText.setText("");
-		this.firstNameEditText.setText("");
-		this.lastNameEditText.setText("");
-		this.eMailEditText.setText("");
-		this.phoneNumberEditText.setText("");
-		this.heighEditText.setText("");
-		this.weightEditText.setText("");
+	public void onCreatePerson(View view) {
+		Log.i(TAG, "onCreatePerson(View):void");
+
+		this.savePerson();
+	}
+
+	public void onShowDatePickerDialog(View view) {
+		DialogFragment datePickerDialogFragment = new DatePickerDialogFragment();
+		datePickerDialogFragment.show(super.getSupportFragmentManager(),
+				"datePicker");
 	}
 }

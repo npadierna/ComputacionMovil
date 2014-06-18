@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
                 android:text="@string/document_type_text_view" >
             </TextView>
 
@@ -45,7 +45,7 @@
             </TextView>
 
             <EditText
-                android:id="@+id/document_number_edittext"
+                android:id="@+id/document_number_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -68,7 +68,7 @@
             </TextView>
 
             <EditText
-                android:id="@+id/first_name_edittext"
+                android:id="@+id/first_name_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -106,7 +106,7 @@
             </TextView>
 
             <EditText
-                android:id="@+id/e_mail_edittext"
+                android:id="@+id/e_mail_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -121,17 +121,17 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/birthday_text_view" 
-                android:gravity="center">
+                android:layout_gravity="center_vertical"
+                android:text="@string/birthday_text_view" >
             </TextView>
 
             <ImageView
-                android:id="@+id/imageView1"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:onClick="showDatePickerDialog"
-                android:src="@drawable/calendar" 
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:contentDescription="@string/calendar_content_description_image_view"
+                android:onClick="onShowDatePickerDialog"
+                android:src="@android:drawable/ic_menu_today" >
+            </ImageView>
         </TableRow>
 
         <TableRow
@@ -145,7 +145,7 @@
             </TextView>
 
             <EditText
-                android:id="@+id/phone_number_edittext"
+                android:id="@+id/phone_number_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -164,7 +164,7 @@
             </TextView>
 
             <EditText
-                android:id="@+id/weight_edittext"
+                android:id="@+id/weight_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -177,14 +177,14 @@
             android:layout_height="wrap_content" >
 
             <TextView
-                android:id="@+id/height_textview"
+                android:id="@+id/height_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/height_text_view" >
             </TextView>
 
             <EditText
-                android:id="@+id/height_edittext"
+                android:id="@+id/height_edit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
