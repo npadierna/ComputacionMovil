@@ -11,6 +11,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" >
+    </uses-permission>
 
     <application
         android:allowBackup="true"
@@ -53,6 +55,19 @@
             android:authorities="co.edu.udea.compumovil.grupo11.yamba.provider.StatusContentProvider"
             android:exported="false" >
         </provider>
+
+        <receiver android:name=".broadcast.BooterBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" >
+                </action>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".broadcast.NotificationBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="co.edu.udea.compumovil.grupo11.yamba.action.NEW_TWEETS" >
+                </action>
+            </intent-filter>
+        </receiver>
 
         <service android:name=".service.RefreshIntentService" >
         </service>

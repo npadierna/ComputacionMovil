@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 import co.edu.udea.compumovil.grupo11.yamba.R;
+import co.edu.udea.compumovil.grupo11.yamba.broadcast.NotificationBroadcastReceiver;
 import co.edu.udea.compumovil.grupo11.yamba.database.contract.StatusContract;
 
 import com.marakana.android.yamba.clientlib.YambaClient;
@@ -56,22 +57,23 @@ public class RefreshIntentService extends IntentService {
 		ContentValues contentValues = new ContentValues();
 		YambaClient yambaClient = new YambaClient(userName, password, apiRoot);
 		try {
+			int counter = 0;
 			List<Status> statusTimeLineList = yambaClient
 					.getTimeline(MAX_TIME_LINE);
 			for (Status status : statusTimeLineList) {
 				contentValues.clear();
-				contentValues.put(StatusContract.Column.ID,
-						status.getId());
-				contentValues.put(StatusContract.Column.USER,
-						status.getUser());
+				contentValues.put(StatusContract.Column.ID, status.getId());
+				contentValues.put(StatusContract.Column.USER, status.getUser());
 				contentValues.put(StatusContract.Column.MESSAGE,
 						status.getMessage());
-				contentValues.put(StatusContract.Column.CREATED_AT,
-						status.getCreatedAt().getTime());
+				contentValues.put(StatusContract.Column.CREATED_AT, status
+						.getCreatedAt().getTime());
 
 				Uri uri = super.getContentResolver().insert(
 						StatusContract.CONTENT_URI, contentValues);
 				if (uri != null) {
+					counter++;
+
 					Log.d(TAG,
 							String.format("%s: %s", status.getUser(),
 									status.getMessage()));
@@ -82,6 +84,13 @@ public class RefreshIntentService extends IntentService {
 								status.getMessage()));
 			}
 
+			if (counter > 0) {
+				super.sendBroadcast(new Intent(
+						"co.edu.udea.compumovil.grupo11.yamba.action.NEW_TWEETS")
+						.putExtra(
+								NotificationBroadcastReceiver.NOTIFICATION_COUNTER_KEY,
+								counter));
+			}
 		} catch (Exception e) {
 			Log.e(TAG,
 					"A exception was thrown while the Time Line's status was retrieved",

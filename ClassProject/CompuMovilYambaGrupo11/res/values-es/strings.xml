@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Global Application Text -->
-    <string name="application_name">Yamba 6 / Grupo 11</string>
+    <string name="application_name">Yamba 7 / Grupo 11</string>
 
     <!-- Banner Fragment -->
     <string name="banner_image_content_descripton">Esta es la imagen para el Banner.</string>
@@ -12,6 +12,11 @@
     <string name="action_refresh_main_activity">Actualizar</string>
     <string name="action_settings_main_activity">Configuración</string>
     <string name="action_yamba_main_activity">Haz Yamba</string>
+
+    <!-- Notification Broadcast Receiver -->
+    <string name="new_tweets_first_part_text_notification">Tienes</string>
+    <string name="new_tweets_second_part_text_notification">nuevos Tweets de Yamba.</string>
+    <string name="new_tweets_title_notification">Nuevos Tweets de Yamba!</string>
 
     <!-- Refresh Intent Service -->
     <string name="fail_intent_refresh_service">Por favor, actualice sus datos de cuenta en las Configuraciones.</string>

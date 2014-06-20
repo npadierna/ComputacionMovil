@@ -67,8 +67,8 @@ public final class R {
         /**  Settings Activity 
  Settings Activity 
          */
-        public static final int api_root_summary_settings=0x7f070007;
-        public static final int api_root_title_settings=0x7f070008;
+        public static final int api_root_summary_settings=0x7f07000a;
+        public static final int api_root_title_settings=0x7f07000b;
         /**  Global Application Text 
  Global Application Text 
          */
@@ -80,26 +80,32 @@ public final class R {
         /**  Refresh Intent Service 
  Refresh Intent Service 
          */
-        public static final int fail_intent_refresh_service=0x7f070006;
+        public static final int fail_intent_refresh_service=0x7f070009;
         /**  Status Fragment 
  Status Fragment 
          */
-        public static final int hint_status_edit_text=0x7f07000e;
+        public static final int hint_status_edit_text=0x7f070011;
         /**  Timeline List Fragment 
  Timeline List Fragment 
          */
-        public static final int loading_data_message=0x7f070015;
-        public static final int password_summary_settings=0x7f070009;
-        public static final int password_title_settings=0x7f07000a;
-        public static final int post_failure_toast_text=0x7f070010;
-        public static final int post_successful_toast_text=0x7f07000f;
-        public static final int post_text_progress_dialog=0x7f070011;
-        public static final int post_title_progress_dialog=0x7f070012;
-        public static final int settings_activity_title=0x7f07000b;
-        public static final int status_activity_title=0x7f070013;
-        public static final int tweet_text_button=0x7f070014;
-        public static final int user_name_summary_settings=0x7f07000c;
-        public static final int user_name_title_settings=0x7f07000d;
+        public static final int loading_data_message=0x7f070018;
+        /**  Notification Broadcast Receiver 
+ Notification Broadcast Receiver 
+         */
+        public static final int new_tweets_first_part_text_notification=0x7f070006;
+        public static final int new_tweets_second_part_text_notification=0x7f070007;
+        public static final int new_tweets_title_notification=0x7f070008;
+        public static final int password_summary_settings=0x7f07000c;
+        public static final int password_title_settings=0x7f07000d;
+        public static final int post_failure_toast_text=0x7f070013;
+        public static final int post_successful_toast_text=0x7f070012;
+        public static final int post_text_progress_dialog=0x7f070014;
+        public static final int post_title_progress_dialog=0x7f070015;
+        public static final int settings_activity_title=0x7f07000e;
+        public static final int status_activity_title=0x7f070016;
+        public static final int tweet_text_button=0x7f070017;
+        public static final int user_name_summary_settings=0x7f07000f;
+        public static final int user_name_title_settings=0x7f070010;
     }
     public static final class style {
         /** 
