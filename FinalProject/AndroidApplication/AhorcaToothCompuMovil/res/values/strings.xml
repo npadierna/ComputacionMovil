@@ -1,0 +1,14 @@
+<resources>
+
+    <!-- Category Dashboard Activity -->
+    <string name="category_dashboard_activity_label">Categories</string>
+
+    <!-- Global Strings Text -->
+    <string name="application_name">AhorcaTooth</string>
+
+    <!-- Main Activity -->
+    <string name="single_player_button">Single Player</string>
+    <string name="two_players_button">Two Players</string>
+    <string name="logo_content_description_image_view">Image for logo\'s container.</string>
+
+</resources>
