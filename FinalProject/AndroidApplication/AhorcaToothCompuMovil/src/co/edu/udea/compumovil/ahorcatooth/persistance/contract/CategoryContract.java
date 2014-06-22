@@ -1,6 +1,6 @@
 package co.edu.udea.compumovil.ahorcatooth.persistance.contract;
 
-public class CategoryContract {
+public final class CategoryContract {
 
 	public static final String TABLE_NAME = "CATEGORY";
 
@@ -8,7 +8,7 @@ public class CategoryContract {
 		super();
 	}
 
-	public static class Column {
+	public static final class Column {
 
 		public static final String CATEGORY_NAME = "category_name";
 		public static final String LANGUAGES_ISO_CODE = "languages_iso_code";
@@ -17,6 +17,12 @@ public class CategoryContract {
 
 		private Column() {
 			super();
+		}
+
+		public static final String[] getAllColumns() {
+
+			return (new String[] { CATEGORY_NAME, LANGUAGES_ISO_CODE,
+					IMAGE_NAME, DESCRIPTION });
 		}
 	}
 }

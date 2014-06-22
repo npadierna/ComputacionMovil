@@ -2,94 +2,86 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
 
-public class HangmanWord implements  Serializable {
+public class HangmanWord implements Serializable {
 
-    private static final long serialVersionUID = 6812014168916091904L;
-    private Long id;
-    private String wordName;
-    private String description;
-    private Category category;
+	private static final long serialVersionUID = 6812014168916091904L;
+	private Long id;
+	private String wordName;
+	private String description;
+	private Category category;
 
-    public HangmanWord() {
-        super();
-    }
+	public HangmanWord(Long id, String wordName) {
+		this.id = id;
+		this.wordName = wordName;
+	}
 
-    public HangmanWord(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
 
-    public HangmanWord(Long id, String wordName) {
-        this.id = id;
-        this.wordName = wordName;
-    }
+		return (this.id);
+	}
 
-    public Long getId() {
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-        return (this.id);
-    }
+	public String getWordName() {
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+		return (this.wordName);
+	}
 
-    public String getWordName() {
+	public void setWordName(String wordName) {
+		this.wordName = wordName;
+	}
 
-        return (this.wordName);
-    }
+	public String getDescription() {
 
-    public void setWordName(String wordName) {
-        this.wordName = wordName;
-    }
+		return (this.description);
+	}
 
-    public String getDescription() {
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-        return (this.description);
-    }
+	public Category getCategory() {
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+		return (this.category);
+	}
 
-    public Category getCategory() {
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
-        return (this.category);
-    }
+	@Override()
+	public int hashCode() {
+		int hash = 0;
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
+		hash += ((this.getId() != null) ? this.getId().hashCode() : 0);
 
-    @Override()
-    public int hashCode() {
-        int hash = 0;
+		return (hash);
+	}
 
-        hash += ((this.getId() != null) ? this.getId().hashCode() : 0);
+	@Override()
+	public boolean equals(Object object) {
+		if (!(object instanceof HangmanWord)) {
 
-        return (hash);
-    }
+			return (false);
+		}
 
-    @Override()
-    public boolean equals(Object object) {
-        if (!(object instanceof HangmanWord)) {
+		HangmanWord other = (HangmanWord) object;
+		if (((this.getId() == null) && (other.getId() != null))
+				|| ((this.getId() != null) && !(this.getId().equals(other
+						.getId())))) {
 
-            return (false);
-        }
+			return (false);
+		}
 
-        HangmanWord other = (HangmanWord) object;
-        if (((this.getId() == null) && (other.getId() != null))
-                || ((this.getId() != null)
-                && !(this.getId().equals(other.getId())))) {
+		return (true);
+	}
 
-            return (false);
-        }
+	@Override()
+	public String toString() {
 
-        return (true);
-    }
-
-    @Override()
-    public String toString() {
-
-        return ("co.edu.udea.compumovil.ahorcatooth.model.entity.HangmanWord[ id="
-                + this.getId() + " ]");
-    }
+		return ("co.edu.udea.compumovil.ahorcatooth.model.entity.HangmanWord[ id="
+				+ this.getId() + " ]");
+	}
 }

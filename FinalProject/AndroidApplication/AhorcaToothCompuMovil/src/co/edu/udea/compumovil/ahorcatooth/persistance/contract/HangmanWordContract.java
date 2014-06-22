@@ -1,6 +1,6 @@
 package co.edu.udea.compumovil.ahorcatooth.persistance.contract;
 
-public class HangmanWordContract {
+public final class HangmanWordContract {
 
 	public static final String TABLE_NAME = "HANGMAN_WORD";
 
@@ -8,7 +8,7 @@ public class HangmanWordContract {
 		super();
 	}
 
-	public static class Column {
+	public static final class Column {
 
 		public static final String ID = "id";
 		public static final String WORD_NAME = "word_name";
@@ -18,6 +18,12 @@ public class HangmanWordContract {
 
 		private Column() {
 			super();
+		}
+
+		public static final String[] getAllColumns() {
+
+			return (new String[] { ID, WORD_NAME, DESCRIPTION, CATEGORY_NAME,
+					LANGUAGES_ISO_CODE });
 		}
 	}
 }

@@ -29,7 +29,8 @@ public class CategoryDashboardActivity extends Activity {
 		Log.i(TAG, "createComponents():void");
 
 		List<Category> categoriesList = new ArrayList<Category>();
-		categoriesList.add(new Category(new CategoryPK("Category #1", "es")));
+		categoriesList.add(new Category(new CategoryPK("Category #1", "es"),
+				"image.png"));
 
 		GridView gridView = (GridView) super
 				.findViewById(R.id.categories_grid_view);

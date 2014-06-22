@@ -1,6 +1,6 @@
 package co.edu.udea.compumovil.ahorcatooth.persistance.contract;
 
-public class LanguagesContract {
+public final class LanguagesContract {
 
 	public static final String TABLE_NAME = "LANGUAGES";
 
@@ -8,7 +8,7 @@ public class LanguagesContract {
 		super();
 	}
 
-	public static class Column {
+	public static final class Column {
 
 		public static final String ISO_CODE = "iso_code";
 		public static final String TONGUE = "tongue";
@@ -16,6 +16,11 @@ public class LanguagesContract {
 
 		private Column() {
 			super();
+		}
+
+		public static final String[] getAllColumns() {
+
+			return (new String[] { ISO_CODE, TONGUE, DESCRIPTION });
 		}
 	}
 }

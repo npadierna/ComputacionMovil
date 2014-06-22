@@ -1,7 +1,11 @@
 package co.edu.udea.compumovil.ahorcatooth.persistance.sqlite.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -29,6 +33,44 @@ public class CategoryDAOImpl implements ICategoryDAO {
 		}
 
 		return (instance);
+	}
+
+	@Override()
+	public List<ContentValues> findAllCategories() {
+		Log.i(TAG, "findAllCategories():List<ContentValues>");
+
+		// DEBUGME: Debug this function.
+		SQLiteDatabase sqliteDatabase = this.sqliteOpenHelper
+				.getReadableDatabase();
+		Cursor cursor = sqliteDatabase.query(CategoryContract.TABLE_NAME, null,
+				null, null, null, null, null);
+		List<ContentValues> categoriesContentValues = this
+				.convertCursorToContentValues(cursor);
+
+		cursor.close();
+
+		return (categoriesContentValues);
+	}
+
+	@Override()
+	public List<ContentValues> findCategoriesByLanguageIsoCode(
+			String languageIsoCode) {
+		Log.i(TAG, "findCategoriesByLanguageIsoCode():List<ContentValues>");
+
+		// DEBUGME: Debug this function.
+		String selection = String.format("%s = ?",
+				CategoryContract.Column.LANGUAGES_ISO_CODE);
+		String[] selectionArgs = new String[] { languageIsoCode };
+		SQLiteDatabase sqliteDatabase = this.sqliteOpenHelper
+				.getReadableDatabase();
+		Cursor cursor = sqliteDatabase.query(CategoryContract.TABLE_NAME, null,
+				selection, selectionArgs, null, null, null);
+		List<ContentValues> categoriesContentValues = this
+				.convertCursorToContentValues(cursor);
+
+		cursor.close();
+
+		return (categoriesContentValues);
 	}
 
 	@Override()
@@ -64,5 +106,30 @@ public class CategoryDAOImpl implements ICategoryDAO {
 				whereClause, whereArgs, SQLiteDatabase.CONFLICT_IGNORE);
 
 		return ((affectedRows != 0) ? categoryContentValues : null);
+	}
+
+	private List<ContentValues> convertCursorToContentValues(Cursor cursor) {
+		// DEBUGME: Debug this function.
+		List<ContentValues> contentValuesList = new ArrayList<ContentValues>();
+
+		if ((cursor == null) || (cursor.isClosed())) {
+
+			return (contentValuesList);
+		}
+
+		ContentValues contentValues = null;
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			contentValues = new ContentValues();
+			for (String columnName : CategoryContract.Column.getAllColumns()) {
+				contentValues.put(columnName,
+						cursor.getString(cursor.getColumnIndex(columnName)));
+			}
+
+			contentValuesList.add(contentValues);
+			cursor.moveToNext();
+		}
+
+		return (contentValuesList);
 	}
 }

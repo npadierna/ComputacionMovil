@@ -8,6 +8,11 @@
         android:targetSdkVersion="14" >
     </uses-sdk>
 
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH" >
+    </uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -27,6 +32,10 @@
         <activity
             android:name=".activity.category.CategoryDashboardActivity"
             android:label="@string/category_dashboard_activity_label" >
+        </activity>
+        <activity
+            android:name=".activity.bluetooth.BluetoothDevicesActivity"
+            android:label="@string/application_name" >
         </activity>
     </application>
 

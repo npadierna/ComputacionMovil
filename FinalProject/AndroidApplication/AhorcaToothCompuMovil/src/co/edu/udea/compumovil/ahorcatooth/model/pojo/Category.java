@@ -3,110 +3,104 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 import java.io.Serializable;
 import java.util.List;
 
-public class Category implements  Serializable {
+public class Category implements Serializable {
 
-    private static final long serialVersionUID = 2350741601449118720L;
+	private static final long serialVersionUID = 2350741601449118720L;
 
-    protected CategoryPK categoryPK;
-    private String imageName;
-    private String description;
-    private Languages languages;
-    private List<HangmanWord> hangmanWordList;
+	protected CategoryPK categoryPK;
+	private String imageName;
+	private String description;
+	private Languages languages;
+	private List<HangmanWord> hangmanWordList;
 
-    public Category() {
-        super();
-    }
+	public Category(CategoryPK categoryPK, String imageName) {
+		this.categoryPK = categoryPK;
+		this.imageName = imageName;
+	}
 
-    public Category(CategoryPK categoryPK) {
-        this.categoryPK = categoryPK;
-    }
+	public Category(String categoryName, String languagesIsoCode,
+			String imageName) {
+		this.categoryPK = new CategoryPK(categoryName, languagesIsoCode);
+		this.imageName = imageName;
+	}
 
-    public Category(CategoryPK categoryPK, String imageName) {
-        this.categoryPK = categoryPK;
-        this.imageName = imageName;
-    }
+	public CategoryPK getCategoryPK() {
 
-    public Category(String categoryName, String languagesIsoCode) {
-        this.categoryPK = new CategoryPK(categoryName, languagesIsoCode);
-    }
+		return (this.categoryPK);
+	}
 
-    public CategoryPK getCategoryPK() {
+	public void setCategoryPK(CategoryPK categoryPK) {
+		this.categoryPK = categoryPK;
+	}
 
-        return (this.categoryPK);
-    }
+	public String getImageName() {
 
-    public void setCategoryPK(CategoryPK categoryPK) {
-        this.categoryPK = categoryPK;
-    }
+		return (this.imageName);
+	}
 
-    public String getImageName() {
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
 
-        return (this.imageName);
-    }
+	public String getDescription() {
 
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
+		return (this.description);
+	}
 
-    public String getDescription() {
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-        return (this.description);
-    }
+	public Languages getLanguages() {
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+		return (this.languages);
+	}
 
-    public Languages getLanguages() {
+	public void setLanguages(Languages languages) {
+		this.languages = languages;
+	}
 
-        return (this.languages);
-    }
+	public List<HangmanWord> getHangmanWordList() {
 
-    public void setLanguages(Languages languages) {
-        this.languages = languages;
-    }
+		return (this.hangmanWordList);
+	}
 
-    public List<HangmanWord> getHangmanWordList() {
+	public void setHangmanWordList(List<HangmanWord> hangmanWordList) {
+		this.hangmanWordList = hangmanWordList;
+	}
 
-        return (this.hangmanWordList);
-    }
+	@Override()
+	public int hashCode() {
+		int hash = 0;
 
-    public void setHangmanWordList(List<HangmanWord> hangmanWordList) {
-        this.hangmanWordList = hangmanWordList;
-    }
+		hash += ((this.getCategoryPK() != null) ? this.getCategoryPK()
+				.hashCode() : 0);
 
-    @Override()
-    public int hashCode() {
-        int hash = 0;
+		return (hash);
+	}
 
-        hash += ((this.getCategoryPK() != null)
-                ? this.getCategoryPK().hashCode() : 0);
+	@Override()
+	public boolean equals(Object object) {
+		if (!(object instanceof Category)) {
 
-        return (hash);
-    }
+			return (false);
+		}
 
-    @Override()
-    public boolean equals(Object object) {
-        if (!(object instanceof Category)) {
+		Category other = (Category) object;
+		if (((this.getCategoryPK() == null) && (other.getCategoryPK() != null))
+				|| ((this.getCategoryPK() != null) && !(this.getCategoryPK()
+						.equals(other.getCategoryPK())))) {
 
-            return (false);
-        }
+			return (false);
+		}
 
-        Category other = (Category) object;
-        if (((this.getCategoryPK() == null) && (other.getCategoryPK() != null))
-                || ((this.getCategoryPK() != null)
-                && !(this.getCategoryPK().equals(other.getCategoryPK())))) {
+		return (true);
+	}
 
-            return (false);
-        }
+	@Override()
+	public String toString() {
 
-        return (true);
-    }
-
-    @Override()
-    public String toString() {
-
-        return ("co.edu.udea.compumovil.ahorcatooth.model.entity.Category[ categoryPK="
-                + this.getCategoryPK() + " ]");
-    }
+		return ("co.edu.udea.compumovil.ahorcatooth.model.entity.Category[ categoryPK="
+				+ this.getCategoryPK() + " ]");
+	}
 }

@@ -1,7 +1,11 @@
 package co.edu.udea.compumovil.ahorcatooth.persistance.sqlite.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -48,6 +52,27 @@ public class HangmanWordDAOImpl implements IHangmanWordDAO {
 	}
 
 	@Override()
+	public List<ContentValues> findHangmanWordsByCategoryNameAndLanguageIsoCode(
+			String categoryName, String languageIsoCode) {
+		Log.i(TAG,
+				"findHangmanWordsByCategoryNameAndLanguageIsoCode(String, String):List<ContentValues>");
+
+		// DEBUGME: Debug this function.
+		String selection = String.format("%s = ? AND %s = ?",
+				HangmanWordContract.Column.CATEGORY_NAME,
+				HangmanWordContract.Column.LANGUAGES_ISO_CODE);
+		String[] selectionArgs = new String[] { categoryName, languageIsoCode };
+		SQLiteDatabase sqliteDatabase = this.sqliteOpenHelper
+				.getReadableDatabase();
+		Cursor cursor = sqliteDatabase.query(HangmanWordContract.TABLE_NAME,
+				null, selection, selectionArgs, null, null, null);
+		List<ContentValues> hangmanWordsContentValues = this
+				.convertCursorToContentValues(cursor);
+
+		return (hangmanWordsContentValues);
+	}
+
+	@Override()
 	public ContentValues saveHangmanWord(ContentValues hangmanWordContentValues) {
 		Log.i(TAG, "saveHangmanWord(ContentValues):ContentValues");
 
@@ -58,5 +83,30 @@ public class HangmanWordDAOImpl implements IHangmanWordDAO {
 				SQLiteDatabase.CONFLICT_IGNORE);
 
 		return ((rowId != -1L) ? hangmanWordContentValues : null);
+	}
+
+	private List<ContentValues> convertCursorToContentValues(Cursor cursor) {
+		// DEBUGME: Debug this function.
+		List<ContentValues> contentValuesList = new ArrayList<ContentValues>();
+
+		if ((cursor == null) || (cursor.isClosed())) {
+
+			return (contentValuesList);
+		}
+
+		ContentValues contentValues = null;
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			contentValues = new ContentValues();
+			for (String columnName : HangmanWordContract.Column.getAllColumns()) {
+				contentValues.put(columnName,
+						cursor.getString(cursor.getColumnIndex(columnName)));
+			}
+
+			contentValuesList.add(contentValues);
+			cursor.moveToNext();
+		}
+
+		return (contentValuesList);
 	}
 }

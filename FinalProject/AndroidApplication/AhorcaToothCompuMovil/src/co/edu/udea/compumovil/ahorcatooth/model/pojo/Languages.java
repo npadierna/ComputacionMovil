@@ -13,14 +13,6 @@ public class Languages implements Serializable {
 	private String description;
 	private Category category;
 
-	public Languages() {
-		super();
-	}
-
-	public Languages(String isoCode) {
-		this.isoCode = isoCode;
-	}
-
 	public Languages(String isoCode, String tongue) {
 		this.isoCode = isoCode;
 		this.tongue = tongue;

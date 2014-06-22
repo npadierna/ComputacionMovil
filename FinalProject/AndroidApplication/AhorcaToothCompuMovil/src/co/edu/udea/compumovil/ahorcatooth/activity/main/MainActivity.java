@@ -8,8 +8,8 @@ import android.view.View;
 import co.edu.udea.compumovil.ahorcatooth.R;
 import co.edu.udea.compumovil.ahorcatooth.activity.category.CategoryDashboardActivity;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
-import co.edu.udea.compumovil.ahorcatooth.process.ILanguagesProcess;
-import co.edu.udea.compumovil.ahorcatooth.process.impl.LanguagesProcessImpl;
+import co.edu.udea.compumovil.ahorcatooth.process.business.ILanguagesProcess;
+import co.edu.udea.compumovil.ahorcatooth.process.business.impl.LanguagesProcessImpl;
 
 public class MainActivity extends Activity {
 
