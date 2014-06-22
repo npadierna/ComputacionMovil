@@ -1,11 +1,20 @@
 package co.edu.udea.compumovil.ahorcatooth.webservice.restful.impl;
 
-import co.edu.udea.compumovil.ahorcatooth.model.entity.Languages;
+import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
+import co.edu.udea.compumovil.ahorcatooth.persistance.dao.ILanguagesDAO;
+import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
 import co.edu.udea.compumovil.ahorcatooth.webservice.ILanguagesWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.contract.WebServicePathsContract;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.jws.WebService;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Path(WebServicePathsContract.LanguagesContract.ROOT_PATH)
@@ -13,12 +22,30 @@ import org.springframework.stereotype.Service;
 @WebService(endpointInterface = WebServicePathsContract.LanguagesContract.END_POINT_INTERFACE)
 public class LanguagesWSImpl implements ILanguagesWS {
 
+    private static final String TAG = LanguagesWSImpl.class.getSimpleName();
+    @Autowired()
+    private ILanguagesDAO languagesDAO;
+
     public LanguagesWSImpl() {
         super();
     }
 
+    @GET()
     @Override()
+    @Path(WebServicePathsContract.LanguagesContract.ALL_LANGUAGES_PATH)
+    @Produces(value = {MediaType.APPLICATION_JSON})
     public List<Languages> findAllLanguages() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<Languages> languagesesFoundList = null;
+
+        try {
+            languagesesFoundList = this.languagesDAO.findAllLanguages();
+        } catch (AhorcaToothDatabaseException ex) {
+            Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
+                    "findAllLanguages():List<Languages>",
+                    String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
+                    ex.getMessage()), ex);
+        }
+
+        return (languagesesFoundList);
     }
 }

@@ -1,6 +1,7 @@
-package co.edu.udea.compumovil.ahorcatooth.model.entity;
+package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,11 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity()
 @NamedQueries({
@@ -24,7 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Languages.findByDescription",
             query = "SELECT l FROM Languages l WHERE l.description = :description")})
 @Table(name = "LANGUAGES")
-//@XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement()
 public class Languages implements IEntityContext, Serializable {
 
@@ -43,15 +44,11 @@ public class Languages implements IEntityContext, Serializable {
     @Size(max = 250)
     @Column(name = "description")
     private String description;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "languages")
-    private Category category;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "languages")
+    private List<Category> categoryList;
 
     public Languages() {
         super();
-    }
-
-    public Languages(String isoCode) {
-        this.isoCode = isoCode;
     }
 
     public Languages(String isoCode, String tongue) {
@@ -86,13 +83,14 @@ public class Languages implements IEntityContext, Serializable {
         this.description = description;
     }
 
-    public Category getCategory() {
+    @XmlTransient()
+    public List<Category> getCategoryList() {
 
-        return (this.category);
+        return (this.categoryList);
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
     @Override()

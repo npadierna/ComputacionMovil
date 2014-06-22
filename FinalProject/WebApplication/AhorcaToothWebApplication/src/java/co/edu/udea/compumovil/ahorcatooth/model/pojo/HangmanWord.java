@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.ahorcatooth.model.entity;
+package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -28,7 +28,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HangmanWord.findByDescription",
             query = "SELECT h FROM HangmanWord h WHERE h.description = :description")})
 @Table(name = "HANGMAN_WORD")
-//@XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement()
 public class HangmanWord implements IEntityContext, Serializable {
 
@@ -56,10 +55,6 @@ public class HangmanWord implements IEntityContext, Serializable {
 
     public HangmanWord() {
         super();
-    }
-
-    public HangmanWord(Long id) {
-        this.id = id;
     }
 
     public HangmanWord(Long id, String wordName) {

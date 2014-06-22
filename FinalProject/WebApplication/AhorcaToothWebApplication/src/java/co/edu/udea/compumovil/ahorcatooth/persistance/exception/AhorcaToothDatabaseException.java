@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.ahorcatooth.database.exception;
+package co.edu.udea.compumovil.ahorcatooth.persistance.exception;
 
 import java.io.Serializable;
 

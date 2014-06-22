@@ -1,7 +1,7 @@
-package co.edu.udea.compumovil.ahorcatooth.database.dao;
+package co.edu.udea.compumovil.ahorcatooth.persistance.dao;
 
-import co.edu.udea.compumovil.ahorcatooth.database.exception.AhorcaToothDatabaseException;
-import co.edu.udea.compumovil.ahorcatooth.model.entity.HangmanWord;
+import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
+import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import java.util.List;
 
 public interface IHangmanWordDAO {

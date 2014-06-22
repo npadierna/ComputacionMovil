@@ -6,14 +6,14 @@
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" >
 
     <bean name="categoryDAO"
-          class="co.edu.udea.compumovil.ahorcatooth.database.dao.hibernate.impl.CategoryDAOImpl" >
+          class="co.edu.udea.compumovil.ahorcatooth.persistance.dao.hibernate.impl.CategoryDAOImpl" >
     </bean>
 
     <bean name="hangmanWordDAO"
-          class="co.edu.udea.compumovil.ahorcatooth.database.dao.hibernate.impl.HangmanWordDAOImpl" >
+          class="co.edu.udea.compumovil.ahorcatooth.persistance.dao.hibernate.impl.HangmanWordDAOImpl" >
     </bean>
 
     <bean name="languagesDAO"
-          class="co.edu.udea.compumovil.ahorcatooth.database.dao.hibernate.impl.LanguaguesDAOImpl" >
+          class="co.edu.udea.compumovil.ahorcatooth.persistance.dao.hibernate.impl.LanguaguesDAOImpl" >
     </bean>
 </beans>

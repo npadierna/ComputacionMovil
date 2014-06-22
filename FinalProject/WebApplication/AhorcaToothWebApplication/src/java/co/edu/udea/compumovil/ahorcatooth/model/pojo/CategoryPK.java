@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.ahorcatooth.model.entity;
+package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -53,10 +53,10 @@ public class CategoryPK implements Serializable {
     public int hashCode() {
         int hash = 0;
 
-        hash += ((this.getCategoryName() != null)
-                ? this.getCategoryName().hashCode() : 0);
-        hash += ((this.getLanguagesIsoCode() != null)
-                ? this.getLanguagesIsoCode().hashCode() : 0);
+        hash += ((this.getCategoryName() != null) ? this.getCategoryName()
+                .hashCode() : 0);
+        hash += ((this.getLanguagesIsoCode() != null) ? this.getLanguagesIsoCode()
+                .hashCode() : 0);
 
         return (hash);
     }
@@ -80,8 +80,8 @@ public class CategoryPK implements Serializable {
         if (((this.getLanguagesIsoCode() == null)
                 && (other.getLanguagesIsoCode() != null))
                 || ((this.getLanguagesIsoCode() != null)
-                && !(this.getLanguagesIsoCode().equals(
-                other.getLanguagesIsoCode())))) {
+                && !(this.getLanguagesIsoCode().equals(other
+                .getLanguagesIsoCode())))) {
 
             return (false);
         }

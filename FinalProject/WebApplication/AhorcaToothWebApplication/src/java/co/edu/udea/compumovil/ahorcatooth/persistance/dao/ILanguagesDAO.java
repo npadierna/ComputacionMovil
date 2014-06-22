@@ -1,7 +1,7 @@
-package co.edu.udea.compumovil.ahorcatooth.database.dao;
+package co.edu.udea.compumovil.ahorcatooth.persistance.dao;
 
-import co.edu.udea.compumovil.ahorcatooth.database.exception.AhorcaToothDatabaseException;
-import co.edu.udea.compumovil.ahorcatooth.model.entity.Languages;
+import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
+import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
 import java.util.List;
 
 public interface ILanguagesDAO {
@@ -20,7 +20,7 @@ public interface ILanguagesDAO {
     public Languages findLanguages(String key)
             throws AhorcaToothDatabaseException;
 
-    public List<Languages> findLanguagesByAttributes(String... attributesArgs)
+    public List<Languages> findLanguagesByAttributes(Object... attributesArgs)
             throws AhorcaToothDatabaseException;
 
     public String saveLanguages(Languages languages)

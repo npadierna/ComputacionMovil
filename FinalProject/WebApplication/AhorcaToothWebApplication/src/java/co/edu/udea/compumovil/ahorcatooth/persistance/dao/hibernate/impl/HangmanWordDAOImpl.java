@@ -1,9 +1,9 @@
-package co.edu.udea.compumovil.ahorcatooth.database.dao.hibernate.impl;
+package co.edu.udea.compumovil.ahorcatooth.persistance.dao.hibernate.impl;
 
-import co.edu.udea.compumovil.ahorcatooth.database.dao.IHangmanWordDAO;
-import co.edu.udea.compumovil.ahorcatooth.database.exception.AhorcaToothDatabaseException;
-import co.edu.udea.compumovil.ahorcatooth.model.entity.HangmanWord;
-import co.edu.udea.compumovil.ahorcatooth.model.entity.IEntityContext;
+import co.edu.udea.compumovil.ahorcatooth.persistance.dao.IHangmanWordDAO;
+import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
+import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
+import co.edu.udea.compumovil.ahorcatooth.model.pojo.IEntityContext;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
@@ -48,6 +48,7 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
     }
 
     @Override()
+    @SuppressWarnings(value = {"unchecked"})
     public List<HangmanWord> findAllHangmanWords()
             throws AhorcaToothDatabaseException {
 
@@ -62,6 +63,7 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
     }
 
     @Override()
+    @SuppressWarnings(value = {"unchecked"})
     public List<HangmanWord> findHangmanWordsByAttributes(
             Object... attributesArgs) throws AhorcaToothDatabaseException {
 

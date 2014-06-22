@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.ahorcatooth.model.entity;
+package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 public interface IEntityContext {
 

@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.ahorcatooth.model.entity;
+package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,10 +8,10 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -30,7 +30,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Category.findByDescription",
             query = "SELECT c FROM Category c WHERE c.description = :description")})
 @Table(name = "CATEGORY")
-//@XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement()
 public class Category implements IEntityContext, Serializable {
 
@@ -47,17 +46,13 @@ public class Category implements IEntityContext, Serializable {
     private String description;
     @JoinColumn(name = "languages_iso_code", referencedColumnName = "iso_code",
             insertable = false, updatable = false)
-    @OneToOne(optional = false)
+    @ManyToOne(optional = false)
     private Languages languages;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
     private List<HangmanWord> hangmanWordList;
 
     public Category() {
         super();
-    }
-
-    public Category(CategoryPK categoryPK) {
-        this.categoryPK = categoryPK;
     }
 
     public Category(CategoryPK categoryPK, String imageName) {
@@ -130,8 +125,8 @@ public class Category implements IEntityContext, Serializable {
     public int hashCode() {
         int hash = 0;
 
-        hash += ((this.getCategoryPK() != null)
-                ? this.getCategoryPK().hashCode() : 0);
+        hash += ((this.getCategoryPK() != null) ? this.getCategoryPK().hashCode()
+                : 0);
 
         return (hash);
     }

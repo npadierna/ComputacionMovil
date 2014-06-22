@@ -1,8 +1,8 @@
-package co.edu.udea.compumovil.ahorcatooth.database.dao.hibernate.impl;
+package co.edu.udea.compumovil.ahorcatooth.persistance.dao.hibernate.impl;
 
-import co.edu.udea.compumovil.ahorcatooth.database.dao.IEntityContextDAO;
-import co.edu.udea.compumovil.ahorcatooth.database.exception.AhorcaToothDatabaseException;
-import co.edu.udea.compumovil.ahorcatooth.model.entity.IEntityContext;
+import co.edu.udea.compumovil.ahorcatooth.persistance.dao.IEntityContextDAO;
+import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
+import co.edu.udea.compumovil.ahorcatooth.model.pojo.IEntityContext;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

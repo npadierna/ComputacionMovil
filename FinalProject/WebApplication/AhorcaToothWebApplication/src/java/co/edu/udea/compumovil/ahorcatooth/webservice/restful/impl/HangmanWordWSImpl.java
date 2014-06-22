@@ -1,6 +1,6 @@
 package co.edu.udea.compumovil.ahorcatooth.webservice.restful.impl;
 
-import co.edu.udea.compumovil.ahorcatooth.model.entity.HangmanWord;
+import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import co.edu.udea.compumovil.ahorcatooth.webservice.IHangmanWordWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.contract.WebServicePathsContract;
 import java.util.List;
