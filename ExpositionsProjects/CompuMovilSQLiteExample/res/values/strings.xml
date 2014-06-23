@@ -80,5 +80,10 @@
 
     <!-- Person Retriever Activity -->
     <string name="person_retriever_activity_title">Buscar Persona</string>
+    
+    <!-- Person Update Activity -->
+    <string name="update_successful_text">Actualizado Exitosamente</string>
+    <string name="successful_update_information_tittle">La persona fue actualizada exitosamente en la Base de Datos</string>
+    <string name="update_information_activity_title">Actualizar Información</string>
 
 </resources>

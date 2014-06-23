@@ -37,6 +37,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
+            android:name=".activity.person.update.PersonUpdaterActivity"
+            android:label="@string/update_information_activity_title"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
             android:name=".activity.person.find.PersonDocumentTypeFinderActivity"
             android:label="@string/person_document_type_activity_title"
             android:screenOrientation="portrait"

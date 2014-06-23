@@ -49,11 +49,13 @@ public class PersonCreatorActivity extends FragmentActivity {
 	private String idNumber;
 	private String lastNames;
 	private String phoneNumber;
+	public static boolean activityCall;
 
 	@Override()
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_person_creator);
+		PersonCreatorActivity.activityCall = false;
 
 		if (savedInstanceState == null) {
 			this.personProcess = new PersonProcessImpl(
@@ -82,7 +84,7 @@ public class PersonCreatorActivity extends FragmentActivity {
 				.obtainDocumentsTypesList();
 
 		this.documentTypeSpinner = (Spinner) super
-				.findViewById(R.id.document_type_spinner);
+				.findViewById(R.id.person_information_document_type_spinner);
 
 		SpinnerAdapter documentTypeSpinnerAdapter = new ArrayAdapter<String>(
 				this, android.R.layout.simple_spinner_item,
@@ -103,19 +105,19 @@ public class PersonCreatorActivity extends FragmentActivity {
 				});
 
 		this.idNumberEditText = (EditText) super
-				.findViewById(R.id.document_number_edit_text);
+				.findViewById(R.id.person_information_document_number_edit_text);
 		this.eMailEditText = (EditText) super
-				.findViewById(R.id.e_mail_edit_text);
+				.findViewById(R.id.person_information_e_mail_edit_text);
 		this.firstNameEditText = (EditText) super
-				.findViewById(R.id.first_name_edit_text);
+				.findViewById(R.id.person_information_first_name_edit_text);
 		this.lastNameEditText = (EditText) super
-				.findViewById(R.id.last_names_edit_text);
+				.findViewById(R.id.person_information_last_names_edit_text);
 		this.phoneNumberEditText = (EditText) super
-				.findViewById(R.id.phone_number_edit_text);
+				.findViewById(R.id.person_information_phone_number_edit_text);
 		this.weightEditText = (EditText) super
-				.findViewById(R.id.weight_edit_text);
+				.findViewById(R.id.person_information_weight_edit_text);
 		this.heighEditText = (EditText) super
-				.findViewById(R.id.height_edit_text);
+				.findViewById(R.id.person_information_height_edit_text);
 	}
 
 	private void savePerson() {
@@ -162,7 +164,7 @@ public class PersonCreatorActivity extends FragmentActivity {
 		(messageAlertDialog.create()).show();
 	}
 
-	public void onCreatePerson(View view) {
+	public void onPositiveButton(View view) {
 		Log.i(TAG, "onCreatePerson(View):void");
 
 		this.savePerson();
@@ -172,5 +174,6 @@ public class PersonCreatorActivity extends FragmentActivity {
 		DialogFragment datePickerDialogFragment = new DatePickerDialogFragment();
 		datePickerDialogFragment.show(super.getSupportFragmentManager(),
 				"datePicker");
+		PersonCreatorActivity.activityCall = true;
 	}
 }
