@@ -12,7 +12,7 @@ import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 
 class CategoryArrayAdapter extends ArrayAdapter<Category> {
 
-	int resource;
+	private int resource;
 
 	private Activity activity;
 	private List<Category> categoriesList;
@@ -22,7 +22,6 @@ class CategoryArrayAdapter extends ArrayAdapter<Category> {
 		super(activity.getApplicationContext(), resource, categoriesList);
 
 		this.resource = resource;
-
 		this.activity = activity;
 		this.categoriesList = categoriesList;
 	}

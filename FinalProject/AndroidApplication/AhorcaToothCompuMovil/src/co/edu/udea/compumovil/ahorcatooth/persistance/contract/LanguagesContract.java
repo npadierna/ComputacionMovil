@@ -1,6 +1,6 @@
 package co.edu.udea.compumovil.ahorcatooth.persistance.contract;
 
-public final class LanguagesContract {
+public final class LanguagesContract extends PersistanceContract {
 
 	public static final String TABLE_NAME = "LANGUAGES";
 

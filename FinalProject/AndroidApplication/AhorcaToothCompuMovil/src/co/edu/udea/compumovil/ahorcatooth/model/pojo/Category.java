@@ -3,7 +3,10 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 import java.io.Serializable;
 import java.util.List;
 
-public class Category implements Serializable {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Category implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 2350741601449118720L;
 
@@ -12,6 +15,17 @@ public class Category implements Serializable {
 	private String description;
 	private Languages languages;
 	private List<HangmanWord> hangmanWordList;
+
+	public Category() {
+		super();
+	}
+
+	public Category(Parcel parcel) {
+		this.setCategoryPK((CategoryPK) parcel.readParcelable(CategoryPK.class
+				.getClassLoader()));
+		this.setImageName(parcel.readString());
+		this.setDescription(parcel.readString());
+	}
 
 	public Category(CategoryPK categoryPK, String imageName) {
 		this.categoryPK = categoryPK;
@@ -70,6 +84,19 @@ public class Category implements Serializable {
 	}
 
 	@Override()
+	public int describeContents() {
+
+		return (0);
+	}
+
+	@Override()
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeParcelable(this.getCategoryPK(), 0);
+		dest.writeString(this.getImageName());
+		dest.writeString(this.getDescription());
+	}
+
+	@Override()
 	public int hashCode() {
 		int hash = 0;
 
@@ -100,7 +127,22 @@ public class Category implements Serializable {
 	@Override()
 	public String toString() {
 
-		return ("co.edu.udea.compumovil.ahorcatooth.model.entity.Category[ categoryPK="
+		return ("co.edu.udea.compumovil.ahorcatooth.model.pojo.Category[ categoryPK="
 				+ this.getCategoryPK() + " ]");
 	}
+
+	public static final Parcelable.Creator<Category> CREATOR = new Parcelable.Creator<Category>() {
+
+		@Override()
+		public Category createFromParcel(Parcel source) {
+
+			return (new Category(source));
+		}
+
+		@Override()
+		public Category[] newArray(int size) {
+
+			return (new Category[size]);
+		}
+	};
 }

@@ -1,6 +1,6 @@
 package co.edu.udea.compumovil.ahorcatooth.persistance.contract;
 
-public final class CategoryContract {
+public final class CategoryContract extends PersistanceContract{
 
 	public static final String TABLE_NAME = "CATEGORY";
 

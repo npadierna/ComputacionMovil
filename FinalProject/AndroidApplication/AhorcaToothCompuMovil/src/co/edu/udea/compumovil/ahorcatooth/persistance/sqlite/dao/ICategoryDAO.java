@@ -6,6 +6,8 @@ import android.content.ContentValues;
 
 public interface ICategoryDAO {
 
+	public Long countCategories();
+
 	public List<ContentValues> findAllCategories();
 
 	public List<ContentValues> findCategoriesByLanguageIsoCode(

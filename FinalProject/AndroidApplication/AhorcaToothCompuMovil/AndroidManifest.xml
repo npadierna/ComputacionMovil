@@ -34,7 +34,12 @@
             android:label="@string/category_dashboard_activity_label" >
         </activity>
         <activity
-            android:name=".activity.bluetooth.BluetoothDevicesActivity"
+            android:name=".activity.bluetooth.BluetoothDevicesListActivity"
+            android:label="@string/bluetooth_devices_activity_title"
+            android:theme="@android:style/Theme.Holo.Light.Dialog" >
+        </activity>
+        <activity
+            android:name=".activity.game.HangmanBoardActivity"
             android:label="@string/application_name" >
         </activity>
     </application>

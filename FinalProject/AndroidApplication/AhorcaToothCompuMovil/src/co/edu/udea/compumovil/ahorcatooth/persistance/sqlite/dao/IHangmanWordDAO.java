@@ -6,6 +6,8 @@ import android.content.ContentValues;
 
 public interface IHangmanWordDAO {
 
+	public Long countHangmanWords();
+
 	public Integer deleteHangmanWord(Long id);
 
 	public List<ContentValues> findHangmanWordsByCategoryNameAndLanguageIsoCode(

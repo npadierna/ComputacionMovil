@@ -2,6 +2,7 @@ package co.edu.udea.compumovil.ahorcatooth.process.business.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -54,6 +55,24 @@ public class HangmanWordProcessImpl implements IHangmanWordProcess {
 		}
 
 		return (hangmanWordsList);
+	}
+
+	public HangmanWord findOneHangmanWordByCategoryNameAndLanguageIsoCode(
+			String categoryName, String languageIsoCode) {
+		Log.i(TAG,
+				"findOneHangmanWordByCategoryNameAndLanguageIsoCode(String, String):HangmanWord");
+
+		List<HangmanWord> hangmanWordsFoundList = this
+				.findHangmanWordsByCategoryNameAndLanguageIsoCode(categoryName,
+						languageIsoCode);
+
+		if (!hangmanWordsFoundList.isEmpty()) {
+			int position = (new Random()).nextInt(hangmanWordsFoundList.size());
+
+			return (hangmanWordsFoundList.get(position));
+		}
+
+		return (null);
 	}
 
 	@Override()

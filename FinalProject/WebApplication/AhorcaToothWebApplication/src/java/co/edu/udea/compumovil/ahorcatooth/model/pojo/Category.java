@@ -60,8 +60,9 @@ public class Category implements IEntityContext, Serializable {
         this.imageName = imageName;
     }
 
-    public Category(String categoryName, String languagesIsoCode) {
+    public Category(String categoryName, String languagesIsoCode, String imageName) {
         this.categoryPK = new CategoryPK(categoryName, languagesIsoCode);
+        this.imageName = imageName;
     }
 
     public CategoryPK getCategoryPK() {

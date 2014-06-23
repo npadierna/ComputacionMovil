@@ -2,11 +2,24 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
 
-public class CategoryPK implements Serializable {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class CategoryPK implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 4154606141448857600L;
+
 	private String categoryName;
 	private String languagesIsoCode;
+
+	public CategoryPK() {
+		super();
+	}
+
+	public CategoryPK(Parcel parcel) {
+		this.setCategoryName(parcel.readString());
+		this.setLanguagesIsoCode(parcel.readString());
+	}
 
 	public CategoryPK(String categoryName, String languagesIsoCode) {
 		this.categoryName = categoryName;
@@ -29,6 +42,18 @@ public class CategoryPK implements Serializable {
 
 	public void setLanguagesIsoCode(String languagesIsoCode) {
 		this.languagesIsoCode = languagesIsoCode;
+	}
+
+	@Override()
+	public int describeContents() {
+
+		return (0);
+	}
+
+	@Override()
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this.getCategoryName());
+		dest.writeString(this.getLanguagesIsoCode());
 	}
 
 	@Override()
@@ -73,9 +98,24 @@ public class CategoryPK implements Serializable {
 	@Override()
 	public String toString() {
 
-		return ("co.edu.udea.compumovil.ahorcatooth.model.entity.CategoryPK[ categoryName="
+		return ("co.edu.udea.compumovil.ahorcatooth.model.pojo.CategoryPK[ categoryName="
 				+ this.getCategoryName()
 				+ ", languagesIsoCode="
 				+ this.getLanguagesIsoCode() + " ]");
 	}
+
+	public static final Parcelable.Creator<CategoryPK> CREATOR = new Parcelable.Creator<CategoryPK>() {
+
+		@Override()
+		public CategoryPK createFromParcel(Parcel source) {
+
+			return (new CategoryPK(source));
+		}
+
+		@Override()
+		public CategoryPK[] newArray(int size) {
+
+			return (new CategoryPK[size]);
+		}
+	};
 }

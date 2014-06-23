@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Bluetooth Devices Activity -->
+    <color name="devices_list_background_title_text_view">#666666</color>
+    <color name="devices_list_text_color_title_text_view">#FFFFFF</color>
+
+    <!-- Hangman Board Activity -->
+    <color name="hidden_word_text_color">#000000</color>
+
+    <!-- Keyboard Key Button -->
+    <color name="keyboard_key_button_text_color">#000000</color>
+    <color name="used_keyboard_key_button_text_color">#C4C4C4</color>
+
+</resources>

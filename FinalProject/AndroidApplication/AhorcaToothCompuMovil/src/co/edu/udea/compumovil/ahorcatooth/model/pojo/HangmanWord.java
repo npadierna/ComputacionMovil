@@ -2,13 +2,27 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
 
-public class HangmanWord implements Serializable {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class HangmanWord implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 6812014168916091904L;
+
 	private Long id;
 	private String wordName;
 	private String description;
 	private Category category;
+
+	public HangmanWord() {
+		super();
+	}
+
+	public HangmanWord(Parcel parcel) {
+		this.setId(parcel.readLong());
+		this.setWordName(parcel.readString());
+		this.setDescription(parcel.readString());
+	}
 
 	public HangmanWord(Long id, String wordName) {
 		this.id = id;
@@ -52,6 +66,19 @@ public class HangmanWord implements Serializable {
 	}
 
 	@Override()
+	public int describeContents() {
+
+		return (0);
+	}
+
+	@Override()
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeLong(this.getId());
+		dest.writeString(this.getWordName());
+		dest.writeString(this.getDescription());
+	}
+
+	@Override()
 	public int hashCode() {
 		int hash = 0;
 
@@ -81,7 +108,22 @@ public class HangmanWord implements Serializable {
 	@Override()
 	public String toString() {
 
-		return ("co.edu.udea.compumovil.ahorcatooth.model.entity.HangmanWord[ id="
+		return ("co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord[ id="
 				+ this.getId() + " ]");
 	}
+
+	public static final Parcelable.Creator<HangmanWord> CREATOR = new Parcelable.Creator<HangmanWord>() {
+
+		@Override()
+		public HangmanWord createFromParcel(Parcel source) {
+
+			return (new HangmanWord(source));
+		}
+
+		@Override()
+		public HangmanWord[] newArray(int size) {
+
+			return (new HangmanWord[size]);
+		}
+	};
 }

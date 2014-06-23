@@ -11,5 +11,8 @@ public interface IHangmanWordProcess {
 	public List<HangmanWord> findHangmanWordsByCategoryNameAndLanguageIsoCode(
 			String categoryName, String languageIsoCode);
 
+	public HangmanWord findOneHangmanWordByCategoryNameAndLanguageIsoCode(
+			String categoryName, String languageIsoCode);
+
 	public HangmanWord saveHangmanWord(HangmanWord hangmanWord);
 }

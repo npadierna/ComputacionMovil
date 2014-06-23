@@ -1,17 +1,29 @@
 package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
-public class Languages implements Serializable {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Languages implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 1880614879702762208L;
 
 	private String isoCode;
-
 	private String tongue;
-
 	private String description;
-	private Category category;
+	private List<Category> categoryList;
+
+	public Languages() {
+		super();
+	}
+
+	public Languages(Parcel parcel) {
+		this.setIsoCode(parcel.readString());
+		this.setTongue(parcel.readString());
+		this.setDescription(parcel.readString());
+	}
 
 	public Languages(String isoCode, String tongue) {
 		this.isoCode = isoCode;
@@ -45,13 +57,26 @@ public class Languages implements Serializable {
 		this.description = description;
 	}
 
-	public Category getCategory() {
+	public List<Category> getCategoryList() {
 
-		return (this.category);
+		return (this.categoryList);
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryList(List<Category> categoryList) {
+		this.categoryList = categoryList;
+	}
+
+	@Override()
+	public int describeContents() {
+
+		return (0);
+	}
+
+	@Override()
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(this.getIsoCode());
+		dest.writeString(this.getTongue());
+		dest.writeString(this.getDescription());
 	}
 
 	@Override()
@@ -84,7 +109,22 @@ public class Languages implements Serializable {
 	@Override()
 	public String toString() {
 
-		return ("co.edu.udea.compumovil.ahorcatooth.model.entity.Languages[ isoCode="
+		return ("co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages[ isoCode="
 				+ this.getIsoCode() + " ]");
 	}
+
+	public static final Parcelable.Creator<Languages> CREATOR = new Parcelable.Creator<Languages>() {
+
+		@Override()
+		public Languages createFromParcel(Parcel source) {
+
+			return (new Languages(source));
+		}
+
+		@Override()
+		public Languages[] newArray(int size) {
+
+			return (new Languages[size]);
+		}
+	};
 }

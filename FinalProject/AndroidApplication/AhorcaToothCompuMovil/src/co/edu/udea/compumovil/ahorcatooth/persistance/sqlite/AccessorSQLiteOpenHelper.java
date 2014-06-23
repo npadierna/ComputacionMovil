@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import co.edu.udea.compumovil.ahorcatooth.persistance.contract.CategoryContract;
-import co.edu.udea.compumovil.ahorcatooth.persistance.contract.DatabaseContract;
+import co.edu.udea.compumovil.ahorcatooth.persistance.contract.PersistanceContract;
 import co.edu.udea.compumovil.ahorcatooth.persistance.contract.HangmanWordContract;
 import co.edu.udea.compumovil.ahorcatooth.persistance.contract.LanguagesContract;
 
@@ -15,8 +15,8 @@ public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
 			.getSimpleName();
 
 	public AccessorSQLiteOpenHelper(Context context) {
-		super(context, DatabaseContract.DATABASE_NAME, null,
-				DatabaseContract.DATABASE_VERSION);
+		super(context, PersistanceContract.DATABASE_NAME, null,
+				PersistanceContract.DATABASE_VERSION);
 	}
 
 	@Override()

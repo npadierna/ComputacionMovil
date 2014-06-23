@@ -1,10 +1,55 @@
 <resources>
 
+    <!-- Bluetooth Devices Activity -->
+    <string name="bluetooth_devices_activity_title">Select a Bluettoh Device</string>
+    <string name="start_scanning_text_button">Start Scanning</string>
+    <string name="new_devices_text_view">Other Available Devices</string>
+    <string name="no_available_devices_found">No Bluetooth Devices found</string>
+    <string name="no_paired_devices_title">No Bluetooth Devices have been paired</string>
+    <string name="paired_devices_text_view">Paired Devices</string>
+    <string name="scanning_for_devices_title">Scanning for Devices#8230;</string>
+    <string name="select_device_title">Select a Device to connect</string>
+
     <!-- Category Dashboard Activity -->
     <string name="category_dashboard_activity_label">Categories</string>
 
     <!-- Global Strings Text -->
     <string name="application_name">AhorcaTooth</string>
+
+    <!-- Hangman Board Activity -->
+    <string name="hanging_process_content_description_image_view">Image for displaying the Hanging Process.</string>
+    <string name="mask_char_for_words">-</string>
+
+    <!-- Keyboard Keys Text -->
+    <string-array name="keyboard_keys_texts_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>Ñ</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
 
     <!-- Main Activity -->
     <string name="single_player_button">Single Player</string>
