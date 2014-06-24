@@ -8,9 +8,9 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
-import co.edu.udea.compumovil.ahorcatooth.persistance.contract.LanguagesContract;
-import co.edu.udea.compumovil.ahorcatooth.persistance.sqlite.dao.ILanguagesDAO;
-import co.edu.udea.compumovil.ahorcatooth.persistance.sqlite.dao.impl.LanguaguesDAOImpl;
+import co.edu.udea.compumovil.ahorcatooth.persistence.contract.LanguagesContract;
+import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ILanguagesDAO;
+import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.LanguaguesDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ILanguagesProcess;
 
 public class LanguagesProcessImpl implements ILanguagesProcess {

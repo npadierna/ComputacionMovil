@@ -83,8 +83,6 @@ public class HangmanBoardActivity extends Activity {
 	private void revealLetter(char c) {
 		Log.i(TAG, "revealLetter(chart):void");
 		Log.i(TAG, String.format("Char: %s", c));
-
-		
 	}
 
 	public void onGuessLetter(View view) {

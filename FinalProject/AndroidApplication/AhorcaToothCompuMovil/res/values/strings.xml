@@ -10,6 +10,13 @@
     <string name="scanning_for_devices_title">Scanning for Devices#8230;</string>
     <string name="select_device_title">Select a Device to connect</string>
 
+    <!-- Bluetooth Multiplayer Activity -->
+    <string name="bluetooth_multiplayer_activity_title">Bluetooth Multiplayer</string>
+    <string name="menu_action_become_discoverable_text">Become Discoverable</string>
+    <string name="player_one_text_button">Player #1</string>
+    <string name="player_two_text_button">Player #2</string>
+    <string name="selector_player_title_text_view">Please, select the role to use in the Hangman game:</string>
+
     <!-- Category Dashboard Activity -->
     <string name="category_dashboard_activity_label">Categories</string>
 

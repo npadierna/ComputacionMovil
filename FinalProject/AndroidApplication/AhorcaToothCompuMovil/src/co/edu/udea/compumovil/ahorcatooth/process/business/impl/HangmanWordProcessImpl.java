@@ -8,9 +8,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
-import co.edu.udea.compumovil.ahorcatooth.persistance.contract.HangmanWordContract;
-import co.edu.udea.compumovil.ahorcatooth.persistance.sqlite.dao.IHangmanWordDAO;
-import co.edu.udea.compumovil.ahorcatooth.persistance.sqlite.dao.impl.HangmanWordDAOImpl;
+import co.edu.udea.compumovil.ahorcatooth.persistence.contract.HangmanWordContract;
+import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.IHangmanWordDAO;
+import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.HangmanWordDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.IHangmanWordProcess;
 
 public class HangmanWordProcessImpl implements IHangmanWordProcess {

@@ -9,9 +9,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.CategoryPK;
-import co.edu.udea.compumovil.ahorcatooth.persistance.contract.CategoryContract;
-import co.edu.udea.compumovil.ahorcatooth.persistance.sqlite.dao.ICategoryDAO;
-import co.edu.udea.compumovil.ahorcatooth.persistance.sqlite.dao.impl.CategoryDAOImpl;
+import co.edu.udea.compumovil.ahorcatooth.persistence.contract.CategoryContract;
+import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ICategoryDAO;
+import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.CategoryDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ICategoryProcess;
 
 public class CategoryProcessImpl implements ICategoryProcess {

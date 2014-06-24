@@ -39,6 +39,10 @@
             android:theme="@android:style/Theme.Holo.Light.Dialog" >
         </activity>
         <activity
+            android:name=".activity.bluetooth.BluetoothMultiplayerActivity"
+            android:label="@string/bluetooth_multiplayer_activity_title" >
+        </activity>
+        <activity
             android:name=".activity.game.HangmanBoardActivity"
             android:label="@string/application_name" >
         </activity>
