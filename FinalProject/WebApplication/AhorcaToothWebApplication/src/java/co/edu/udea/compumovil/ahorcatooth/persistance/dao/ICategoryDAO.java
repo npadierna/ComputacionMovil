@@ -18,6 +18,9 @@ public interface ICategoryDAO {
     public List<Category> findCategoriesByAttributes(Object... attributesArgs)
             throws AhorcaToothDatabaseException;
 
+    public List<Category> findCategoriesByLanguagesIsoCode(
+            String languagesIsoCode) throws AhorcaToothDatabaseException;
+    
     public Category findCategory(CategoryPK key)
             throws AhorcaToothDatabaseException;
 

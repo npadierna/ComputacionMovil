@@ -7,9 +7,12 @@ import javax.jws.WebService;
 @WebService()
 public interface IHangmanWordWS {
 
-    public List<HangmanWord> findAllHangmanWordsByCategoryName(
+    public List<HangmanWord> findHangmansWordsByCategoryName(
             String categoryName);
 
-//    public List<HangmanWord> findAllHangmanWordsByLanguageIsoCode(
-//            String categoryName);
+    public List<HangmanWord> findHangmansWordsByLanguagesIsoCode(
+            String languagesIsoCode);
+
+//    public List<HangmanWord> findLastestHangmansWords(String categoryName,
+//            String languagesIsoCode, Long amount);
 }

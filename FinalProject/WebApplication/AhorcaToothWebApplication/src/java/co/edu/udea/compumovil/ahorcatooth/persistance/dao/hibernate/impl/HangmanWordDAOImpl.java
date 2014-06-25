@@ -75,16 +75,16 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
     public List<HangmanWord> findHangmansWordsByCategoryName(
             String categoryName) throws AhorcaToothDatabaseException {
 
-        return (this.findHangmansWordsByAttributes("category.categoryName",
-                categoryName));
+        return (this.findHangmansWordsByAttributes(
+                "category.categoryPK.categoryName", categoryName));
     }
 
     @Override()
-    public List<HangmanWord> findHangmansWordsByLanguageIsoCode(
-            String languageIsoCode) throws AhorcaToothDatabaseException {
+    public List<HangmanWord> findHangmansWordsByLanguagesIsoCode(
+            String languagesIsoCode) throws AhorcaToothDatabaseException {
 
-        return (this.findHangmansWordsByAttributes("languages_iso_code",
-                languageIsoCode));
+        return (this.findHangmansWordsByAttributes(
+                "category.categoryPK.languagesIsoCode", languagesIsoCode));
     }
 
     @Override()

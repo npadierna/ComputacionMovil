@@ -19,104 +19,116 @@
             <p:growl id="messageGrowl" life="3000" showDetail="true" ></p:growl>
 
             <p:accordionPanel id="mainAccordionPanel" >
-                <p:tab id="categoriesTableTab" title="Categories Table" >
-                    <p:dataTable
-                        value="#{categoryBean.categoriesList}" var="category" >
-                        <p:column
-                            filterBy="#{category.categoryPK.languagesIsoCode}"
-                            filterMatchMode="contains"
-                            headerText="Language's ISO Code"
-                            style="text-align: center;" >
-                            <h:outputText
-                                style="font-weight: bold;"
-                                value="#{category.categoryPK.languagesIsoCode}" >
-                            </h:outputText>
-                        </p:column>
-                        <p:column
-                            filterBy="#{category.categoryPK.categoryName}"
-                            filterMatchMode="contains"
-                            headerText="Category Name"
-                            sortBy="#{category.categoryPK.categoryName}"
-                            style="text-align: center;" >
-                            <h:outputText
-                                style="font-weight: bold;"
-                                value="#{category.categoryPK.categoryName}" >
-                            </h:outputText>
-                        </p:column>
-                        <p:column headerText="Image" >
-                            <h:outputText
-                                value="#{category.imageName}" >
-                            </h:outputText>
-                        </p:column>
-                        <p:column headerText="Description" >
-                            <h:outputText
-                                value="#{category.description}" >
-                            </h:outputText>
-                        </p:column>
-                    </p:dataTable>
+                <p:tab id="categoriesTableTab" title="Categories' Table" >
+                    <p:panel id="categoriesTablePanel" >
+                        <p:dataTable
+                            value="#{categoryBean.categoriesList}" var="category" >
+                            <p:column
+                                filterBy="#{category.categoryPK.languagesIsoCode}"
+                                filterMatchMode="contains"
+                                headerText="Language's ISO Code"
+                                style="text-align: center;" >
+                                <h:outputText
+                                    style="font-weight: bold;"
+                                    value="#{category.categoryPK.languagesIsoCode}" >
+                                </h:outputText>
+                            </p:column>
+                            <p:column
+                                filterBy="#{category.categoryPK.categoryName}"
+                                filterMatchMode="contains"
+                                headerText="Category Name"
+                                sortBy="#{category.categoryPK.categoryName}"
+                                style="text-align: center;" >
+                                <h:outputText
+                                    style="font-weight: bold;"
+                                    value="#{category.categoryPK.categoryName}" >
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Image's Name" >
+                                <h:outputText
+                                    style="font-size: 15px;"
+                                    value="#{category.imageName}" >
+                                </h:outputText>
+                            </p:column>
+                            <p:column headerText="Description" >
+                                <h:outputText
+                                    style="font-size: 15px;"
+                                    value="#{category.description}" >
+                                </h:outputText>
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
                 </p:tab>
 
                 <p:tab id="newHangmanWordTab" title="New Hangman Word" >
-                    <h:panelGrid cellpadding="10" columns="4" >
-                        <h:outputText
-                            style="font-weight: bold;"
-                            value="Language's ISO Code:" >
-                        </h:outputText>
-                        <p:selectOneMenu
-                            id="languagesSelectOneMenu"
-                            value="#{hangmanWordBean.languagesIsoCode}" >
-                            <f:selectItems
-                                value="#{languagesBean.languagesSelectItems}" >
-                            </f:selectItems>
-                        </p:selectOneMenu>
+                    <p:panel id="newHangmanWordPanel" >
+                        <h:panelGrid cellpadding="10" columns="4" >
+                            <h:outputText
+                                style="font-weight: bold;"
+                                value="Language's ISO Code:" >
+                            </h:outputText>
+                            <p:selectOneMenu
+                                id="languagesSelectOneMenu" required="true"
+                                requiredMessage="Please, select a Language's ISO Code for the new Hangman Word."
+                                value="#{hangmanWordBean.languagesIsoCode}" >
+                                <f:selectItems
+                                    value="#{languagesBean.languagesSelectItems}" >
+                                </f:selectItems>
+                            </p:selectOneMenu>
 
-                        <h:outputText 
-                            style="font-weight: bold;" value="Category:" >
-                        </h:outputText>
-                        <p:selectOneMenu
-                            id="categoriesSelectOneMenu"
-                            value="#{hangmanWordBean.categoryName}" >
-                            <f:selectItems
-                                value="#{categoryBean.categoriesSelectItems}" >
-                            </f:selectItems>
-                        </p:selectOneMenu>
-                    </h:panelGrid>
+                            <h:outputText 
+                                style="font-weight: bold;" value="Category:" >
+                            </h:outputText>
+                            <p:selectOneMenu
+                                id="categoriesSelectOneMenu" required="true"
+                                requiredMessage="Please, select a Category name for the new Hangman Word."
+                                value="#{hangmanWordBean.categoryName}" >
+                                <f:selectItems
+                                    value="#{categoryBean.categoriesSelectItems}" >
+                                </f:selectItems>
+                            </p:selectOneMenu>
+                        </h:panelGrid>
 
-                    <h:panelGrid cellpadding="10" columns="2" >
-                        <h:outputText 
-                            style="font-weight: bold;" value="Word Name:" >
-                        </h:outputText>
-                        <p:inputText
-                            id="wordNameInputText" maxlength="15" size="20"
-                            value="#{hangmanWordBean.wordName}" >
-                        </p:inputText>
+                        <h:panelGrid cellpadding="10" columns="2" >
+                            <h:outputText 
+                                style="font-weight: bold;" value="Word Name:" >
+                            </h:outputText>
+                            <p:inputText
+                                id="wordNameInputText" maxlength="15" required="true"
+                                requiredMessage="This is the Hangman Word's name, it must not be empty."
+                                size="20" value="#{hangmanWordBean.wordName}" >
+                            </p:inputText>
 
-                        <h:outputText
-                            style="font-weight: bold;" value="Descripton:" >
-                        </h:outputText>
-                        <p:inputTextarea
-                            cols="50" counter="counterDescriptionInputTextArea"
-                            counterTemplate="{0} Characters remaining."
-                            id="descriptonInputTextArea" maxlength="250"
-                            autoResize="false" rows="6"
-                            value="#{hangmanWordBean.description}" >
-                        </p:inputTextarea>
+                            <h:outputText
+                                style="font-weight: bold;" value="Descripton:" >
+                            </h:outputText>
+                            <p:inputTextarea
+                                autoResize="false" cols="50"
+                                counter="counterDescriptionInputTextArea"
+                                counterTemplate="{0} Characters remaining."
+                                id="descriptonInputTextArea" maxlength="250"
+                                required="false" rows="6"
+                                value="#{hangmanWordBean.description}" >
+                            </p:inputTextarea>
 
-                        <p:spacer></p:spacer>
-                        <h:outputText
-                            id="counterDescriptionInputTextArea"
-                            style="font-style: italic;" >
-                        </h:outputText>
-                    </h:panelGrid>
+                            <p:spacer></p:spacer>
+                            <h:outputText
+                                id="counterDescriptionInputTextArea"
+                                style="font-style: italic;" >
+                            </h:outputText>
+                        </h:panelGrid>
 
-                    <p:commandButton
-                        action="#{hangmanWordBean.saveHangmanWord}"
-                        icon="ui-icon-disk" value="Save" >
-                    </p:commandButton>
+                        <p:commandButton
+                            action="#{hangmanWordBean.saveHangmanWord}"
+                            icon="ui-icon-disk" update="newHangmanWordPanel"
+                            value="Save" >
+                        </p:commandButton>
 
-                    <p:commandButton
-                        icon="ui-icon-disk" value="Clear" >
-                    </p:commandButton>
+                        <p:commandButton
+                            icon="ui-icon-trash" update="newHangmanWordPanel"
+                            value="Clear" >
+                        </p:commandButton>
+                    </p:panel>
                 </p:tab>
             </p:accordionPanel>
         </h:form>

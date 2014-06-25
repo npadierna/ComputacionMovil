@@ -7,7 +7,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistance.dao.IHangmanWordDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
 import co.edu.udea.compumovil.ahorcatooth.process.IHangmanWordProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothProcessException;
-import co.edu.udea.compumovil.ahorcatooth.process.util.TextUtils;
+import co.edu.udea.compumovil.ahorcatooth.util.TextUtils;
 import java.io.Serializable;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -44,10 +44,10 @@ public class HangmanWordProcessImpl implements IHangmanWordProcess, Serializable
             throws AhorcaToothProcessException {
         if (this.isValidBundle(wordName, categoryName, langugesIsoCode)) {
             HangmanWord hangmanWord = new HangmanWord();
-            hangmanWord.setWordName(wordName);
+            hangmanWord.setWordName(TextUtils.toUpperCase(wordName));
             hangmanWord.setCategory(new Category(new CategoryPK(
-                    categoryName.trim(),
-                    langugesIsoCode.trim()), null));
+                    TextUtils.toUpperCase(categoryName),
+                    TextUtils.toLowerCase(langugesIsoCode)), null));
             hangmanWord.setDescription(((description != null)
                     ? description.trim() : null));
 

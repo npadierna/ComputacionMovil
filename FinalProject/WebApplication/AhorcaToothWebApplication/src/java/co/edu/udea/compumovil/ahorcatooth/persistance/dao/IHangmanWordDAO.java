@@ -26,8 +26,8 @@ public interface IHangmanWordDAO {
     public List<HangmanWord> findHangmansWordsByCategoryName(
             String categoryName) throws AhorcaToothDatabaseException;
 
-    public List<HangmanWord> findHangmansWordsByLanguageIsoCode(
-            String languageIsoCode) throws AhorcaToothDatabaseException;
+    public List<HangmanWord> findHangmansWordsByLanguagesIsoCode(
+            String languagesIsoCode) throws AhorcaToothDatabaseException;
 
     public Long saveHangmanWord(HangmanWord hangmanWord)
             throws AhorcaToothDatabaseException;

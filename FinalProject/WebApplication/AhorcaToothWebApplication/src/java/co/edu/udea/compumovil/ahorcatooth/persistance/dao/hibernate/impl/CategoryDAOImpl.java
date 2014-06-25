@@ -58,6 +58,15 @@ public class CategoryDAOImpl extends AbstractEntityContext
     }
 
     @Override()
+    public List<Category> findCategoriesByLanguagesIsoCode(
+            String languagesIsoCode) throws AhorcaToothDatabaseException {
+
+        return (this.executeNamedQueryForCategories(
+                "Category.findByLanguagesIsoCode", "languagesIsoCode",
+                languagesIsoCode));
+    }
+
+    @Override()
     public Category findCategory(CategoryPK key)
             throws AhorcaToothDatabaseException {
 

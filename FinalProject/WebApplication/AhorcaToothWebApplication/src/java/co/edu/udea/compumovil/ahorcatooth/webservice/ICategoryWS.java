@@ -6,8 +6,11 @@ import javax.jws.WebService;
 
 @WebService()
 public interface ICategoryWS {
-    
+
     public List<Category> findAllCategories();
+
+    public List<Category> findCategoriesByLanguagesIsoCode(
+            String languagesIsoCode);
 
     public Category findCategory(String categoryName, String languagesIsoCode);
 }

@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.ahorcatooth.webservice.restful.impl;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
 import co.edu.udea.compumovil.ahorcatooth.persistance.dao.ILanguagesDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
+import co.edu.udea.compumovil.ahorcatooth.util.TextUtils;
 import co.edu.udea.compumovil.ahorcatooth.webservice.ILanguagesWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.contract.WebServicePathsContract;
 import java.util.Date;
@@ -58,13 +59,16 @@ public class LanguagesWSImpl implements ILanguagesWS {
             @QueryParam(WebServicePathsContract.LanguagesContract.LANGUAGES_ISO_CODE_QUERY) String isoCode) {
         Languages languages = null;
 
-        try {
-            languages = this.languagesDAO.findLanguages(isoCode);
-        } catch (AhorcaToothDatabaseException ex) {
-            Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                    "findLanguages(String):Languages",
-                    String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
-                    ex.getMessage()), ex);
+        if (!TextUtils.isEmpty(isoCode)) {
+            try {
+                languages = this.languagesDAO.findLanguages(TextUtils
+                        .toLowerCase(isoCode));
+            } catch (AhorcaToothDatabaseException ex) {
+                Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
+                        "findLanguages(String):Languages",
+                        String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
+                        ex.getMessage()), ex);
+            }
         }
 
         return (languages);
