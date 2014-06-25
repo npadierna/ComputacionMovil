@@ -136,7 +136,6 @@ public final class R {
         public static final int computacion_movil_text=0x7f060005;
         public static final int couse_name_text=0x7f060004;
         public static final int create_person_button_text=0x7f060010;
-        public static final int create_text=0x7f06000b;
         public static final int date_selected_text=0x7f060038;
         public static final int delete_person_button_text=0x7f060011;
         public static final int document_number_text_view=0x7f060018;
@@ -146,6 +145,8 @@ public final class R {
         public static final int document_type_text_view=0x7f060017;
         public static final int e_mail_text_view=0x7f06001b;
         public static final int empty_persons_list_text_view=0x7f060028;
+        public static final int fail_update_person_message_text=0x7f06003e;
+        public static final int fail_update_person_title_text=0x7f06003d;
         public static final int find_all_persons_menu=0x7f06000d;
         public static final int find_person_by_document_type_menu=0x7f06000e;
         public static final int find_person_by_height_range_menu=0x7f06000f;
@@ -186,6 +187,7 @@ public final class R {
         public static final int person_retriever_activity_title=0x7f060039;
         public static final int person_weight_title=0x7f060035;
         public static final int phone_number_text_view=0x7f06001f;
+        public static final int positive_button_text=0x7f06000b;
         public static final int retrieve_person_button_text=0x7f060012;
         public static final int successful_update_information_tittle=0x7f06003b;
         public static final int university_name_text=0x7f060006;

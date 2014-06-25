@@ -104,12 +104,13 @@ public class PersonUpdaterActivity extends FragmentActivity {
 		this.heighEditText = (EditText) super
 				.findViewById(R.id.person_information_height_edit_text);
 	}
-	
+
 	public void setBirthdayDate(Date birthdayDate) {
 		this.birthdayDate = birthdayDate;
 	}
 
 	private void updatePerson() {
+		Person temp;
 		this.idNumber = this.idNumberEditText.getText().toString();
 
 		PersonPK personPK = new PersonPK(
@@ -134,12 +135,32 @@ public class PersonUpdaterActivity extends FragmentActivity {
 
 		this.clearWidgetsFields();
 
-		this.personProcess.updatePerson(person);
+		temp = this.personProcess.findPerson(personPK);
+		if (temp != null) {
+			this.personProcess.updatePerson(person);
+		} else {
+			AlertDialog.Builder messageBuilder = new MessageAlertDialog(this)
+					.createAlertDialog(getString(R.string.fail_update_person_title_text),
+							getString(R.string.fail_update_person_message_text));
+			messageBuilder.setPositiveButton("Aceptar",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					});
+			messageBuilder.create().show();
+			clearWidgetsFields();
+			return;
+		}
 
 		AlertDialog.Builder messageAlertDialog = new MessageAlertDialog(this)
 				.createAlertDialog(
-						super.getResources().getString(R.string.update_successful_text),
-						super.getResources().getString(R.string.successful_update_information_tittle));
+						super.getResources().getString(
+								R.string.update_successful_text),
+						super.getResources().getString(
+								R.string.successful_update_information_tittle));
 		messageAlertDialog.setPositiveButton("Aceptar",
 				new DialogInterface.OnClickListener() {
 
@@ -160,19 +181,18 @@ public class PersonUpdaterActivity extends FragmentActivity {
 		this.heighEditText.setText("");
 		this.weightEditText.setText("");
 	}
-	
+
 	public void onPositiveButton(View view) {
 		Log.i(TAG, "onCreatePerson(View):void");
 
 		this.updatePerson();
 	}
-	
+
 	public void onShowDatePickerDialog(View view) {
 		DialogFragment datePickerDialogFragment = new DatePickerDialogFragment();
 		datePickerDialogFragment.show(super.getSupportFragmentManager(),
 				"datePicker");
 		PersonCreatorActivity.activityCall = false;
 	}
-	
-	
+
 }

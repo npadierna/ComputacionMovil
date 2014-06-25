@@ -15,7 +15,7 @@
     <!-- Application Global Strings -->
     <string name="application_name">Ejemplo SQLite</string>
     <string name="clean_text">Limpiar</string>
-    <string name="create_text">Crear</string>
+    <string name="positive_button_text">Aceptar</string>
 
     <!-- Dashboard Activity -->
     <string name="about_us_menu">Acerca de</string>
@@ -85,5 +85,7 @@
     <string name="update_successful_text">Actualizado Exitosamente</string>
     <string name="successful_update_information_tittle">La persona fue actualizada exitosamente en la Base de Datos</string>
     <string name="update_information_activity_title">Actualizar Información</string>
+    <string name="fail_update_person_title_text">Error</string>
+    <string name="fail_update_person_message_text">El usuario no existe en la Base de Datos</string>
 
 </resources>
