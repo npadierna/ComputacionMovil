@@ -10,4 +10,25 @@
             org.springframework.web.jsf.el.SpringBeanFacesELResolver
         </el-resolver>
     </application>
+    <managed-bean>
+        <managed-bean-class>
+            co.edu.udea.compumovil.ahorcatooth.beans.CategoryBean
+        </managed-bean-class>
+        <managed-bean-name>categoryBean</managed-bean-name>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-class>
+            co.edu.udea.compumovil.ahorcatooth.beans.HangmanWordBean
+        </managed-bean-class>
+        <managed-bean-name>hangmanWordBean</managed-bean-name>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-class>
+            co.edu.udea.compumovil.ahorcatooth.beans.LanguagesBean
+        </managed-bean-class>
+        <managed-bean-name>languagesBean</managed-bean-name>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>

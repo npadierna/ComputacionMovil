@@ -6,24 +6,30 @@ import java.util.List;
 
 public interface IHangmanWordDAO {
 
-    public Long countHangmanWords();
+    public Long countHangmansWords();
 
-    public List<HangmanWord> executeNamedQueryForHangmanWords(String namedQuery,
+    public List<HangmanWord> executeNamedQueryForHangmansWords(String namedQuery,
             String where, String whereArg) throws AhorcaToothDatabaseException;
 
     public HangmanWord deleteHangmanWord(HangmanWord hangmanWord)
             throws AhorcaToothDatabaseException;
 
-    public List<HangmanWord> findAllHangmanWords()
+    public List<HangmanWord> findAllHangmansWords()
             throws AhorcaToothDatabaseException;
 
-    public HangmanWord findHangmanWord(String key)
+    public HangmanWord findHangmanWord(Long key)
             throws AhorcaToothDatabaseException;
 
-    public List<HangmanWord> findHangmanWordsByAttributes(
+    public List<HangmanWord> findHangmansWordsByAttributes(
             Object... attributesArgs) throws AhorcaToothDatabaseException;
 
-    public String saveHangmanWord(HangmanWord hangmanWord)
+    public List<HangmanWord> findHangmansWordsByCategoryName(
+            String categoryName) throws AhorcaToothDatabaseException;
+
+    public List<HangmanWord> findHangmansWordsByLanguageIsoCode(
+            String languageIsoCode) throws AhorcaToothDatabaseException;
+
+    public Long saveHangmanWord(HangmanWord hangmanWord)
             throws AhorcaToothDatabaseException;
 
     public HangmanWord updateHangmanWord(HangmanWord hangmanWord)

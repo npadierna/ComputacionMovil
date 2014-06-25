@@ -13,6 +13,7 @@ import javax.jws.WebService;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,5 +48,25 @@ public class LanguagesWSImpl implements ILanguagesWS {
         }
 
         return (languagesesFoundList);
+    }
+
+    @GET()
+    @Override()
+    @Path(WebServicePathsContract.LanguagesContract.FIND_ONE_LANGUAGES_PATH)
+    @Produces(value = {MediaType.APPLICATION_JSON})
+    public Languages findLanguages(
+            @QueryParam(WebServicePathsContract.LanguagesContract.LANGUAGES_ISO_CODE_QUERY) String isoCode) {
+        Languages languages = null;
+
+        try {
+            languages = this.languagesDAO.findLanguages(isoCode);
+        } catch (AhorcaToothDatabaseException ex) {
+            Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
+                    "findLanguages(String):Languages",
+                    String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
+                    ex.getMessage()), ex);
+        }
+
+        return (languages);
     }
 }

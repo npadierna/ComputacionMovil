@@ -8,4 +8,6 @@ import javax.jws.WebService;
 public interface ILanguagesWS {
 
     public List<Languages> findAllLanguages();
+
+    public Languages findLanguages(String isoCode);
 }

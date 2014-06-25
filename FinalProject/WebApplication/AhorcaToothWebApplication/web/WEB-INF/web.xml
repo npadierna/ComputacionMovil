@@ -12,12 +12,21 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>south-street</param-value>
+    </context-param>
     <display-name>AhorcaTooth</display-name>
     <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
-    </listener>    
+    </listener>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
     <persistence-unit-ref>
         <description>Persistence Unit for AhorcaTooth</description>
         <persistence-unit-ref-name>jdbc/ahorcatooth</persistence-unit-ref-name>

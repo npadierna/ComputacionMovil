@@ -1,10 +1,124 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
     <h:head>
-        <title>Facelet Title</title>
+        <title>AhorcaTooth Web Application</title>
     </h:head>
+
     <h:body>
+        <h:form id="mainForm" title="AhorcaTooth Dashboard" >
+            <center>
+                <h1>AhorcaTooth Dashboard</h1>
+            </center>
+
+            <p:growl id="messageGrowl" life="3000" showDetail="true" ></p:growl>
+
+            <p:accordionPanel id="mainAccordionPanel" >
+                <p:tab id="categoriesTableTab" title="Categories Table" >
+                    <p:dataTable
+                        value="#{categoryBean.categoriesList}" var="category" >
+                        <p:column
+                            filterBy="#{category.categoryPK.languagesIsoCode}"
+                            filterMatchMode="contains"
+                            headerText="Language's ISO Code"
+                            style="text-align: center;" >
+                            <h:outputText
+                                style="font-weight: bold;"
+                                value="#{category.categoryPK.languagesIsoCode}" >
+                            </h:outputText>
+                        </p:column>
+                        <p:column
+                            filterBy="#{category.categoryPK.categoryName}"
+                            filterMatchMode="contains"
+                            headerText="Category Name"
+                            sortBy="#{category.categoryPK.categoryName}"
+                            style="text-align: center;" >
+                            <h:outputText
+                                style="font-weight: bold;"
+                                value="#{category.categoryPK.categoryName}" >
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Image" >
+                            <h:outputText
+                                value="#{category.imageName}" >
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Description" >
+                            <h:outputText
+                                value="#{category.description}" >
+                            </h:outputText>
+                        </p:column>
+                    </p:dataTable>
+                </p:tab>
+
+                <p:tab id="newHangmanWordTab" title="New Hangman Word" >
+                    <h:panelGrid cellpadding="10" columns="4" >
+                        <h:outputText
+                            style="font-weight: bold;"
+                            value="Language's ISO Code:" >
+                        </h:outputText>
+                        <p:selectOneMenu
+                            id="languagesSelectOneMenu"
+                            value="#{hangmanWordBean.languagesIsoCode}" >
+                            <f:selectItems
+                                value="#{languagesBean.languagesSelectItems}" >
+                            </f:selectItems>
+                        </p:selectOneMenu>
+
+                        <h:outputText 
+                            style="font-weight: bold;" value="Category:" >
+                        </h:outputText>
+                        <p:selectOneMenu
+                            id="categoriesSelectOneMenu"
+                            value="#{hangmanWordBean.categoryName}" >
+                            <f:selectItems
+                                value="#{categoryBean.categoriesSelectItems}" >
+                            </f:selectItems>
+                        </p:selectOneMenu>
+                    </h:panelGrid>
+
+                    <h:panelGrid cellpadding="10" columns="2" >
+                        <h:outputText 
+                            style="font-weight: bold;" value="Word Name:" >
+                        </h:outputText>
+                        <p:inputText
+                            id="wordNameInputText" maxlength="15" size="20"
+                            value="#{hangmanWordBean.wordName}" >
+                        </p:inputText>
+
+                        <h:outputText
+                            style="font-weight: bold;" value="Descripton:" >
+                        </h:outputText>
+                        <p:inputTextarea
+                            cols="50" counter="counterDescriptionInputTextArea"
+                            counterTemplate="{0} Characters remaining."
+                            id="descriptonInputTextArea" maxlength="250"
+                            autoResize="false" rows="6"
+                            value="#{hangmanWordBean.description}" >
+                        </p:inputTextarea>
+
+                        <p:spacer></p:spacer>
+                        <h:outputText
+                            id="counterDescriptionInputTextArea"
+                            style="font-style: italic;" >
+                        </h:outputText>
+                    </h:panelGrid>
+
+                    <p:commandButton
+                        action="#{hangmanWordBean.saveHangmanWord}"
+                        icon="ui-icon-disk" value="Save" >
+                    </p:commandButton>
+
+                    <p:commandButton
+                        icon="ui-icon-disk" value="Clear" >
+                    </p:commandButton>
+                </p:tab>
+            </p:accordionPanel>
+        </h:form>
     </h:body>
 </html>

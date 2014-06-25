@@ -20,13 +20,13 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
     }
 
     @Override()
-    public Long countHangmanWords() {
+    public Long countHangmansWords() {
 
         return (super.countEntities(HangmanWord.class));
     }
 
     @Override()
-    public List<HangmanWord> executeNamedQueryForHangmanWords(String namedQuery,
+    public List<HangmanWord> executeNamedQueryForHangmansWords(String namedQuery,
             String where, String whereArg) throws AhorcaToothDatabaseException {
         List<HangmanWord> hangmanWordsFoundList = new ArrayList<>();
         List<IEntityContext> entitesContextList = super.executeNamedQueryForEntities(
@@ -49,14 +49,14 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
 
     @Override()
     @SuppressWarnings(value = {"unchecked"})
-    public List<HangmanWord> findAllHangmanWords()
+    public List<HangmanWord> findAllHangmansWords()
             throws AhorcaToothDatabaseException {
 
         return ((List<HangmanWord>) super.findAllEntities(HangmanWord.class));
     }
 
     @Override()
-    public HangmanWord findHangmanWord(String key)
+    public HangmanWord findHangmanWord(Long key)
             throws AhorcaToothDatabaseException {
 
         return ((HangmanWord) super.findEntity(HangmanWord.class, key));
@@ -64,7 +64,7 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
 
     @Override()
     @SuppressWarnings(value = {"unchecked"})
-    public List<HangmanWord> findHangmanWordsByAttributes(
+    public List<HangmanWord> findHangmansWordsByAttributes(
             Object... attributesArgs) throws AhorcaToothDatabaseException {
 
         return ((List<HangmanWord>) super.findEntitiesByAttributes(
@@ -72,11 +72,27 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
     }
 
     @Override()
+    public List<HangmanWord> findHangmansWordsByCategoryName(
+            String categoryName) throws AhorcaToothDatabaseException {
+
+        return (this.findHangmansWordsByAttributes("category.categoryName",
+                categoryName));
+    }
+
+    @Override()
+    public List<HangmanWord> findHangmansWordsByLanguageIsoCode(
+            String languageIsoCode) throws AhorcaToothDatabaseException {
+
+        return (this.findHangmansWordsByAttributes("languages_iso_code",
+                languageIsoCode));
+    }
+
+    @Override()
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
-    public String saveHangmanWord(HangmanWord hangmanWord)
+    public Long saveHangmanWord(HangmanWord hangmanWord)
             throws AhorcaToothDatabaseException {
 
-        return ((String) super.saveEntity(hangmanWord));
+        return ((Long) super.saveEntity(hangmanWord));
     }
 
     @Override()

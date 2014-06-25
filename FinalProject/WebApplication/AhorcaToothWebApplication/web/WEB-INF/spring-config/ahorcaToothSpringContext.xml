@@ -22,6 +22,8 @@
 
     <context:annotation-config />
     <context:component-scan
+        base-package="co.edu.udea.compumovil.ahorcatooth.beans" />
+    <context:component-scan
         base-package="co.edu.udea.compumovil.ahorcatooth.database.dao" />
     <context:component-scan
         base-package="co.edu.udea.compumovil.ahorcatooth.webservice" />

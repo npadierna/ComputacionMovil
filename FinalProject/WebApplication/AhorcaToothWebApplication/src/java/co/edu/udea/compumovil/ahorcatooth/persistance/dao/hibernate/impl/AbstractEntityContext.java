@@ -164,8 +164,6 @@ public class AbstractEntityContext implements IEntityContextDAO {
             throw new AhorcaToothDatabaseException(
                     "Fatal error while the DAO was trying to persist or save a entity.",
                     e);
-        } finally {
-            this.getEntityManager().flush();
         }
 
         return (entity.getKey());
