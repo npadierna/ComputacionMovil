@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -30,6 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Category.findByDescription",
             query = "SELECT c FROM Category c WHERE c.description = :description")})
 @Table(name = "CATEGORY")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement()
 public class Category implements IEntityContext, Serializable {
 

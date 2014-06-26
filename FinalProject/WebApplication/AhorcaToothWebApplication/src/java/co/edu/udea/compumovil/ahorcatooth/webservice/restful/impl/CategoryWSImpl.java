@@ -35,7 +35,7 @@ public class CategoryWSImpl implements ICategoryWS {
 
     @GET()
     @Override()
-    @Path(WebServicePathsContract.CategoryContract.ALL_CATEGORIES_PATH)
+    @Path(WebServicePathsContract.CategoryContract.FIND_ALL_CATEGORIES_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
     public List<Category> findAllCategories() {
         List<Category> categoriesFoundList = null;
@@ -54,7 +54,7 @@ public class CategoryWSImpl implements ICategoryWS {
 
     @GET()
     @Override()
-    @Path(WebServicePathsContract.CategoryContract.FIND_CATEGORIES_BY_LANGUAGES_ISO_CODE)
+    @Path(WebServicePathsContract.CategoryContract.FIND_CATEGORIES_BY_LANGUAGES_ISO_CODE_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
     public List<Category> findCategoriesByLanguagesIsoCode(
             @QueryParam(WebServicePathsContract.CategoryContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode) {

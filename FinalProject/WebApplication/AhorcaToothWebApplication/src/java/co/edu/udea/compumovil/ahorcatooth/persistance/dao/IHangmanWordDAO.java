@@ -29,6 +29,10 @@ public interface IHangmanWordDAO {
     public List<HangmanWord> findHangmansWordsByLanguagesIsoCode(
             String languagesIsoCode) throws AhorcaToothDatabaseException;
 
+    public List<HangmanWord> findLastestHangmansWords(String categoryName,
+            String languagesIsoCode, Integer amount)
+            throws AhorcaToothDatabaseException;
+
     public Long saveHangmanWord(HangmanWord hangmanWord)
             throws AhorcaToothDatabaseException;
 

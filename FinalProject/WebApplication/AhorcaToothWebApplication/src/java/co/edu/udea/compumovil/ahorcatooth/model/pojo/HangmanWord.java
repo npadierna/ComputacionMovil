@@ -15,6 +15,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity()
@@ -28,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "HangmanWord.findByDescription",
             query = "SELECT h FROM HangmanWord h WHERE h.description = :description")})
 @Table(name = "HANGMAN_WORD")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement()
 public class HangmanWord implements IEntityContext, Serializable {
 

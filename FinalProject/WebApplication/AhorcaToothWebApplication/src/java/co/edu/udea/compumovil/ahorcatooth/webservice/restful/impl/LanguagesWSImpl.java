@@ -34,7 +34,7 @@ public class LanguagesWSImpl implements ILanguagesWS {
 
     @GET()
     @Override()
-    @Path(WebServicePathsContract.LanguagesContract.ALL_LANGUAGES_PATH)
+    @Path(WebServicePathsContract.LanguagesContract.FIND_ALL_LANGUAGES_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
     public List<Languages> findAllLanguages() {
         List<Languages> languagesesFoundList = null;

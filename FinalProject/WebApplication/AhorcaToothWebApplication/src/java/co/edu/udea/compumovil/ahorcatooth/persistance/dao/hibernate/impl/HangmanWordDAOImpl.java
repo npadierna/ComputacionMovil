@@ -6,6 +6,10 @@ import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.IEntityContext;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -85,6 +89,43 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
 
         return (this.findHangmansWordsByAttributes(
                 "category.categoryPK.languagesIsoCode", languagesIsoCode));
+    }
+
+    /**
+     *
+     * SELECT * FROM HANGMAN_WORD AS h WHERE h.languages_iso_code = ? AND
+     * h.category_name = ? ORDER BY h.id DESC LIMIT ?
+     *
+     * @param categoryName
+     * @param languagesIsoCode
+     * @param amount
+     * @return
+     * @throws AhorcaToothDatabaseException
+     */
+    @Override()
+    public List<HangmanWord> findLastestHangmansWords(String categoryName,
+            String languagesIsoCode, Integer amount)
+            throws AhorcaToothDatabaseException {
+        try {
+            CriteriaBuilder criteriaBuilder = super.getEntityManager()
+                    .getCriteriaBuilder();
+            CriteriaQuery<HangmanWord> criteriaQuery = criteriaBuilder
+                    .createQuery(HangmanWord.class);
+            Root<HangmanWord> root = criteriaQuery.from(HangmanWord.class);
+
+            criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(
+                    root.get("category").get("categoryPK").get("categoryName"),
+                    categoryName), criteriaBuilder.equal(root.get("category")
+                    .get("categoryPK").get("languagesIsoCode"), languagesIsoCode)));
+            criteriaQuery.orderBy(criteriaBuilder.desc(root.get("id")));
+
+            Query query = super.getEntityManager().createQuery(criteriaQuery)
+                    .setMaxResults(amount.intValue());
+
+            return ((List<HangmanWord>) query.getResultList());
+        } catch (Exception ex) {
+            throw new AhorcaToothDatabaseException(ex);
+        }
     }
 
     @Override()
