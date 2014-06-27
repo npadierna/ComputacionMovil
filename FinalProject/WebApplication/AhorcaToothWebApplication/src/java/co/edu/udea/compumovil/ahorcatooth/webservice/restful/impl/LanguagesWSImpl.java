@@ -17,9 +17,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Path(WebServicePathsContract.LanguagesContract.ROOT_PATH)
+@Scope(value = "singleton")
 @Service()
 @WebService(endpointInterface = WebServicePathsContract.LanguagesContract.END_POINT_INTERFACE)
 public class LanguagesWSImpl implements ILanguagesWS {
@@ -32,6 +34,9 @@ public class LanguagesWSImpl implements ILanguagesWS {
         super();
     }
 
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/languages/find/all
+     */
     @GET()
     @Override()
     @Path(WebServicePathsContract.LanguagesContract.FIND_ALL_LANGUAGES_PATH)
@@ -48,9 +53,14 @@ public class LanguagesWSImpl implements ILanguagesWS {
                     ex.getMessage()), ex);
         }
 
-        return (languagesesFoundList);
+        return (((languagesesFoundList == null)
+                || (languagesesFoundList.isEmpty())) ? null
+                : languagesesFoundList);
     }
 
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/languages/find?isocode=
+     */
     @GET()
     @Override()
     @Path(WebServicePathsContract.LanguagesContract.FIND_ONE_LANGUAGES_PATH)

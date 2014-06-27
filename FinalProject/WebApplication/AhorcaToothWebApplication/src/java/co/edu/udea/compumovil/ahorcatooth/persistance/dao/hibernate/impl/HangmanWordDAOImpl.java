@@ -91,19 +91,13 @@ public class HangmanWordDAOImpl extends AbstractEntityContext
                 "category.categoryPK.languagesIsoCode", languagesIsoCode));
     }
 
-    /**
-     *
+    /*
      * SELECT * FROM HANGMAN_WORD AS h WHERE h.languages_iso_code = ? AND
      * h.category_name = ? ORDER BY h.id DESC LIMIT ?
-     *
-     * @param categoryName
-     * @param languagesIsoCode
-     * @param amount
-     * @return
-     * @throws AhorcaToothDatabaseException
      */
     @Override()
-    public List<HangmanWord> findLastestHangmansWords(String categoryName,
+    @SuppressWarnings(value = {"unchecked"})
+    public List<HangmanWord> findLatestHangmansWords(String categoryName,
             String languagesIsoCode, Integer amount)
             throws AhorcaToothDatabaseException {
         try {

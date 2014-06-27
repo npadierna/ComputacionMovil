@@ -13,6 +13,6 @@ public interface IHangmanWordWS {
     public List<HangmanWord> findHangmansWordsByLanguagesIsoCode(
             String languagesIsoCode);
 
-    public List<HangmanWord> findLastestHangmansWords(String categoryName,
+    public List<HangmanWord> findLatestHangmansWords(String categoryName,
             String languagesIsoCode, Integer amount);
 }

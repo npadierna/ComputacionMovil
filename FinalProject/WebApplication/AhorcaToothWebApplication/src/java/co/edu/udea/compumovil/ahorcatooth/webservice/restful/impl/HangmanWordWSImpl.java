@@ -17,9 +17,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Path(WebServicePathsContract.HangmanWordContract.ROOT_PATH)
+@Scope(value = "singleton")
 @Service()
 @WebService(endpointInterface = WebServicePathsContract.HangmanWordContract.END_POINT_INTERFACE)
 public class HangmanWordWSImpl implements IHangmanWordWS {
@@ -32,6 +34,9 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
         super();
     }
 
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/hangmanswords/find/categoryname?categoryname=
+     */
     @GET()
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_HANGMANS_WORDS_BY_CATEGORY_NAME_PATH)
@@ -53,9 +58,14 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
             }
         }
 
-        return (hangmanWordsFoundList);
+        return (((hangmanWordsFoundList == null)
+                || (hangmanWordsFoundList.isEmpty())) ? null
+                : hangmanWordsFoundList);
     }
 
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/hangmanswords/find/languagesisocode?languagesisocode=
+     */
     @GET()
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_HANGMANS_WORDS_BY_LANGUAGES_ISO_CODE_PATH)
@@ -77,39 +87,48 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
             }
         }
 
-        return (hangmanWordsFoundList);
+        return (((hangmanWordsFoundList == null)
+                || (hangmanWordsFoundList.isEmpty())) ? null
+                : hangmanWordsFoundList);
     }
 
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/hangmanswords/find/latest?categoryname=&languagesisocode=&amount=
+     */
     @GET()
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_LASTEST_HANGMANS_WORDS_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<HangmanWord> findLastestHangmansWords(
+    public List<HangmanWord> findLatestHangmansWords(
             @QueryParam(WebServicePathsContract.HangmanWordContract.CATEGORY_NAME_QUERY) String categoryName,
             @QueryParam(WebServicePathsContract.HangmanWordContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode,
             @QueryParam(WebServicePathsContract.HangmanWordContract.MAX_HANGMANS_WORDS_QUERY) Integer amount) {
         List<HangmanWord> hangmanWordsFoundList = null;
 
         if ((!TextUtils.isEmpty(categoryName))
-                && (!TextUtils.isEmpty(languagesIsoCode)) && (this.isValidAmout(amount))) {
+                && (!TextUtils.isEmpty(languagesIsoCode))
+                && (this.isValidRequestedAmout(amount))) {
             try {
                 hangmanWordsFoundList = this.hangmanWordDAO
-                        .findLastestHangmansWords(categoryName,
-                        languagesIsoCode, amount);
+                        .findLatestHangmansWords(TextUtils.toUpperCase(
+                        categoryName), TextUtils.toLowerCase(languagesIsoCode),
+                        amount);
             } catch (AhorcaToothDatabaseException ex) {
                 Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                        "findLastestHangmansWords(String, String, Integer):List<HangmanWord>",
+                        "findLatestHangmansWords(String, String, Integer):List<HangmanWord>",
                         String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
                         ex.getMessage()), ex);
             }
         }
 
-        return (hangmanWordsFoundList);
+        return (((hangmanWordsFoundList == null)
+                || (hangmanWordsFoundList.isEmpty())) ? null
+                : hangmanWordsFoundList);
     }
 
-    private boolean isValidAmout(Integer amount) {
+    private boolean isValidRequestedAmout(Integer amount) {
         if ((amount == null) || (amount.intValue() < 0)
-                || (amount.intValue() >= Integer.MAX_VALUE)) {
+                || (amount.intValue() == Integer.MAX_VALUE)) {
 
             return (false);
         }

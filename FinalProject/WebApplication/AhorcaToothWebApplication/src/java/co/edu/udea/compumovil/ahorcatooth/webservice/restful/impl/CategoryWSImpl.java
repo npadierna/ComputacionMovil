@@ -18,9 +18,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Path(WebServicePathsContract.CategoryContract.ROOT_PATH)
+@Scope(value = "singleton")
 @Service()
 @WebService(endpointInterface = WebServicePathsContract.CategoryContract.END_POINT_INTERFACE)
 public class CategoryWSImpl implements ICategoryWS {
@@ -33,6 +35,9 @@ public class CategoryWSImpl implements ICategoryWS {
         super();
     }
 
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/categories/find/all
+     */
     @GET()
     @Override()
     @Path(WebServicePathsContract.CategoryContract.FIND_ALL_CATEGORIES_PATH)
@@ -49,9 +54,14 @@ public class CategoryWSImpl implements ICategoryWS {
                     ex.getMessage()), ex);
         }
 
-        return (categoriesFoundList);
+        return (((categoriesFoundList == null)
+                || (categoriesFoundList.isEmpty())) ? null
+                : categoriesFoundList);
     }
 
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/categories/find/languagesisocode?languagesisocode=
+     */
     @GET()
     @Override()
     @Path(WebServicePathsContract.CategoryContract.FIND_CATEGORIES_BY_LANGUAGES_ISO_CODE_PATH)
@@ -73,9 +83,14 @@ public class CategoryWSImpl implements ICategoryWS {
             }
         }
 
-        return (categoriesFoundList);
+        return (((categoriesFoundList == null)
+                || (categoriesFoundList.isEmpty())) ? null
+                : categoriesFoundList);
     }
 
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/categories/find?categoryname=&languagesisocode=
+     */
     @GET()
     @Override()
     @Path(WebServicePathsContract.CategoryContract.FIND_ONE_CATEGORY_PATH)
