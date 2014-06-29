@@ -3,23 +3,41 @@
 
     <EditTextPreference
         android:defaultValue="http"
-        android:key="httpProtocol" >
+        android:key="httpProtocol"
+        android:order="1"
+        android:selectable="false"
+        android:summary="@string/http_protocol_summary_setting"
+        android:title="@string/http_protocol_title_setting" >
     </EditTextPreference>
     <EditTextPreference
         android:defaultValue="192.168.0.193"
-        android:key="serverIP" >
+        android:key="serverIP"
+        android:order="2"
+        android:summary="@string/server_ip_summary_setting"
+        android:title="@string/server_ip_title_setting" >
     </EditTextPreference>
     <EditTextPreference
         android:defaultValue="8080"
-        android:key="serverPort" >
+        android:key="serverPort"
+        android:order="3"
+        android:summary="@string/server_port_summary_setting"
+        android:title="@string/server_port_title_setting" >
     </EditTextPreference>
     <EditTextPreference
         android:defaultValue="ahorcatooth"
-        android:key="webApplicatonContext" >
+        android:key="webApplicatonContext"
+        android:order="4"
+        android:selectable="false"
+        android:summary="@string/web_application_context_summary_setting"
+        android:title="@string/web_application_context_title_setting" >
     </EditTextPreference>
     <EditTextPreference
         android:defaultValue="rest"
-        android:key="webServiceContext" >
+        android:key="webServiceContext"
+        android:order="5"
+        android:selectable="false"
+        android:summary="@string/web_service_context_summary_setting"
+        android:title="@string/web_service_context_title_setting" >
     </EditTextPreference>
 
 </PreferenceScreen>

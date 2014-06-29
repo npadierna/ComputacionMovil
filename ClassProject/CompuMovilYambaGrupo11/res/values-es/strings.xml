@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Global Application Text -->
-    <string name="application_name">Yamba 7 / Grupo 11</string>
+    <string name="application_name">Yamba 8 / Grupo 11</string>
 
     <!-- Banner Fragment -->
     <string name="banner_image_content_descripton">Esta es la imagen para el Banner.</string>
@@ -26,9 +26,26 @@
     <string name="api_root_title_settings">URL</string>
     <string name="password_summary_settings">Contraseña para Yamba</string>
     <string name="password_title_settings">Contraseña</string>
+    <string name="refresh_interval_summary_settings">Intervalo para consultar tus Tweets de Yamba.</string>
+    <string name="refresh_interval_title_settings">Intervalo de Consulta</string>
     <string name="settings_activity_title">Configuraciones</string>
     <string name="user_name_summary_settings">Nombre de usuario para Yamba</string>
     <string name="user_name_title_settings">Nombre de Usuario</string>
+
+    <string-array name="refreshing_interval_names">
+        <item>5 minutos</item>
+        <item>10 minutos</item>
+        <item>15 minutos</item>
+        <item>30 minutos</item>
+        <item>60 minutos</item>
+    </string-array>
+    <string-array name="refresing_interval_values">
+        <item>300000</item>
+        <item>600000</item>
+        <item>900000</item>
+        <item>1800000</item>
+        <item>3600000</item>
+    </string-array>
 
     <!-- Status Fragment -->
     <string name="hint_status_edit_text">Hola, qué pasa?</string>

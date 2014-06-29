@@ -29,11 +29,14 @@ abstract class AbstractContextWS {
 	public static final String CONTENT_TYPE_VALUE = "application/json";
 
 	private Context context;
+	private SharedPreferences sharedPreferences;
 
 	public AbstractContextWS(Context context) {
 		super();
 
 		this.context = context;
+		this.sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(this.context);
 	}
 
 	private String buildQueriesForPath(Map<String, String> parameters) {
@@ -70,15 +73,14 @@ abstract class AbstractContextWS {
 
 		Log.d(TAG, String.format("Total Paths: %s", stringForPaths.toString()));
 
-		SharedPreferences sharedPreferences = PreferenceManager
-				.getDefaultSharedPreferences(this.context);
-
-		String httpProcol = sharedPreferences.getString("httpProtocol", null);
-		String serverIP = sharedPreferences.getString("serverIP", null);
-		String serverPort = sharedPreferences.getString("serverPort", null);
-		String webApplicatonContext = sharedPreferences.getString(
+		String httpProcol = this.sharedPreferences.getString("httpProtocol",
+				null);
+		String serverIP = this.sharedPreferences.getString("serverIP", null);
+		String serverPort = this.sharedPreferences
+				.getString("serverPort", null);
+		String webApplicatonContext = this.sharedPreferences.getString(
 				"webApplicatonContext", null);
-		String webServiceContext = sharedPreferences.getString(
+		String webServiceContext = this.sharedPreferences.getString(
 				"webServiceContext", null);
 
 		URI uri = new URI(httpProcol, "", serverIP,

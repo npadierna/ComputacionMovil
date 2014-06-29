@@ -3,6 +3,8 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 import java.io.Serializable;
 import java.util.List;
 
+import org.json.JSONObject;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -19,6 +21,10 @@ public class Languages implements Parcelable, Serializable {
 		super();
 	}
 
+	public Languages(JSONObject jsonObject) {
+		// FIXME: Think more about this.
+	}
+	
 	public Languages(Parcel parcel) {
 		this.setIsoCode(parcel.readString());
 		this.setTongue(parcel.readString());
