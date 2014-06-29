@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository()
 @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
-public class LanguaguesDAOImpl extends AbstractEntityContext
+public class LanguaguesDAOImpl extends AbstractEntityContextDAO
         implements ILanguagesDAO {
 
     public LanguaguesDAOImpl() {
@@ -20,16 +20,16 @@ public class LanguaguesDAOImpl extends AbstractEntityContext
     }
 
     @Override()
-    public Long countLanguagess() {
+    public Long count() throws AhorcaToothDatabaseException {
 
-        return (super.countEntities(Languages.class));
+        return (super.count(Languages.class));
     }
 
     @Override()
-    public List<Languages> executeNamedQueryForLanguages(String namedQuery,
-            String where, String whereArg) throws AhorcaToothDatabaseException {
+    public List<Languages> executeNamedQuery(String namedQuery, String where,
+            String whereArg) throws AhorcaToothDatabaseException {
         List<Languages> languagesFoundsList = new ArrayList<>();
-        List<IEntityContext> entitiesContextList = super.executeNamedQueryForEntities(
+        List<IEntityContext> entitiesContextList = super.executeNamedQuery(
                 namedQuery, where, whereArg);
 
         for (IEntityContext entityContext : entitiesContextList) {
@@ -41,49 +41,48 @@ public class LanguaguesDAOImpl extends AbstractEntityContext
 
     @Override()
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
-    public Languages deleteLanguages(Languages languages)
+    public Languages delete(Languages languages)
             throws AhorcaToothDatabaseException {
 
-        return ((Languages) super.deleteEntity(languages));
+        return ((Languages) super.delete(languages));
     }
 
     @Override()
     @SuppressWarnings(value = {"unchecked"})
-    public List<Languages> findAllLanguages()
-            throws AhorcaToothDatabaseException {
+    public List<Languages> findAll() throws AhorcaToothDatabaseException {
 
-        return ((List<Languages>) super.findAllEntities(Languages.class));
+        return ((List<Languages>) super.findAll(Languages.class));
     }
 
     @Override()
-    public Languages findLanguages(String key)
+    public Languages find(String key)
             throws AhorcaToothDatabaseException {
 
-        return ((Languages) super.findEntity(Languages.class, key));
+        return ((Languages) super.find(Languages.class, key));
     }
 
     @Override()
     @SuppressWarnings(value = {"unchecked"})
-    public List<Languages> findLanguagesByAttributes(Object... attributesArgs)
+    public List<Languages> findByAttributes(Object... attributesArgs)
             throws AhorcaToothDatabaseException {
 
-        return ((List<Languages>) super.findEntitiesByAttributes(Languages.class,
+        return ((List<Languages>) super.findByAttributes(Languages.class,
                 attributesArgs));
     }
 
     @Override()
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
-    public String saveLanguages(Languages languages)
+    public String save(Languages languages)
             throws AhorcaToothDatabaseException {
 
-        return ((String) super.saveEntity(languages));
+        return ((String) super.save(languages));
     }
 
     @Override()
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
-    public Languages updateLanguages(Languages languages)
+    public Languages update(Languages languages)
             throws AhorcaToothDatabaseException {
 
-        return ((Languages) super.updateEntity(languages));
+        return ((Languages) super.update(languages));
     }
 }

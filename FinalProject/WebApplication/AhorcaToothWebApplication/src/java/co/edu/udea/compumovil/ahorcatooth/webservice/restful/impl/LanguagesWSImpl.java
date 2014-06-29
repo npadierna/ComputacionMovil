@@ -5,7 +5,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistance.dao.ILanguagesDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
 import co.edu.udea.compumovil.ahorcatooth.util.TextUtils;
 import co.edu.udea.compumovil.ahorcatooth.webservice.ILanguagesWS;
-import co.edu.udea.compumovil.ahorcatooth.webservice.contract.WebServicePathsContract;
+import co.edu.udea.compumovil.ahorcatooth.webservice.restful.contract.WebServicePathsContract;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -41,14 +41,14 @@ public class LanguagesWSImpl implements ILanguagesWS {
     @Override()
     @Path(WebServicePathsContract.LanguagesContract.FIND_ALL_LANGUAGES_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<Languages> findAllLanguages() {
+    public List<Languages> findAll() {
         List<Languages> languagesesFoundList = null;
 
         try {
-            languagesesFoundList = this.languagesDAO.findAllLanguages();
+            languagesesFoundList = this.languagesDAO.findAll();
         } catch (AhorcaToothDatabaseException ex) {
             Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                    "findAllLanguages():List<Languages>",
+                    "findAll():List<Languages>",
                     String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
                     ex.getMessage()), ex);
         }
@@ -65,17 +65,17 @@ public class LanguagesWSImpl implements ILanguagesWS {
     @Override()
     @Path(WebServicePathsContract.LanguagesContract.FIND_ONE_LANGUAGES_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public Languages findLanguages(
+    public Languages find(
             @QueryParam(WebServicePathsContract.LanguagesContract.LANGUAGES_ISO_CODE_QUERY) String isoCode) {
         Languages languages = null;
 
         if (!TextUtils.isEmpty(isoCode)) {
             try {
-                languages = this.languagesDAO.findLanguages(TextUtils
+                languages = this.languagesDAO.find(TextUtils
                         .toLowerCase(isoCode));
             } catch (AhorcaToothDatabaseException ex) {
                 Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                        "findLanguages(String):Languages",
+                        "find(String):Languages",
                         String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
                         ex.getMessage()), ex);
             }

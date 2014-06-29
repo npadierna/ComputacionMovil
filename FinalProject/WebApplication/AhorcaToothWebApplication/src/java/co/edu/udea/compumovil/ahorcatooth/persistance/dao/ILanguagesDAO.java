@@ -6,26 +6,24 @@ import java.util.List;
 
 public interface ILanguagesDAO {
 
-    public Long countLanguagess();
+    public Long count() throws AhorcaToothDatabaseException;
 
-    public List<Languages> executeNamedQueryForLanguages(String namedQuery,
-            String where, String whereArg) throws AhorcaToothDatabaseException;
+    public List<Languages> executeNamedQuery(String namedQuery, String where,
+            String whereArg) throws AhorcaToothDatabaseException;
 
-    public Languages deleteLanguages(Languages languages)
+    public Languages delete(Languages languages)
             throws AhorcaToothDatabaseException;
 
-    public List<Languages> findAllLanguages()
+    public List<Languages> findAll() throws AhorcaToothDatabaseException;
+
+    public Languages find(String primaryKey)
             throws AhorcaToothDatabaseException;
 
-    public Languages findLanguages(String key)
+    public List<Languages> findByAttributes(Object... attributesArgs)
             throws AhorcaToothDatabaseException;
 
-    public List<Languages> findLanguagesByAttributes(Object... attributesArgs)
-            throws AhorcaToothDatabaseException;
+    public String save(Languages languages) throws AhorcaToothDatabaseException;
 
-    public String saveLanguages(Languages languages)
-            throws AhorcaToothDatabaseException;
-
-    public Languages updateLanguages(Languages languages)
+    public Languages update(Languages languages)
             throws AhorcaToothDatabaseException;
 }

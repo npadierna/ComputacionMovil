@@ -4,7 +4,7 @@ import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothProcessEx
 
 public interface IHangmanWordProcess {
 
-    public String saveHangmanWord(String wordName, String categoryName,
+    public String save(String wordName, String categoryName,
             String langugesIsoCode, String description)
             throws AhorcaToothProcessException;
 }

@@ -53,7 +53,7 @@ public class LanguagesBean implements Serializable {
         List<Languages> languagesFoundList = new ArrayList<>();
 
         try {
-            languagesFoundList = this.languagesProcess.findAllLanguages();
+            languagesFoundList = this.languagesProcess.findAll();
         } catch (AhorcaToothProcessException ex) {
             Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
                     "initComponents():void",

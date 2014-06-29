@@ -30,11 +30,11 @@ public class LanguagesProcessImpl implements ILanguagesProcess, Serializable {
     }
 
     @Override()
-    public List<Languages> findAllLanguages() throws AhorcaToothProcessException {
+    public List<Languages> findAll() throws AhorcaToothProcessException {
         List<Languages> languagesFoundList = new ArrayList<>();
 
         try {
-            languagesFoundList = this.languagesDAO.findAllLanguages();
+            languagesFoundList = this.languagesDAO.findAll();
         } catch (AhorcaToothDatabaseException ex) {
             throw new AhorcaToothProcessException(ex);
         }

@@ -7,23 +7,22 @@ import java.util.List;
 
 public interface ICategoryDAO {
 
-    public Long countCategories();
+    public Long count() throws AhorcaToothDatabaseException;
 
-    public List<Category> executeNamedQueryForCategories(String namedQuery,
-            String where, String whereArg) throws AhorcaToothDatabaseException;
+    public List<Category> executeNamedQuery(String namedQuery, String where,
+            String whereArg) throws AhorcaToothDatabaseException;
 
-    public List<Category> findAllCategories()
+    public List<Category> findAll() throws AhorcaToothDatabaseException;
+
+    public List<Category> findByAttributes(Object... attributesArgs)
             throws AhorcaToothDatabaseException;
 
-    public List<Category> findCategoriesByAttributes(Object... attributesArgs)
+    public List<Category> findByLanguagesIsoCode(String languagesIsoCode)
             throws AhorcaToothDatabaseException;
 
-    public List<Category> findCategoriesByLanguagesIsoCode(
-            String languagesIsoCode) throws AhorcaToothDatabaseException;
-    
-    public Category findCategory(CategoryPK key)
+    public Category find(CategoryPK primaryKey)
             throws AhorcaToothDatabaseException;
 
-    public Category updateCategory(Category category)
+    public Category update(Category category)
             throws AhorcaToothDatabaseException;
 }

@@ -71,7 +71,7 @@ public class HangmanWordBean implements Serializable {
         String messageBody;
 
         try {
-            String savingResult = this.hangmanWordProcess.saveHangmanWord(
+            String savingResult = this.hangmanWordProcess.save(
                     this.getWordName(), this.getCategoryName(),
                     this.getLanguagesIsoCode(), this.getDescription());
             

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ICategoryProcess {
 
-    public List<Category> findAllCategories() throws AhorcaToothProcessException;
+    public List<Category> findAll() throws AhorcaToothProcessException;
 }

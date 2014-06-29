@@ -30,11 +30,11 @@ public class CategoryProcessImpl implements ICategoryProcess, Serializable {
     }
 
     @Override()
-    public List<Category> findAllCategories() throws AhorcaToothProcessException {
+    public List<Category> findAll() throws AhorcaToothProcessException {
         List<Category> categoriesFoundList = new ArrayList<>();
 
         try {
-            categoriesFoundList = this.categoryDAO.findAllCategories();
+            categoriesFoundList = this.categoryDAO.findAll();
         } catch (AhorcaToothDatabaseException ex) {
             throw new AhorcaToothProcessException(ex);
         }

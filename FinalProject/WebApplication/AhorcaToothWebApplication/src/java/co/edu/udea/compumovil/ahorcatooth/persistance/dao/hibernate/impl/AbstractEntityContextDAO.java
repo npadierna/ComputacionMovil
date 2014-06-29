@@ -10,12 +10,12 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-public class AbstractEntityContext implements IEntityContextDAO {
+public class AbstractEntityContextDAO implements IEntityContextDAO {
 
     @PersistenceContext(unitName = "AhorcaToothWebApplicationPU")
     protected EntityManager entityManager;
 
-    public AbstractEntityContext() {
+    public AbstractEntityContextDAO() {
         super();
     }
 
@@ -30,31 +30,36 @@ public class AbstractEntityContext implements IEntityContextDAO {
 
     @Override()
     @SuppressWarnings(value = {"rawtypes", "unchecked"})
-    public Long countEntities(Class clazz) {
-        CriteriaQuery criteriaQuery = this.getEntityManager()
-                .getCriteriaBuilder().createQuery();
-        Root<IEntityContext> root = criteriaQuery.from(clazz);
+    public Long count(Class clazz) throws AhorcaToothDatabaseException {
+        try {
+            CriteriaQuery criteriaQuery = this.getEntityManager()
+                    .getCriteriaBuilder().createQuery();
+            Root<IEntityContext> root = criteriaQuery.from(clazz);
 
-        criteriaQuery.select(this.getEntityManager().getCriteriaBuilder()
-                .count(root));
+            criteriaQuery.select(this.getEntityManager().getCriteriaBuilder()
+                    .count(root));
 
-        Query query = this.getEntityManager().createQuery(criteriaQuery);
+            Query query = this.getEntityManager().createQuery(criteriaQuery);
 
-        return ((Long) query.getSingleResult());
+            return ((Long) query.getSingleResult());
+        } catch (Exception e) {
+            throw new AhorcaToothDatabaseException(
+                    "Fatal error while the DAO was trying count entities", e);
+        }
     }
 
     @Override()
-    public IEntityContext deleteEntity(IEntityContext entity)
+    public IEntityContext delete(IEntityContext entity)
             throws AhorcaToothDatabaseException {
         IEntityContext found = null;
 
         try {
-            found = this.findEntity(entity.getClass(),
+            found = this.find(entity.getClass(),
                     entity.getKey());
             this.getEntityManager().remove(found);
         } catch (Exception e) {
             throw new AhorcaToothDatabaseException(
-                    "Fatal error while the DAO was trying delete a entity", e);
+                    "Fatal error while the DAO was trying delete an entity", e);
         } finally {
             this.getEntityManager().flush();
         }
@@ -64,7 +69,7 @@ public class AbstractEntityContext implements IEntityContextDAO {
 
     @Override()
     @SuppressWarnings(value = {"unchecked"})
-    public List<IEntityContext> executeNamedQueryForEntities(String namedQuery,
+    public List<IEntityContext> executeNamedQuery(String namedQuery,
             String where, Object whereArg) throws AhorcaToothDatabaseException {
         List<IEntityContext> resultList = null;
 
@@ -83,8 +88,7 @@ public class AbstractEntityContext implements IEntityContextDAO {
 
     @Override()
     @SuppressWarnings(value = {"rawtypes", "unchecked"})
-    public Object findAllEntities(Class clazz)
-            throws AhorcaToothDatabaseException {
+    public Object findAll(Class clazz) throws AhorcaToothDatabaseException {
         Query query;
         List<IEntityContext> entities = null;
 
@@ -103,8 +107,8 @@ public class AbstractEntityContext implements IEntityContextDAO {
 
     @Override()
     @SuppressWarnings(value = {"rawtypes"})
-    public Object findEntitiesByAttributes(Class clazz,
-            Object... attributesArgs) throws AhorcaToothDatabaseException {
+    public Object findByAttributes(Class clazz, Object... attributesArgs)
+            throws AhorcaToothDatabaseException {
         if (attributesArgs.length % 2 != 0) {
             throw new AhorcaToothDatabaseException(String.format("%s: %d",
                     "The number of the arguments for attributes is incorrect: ",
@@ -141,7 +145,7 @@ public class AbstractEntityContext implements IEntityContextDAO {
 
     @Override()
     @SuppressWarnings(value = {"rawtypes", "unchecked"})
-    public IEntityContext findEntity(Class clazz, Object key)
+    public IEntityContext find(Class clazz, Object key)
             throws AhorcaToothDatabaseException {
         IEntityContext entity = null;
 
@@ -157,14 +161,14 @@ public class AbstractEntityContext implements IEntityContextDAO {
     }
 
     @Override()
-    public Object saveEntity(IEntityContext entity)
+    public Object save(IEntityContext entity)
             throws AhorcaToothDatabaseException {
         try {
             this.getEntityManager().persist(entity);
             this.getEntityManager().flush();
         } catch (Exception e) {
             throw new AhorcaToothDatabaseException(
-                    "Fatal error while the DAO was trying to persist or save a entity.",
+                    "Fatal error while the DAO was trying to persist or save an entity.",
                     e);
         }
 
@@ -172,13 +176,13 @@ public class AbstractEntityContext implements IEntityContextDAO {
     }
 
     @Override()
-    public IEntityContext updateEntity(IEntityContext entityContext)
+    public IEntityContext update(IEntityContext entityContext)
             throws AhorcaToothDatabaseException {
         try {
             this.getEntityManager().merge(entityContext);
         } catch (Exception e) {
             throw new AhorcaToothDatabaseException(
-                    "Fatal error while the DAO was trying to update or refresh a entity.",
+                    "Fatal error while the DAO was trying to update or refresh an entity.",
                     e);
         } finally {
             this.getEntityManager().flush();

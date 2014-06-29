@@ -39,7 +39,7 @@ public class HangmanWordProcessImpl implements IHangmanWordProcess, Serializable
     }
 
     @Override()
-    public String saveHangmanWord(String wordName, String categoryName,
+    public String save(String wordName, String categoryName,
             String langugesIsoCode, String description)
             throws AhorcaToothProcessException {
         if (this.isValidBundle(wordName, categoryName, langugesIsoCode)) {
@@ -53,7 +53,7 @@ public class HangmanWordProcessImpl implements IHangmanWordProcess, Serializable
 
             try {
 
-                return (this.hangmanWordDAO.saveHangmanWord(hangmanWord).toString());
+                return (this.hangmanWordDAO.save(hangmanWord).toString());
             } catch (AhorcaToothDatabaseException ex) {
                 throw new AhorcaToothProcessException(ex);
             }

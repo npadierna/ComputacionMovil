@@ -7,29 +7,28 @@ import java.util.List;
 public interface IEntityContextDAO {
 
     @SuppressWarnings(value = {"rawtypes"})
-    public Long countEntities(Class clazz);
+    public Long count(Class clazz) throws AhorcaToothDatabaseException;
 
-    public IEntityContext deleteEntity(IEntityContext entityContext)
+    public IEntityContext delete(IEntityContext entityContext)
             throws AhorcaToothDatabaseException;
 
-    public List<IEntityContext> executeNamedQueryForEntities(String namedQuery,
+    public List<IEntityContext> executeNamedQuery(String namedQuery,
             String where, Object whereArg) throws AhorcaToothDatabaseException;
 
     @SuppressWarnings(value = {"rawtypes"})
-    public Object findAllEntities(Class clazz)
+    public Object findAll(Class clazz) throws AhorcaToothDatabaseException;
+
+    @SuppressWarnings(value = {"rawtypes"})
+    public Object findByAttributes(Class clazz, Object... attributesArgs)
             throws AhorcaToothDatabaseException;
 
     @SuppressWarnings(value = {"rawtypes"})
-    public Object findEntitiesByAttributes(Class clazz,
-            Object... attributesArgs) throws AhorcaToothDatabaseException;
-
-    @SuppressWarnings(value = {"rawtypes"})
-    public IEntityContext findEntity(Class clazz, Object key)
+    public IEntityContext find(Class clazz, Object key)
             throws AhorcaToothDatabaseException;
 
-    public Object saveEntity(IEntityContext entity)
+    public Object save(IEntityContext entity)
             throws AhorcaToothDatabaseException;
 
-    public IEntityContext updateEntity(IEntityContext entityContext)
+    public IEntityContext update(IEntityContext entityContext)
             throws AhorcaToothDatabaseException;
 }

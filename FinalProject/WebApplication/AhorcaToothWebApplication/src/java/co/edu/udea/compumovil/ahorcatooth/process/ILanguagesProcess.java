@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ILanguagesProcess {
 
-    public List<Languages> findAllLanguages() throws AhorcaToothProcessException;
+    public List<Languages> findAll() throws AhorcaToothProcessException;
 }

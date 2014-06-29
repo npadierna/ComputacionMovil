@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository()
 @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = true)
-public class CategoryDAOImpl extends AbstractEntityContext
+public class CategoryDAOImpl extends AbstractEntityContextDAO
         implements ICategoryDAO {
 
     public CategoryDAOImpl() {
@@ -21,16 +21,16 @@ public class CategoryDAOImpl extends AbstractEntityContext
     }
 
     @Override()
-    public Long countCategories() {
+    public Long count() throws AhorcaToothDatabaseException {
 
-        return (super.countEntities(Category.class));
+        return (super.count(Category.class));
     }
 
     @Override()
-    public List<Category> executeNamedQueryForCategories(String namedQuery,
-            String where, String whereArg) throws AhorcaToothDatabaseException {
+    public List<Category> executeNamedQuery(String namedQuery, String where,
+    String whereArg) throws AhorcaToothDatabaseException {
         List<Category> categoriesFoundList = new ArrayList<>();
-        List<IEntityContext> entitesContextList = super.executeNamedQueryForEntities(
+        List<IEntityContext> entitesContextList = super.executeNamedQuery(
                 namedQuery, where, whereArg);
 
         for (IEntityContext entityContext : entitesContextList) {
@@ -42,42 +42,40 @@ public class CategoryDAOImpl extends AbstractEntityContext
 
     @Override()
     @SuppressWarnings(value = {"unchecked"})
-    public List<Category> findAllCategories()
-            throws AhorcaToothDatabaseException {
+    public List<Category> findAll() throws AhorcaToothDatabaseException {
 
-        return ((List<Category>) super.findAllEntities(Category.class));
+        return ((List<Category>) super.findAll(Category.class));
     }
 
     @Override()
     @SuppressWarnings(value = {"unchecked"})
-    public List<Category> findCategoriesByAttributes(Object... attributesArgs)
+    public List<Category> findByAttributes(Object... attributesArgs)
             throws AhorcaToothDatabaseException {
 
-        return ((List<Category>) super.findEntitiesByAttributes(Category.class,
+        return ((List<Category>) super.findByAttributes(Category.class,
                 attributesArgs));
     }
 
     @Override()
-    public List<Category> findCategoriesByLanguagesIsoCode(
-            String languagesIsoCode) throws AhorcaToothDatabaseException {
+    public List<Category> findByLanguagesIsoCode(String languagesIsoCode)
+            throws AhorcaToothDatabaseException {
 
-        return (this.executeNamedQueryForCategories(
+        return (this.executeNamedQuery(
                 "Category.findByLanguagesIsoCode", "languagesIsoCode",
                 languagesIsoCode));
     }
 
     @Override()
-    public Category findCategory(CategoryPK key)
-            throws AhorcaToothDatabaseException {
+    public Category find(CategoryPK key) throws AhorcaToothDatabaseException {
 
-        return ((Category) super.findEntity(Category.class, key));
+        return ((Category) super.find(Category.class, key));
     }
 
     @Override()
     @Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
-    public Category updateCategory(Category category)
+    public Category update(Category category)
             throws AhorcaToothDatabaseException {
 
-        return ((Category) super.updateEntity(category));
+        return ((Category) super.update(category));
     }
 }

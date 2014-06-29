@@ -53,7 +53,7 @@ public class CategoryBean implements Serializable {
         List<Category> categoriesFoundList = new ArrayList<>();
 
         try {
-            categoriesFoundList = this.categoryProcess.findAllCategories();
+            categoriesFoundList = this.categoryProcess.findAll();
         } catch (AhorcaToothProcessException ex) {
             Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
                     "initComponents():void",

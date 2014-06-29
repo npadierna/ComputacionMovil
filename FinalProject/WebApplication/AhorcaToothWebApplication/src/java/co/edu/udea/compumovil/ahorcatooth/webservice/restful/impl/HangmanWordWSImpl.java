@@ -5,7 +5,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistance.dao.IHangmanWordDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistance.exception.AhorcaToothDatabaseException;
 import co.edu.udea.compumovil.ahorcatooth.util.TextUtils;
 import co.edu.udea.compumovil.ahorcatooth.webservice.IHangmanWordWS;
-import co.edu.udea.compumovil.ahorcatooth.webservice.contract.WebServicePathsContract;
+import co.edu.udea.compumovil.ahorcatooth.webservice.restful.contract.WebServicePathsContract;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -41,18 +41,17 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_HANGMANS_WORDS_BY_CATEGORY_NAME_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<HangmanWord> findHangmansWordsByCategoryName(
+    public List<HangmanWord> findByCategoryName(
             @QueryParam(WebServicePathsContract.HangmanWordContract.CATEGORY_NAME_QUERY) String categoryName) {
         List<HangmanWord> hangmanWordsFoundList = null;
 
         if (!TextUtils.isEmpty(categoryName)) {
             try {
-                hangmanWordsFoundList = this.hangmanWordDAO.
-                        findHangmansWordsByCategoryName(TextUtils.toUpperCase(
-                        categoryName));
+                hangmanWordsFoundList = this.hangmanWordDAO.findByCategoryName(
+                        TextUtils.toUpperCase(categoryName));
             } catch (AhorcaToothDatabaseException ex) {
                 Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                        "findAllHangmanWordsByCategoryName(String):List<HangmanWord>",
+                        "findByCategoryName(String):List<HangmanWord>",
                         String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
                         ex.getMessage()), ex);
             }
@@ -70,18 +69,18 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_HANGMANS_WORDS_BY_LANGUAGES_ISO_CODE_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<HangmanWord> findHangmansWordsByLanguagesIsoCode(
+    public List<HangmanWord> findByLanguagesIsoCode(
             @QueryParam(WebServicePathsContract.HangmanWordContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode) {
         List<HangmanWord> hangmanWordsFoundList = null;
 
         if (!TextUtils.isEmpty(languagesIsoCode)) {
             try {
                 hangmanWordsFoundList = this.hangmanWordDAO
-                        .findHangmansWordsByLanguagesIsoCode(TextUtils
+                        .findByLanguagesIsoCode(TextUtils
                         .toLowerCase(languagesIsoCode));
             } catch (AhorcaToothDatabaseException ex) {
                 Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                        "findAllHangmanWordsByLanguagesIsoCode(String):List<HangmanWord>",
+                        "findByLanguagesIsoCode(String):List<HangmanWord>",
                         String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
                         ex.getMessage()), ex);
             }
@@ -99,7 +98,7 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_LASTEST_HANGMANS_WORDS_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<HangmanWord> findLatestHangmansWords(
+    public List<HangmanWord> findLatestWithLimit(
             @QueryParam(WebServicePathsContract.HangmanWordContract.CATEGORY_NAME_QUERY) String categoryName,
             @QueryParam(WebServicePathsContract.HangmanWordContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode,
             @QueryParam(WebServicePathsContract.HangmanWordContract.MAX_HANGMANS_WORDS_QUERY) Integer amount) {
@@ -110,12 +109,12 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
                 && (this.isValidRequestedAmout(amount))) {
             try {
                 hangmanWordsFoundList = this.hangmanWordDAO
-                        .findLatestHangmansWords(TextUtils.toUpperCase(
+                        .findLatestWithLimit(TextUtils.toUpperCase(
                         categoryName), TextUtils.toLowerCase(languagesIsoCode),
                         amount);
             } catch (AhorcaToothDatabaseException ex) {
                 Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                        "findLatestHangmansWords(String, String, Integer):List<HangmanWord>",
+                        "findLatestWithLimit(String, String, Integer):List<HangmanWord>",
                         String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
                         ex.getMessage()), ex);
             }

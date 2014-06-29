@@ -1,4 +1,4 @@
-package co.edu.udea.compumovil.ahorcatooth.webservice.contract;
+package co.edu.udea.compumovil.ahorcatooth.webservice.restful.contract;
 
 public final class WebServicePathsContract {
 
