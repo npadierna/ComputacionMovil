@@ -21,8 +21,8 @@ public class BooterBroadcastReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		SharedPreferences sharedPreferences = PreferenceManager
 				.getDefaultSharedPreferences(context);
-		long interval = Long.parseLong(sharedPreferences.getString("interval",
-				Long.toString(DEFAULT_INTERVAL)));
+		long interval = Long.parseLong(sharedPreferences.getString(
+				"refreshingInterval", Long.toString(DEFAULT_INTERVAL)));
 		PendingIntent pendingOperation = PendingIntent.getService(context, -1,
 				new Intent(context, RefreshIntentService.class),
 				PendingIntent.FLAG_UPDATE_CURRENT);

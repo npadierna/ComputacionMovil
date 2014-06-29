@@ -28,7 +28,8 @@ public class SettingsPreferenceFragment extends PreferenceFragment implements
 		super.onStart();
 
 		this.sharedPreferences = PreferenceManager
-				.getDefaultSharedPreferences(getActivity());
+				.getDefaultSharedPreferences(super.getActivity()
+						.getApplicationContext());
 		this.sharedPreferences.registerOnSharedPreferenceChangeListener(this);
 	}
 }

@@ -8,6 +8,10 @@
 package co.edu.udea.compumovil.grupo11.yamba;
 
 public final class R {
+    public static final class array {
+        public static final int refreshing_interval_names=0x7f080000;
+        public static final int refresing_interval_values=0x7f080001;
+    }
     public static final class attr {
     }
     public static final class dimen {
@@ -19,42 +23,53 @@ public final class R {
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
+        /**  Yamba Widget 
+         */
+        public static final int yamba_widget_min_height=0x7f050002;
+        public static final int yamba_widget_min_width=0x7f050003;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_purge_main_activity=0x7f0a000f;
-        public static final int action_refresh_main_activity=0x7f0a000e;
-        public static final int action_settings_main_activity=0x7f0a000c;
-        public static final int action_yamba_main_activity=0x7f0a000d;
-        public static final int bannerImageView=0x7f0a0004;
-        public static final int counterTextView=0x7f0a0005;
-        public static final int fragment_banner=0x7f0a0002;
-        public static final int fragment_details=0x7f0a0001;
-        public static final int fragment_status=0x7f0a0003;
-        public static final int fragment_timeline=0x7f0a0000;
-        public static final int list_item_content=0x7f0a0008;
-        public static final int statusEditText=0x7f0a0007;
-        public static final int yambaButton=0x7f0a0006;
-        public static final int yamba_list_item_text_created_at=0x7f0a000a;
-        public static final int yamba_list_item_text_message=0x7f0a000b;
-        public static final int yamba_list_item_text_user=0x7f0a0009;
+        public static final int action_purge_main_activity=0x7f0b0012;
+        public static final int action_refresh_main_activity=0x7f0b0011;
+        public static final int action_settings_main_activity=0x7f0b000f;
+        public static final int action_yamba_main_activity=0x7f0b0010;
+        public static final int bannerImageView=0x7f0b0004;
+        public static final int counterTextView=0x7f0b0005;
+        public static final int fragment_banner=0x7f0b0002;
+        public static final int fragment_details=0x7f0b0001;
+        public static final int fragment_status=0x7f0b0003;
+        public static final int fragment_timeline=0x7f0b0000;
+        public static final int list_item_content=0x7f0b0008;
+        public static final int list_item_text_created_at_text_view=0x7f0b000a;
+        public static final int list_item_text_message_text_view=0x7f0b000b;
+        public static final int list_item_text_user_text_view=0x7f0b0009;
+        public static final int statusEditText=0x7f0b0007;
+        public static final int yambaButton=0x7f0b0006;
+        public static final int yamba_list_item_text_created_at=0x7f0b000d;
+        public static final int yamba_list_item_text_message=0x7f0b000e;
+        public static final int yamba_list_item_text_user=0x7f0b000c;
     }
     public static final class integer {
         /**  Status Activity 
          */
         public static final int maximun_chars_for_status=0x7f060000;
+        /**  Yamba Widget 
+         */
+        public static final int yamba_widget_update_period_millis=0x7f060001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_status=0x7f030001;
         public static final int fragment_banner=0x7f030002;
         public static final int fragment_status=0x7f030003;
-        public static final int yamba_list_item=0x7f030004;
+        public static final int widget_yamba=0x7f030004;
+        public static final int yamba_list_item=0x7f030005;
     }
     public static final class menu {
-        public static final int menu_main=0x7f090000;
+        public static final int menu_main=0x7f0a0000;
     }
     public static final class string {
         /**  Main Activity 
@@ -84,11 +99,11 @@ public final class R {
         /**  Status Fragment 
  Status Fragment 
          */
-        public static final int hint_status_edit_text=0x7f070011;
+        public static final int hint_status_edit_text=0x7f070013;
         /**  Timeline List Fragment 
  Timeline List Fragment 
          */
-        public static final int loading_data_message=0x7f070018;
+        public static final int loading_data_message=0x7f07001a;
         /**  Notification Broadcast Receiver 
  Notification Broadcast Receiver 
          */
@@ -97,15 +112,17 @@ public final class R {
         public static final int new_tweets_title_notification=0x7f070008;
         public static final int password_summary_settings=0x7f07000c;
         public static final int password_title_settings=0x7f07000d;
-        public static final int post_failure_toast_text=0x7f070013;
-        public static final int post_successful_toast_text=0x7f070012;
-        public static final int post_text_progress_dialog=0x7f070014;
-        public static final int post_title_progress_dialog=0x7f070015;
-        public static final int settings_activity_title=0x7f07000e;
-        public static final int status_activity_title=0x7f070016;
-        public static final int tweet_text_button=0x7f070017;
-        public static final int user_name_summary_settings=0x7f07000f;
-        public static final int user_name_title_settings=0x7f070010;
+        public static final int post_failure_toast_text=0x7f070015;
+        public static final int post_successful_toast_text=0x7f070014;
+        public static final int post_text_progress_dialog=0x7f070016;
+        public static final int post_title_progress_dialog=0x7f070017;
+        public static final int refresh_interval_summary_settings=0x7f07000e;
+        public static final int refresh_interval_title_settings=0x7f07000f;
+        public static final int settings_activity_title=0x7f070010;
+        public static final int status_activity_title=0x7f070018;
+        public static final int tweet_text_button=0x7f070019;
+        public static final int user_name_summary_settings=0x7f070011;
+        public static final int user_name_title_settings=0x7f070012;
     }
     public static final class style {
         /** 
@@ -129,13 +146,14 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
     }
     public static final class xml {
         public static final int settings=0x7f040000;
+        public static final int widget_yamba=0x7f040001;
     }
 }

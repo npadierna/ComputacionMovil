@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <EditTextPreference
+        android:defaultValue="http"
+        android:key="httpProtocol" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:defaultValue="192.168.0.193"
+        android:key="serverIP" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:defaultValue="8080"
+        android:key="serverPort" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:defaultValue="ahorcatooth"
+        android:key="webApplicatonContext" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:defaultValue="rest"
+        android:key="webServiceContext" >
+    </EditTextPreference>
+
+</PreferenceScreen>

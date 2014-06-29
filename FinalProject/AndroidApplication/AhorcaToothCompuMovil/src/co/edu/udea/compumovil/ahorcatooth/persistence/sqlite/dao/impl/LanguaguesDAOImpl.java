@@ -7,9 +7,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import co.edu.udea.compumovil.ahorcatooth.persistence.contract.LanguagesContract;
+import co.edu.udea.compumovil.ahorcatooth.persistence.exception.AhorcaToothPersistenceException;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ILanguagesDAO;
 
-public class LanguaguesDAOImpl extends AbstractDAOContext implements
+public class LanguaguesDAOImpl extends AbstractEntityContextDAO implements
 		ILanguagesDAO {
 
 	private static final String TAG = LanguaguesDAOImpl.class.getSimpleName();
@@ -29,26 +30,27 @@ public class LanguaguesDAOImpl extends AbstractDAOContext implements
 	}
 
 	@Override()
-	public Long countLanguages() {
-		Log.i(TAG, "countLanguages():Long");
+	public Long count() throws AhorcaToothPersistenceException {
+		Log.i(TAG, "count():Long");
 
-		return (super.countEntities(LanguagesContract.TABLE_NAME));
+		return (super.count(LanguagesContract.TABLE_NAME));
 	}
 
 	@Override()
-	public List<ContentValues> findAllLanguages() {
-		Log.i(TAG, "findAllLanguages():List<ContentValues>");
+	public List<ContentValues> findAll() throws AhorcaToothPersistenceException {
+		Log.i(TAG, "findAll():List<ContentValues>");
 
-		return (super.findEntities(Boolean.FALSE, LanguagesContract.TABLE_NAME,
+		return (super.find(Boolean.FALSE, LanguagesContract.TABLE_NAME,
 				LanguagesContract.Column.getAllColumns(), null, null, null,
 				null, null, null));
 	}
 
 	@Override()
-	public ContentValues saveLanguages(ContentValues languageContentValues) {
-		Log.i(TAG, "saveLanguage(ContentValues):ContentValues");
+	public ContentValues save(ContentValues languageContentValues)
+			throws AhorcaToothPersistenceException {
+		Log.i(TAG, "save(ContentValues):ContentValues");
 
-		return (super.saveEntity(LanguagesContract.TABLE_NAME, null,
+		return (super.save(LanguagesContract.TABLE_NAME, null,
 				languageContentValues, SQLiteDatabase.CONFLICT_IGNORE));
 	}
 }

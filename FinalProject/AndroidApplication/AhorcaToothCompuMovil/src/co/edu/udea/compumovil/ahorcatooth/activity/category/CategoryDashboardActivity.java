@@ -17,6 +17,7 @@ import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ICategoryProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.business.IHangmanWordProcess;
+import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
 import co.edu.udea.compumovil.ahorcatooth.process.business.impl.CategoryProcessImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.impl.HangmanWordProcessImpl;
 
@@ -68,7 +69,13 @@ public class CategoryDashboardActivity extends Activity {
 		this.hangmanWordProcess = new HangmanWordProcessImpl(
 				super.getApplicationContext());
 
-		this.categoriesList = this.categoryProcess.findAllCategories();
+		try {
+			this.categoriesList = this.categoryProcess.findAll();
+		} catch (AhorcaToothBusinessException e) {
+			e.printStackTrace();
+
+			// FIXME: What have we do?
+		}
 	}
 
 	private void startHangmanGame(Category category) {
@@ -76,10 +83,17 @@ public class CategoryDashboardActivity extends Activity {
 		Log.i(TAG, String.format("Selected Category: %s", category
 				.getCategoryPK().getCategoryName()));
 
-		HangmanWord hangmanWord = this.hangmanWordProcess
-				.findOneHangmanWordByCategoryNameAndLanguageIsoCode(category
-						.getCategoryPK().getCategoryName(), category
-						.getCategoryPK().getLanguagesIsoCode());
+		HangmanWord hangmanWord = null;
+		try {
+			hangmanWord = this.hangmanWordProcess
+					.findOneByCategoryNameAndLanguageIsoCode(category
+							.getCategoryPK().getCategoryName(), category
+							.getCategoryPK().getLanguagesIsoCode());
+		} catch (AhorcaToothBusinessException e) {
+			e.printStackTrace();
+
+			// FIXME: What have we do?
+		}
 
 		Bundle bundle = new Bundle();
 		bundle.putParcelable(HangmanBoardActivity.HANGMAN_WORD_SELECTED,

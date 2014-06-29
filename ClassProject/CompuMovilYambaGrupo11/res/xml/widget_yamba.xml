@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minHeight="@dimen/yamba_widget_min_height"
+    android:minWidth="@dimen/yamba_widget_min_width"
+    android:resizeMode="none"
+    android:updatePeriodMillis="@integer/yamba_widget_update_period_millis" >
+
+</appwidget-provider>

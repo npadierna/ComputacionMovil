@@ -3,14 +3,17 @@ package co.edu.udea.compumovil.ahorcatooth.process.business;
 import java.util.List;
 
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
+import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
 
 public interface ICategoryProcess {
 
-	public List<Category> findAllCategories();
+	public List<Category> findAll() throws AhorcaToothBusinessException;
 
-	public List<Category> findCategoriesByLanguageIsoCode(String languageIsoCode);
+	public List<Category> findByLanguageIsoCode(String languageIsoCode)
+			throws AhorcaToothBusinessException;
 
-	public Category saveCategory(Category category);
+	public Category save(Category category) throws AhorcaToothBusinessException;
 
-	public Category updateCategory(Category category);
+	public Category update(Category category)
+			throws AhorcaToothBusinessException;
 }

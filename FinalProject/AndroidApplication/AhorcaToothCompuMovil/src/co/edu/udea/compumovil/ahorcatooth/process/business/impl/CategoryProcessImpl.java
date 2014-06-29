@@ -13,6 +13,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.CategoryContract;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ICategoryDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.CategoryDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ICategoryProcess;
+import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
 
 public class CategoryProcessImpl implements ICategoryProcess {
 
@@ -24,69 +25,6 @@ public class CategoryProcessImpl implements ICategoryProcess {
 		super();
 
 		this.categoryDAO = CategoryDAOImpl.getInstance(context);
-	}
-
-	@Override()
-	public List<Category> findAllCategories() {
-		Log.i(TAG, "findAllCategories():List<Category>");
-
-		List<ContentValues> contentValuesList = this.categoryDAO
-				.findAllCategories();
-		List<Category> categoriesList = new ArrayList<Category>();
-
-		for (ContentValues contentValues : contentValuesList) {
-			categoriesList.add(this
-					.convertContentValuesToCategory(contentValues));
-		}
-
-		return (categoriesList);
-	}
-
-	@Override()
-	public List<Category> findCategoriesByLanguageIsoCode(String languageIsoCode) {
-		Log.i(TAG, "findCategoriesByLanguageIsoCode(String):List<Category>");
-
-		List<Category> categoriesList = new ArrayList<Category>();
-
-		if (!TextUtils.isEmpty(languageIsoCode)) {
-			List<ContentValues> contentValuesList = this.categoryDAO
-					.findCategoriesByLanguageIsoCode(languageIsoCode);
-
-			for (ContentValues contentValues : contentValuesList) {
-				categoriesList.add(this
-						.convertContentValuesToCategory(contentValues));
-			}
-		}
-
-		return (categoriesList);
-	}
-
-	@Override()
-	public Category saveCategory(Category category) {
-		Log.i(TAG, "saveCategory(Category):Category");
-
-		if (this.isValidCategory(category)) {
-
-			return ((this.categoryDAO.saveCategory(this
-					.convertCategoryToContentValues(category)) != null) ? category
-					: null);
-		}
-
-		return (null);
-	}
-
-	@Override()
-	public Category updateCategory(Category category) {
-		Log.i(TAG, "updateCategory(Category):Category");
-
-		if (this.isValidCategory(category)) {
-
-			return ((this.categoryDAO.updateCategory(this
-					.convertCategoryToContentValues(category)) != null) ? category
-					: null);
-		}
-
-		return (null);
 	}
 
 	private ContentValues convertCategoryToContentValues(Category category) {
@@ -135,5 +73,85 @@ public class CategoryProcessImpl implements ICategoryProcess {
 
 		return (!(TextUtils.isEmpty(categoryPK.getCategoryName())) && !(TextUtils
 				.isEmpty(categoryPK.getLanguagesIsoCode())));
+	}
+
+	@Override()
+	public List<Category> findAll() throws AhorcaToothBusinessException {
+		Log.i(TAG, "findAll():List<Category>");
+
+		try {
+			List<ContentValues> contentValuesList = this.categoryDAO.findAll();
+			List<Category> categoriesList = new ArrayList<Category>();
+
+			for (ContentValues contentValues : contentValuesList) {
+				categoriesList.add(this
+						.convertContentValuesToCategory(contentValues));
+			}
+
+			return (categoriesList);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
+	}
+
+	@Override()
+	public List<Category> findByLanguageIsoCode(String languageIsoCode)
+			throws AhorcaToothBusinessException {
+		Log.i(TAG, "findByLanguageIsoCode(String):List<Category>");
+
+		try {
+			List<Category> categoriesList = new ArrayList<Category>();
+
+			if (!TextUtils.isEmpty(languageIsoCode)) {
+				List<ContentValues> contentValuesList = this.categoryDAO
+						.findByLanguageIsoCode(languageIsoCode);
+
+				for (ContentValues contentValues : contentValuesList) {
+					categoriesList.add(this
+							.convertContentValuesToCategory(contentValues));
+				}
+			}
+
+			return (categoriesList);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
+	}
+
+	@Override()
+	public Category save(Category category) throws AhorcaToothBusinessException {
+		Log.i(TAG, "save(Category):Category");
+
+		try {
+			if (this.isValidCategory(category)) {
+
+				return ((this.categoryDAO.save(this
+						.convertCategoryToContentValues(category)) != null) ? category
+						: null);
+			}
+
+			return (null);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
+	}
+
+	@Override()
+	public Category update(Category category)
+			throws AhorcaToothBusinessException {
+		Log.i(TAG, "update(Category):Category");
+
+		try {
+			if (this.isValidCategory(category)) {
+
+				return ((this.categoryDAO.update(this
+						.convertCategoryToContentValues(category)) != null) ? category
+						: null);
+			}
+
+			return (null);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
 	}
 }

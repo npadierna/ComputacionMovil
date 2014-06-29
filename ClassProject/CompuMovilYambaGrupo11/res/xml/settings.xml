@@ -12,7 +12,17 @@
         android:summary="@string/password_summary_settings"
         android:title="@string/password_title_settings" >
     </EditTextPreference>
+
+    <ListPreference
+        android:entries="@array/refreshing_interval_names"
+        android:entryValues="@array/refresing_interval_values"
+        android:key="refreshingInterval"
+        android:summary="@string/refresh_interval_summary_settings"
+        android:title="@string/refresh_interval_title_settings" >
+    </ListPreference>
+
     <EditTextPreference
+        android:defaultValue="http://yamba.marakana.com/api"
         android:key="apiRoot"
         android:summary="@string/api_root_summary_settings"
         android:title="@string/api_root_title_settings" >

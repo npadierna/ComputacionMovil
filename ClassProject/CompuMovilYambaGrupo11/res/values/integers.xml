@@ -4,4 +4,7 @@
     <!-- Status Activity -->
     <integer name="maximun_chars_for_status">140</integer>
 
+    <!-- Yamba Widget -->
+    <integer name="yamba_widget_update_period_millis">250000</integer>
+
 </resources>

@@ -12,6 +12,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.LanguagesContract
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ILanguagesDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.LanguaguesDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ILanguagesProcess;
+import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
 
 public class LanguagesProcessImpl implements ILanguagesProcess {
 
@@ -24,36 +25,6 @@ public class LanguagesProcessImpl implements ILanguagesProcess {
 		super();
 
 		this.languagesDAO = LanguaguesDAOImpl.getInstance(context);
-	}
-
-	@Override()
-	public List<Languages> findAllLanguages() {
-		Log.i(TAG, "findAllLanguages():List<Languages>");
-
-		List<ContentValues> contentValuesList = this.languagesDAO
-				.findAllLanguages();
-		List<Languages> languagesList = new ArrayList<Languages>();
-
-		for (ContentValues contentValues : contentValuesList) {
-			languagesList.add(this
-					.convertContentValuesToLanguages(contentValues));
-		}
-
-		return (languagesList);
-	}
-
-	@Override()
-	public Languages saveLanguages(Languages languages) {
-		Log.i(TAG, "saveLanguagues(Languages):Languages");
-
-		if (this.isValidLanguages(languages)) {
-
-			return ((this.languagesDAO.saveLanguages(this
-					.convertLanguagesToContentValues(languages)) != null) ? languages
-					: null);
-		}
-
-		return (null);
 	}
 
 	private Languages convertContentValuesToLanguages(
@@ -87,5 +58,43 @@ public class LanguagesProcessImpl implements ILanguagesProcess {
 		}
 
 		return (true);
+	}
+
+	@Override()
+	public List<Languages> findAll() throws AhorcaToothBusinessException {
+		Log.i(TAG, "findAll():List<Languages>");
+
+		try {
+			List<ContentValues> contentValuesList = this.languagesDAO.findAll();
+			List<Languages> languagesList = new ArrayList<Languages>();
+
+			for (ContentValues contentValues : contentValuesList) {
+				languagesList.add(this
+						.convertContentValuesToLanguages(contentValues));
+			}
+
+			return (languagesList);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
+	}
+
+	@Override()
+	public Languages save(Languages languages)
+			throws AhorcaToothBusinessException {
+		Log.i(TAG, "save(Languages):Languages");
+
+		try {
+			if (this.isValidLanguages(languages)) {
+
+				return ((this.languagesDAO.save(this
+						.convertLanguagesToContentValues(languages)) != null) ? languages
+						: null);
+			}
+
+			return (null);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
 	}
 }

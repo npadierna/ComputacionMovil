@@ -50,6 +50,9 @@
             </intent-filter>
         </activity>
 
+        <service android:name="co.edu.udea.compumovil.grupo11.yamba.service.RefreshIntentService" >
+        </service>
+
         <provider
             android:name=".provider.StatusContentProvider"
             android:authorities="co.edu.udea.compumovil.grupo11.yamba.provider.StatusContentProvider"
@@ -62,15 +65,31 @@
                 </action>
             </intent-filter>
         </receiver>
-        <receiver android:name=".broadcast.NotificationBroadcastReceiver" >
+        <receiver
+            android:name=".broadcast.NotificationBroadcastReceiver"
+            android:exported="false" >
             <intent-filter>
                 <action android:name="co.edu.udea.compumovil.grupo11.yamba.action.NEW_TWEETS" >
                 </action>
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".widget.YambaAppWidgetProvider"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="co.edu.udea.compumovil.grupo11.yamba.action.NEW_TWEETS" >
+                </action>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" >
+                </action>
+            </intent-filter>
 
-        <service android:name=".service.RefreshIntentService" >
-        </service>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_yamba" >
+            </meta-data>
+        </receiver>
     </application>
 
 </manifest>

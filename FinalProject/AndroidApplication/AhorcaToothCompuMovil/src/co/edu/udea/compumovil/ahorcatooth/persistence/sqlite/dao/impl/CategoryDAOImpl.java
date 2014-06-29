@@ -7,9 +7,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import co.edu.udea.compumovil.ahorcatooth.persistence.contract.CategoryContract;
+import co.edu.udea.compumovil.ahorcatooth.persistence.exception.AhorcaToothPersistenceException;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ICategoryDAO;
 
-public class CategoryDAOImpl extends AbstractDAOContext implements ICategoryDAO {
+public class CategoryDAOImpl extends AbstractEntityContextDAO implements
+		ICategoryDAO {
 
 	private static final String TAG = CategoryDAOImpl.class.getSimpleName();
 
@@ -28,32 +30,31 @@ public class CategoryDAOImpl extends AbstractDAOContext implements ICategoryDAO 
 	}
 
 	@Override()
-	public Long countCategories() {
-		Log.i(TAG, "countCategories():Long");
+	public Long count() throws AhorcaToothPersistenceException {
+		Log.i(TAG, "count():Long");
 
-		return (super.countEntities(CategoryContract.TABLE_NAME));
+		return (super.count(CategoryContract.TABLE_NAME));
 	}
 
 	@Override()
-	public List<ContentValues> findAllCategories() {
-		Log.i(TAG, "findAllCategories():List<ContentValues>");
+	public List<ContentValues> findAll() throws AhorcaToothPersistenceException {
+		Log.i(TAG, "findAll():List<ContentValues>");
 
-		return (super.findEntities(Boolean.FALSE, CategoryContract.TABLE_NAME,
+		return (super.find(Boolean.FALSE, CategoryContract.TABLE_NAME,
 				CategoryContract.Column.getAllColumns(), null, null, null,
 				null, null, null));
 	}
 
 	@Override()
-	public List<ContentValues> findCategoriesByLanguageIsoCode(
-			String languageIsoCode) {
-		Log.i(TAG, "findCategoriesByLanguageIsoCode():List<ContentValues>");
+	public List<ContentValues> findByLanguageIsoCode(String languageIsoCode)
+			throws AhorcaToothPersistenceException {
+		Log.i(TAG, "findByLanguageIsoCode():List<ContentValues>");
 
-		// DEBUGME: Debug this function.
 		String selection = String.format("%s = ?",
 				CategoryContract.Column.LANGUAGES_ISO_CODE);
 		String[] selectionArgs = new String[] { languageIsoCode };
-		List<ContentValues> categoriesContentValues = super.findEntities(
-				Boolean.FALSE, CategoryContract.TABLE_NAME,
+		List<ContentValues> categoriesContentValues = super.find(Boolean.FALSE,
+				CategoryContract.TABLE_NAME,
 				CategoryContract.Column.getAllColumns(), selection,
 				selectionArgs, null, null, null, null);
 
@@ -61,18 +62,19 @@ public class CategoryDAOImpl extends AbstractDAOContext implements ICategoryDAO 
 	}
 
 	@Override()
-	public ContentValues saveCategory(ContentValues categoryContentValues) {
-		Log.i(TAG, "saveCategory(ContentValues):ContentValues");
+	public ContentValues save(ContentValues categoryContentValues)
+			throws AhorcaToothPersistenceException {
+		Log.i(TAG, "save(ContentValues):ContentValues");
 
-		return (super.saveEntity(CategoryContract.TABLE_NAME, null,
+		return (super.save(CategoryContract.TABLE_NAME, null,
 				categoryContentValues, SQLiteDatabase.CONFLICT_IGNORE));
 	}
 
 	@Override()
-	public ContentValues updateCategory(ContentValues categoryContentValues) {
-		Log.i(TAG, "updateCategory(ContentValues):ContentValues");
+	public ContentValues update(ContentValues categoryContentValues)
+			throws AhorcaToothPersistenceException {
+		Log.i(TAG, "update(ContentValues):ContentValues");
 
-		// DEBUGME: Debug this function.
 		String whereClause = String.format("%s = ? AND %s = ?",
 				CategoryContract.Column.CATEGORY_NAME,
 				CategoryContract.Column.LANGUAGES_ISO_CODE);
@@ -82,7 +84,7 @@ public class CategoryDAOImpl extends AbstractDAOContext implements ICategoryDAO 
 				categoryContentValues
 						.getAsString(CategoryContract.Column.LANGUAGES_ISO_CODE) };
 
-		return (super.updateEntity(CategoryContract.TABLE_NAME,
+		return (super.update(CategoryContract.TABLE_NAME,
 				categoryContentValues, whereClause, whereArgs,
 				SQLiteDatabase.CONFLICT_IGNORE));
 	}

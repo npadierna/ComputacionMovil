@@ -4,4 +4,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Yamba Widget -->
+    <dimen name="yamba_widget_min_height">40dp</dimen>
+    <dimen name="yamba_widget_min_width">250dp</dimen>
+
 </resources>

@@ -12,6 +12,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.HangmanWordContra
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.IHangmanWordDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.HangmanWordDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.IHangmanWordProcess;
+import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
 
 public class HangmanWordProcessImpl implements IHangmanWordProcess {
 
@@ -24,69 +25,6 @@ public class HangmanWordProcessImpl implements IHangmanWordProcess {
 		super();
 
 		this.hangmanWordDAO = HangmanWordDAOImpl.getInstance(context);
-	}
-
-	@Override()
-	public Integer deleteHangmanWord(Long id) {
-		Log.i(TAG, "deleteHangmanWord(Long):Integer");
-
-		if (this.isValidHangmanWordPK(id)) {
-
-			return (this.hangmanWordDAO.deleteHangmanWord(id));
-		}
-
-		return (Integer.valueOf(-1));
-	}
-
-	@Override()
-	public List<HangmanWord> findHangmanWordsByCategoryNameAndLanguageIsoCode(
-			String categoryName, String languageIsoCode) {
-		Log.i(TAG,
-				"findHangmanWordsByCategoryNameAndLanguageIsoCode(String, String):List<HangmanWord>");
-
-		List<ContentValues> contentValuesList = this.hangmanWordDAO
-				.findHangmanWordsByCategoryNameAndLanguageIsoCode(categoryName,
-						languageIsoCode);
-		List<HangmanWord> hangmanWordsList = new ArrayList<HangmanWord>();
-
-		for (ContentValues contentValues : contentValuesList) {
-			hangmanWordsList.add(this
-					.convertContentValuesToHangmanWord(contentValues));
-		}
-
-		return (hangmanWordsList);
-	}
-
-	public HangmanWord findOneHangmanWordByCategoryNameAndLanguageIsoCode(
-			String categoryName, String languageIsoCode) {
-		Log.i(TAG,
-				"findOneHangmanWordByCategoryNameAndLanguageIsoCode(String, String):HangmanWord");
-
-		List<HangmanWord> hangmanWordsFoundList = this
-				.findHangmanWordsByCategoryNameAndLanguageIsoCode(categoryName,
-						languageIsoCode);
-
-		if (!hangmanWordsFoundList.isEmpty()) {
-			int position = (new Random()).nextInt(hangmanWordsFoundList.size());
-
-			return (hangmanWordsFoundList.get(position));
-		}
-
-		return (null);
-	}
-
-	@Override()
-	public HangmanWord saveHangmanWord(HangmanWord hangmanWord) {
-		Log.i(TAG, "saveHangmanWord(HangmanWord):HangmanWord");
-
-		if (this.isValidHangmanWord(hangmanWord)) {
-
-			return ((this.hangmanWordDAO
-					.saveHangmanWord(convertHangmanWordToContentValues(hangmanWord)) != null) ? hangmanWord
-					: null);
-		}
-
-		return (null);
 	}
 
 	private HangmanWord convertContentValuesToHangmanWord(
@@ -133,5 +71,88 @@ public class HangmanWordProcessImpl implements IHangmanWordProcess {
 	private boolean isValidHangmanWordPK(Long id) {
 
 		return ((id != null) && (id.longValue() > 0L));
+	}
+
+	@Override()
+	public Integer delete(Long id) throws AhorcaToothBusinessException {
+		Log.i(TAG, "delete(Long):Integer");
+
+		try {
+			if (this.isValidHangmanWordPK(id)) {
+
+				return (this.hangmanWordDAO.delete(id));
+			}
+
+			return (Integer.valueOf(-1));
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
+	}
+
+	@Override()
+	public List<HangmanWord> findByCategoryNameAndLanguageIsoCode(
+			String categoryName, String languageIsoCode)
+			throws AhorcaToothBusinessException {
+		Log.i(TAG,
+				"findByCategoryNameAndLanguageIsoCode(String, String):List<HangmanWord>");
+
+		try {
+			List<ContentValues> contentValuesList = this.hangmanWordDAO
+					.findByCategoryNameAndLanguageIsoCode(categoryName,
+							languageIsoCode);
+			List<HangmanWord> hangmanWordsList = new ArrayList<HangmanWord>();
+
+			for (ContentValues contentValues : contentValuesList) {
+				hangmanWordsList.add(this
+						.convertContentValuesToHangmanWord(contentValues));
+			}
+
+			return (hangmanWordsList);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
+	}
+
+	public HangmanWord findOneByCategoryNameAndLanguageIsoCode(
+			String categoryName, String languageIsoCode)
+			throws AhorcaToothBusinessException {
+		Log.i(TAG,
+				"findOneByCategoryNameAndLanguageIsoCode(String, String):HangmanWord");
+
+		try {
+			List<HangmanWord> hangmanWordsFoundList = this
+					.findByCategoryNameAndLanguageIsoCode(categoryName,
+							languageIsoCode);
+
+			if (!hangmanWordsFoundList.isEmpty()) {
+				int position = (new Random()).nextInt(hangmanWordsFoundList
+						.size());
+
+				return (hangmanWordsFoundList.get(position));
+			}
+
+			return (null);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
+	}
+
+	@Override()
+	public HangmanWord save(HangmanWord hangmanWord)
+			throws AhorcaToothBusinessException {
+		Log.i(TAG, "save(HangmanWord):HangmanWord");
+
+		try {
+			if (this.isValidHangmanWord(hangmanWord)) {
+
+				return ((this.hangmanWordDAO
+						.save(convertHangmanWordToContentValues(hangmanWord)) != null) ? hangmanWord
+						: null);
+			}
+
+			return (null);
+		} catch (Exception e) {
+			throw new AhorcaToothBusinessException(e);
+		}
 	}
 }

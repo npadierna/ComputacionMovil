@@ -2,9 +2,7 @@ package co.edu.udea.compumovil.grupo11.yamba.activity.main;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,18 +19,6 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_main);
-	}
-
-	@Override()
-	protected void onStart() {
-		super.onStart();
-
-		SharedPreferences sharedPreferences = PreferenceManager
-				.getDefaultSharedPreferences(super.getApplicationContext());
-		SharedPreferences.Editor editor = sharedPreferences.edit();
-
-		editor.putString("apiRoot", "http://yamba.marakana.com/api");
-		editor.commit();
 	}
 
 	@Override()

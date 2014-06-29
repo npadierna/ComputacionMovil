@@ -7,9 +7,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import co.edu.udea.compumovil.ahorcatooth.persistence.contract.HangmanWordContract;
+import co.edu.udea.compumovil.ahorcatooth.persistence.exception.AhorcaToothPersistenceException;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.IHangmanWordDAO;
 
-public class HangmanWordDAOImpl extends AbstractDAOContext implements
+public class HangmanWordDAOImpl extends AbstractEntityContextDAO implements
 		IHangmanWordDAO {
 
 	private static final String TAG = HangmanWordDAOImpl.class.getSimpleName();
@@ -29,48 +30,47 @@ public class HangmanWordDAOImpl extends AbstractDAOContext implements
 	}
 
 	@Override()
-	public Long countHangmanWords() {
-		Log.i(TAG, "countHangmanWords():Long");
+	public Long count() throws AhorcaToothPersistenceException {
+		Log.i(TAG, "count():Long");
 
-		return (super.countEntities(HangmanWordContract.TABLE_NAME));
+		return (super.count(HangmanWordContract.TABLE_NAME));
 	}
 
 	@Override()
-	public Integer deleteHangmanWord(Long id) {
-		Log.i(TAG, "deleteHangmanWord(Long):Integer");
+	public Integer delete(Long id) throws AhorcaToothPersistenceException {
+		Log.i(TAG, "delete(Long):Integer");
 
-		// DEBUGME: Debug this function.
 		String whereClause = String.format("%s = ?",
 				HangmanWordContract.Column.ID);
 		String[] whereArgs = new String[] { String.valueOf(id.longValue()) };
 
-		return (super.deleteEntities(HangmanWordContract.TABLE_NAME,
-				whereClause, whereArgs));
+		return (super.delete(HangmanWordContract.TABLE_NAME, whereClause,
+				whereArgs));
 	}
 
 	@Override()
-	public List<ContentValues> findHangmanWordsByCategoryNameAndLanguageIsoCode(
-			String categoryName, String languageIsoCode) {
+	public List<ContentValues> findByCategoryNameAndLanguageIsoCode(
+			String categoryName, String languageIsoCode)
+			throws AhorcaToothPersistenceException {
 		Log.i(TAG,
-				"findHangmanWordsByCategoryNameAndLanguageIsoCode(String, String):List<ContentValues>");
+				"findByCategoryNameAndLanguageIsoCode(String, String):List<ContentValues>");
 
-		// DEBUGME: Debug this function.
 		String selection = String.format("%s = ? AND %s = ?",
 				HangmanWordContract.Column.CATEGORY_NAME,
 				HangmanWordContract.Column.LANGUAGES_ISO_CODE);
 		String[] selectionArgs = new String[] { categoryName, languageIsoCode };
 
-		return (super.findEntities(Boolean.FALSE,
-				HangmanWordContract.TABLE_NAME,
+		return (super.find(Boolean.FALSE, HangmanWordContract.TABLE_NAME,
 				HangmanWordContract.Column.getAllColumns(), selection,
 				selectionArgs, null, null, null, null));
 	}
 
 	@Override()
-	public ContentValues saveHangmanWord(ContentValues hangmanWordContentValues) {
-		Log.i(TAG, "saveHangmanWord(ContentValues):ContentValues");
+	public ContentValues save(ContentValues hangmanWordContentValues)
+			throws AhorcaToothPersistenceException {
+		Log.i(TAG, "save(ContentValues):ContentValues");
 
-		return (super.saveEntity(HangmanWordContract.TABLE_NAME, null,
+		return (super.save(HangmanWordContract.TABLE_NAME, null,
 				hangmanWordContentValues, SQLiteDatabase.CONFLICT_IGNORE));
 	}
 }
