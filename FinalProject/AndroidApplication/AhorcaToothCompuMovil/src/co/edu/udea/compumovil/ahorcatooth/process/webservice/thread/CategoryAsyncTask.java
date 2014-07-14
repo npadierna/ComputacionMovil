@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.ahorcatooth.process.webservice.thread;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
@@ -14,10 +15,33 @@ public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 
 	private ICategoryWS categoryWS;
 
-	public CategoryAsyncTask(ICategoryWS categoryWS) {
+	private ProgressDialog progressDialog;
+
+	public CategoryAsyncTask(ICategoryWS categoryWS,
+			ProgressDialog progressDialog) {
 		super();
 
 		this.categoryWS = categoryWS;
+		this.progressDialog = progressDialog;
+	}
+
+	public ProgressDialog getProgressDialog() {
+
+		return (this.progressDialog);
+	}
+
+	public void setProgressDialog(ProgressDialog progressDialog) {
+		this.progressDialog = progressDialog;
+	}
+
+	private boolean checkParameters(Object... args) {
+		if ((args == null) || (args.length == 0)
+				|| !(args[0] instanceof Integer)) {
+
+			return (false);
+		}
+
+		return (true);
 	}
 
 	@Override()
@@ -54,13 +78,30 @@ public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 		return (categoriesList);
 	}
 
-	private boolean checkParameters(Object... args) {
-		if ((args == null) || (args.length == 0)
-				|| !(args[0] instanceof Integer)) {
+	@Override()
+	protected void onCancelled() {
+		super.onCancelled();
 
-			return (false);
+		if (this.progressDialog != null) {
+			this.progressDialog.dismiss();
 		}
+	}
 
-		return (true);
+	@Override()
+	protected void onPostExecute(List<Category> result) {
+		super.onPostExecute(result);
+
+		if (this.progressDialog != null) {
+			this.progressDialog.dismiss();
+		}
+	}
+
+	@Override()
+	protected void onPreExecute() {
+		super.onPreExecute();
+
+		if (this.progressDialog != null) {
+			this.progressDialog.show();
+		}
 	}
 }

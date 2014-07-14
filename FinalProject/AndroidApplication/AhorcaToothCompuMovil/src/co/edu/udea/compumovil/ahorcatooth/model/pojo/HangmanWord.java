@@ -30,7 +30,10 @@ public class HangmanWord implements Parcelable, Serializable {
 		this.setCategory(new Category(jsonObject.getJSONObject(CATEGORY)));
 		this.setId(jsonObject.getLong(ID));
 		this.setWordName(jsonObject.getString(WORD_NAME));
-		this.setDescription(jsonObject.getString(DESCRIPTION));
+
+		if (jsonObject.has(DESCRIPTION)) {
+			this.setDescription(jsonObject.getString(DESCRIPTION));
+		}
 	}
 
 	public HangmanWord(Parcel parcel) {

@@ -59,11 +59,13 @@
     </string-array>
 
     <!-- Main Activity -->
+    <string name="logo_content_description_image_view">Image for logo\'s container.</string>
     <string name="menu_action_update_database_preference_text">Refresh</string>
     <string name="menu_action_web_service_preference_text">Web Service Settings</string>
     <string name="single_player_button">Single Player</string>
     <string name="two_players_button">Two Players</string>
-    <string name="logo_content_description_image_view">Image for logo\'s container.</string>
+    <string name="updating_categories_message_spinner">Downloading new \"Categories\"&#8230;</string>
+    <string name="updating_languages_message_spinner">Downloading new \"Languages\"&#8230;</string>
 
     <!-- Web Service Preference Activity -->
     <string name="http_protocol_summary_setting">HTTP Protocol for packages from Internet</string>

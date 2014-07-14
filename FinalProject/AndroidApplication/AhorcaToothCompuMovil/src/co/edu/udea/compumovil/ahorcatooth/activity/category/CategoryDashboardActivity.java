@@ -1,6 +1,7 @@
 package co.edu.udea.compumovil.ahorcatooth.activity.category;
 
 import java.util.List;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -70,7 +71,9 @@ public class CategoryDashboardActivity extends Activity {
 				super.getApplicationContext());
 
 		try {
-			this.categoriesList = this.categoryProcess.findAll();
+			this.categoriesList = this.categoryProcess
+					.findByLanguageIsoCode(Locale.getDefault()
+							.getISO3Language());
 		} catch (AhorcaToothBusinessException e) {
 			e.printStackTrace();
 
@@ -95,13 +98,16 @@ public class CategoryDashboardActivity extends Activity {
 			// FIXME: What have we do?
 		}
 
-		Bundle bundle = new Bundle();
-		bundle.putParcelable(HangmanBoardActivity.HANGMAN_WORD_SELECTED,
-				hangmanWord);
-
 		Intent intent = new Intent(super.getApplicationContext(),
 				HangmanBoardActivity.class);
-		intent.putExtras(bundle);
+
+		if (hangmanWord != null) {
+			Bundle bundle = new Bundle();
+			bundle.putString(HangmanBoardActivity.HANGMAN_WORD_NAME_SELECTED,
+					hangmanWord.getWordName());
+
+			intent.putExtras(bundle);
+		}
 
 		super.startActivity(intent);
 	}

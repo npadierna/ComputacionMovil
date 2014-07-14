@@ -29,7 +29,10 @@ public class Languages implements Parcelable, Serializable {
 	public Languages(JSONObject jsonObject) throws JSONException {
 		this.setIsoCode(jsonObject.getString(ISO_CODE));
 		this.setTongue(jsonObject.getString(TONGUE));
-		this.setDescription(jsonObject.getString(DESCRIPTION));
+
+		if (jsonObject.has(DESCRIPTION)) {
+			this.setDescription(jsonObject.getString(DESCRIPTION));
+		}
 	}
 
 	public Languages(Parcel parcel) {

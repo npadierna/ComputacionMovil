@@ -2,8 +2,8 @@ package co.edu.udea.compumovil.ahorcatooth.process.webservice;
 
 import java.util.List;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.thread.HangmanWordAsyncTask;
@@ -13,18 +13,32 @@ public class HangmanWordWSProcess {
 
 	public static final int FIND_LATEST_WITH_LIMIT = 1;
 
-	private AsyncTask<Object, Void, List<HangmanWord>> hangmanWordAsyncTask;
+	private HangmanWordAsyncTask hangmanWordAsyncTask;
 
-	public HangmanWordWSProcess(Context context) {
+	private ProgressDialog progressDialog;
+
+	public HangmanWordWSProcess(Context context, ProgressDialog progressDialog) {
 		super();
 
+		this.progressDialog = progressDialog;
 		this.hangmanWordAsyncTask = new HangmanWordAsyncTask(
-				HangmanWordWSImpl.getInstance(context));
+				HangmanWordWSImpl.getInstance(context),
+				this.getProgressDialog());
+	}
+
+	public ProgressDialog getProgressDialog() {
+
+		return (this.progressDialog);
+	}
+
+	public void setProgressDialog(ProgressDialog progressDialog) {
+		this.progressDialog = progressDialog;
 	}
 
 	public List<HangmanWord> findLatestWithLimit(String categoryName,
 			String languageIsoCode, Integer limit)
 			throws AhorcaToothBusinessException {
+		this.hangmanWordAsyncTask.setProgressDialog(this.getProgressDialog());
 		this.hangmanWordAsyncTask.execute(new Object[] {
 				Integer.valueOf(FIND_LATEST_WITH_LIMIT), categoryName,
 				languageIsoCode, limit });

@@ -30,7 +30,10 @@ public class Category implements Parcelable, Serializable {
 	public Category(JSONObject jsonObject) throws JSONException {
 		this.setCategoryPK(new CategoryPK(jsonObject.getJSONObject(CATEGORY_PK)));
 		this.setImageName(jsonObject.getString(IMAGE_NAME));
-		this.setDescription(jsonObject.getString(DESCRIPTION));
+
+		if (jsonObject.has(DESCRIPTION)) {
+			this.setDescription(jsonObject.getString(DESCRIPTION));
+		}
 	}
 
 	public Category(Parcel parcel) {

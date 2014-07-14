@@ -11,16 +11,15 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.edu.udea.compumovil.ahorcatooth.R;
-import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 
 public class HangmanBoardActivity extends Activity {
 
 	private static final String TAG = HangmanBoardActivity.class
 			.getSimpleName();
 
-	public static final String HANGMAN_WORD_SELECTED = "Hangman Word for Game";
+	public static final String HANGMAN_WORD_NAME_SELECTED = "Hangman Word for Game";
 
-	private HangmanWord hangmanWord;
+	private String hangmanWordName;
 
 	private ImageView hangingProcessImageView;
 	private TextView hiddenWordTextView;
@@ -47,8 +46,7 @@ public class HangmanBoardActivity extends Activity {
 
 		this.hiddenWordTextView = (TextView) super
 				.findViewById(R.id.hidden_word_text_view);
-		this.hiddenWordTextView.setText(this.maskWord(this.hangmanWord
-				.getWordName()));
+		this.hiddenWordTextView.setText(this.maskWord(this.hangmanWordName));
 
 		ArrayAdapter<String> arrayAdapter = new KeyboardKeyArrayAdapter(this,
 				R.layout.keyboard_key, super.getResources().getStringArray(
@@ -61,12 +59,15 @@ public class HangmanBoardActivity extends Activity {
 
 	private void extractHangmanWord(Intent intent) {
 		Bundle bundle = intent.getExtras();
-		if ((bundle != null) && (bundle.containsKey(HANGMAN_WORD_SELECTED))) {
-			this.hangmanWord = bundle.getParcelable(HANGMAN_WORD_SELECTED);
+		if ((bundle != null)
+				&& (bundle.containsKey(HANGMAN_WORD_NAME_SELECTED))) {
+			this.hangmanWordName = bundle.getString(HANGMAN_WORD_NAME_SELECTED);
 		} else {
 			// FIXME: Show a dialog and finish this activity.
-			this.hangmanWord = new HangmanWord(0L, "MOCK");
+			this.hangmanWordName = "MOCK";
 		}
+
+		Log.d(TAG, String.format("Hangman Word Name: %s", this.hangmanWordName));
 	}
 
 	private String maskWord(String text) {
@@ -80,9 +81,31 @@ public class HangmanBoardActivity extends Activity {
 		return (stringBuilder.toString());
 	}
 
-	private void revealLetter(char c) {
+	private void revealLetter(char letter) {
 		Log.i(TAG, "revealLetter(chart):void");
-		Log.i(TAG, String.format("Char: %s", c));
+		Log.i(TAG, String.format("Char: %s", letter));
+
+		StringBuilder wordStringBuilder = new StringBuilder(
+				this.hiddenWordTextView.getText().toString());
+
+		boolean wasIn = false;
+		int index = this.hangmanWordName.indexOf(letter, 0);
+		while (index != -1) {
+			wordStringBuilder.setCharAt(index, letter);
+			index = this.hangmanWordName.indexOf(letter, (index + 1));
+			wasIn = true;
+		}
+
+		if (wasIn) {
+			this.hiddenWordTextView.setText(wordStringBuilder.toString());
+		} else {
+			// FIXME: Do a punishment for fail the letter.
+		}
+
+		if (wordStringBuilder.indexOf(super
+				.getString(R.string.mask_char_for_words)) == -1) {
+			// FIXME: Invocation for a resume Activity.
+		}
 	}
 
 	public void onGuessLetter(View view) {

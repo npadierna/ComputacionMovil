@@ -9,11 +9,13 @@
         android:targetSdkVersion="14" >
     </uses-sdk>
 
-    <uses-permission android:name="android.permission.INTERNET" >
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
     </uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" >
     </uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
     </uses-permission>
 
     <instrumentation
@@ -31,6 +33,7 @@
 
         <activity
             android:name=".activity.main.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" >
@@ -42,24 +45,34 @@
         </activity>
         <activity
             android:name=".activity.category.CategoryDashboardActivity"
-            android:label="@string/category_dashboard_activity_label" >
+            android:label="@string/category_dashboard_activity_label"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.bluetooth.BluetoothDevicesListActivity"
             android:label="@string/bluetooth_devices_list_activity_title"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.Dialog" >
         </activity>
         <activity
             android:name=".activity.bluetooth.BluetoothMultiplayerActivity"
-            android:label="@string/bluetooth_multiplayer_activity_title" >
+            android:label="@string/bluetooth_multiplayer_activity_title"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.game.HangmanBoardActivity"
-            android:label="@string/application_name" >
+            android:label="@string/application_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.game.HangmanBoardResumeActivity"
+            android:label="@string/application_name"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.preference.WebServicePreferenceActivity"
-            android:label="@string/web_service_preference_activity_title" >
+            android:label="@string/web_service_preference_activity_title"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

@@ -2,8 +2,8 @@ package co.edu.udea.compumovil.ahorcatooth.process.webservice;
 
 import java.util.List;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.os.AsyncTask;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.thread.LanguagesAsyncTask;
@@ -13,16 +13,29 @@ public class LanguagesWSProcess {
 
 	public static final int FIND_ALL = 1;
 
-	private AsyncTask<Object, Void, List<Languages>> languagesAsyncTask;
+	private LanguagesAsyncTask languagesAsyncTask;
 
-	public LanguagesWSProcess(Context context) {
+	private ProgressDialog progressDialog;
+
+	public LanguagesWSProcess(Context context, ProgressDialog progressDialog) {
 		super();
 
+		this.progressDialog = progressDialog;
 		this.languagesAsyncTask = new LanguagesAsyncTask(
-				LanguagesWSImpl.getInstance(context));
+				LanguagesWSImpl.getInstance(context), this.getProgressDialog());
+	}
+
+	public ProgressDialog getProgressDialog() {
+
+		return (this.progressDialog);
+	}
+
+	public void setProgressDialog(ProgressDialog progressDialog) {
+		this.progressDialog = progressDialog;
 	}
 
 	public List<Languages> findAll() throws AhorcaToothBusinessException {
+		this.languagesAsyncTask.setProgressDialog(this.getProgressDialog());
 		this.languagesAsyncTask.execute(new Object[] { Integer
 				.valueOf(FIND_ALL) });
 
