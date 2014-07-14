@@ -3,7 +3,7 @@ package co.edu.udea.compumovil.ahorcatooth.process.business;
 import java.util.List;
 
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
-import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
+import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
 public interface ICategoryProcess {
 

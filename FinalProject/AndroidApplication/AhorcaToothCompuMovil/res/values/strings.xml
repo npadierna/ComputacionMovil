@@ -59,13 +59,14 @@
     </string-array>
 
     <!-- Main Activity -->
+    <string name="menu_action_update_database_preference_text">Refresh</string>
     <string name="menu_action_web_service_preference_text">Web Service Settings</string>
     <string name="single_player_button">Single Player</string>
     <string name="two_players_button">Two Players</string>
     <string name="logo_content_description_image_view">Image for logo\'s container.</string>
 
     <!-- Web Service Preference Activity -->
-    <string name="http_protocol_summary_setting">HTTP Protocol for packges from Internet</string>
+    <string name="http_protocol_summary_setting">HTTP Protocol for packages from Internet</string>
     <string name="http_protocol_title_setting">HTTP Protocol</string>
     <string name="server_port_summary_setting">TCP Port for connections with the Server</string>
     <string name="server_port_title_setting">Server Port</string>

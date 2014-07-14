@@ -34,7 +34,7 @@ public class LanguagesWSImpl extends AbstractContextWS implements ILanguagesWS {
 		return (instance);
 	}
 
-	private List<Languages> convertJSONArrayToCategoriesList(JSONArray jsonArray)
+	private List<Languages> convertJSONArrayToLanguagesList(JSONArray jsonArray)
 			throws JSONException {
 		List<Languages> languagesFoundList = new ArrayList<Languages>();
 
@@ -62,7 +62,7 @@ public class LanguagesWSImpl extends AbstractContextWS implements ILanguagesWS {
 			if (httpEntity != null) {
 				String response = EntityUtils.toString(httpEntity);
 
-				return (this.convertJSONArrayToCategoriesList(new JSONArray(
+				return (this.convertJSONArrayToLanguagesList(new JSONArray(
 						super.formatToJSONArrayString(response))));
 			}
 

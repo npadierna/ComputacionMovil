@@ -33,6 +33,10 @@ public class MainActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 
+		case R.id.menu_action_update_database_preference:
+			Log.i(TAG, "Update Database Settings");
+			break;
+
 		case R.id.menu_action_web_service_preference:
 			Log.i(TAG, "Web Service Settings");
 

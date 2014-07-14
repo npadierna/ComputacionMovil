@@ -3,12 +3,19 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 import java.io.Serializable;
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Category implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 2350741601449118720L;
+
+	private static final String CATEGORY_PK = "categoryPK";
+	private static final String IMAGE_NAME = "imageName";
+	private static final String DESCRIPTION = "description";
 
 	protected CategoryPK categoryPK;
 	private String imageName;
@@ -18,6 +25,12 @@ public class Category implements Parcelable, Serializable {
 
 	public Category() {
 		super();
+	}
+
+	public Category(JSONObject jsonObject) throws JSONException {
+		this.setCategoryPK(new CategoryPK(jsonObject.getJSONObject(CATEGORY_PK)));
+		this.setImageName(jsonObject.getString(IMAGE_NAME));
+		this.setDescription(jsonObject.getString(DESCRIPTION));
 	}
 
 	public Category(Parcel parcel) {

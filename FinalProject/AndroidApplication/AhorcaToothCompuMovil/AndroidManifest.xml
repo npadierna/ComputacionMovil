@@ -4,6 +4,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
+        android:maxSdkVersion="14"
         android:minSdkVersion="14"
         android:targetSdkVersion="14" >
     </uses-sdk>
@@ -17,14 +18,16 @@
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
-        android:targetPackage="co.edu.udea.compumovil.ahorcatooth" />
+        android:targetPackage="co.edu.udea.compumovil.ahorcatooth" >
+    </instrumentation>
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/application_name"
         android:theme="@style/AppTheme" >
-        <uses-library android:name="android.test.runner" />
+        <uses-library android:name="android.test.runner" >
+        </uses-library>
 
         <activity
             android:name=".activity.main.MainActivity"

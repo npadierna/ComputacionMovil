@@ -2,12 +2,20 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class HangmanWord implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 6812014168916091904L;
+
+	private static final String ID = "id";
+	private static final String WORD_NAME = "wordName";
+	private static final String DESCRIPTION = "description";
+	private static final String CATEGORY = "category";
 
 	private Long id;
 	private String wordName;
@@ -16,6 +24,13 @@ public class HangmanWord implements Parcelable, Serializable {
 
 	public HangmanWord() {
 		super();
+	}
+
+	public HangmanWord(JSONObject jsonObject) throws JSONException {
+		this.setCategory(new Category(jsonObject.getJSONObject(CATEGORY)));
+		this.setId(jsonObject.getLong(ID));
+		this.setWordName(jsonObject.getString(WORD_NAME));
+		this.setDescription(jsonObject.getString(DESCRIPTION));
 	}
 
 	public HangmanWord(Parcel parcel) {

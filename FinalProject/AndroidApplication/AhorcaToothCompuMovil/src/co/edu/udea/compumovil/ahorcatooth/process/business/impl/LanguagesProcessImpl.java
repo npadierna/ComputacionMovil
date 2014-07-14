@@ -12,7 +12,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.LanguagesContract
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ILanguagesDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.LanguaguesDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ILanguagesProcess;
-import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
+import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
 public class LanguagesProcessImpl implements ILanguagesProcess {
 

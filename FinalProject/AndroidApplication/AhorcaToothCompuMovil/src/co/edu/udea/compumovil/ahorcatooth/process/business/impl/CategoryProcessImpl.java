@@ -13,7 +13,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.CategoryContract;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ICategoryDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.CategoryDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ICategoryProcess;
-import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
+import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
 public class CategoryProcessImpl implements ICategoryProcess {
 

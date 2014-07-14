@@ -12,7 +12,7 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.HangmanWordContra
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.IHangmanWordDAO;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.HangmanWordDAOImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.IHangmanWordProcess;
-import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
+import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
 public class HangmanWordProcessImpl implements IHangmanWordProcess {
 

@@ -39,15 +39,15 @@ abstract class AbstractContextWS {
 				.getDefaultSharedPreferences(this.context);
 	}
 
-	private String buildQueriesForPath(Map<String, String> parameters) {
-		if ((parameters != null) && (!parameters.isEmpty())) {
+	private String buildQueriesForPath(Map<String, Object> parametersMap) {
+		if ((parametersMap != null) && (!parametersMap.isEmpty())) {
 			StringBuilder stringForQueries = new StringBuilder();
-			Set<String> keySet = parameters.keySet();
-			int counter = parameters.size();
+			Set<String> keySet = parametersMap.keySet();
+			int counter = parametersMap.size();
 
 			for (String key : keySet) {
 				stringForQueries.append(key).append(EQUAL)
-						.append(parameters.get(key));
+						.append(parametersMap.get(key).toString());
 				counter--;
 
 				if (counter >= 1) {
@@ -62,7 +62,7 @@ abstract class AbstractContextWS {
 	}
 
 	private URI buildURIForHTTPMethod(String[] paths,
-			Map<String, String> parameters) throws URISyntaxException {
+			Map<String, Object> parametersMap) throws URISyntaxException {
 		StringBuilder stringForPaths = new StringBuilder();
 
 		if ((paths != null) && (paths.length != 0)) {
@@ -87,7 +87,7 @@ abstract class AbstractContextWS {
 				Integer.parseInt(serverPort),
 				SLASH + webApplicatonContext + SLASH + webServiceContext
 						+ stringForPaths.toString(),
-				this.buildQueriesForPath(parameters), null);
+				this.buildQueriesForPath(parametersMap), null);
 
 		Log.d(TAG, "URI Content: " + uri.toString());
 
@@ -95,11 +95,11 @@ abstract class AbstractContextWS {
 	}
 
 	protected HttpEntity executeHTTPMethod(String[] paths,
-			Map<String, String> parameters, HttpRequestBase httpRequestBase)
+			Map<String, Object> parametersMap, HttpRequestBase httpRequestBase)
 			throws URISyntaxException, ClientProtocolException, IOException {
 		HttpClient httpClient = new DefaultHttpClient();
 
-		httpRequestBase.setURI(this.buildURIForHTTPMethod(paths, parameters));
+		httpRequestBase.setURI(this.buildURIForHTTPMethod(paths, parametersMap));
 		httpRequestBase.setHeader(CONTENT_TYPE_KEY, CONTENT_TYPE_VALUE);
 
 		return (httpClient.execute(httpRequestBase).getEntity());

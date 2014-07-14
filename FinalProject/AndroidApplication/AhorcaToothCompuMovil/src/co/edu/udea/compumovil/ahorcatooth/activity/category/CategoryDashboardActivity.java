@@ -17,9 +17,9 @@ import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ICategoryProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.business.IHangmanWordProcess;
-import co.edu.udea.compumovil.ahorcatooth.process.business.exception.AhorcaToothBusinessException;
 import co.edu.udea.compumovil.ahorcatooth.process.business.impl.CategoryProcessImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.business.impl.HangmanWordProcessImpl;
+import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
 public class CategoryDashboardActivity extends Activity {
 

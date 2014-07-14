@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 import java.io.Serializable;
 import java.util.List;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.os.Parcel;
@@ -11,6 +12,10 @@ import android.os.Parcelable;
 public class Languages implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 1880614879702762208L;
+
+	private static final String ISO_CODE = "isoCode";
+	private static final String TONGUE = "tongue";
+	private static final String DESCRIPTION = "description";
 
 	private String isoCode;
 	private String tongue;
@@ -21,10 +26,12 @@ public class Languages implements Parcelable, Serializable {
 		super();
 	}
 
-	public Languages(JSONObject jsonObject) {
-		// FIXME: Think more about this.
+	public Languages(JSONObject jsonObject) throws JSONException {
+		this.setIsoCode(jsonObject.getString(ISO_CODE));
+		this.setTongue(jsonObject.getString(TONGUE));
+		this.setDescription(jsonObject.getString(DESCRIPTION));
 	}
-	
+
 	public Languages(Parcel parcel) {
 		this.setIsoCode(parcel.readString());
 		this.setTongue(parcel.readString());

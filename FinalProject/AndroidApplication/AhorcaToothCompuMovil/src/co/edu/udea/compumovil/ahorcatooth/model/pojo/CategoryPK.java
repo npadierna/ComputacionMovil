@@ -2,6 +2,9 @@ package co.edu.udea.compumovil.ahorcatooth.model.pojo;
 
 import java.io.Serializable;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,11 +12,19 @@ public class CategoryPK implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 4154606141448857600L;
 
+	private static final String CATEGORY_NAME = "categoryName";
+	private static final String LANAGUAGES_ISO_CODE = "languagesIsoCode";
+
 	private String categoryName;
 	private String languagesIsoCode;
 
 	public CategoryPK() {
 		super();
+	}
+
+	public CategoryPK(JSONObject jsonObject) throws JSONException {
+		this.setCategoryName(jsonObject.getString(CATEGORY_NAME));
+		this.setLanguagesIsoCode(jsonObject.getString(LANAGUAGES_ISO_CODE));
 	}
 
 	public CategoryPK(Parcel parcel) {
