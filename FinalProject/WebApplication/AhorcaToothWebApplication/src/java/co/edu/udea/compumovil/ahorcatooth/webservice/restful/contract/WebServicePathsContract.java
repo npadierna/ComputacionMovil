@@ -44,7 +44,7 @@ public final class WebServicePathsContract {
          */
         public static final String CATEGORY_NAME_QUERY = "categoryname";
         public static final String LANGUAGES_ISO_CODE_QUERY = "languagesisocode";
-        public static final String MAX_HANGMANS_WORDS_QUERY = "amount";
+        public static final String LIMIT_HANGMANS_WORDS_QUERY = "limit";
 
         private HangmanWordContract() {
             super();

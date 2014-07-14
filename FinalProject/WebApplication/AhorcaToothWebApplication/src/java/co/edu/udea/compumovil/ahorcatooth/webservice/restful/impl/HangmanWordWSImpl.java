@@ -101,17 +101,17 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
     public List<HangmanWord> findLatestWithLimit(
             @QueryParam(WebServicePathsContract.HangmanWordContract.CATEGORY_NAME_QUERY) String categoryName,
             @QueryParam(WebServicePathsContract.HangmanWordContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode,
-            @QueryParam(WebServicePathsContract.HangmanWordContract.MAX_HANGMANS_WORDS_QUERY) Integer amount) {
+            @QueryParam(WebServicePathsContract.HangmanWordContract.LIMIT_HANGMANS_WORDS_QUERY) Integer limit) {
         List<HangmanWord> hangmanWordsFoundList = null;
 
         if ((!TextUtils.isEmpty(categoryName))
                 && (!TextUtils.isEmpty(languagesIsoCode))
-                && (this.isValidRequestedAmout(amount))) {
+                && (this.isValidRequestedAmout(limit))) {
             try {
                 hangmanWordsFoundList = this.hangmanWordDAO
                         .findLatestWithLimit(TextUtils.toUpperCase(
                         categoryName), TextUtils.toLowerCase(languagesIsoCode),
-                        amount);
+                        limit);
             } catch (AhorcaToothDatabaseException ex) {
                 Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
                         "findLatestWithLimit(String, String, Integer):List<HangmanWord>",
