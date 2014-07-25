@@ -7,7 +7,7 @@ import javax.jws.WebService;
 @WebService()
 public interface ILanguagesWS {
 
-    public List<Languages> findAll();
+    public Languages findLanguages(String isoCode);
 
-    public Languages find(String isoCode);
+    public List<Languages> findAllLanguages();
 }

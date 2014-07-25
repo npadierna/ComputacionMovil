@@ -36,13 +36,43 @@ public class CategoryWSImpl implements ICategoryWS {
     }
 
     /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/categories/find?categoryname=&languagesisocode=
+     */
+    @GET()
+    @Override()
+    @Path(WebServicePathsContract.CategoryContract.FIND_ONE_CATEGORY_PATH)
+    @Produces(value = {MediaType.APPLICATION_JSON})
+    public Category findCategory(
+            @QueryParam(WebServicePathsContract.CategoryContract.CATEGORY_NAME_QUERY) String categoryName,
+            @QueryParam(WebServicePathsContract.CategoryContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode) {
+        Category category = null;
+
+        if ((!TextUtils.isEmpty(categoryName))
+                && (!TextUtils.isEmpty(languagesIsoCode))) {
+            CategoryPK categoryPK = new CategoryPK(TextUtils.toUpperCase(
+                    categoryName), TextUtils.toLowerCase(languagesIsoCode));
+
+            try {
+                category = this.categoryDAO.find(categoryPK);
+            } catch (AhorcaToothDatabaseException ex) {
+                Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
+                        "find(String, String):Category",
+                        String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
+                        ex.getMessage()), ex);
+            }
+        }
+
+        return (category);
+    }
+
+    /*
      * http://127.0.0.1:8080/ahorcatooth/rest/categories/find/all
      */
     @GET()
     @Override()
     @Path(WebServicePathsContract.CategoryContract.FIND_ALL_CATEGORIES_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<Category> findAll() {
+    public List<Category> findAllCategories() {
         List<Category> categoriesFoundList = null;
 
         try {
@@ -66,7 +96,7 @@ public class CategoryWSImpl implements ICategoryWS {
     @Override()
     @Path(WebServicePathsContract.CategoryContract.FIND_CATEGORIES_BY_LANGUAGES_ISO_CODE_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<Category> findByLanguagesIsoCode(
+    public List<Category> findCategoriesByLanguagesIsoCode(
             @QueryParam(WebServicePathsContract.CategoryContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode) {
         List<Category> categoriesFoundList = null;
 
@@ -86,35 +116,5 @@ public class CategoryWSImpl implements ICategoryWS {
         return (((categoriesFoundList == null)
                 || (categoriesFoundList.isEmpty())) ? null
                 : categoriesFoundList);
-    }
-
-    /*
-     * http://127.0.0.1:8080/ahorcatooth/rest/categories/find?categoryname=&languagesisocode=
-     */
-    @GET()
-    @Override()
-    @Path(WebServicePathsContract.CategoryContract.FIND_ONE_CATEGORY_PATH)
-    @Produces(value = {MediaType.APPLICATION_JSON})
-    public Category find(
-            @QueryParam(WebServicePathsContract.CategoryContract.CATEGORY_NAME_QUERY) String categoryName,
-            @QueryParam(WebServicePathsContract.CategoryContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode) {
-        Category category = null;
-
-        if ((!TextUtils.isEmpty(categoryName))
-                && (!TextUtils.isEmpty(languagesIsoCode))) {
-            CategoryPK categoryPK = new CategoryPK(TextUtils.toUpperCase(
-                    categoryName), TextUtils.toLowerCase(languagesIsoCode));
-
-            try {
-                category = this.categoryDAO.find(categoryPK);
-            } catch (AhorcaToothDatabaseException ex) {
-                Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                        "find(String, String):Category",
-                        String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
-                        ex.getMessage()), ex);
-            }
-        }
-
-        return (category);
     }
 }

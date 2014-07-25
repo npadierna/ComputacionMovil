@@ -35,38 +35,14 @@ public class LanguagesWSImpl implements ILanguagesWS {
     }
 
     /*
-     * http://127.0.0.1:8080/ahorcatooth/rest/languages/find/all
-     */
-    @GET()
-    @Override()
-    @Path(WebServicePathsContract.LanguagesContract.FIND_ALL_LANGUAGES_PATH)
-    @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<Languages> findAll() {
-        List<Languages> languagesesFoundList = null;
-
-        try {
-            languagesesFoundList = this.languagesDAO.findAll();
-        } catch (AhorcaToothDatabaseException ex) {
-            Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
-                    "findAll():List<Languages>",
-                    String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
-                    ex.getMessage()), ex);
-        }
-
-        return (((languagesesFoundList == null)
-                || (languagesesFoundList.isEmpty())) ? null
-                : languagesesFoundList);
-    }
-
-    /*
      * http://127.0.0.1:8080/ahorcatooth/rest/languages/find?isocode=
      */
     @GET()
     @Override()
     @Path(WebServicePathsContract.LanguagesContract.FIND_ONE_LANGUAGES_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public Languages find(
-            @QueryParam(WebServicePathsContract.LanguagesContract.LANGUAGES_ISO_CODE_QUERY) String isoCode) {
+    public Languages findLanguages(
+            @QueryParam(WebServicePathsContract.LanguagesContract.ISO_CODE_QUERY) String isoCode) {
         Languages languages = null;
 
         if (!TextUtils.isEmpty(isoCode)) {
@@ -82,5 +58,29 @@ public class LanguagesWSImpl implements ILanguagesWS {
         }
 
         return (languages);
+    }
+
+    /*
+     * http://127.0.0.1:8080/ahorcatooth/rest/languages/find/all
+     */
+    @GET()
+    @Override()
+    @Path(WebServicePathsContract.LanguagesContract.FIND_ALL_LANGUAGES_PATH)
+    @Produces(value = {MediaType.APPLICATION_JSON})
+    public List<Languages> findAllLanguages() {
+        List<Languages> languagesesFoundList = null;
+
+        try {
+            languagesesFoundList = this.languagesDAO.findAll();
+        } catch (AhorcaToothDatabaseException ex) {
+            Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
+                    "findAll():List<Languages>",
+                    String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
+                    ex.getMessage()), ex);
+        }
+
+        return (((languagesesFoundList == null)
+                || (languagesesFoundList.isEmpty())) ? null
+                : languagesesFoundList);
     }
 }

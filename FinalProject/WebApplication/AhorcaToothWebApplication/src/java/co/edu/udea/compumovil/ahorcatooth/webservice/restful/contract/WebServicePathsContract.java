@@ -63,7 +63,7 @@ public final class WebServicePathsContract {
         /*
          * Query Parameters
          */
-        public static final String LANGUAGES_ISO_CODE_QUERY = "isocode";
+        public static final String ISO_CODE_QUERY = "isocode";
 
         private LanguagesContract() {
             super();

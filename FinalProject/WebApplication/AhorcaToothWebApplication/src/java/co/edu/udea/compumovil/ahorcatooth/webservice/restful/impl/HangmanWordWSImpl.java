@@ -41,7 +41,7 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_HANGMANS_WORDS_BY_CATEGORY_NAME_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<HangmanWord> findByCategoryName(
+    public List<HangmanWord> findHangmansWordsByCategoryName(
             @QueryParam(WebServicePathsContract.HangmanWordContract.CATEGORY_NAME_QUERY) String categoryName) {
         List<HangmanWord> hangmanWordsFoundList = null;
 
@@ -69,7 +69,7 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_HANGMANS_WORDS_BY_LANGUAGES_ISO_CODE_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<HangmanWord> findByLanguagesIsoCode(
+    public List<HangmanWord> findHangmansWordsByLanguagesIsoCode(
             @QueryParam(WebServicePathsContract.HangmanWordContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode) {
         List<HangmanWord> hangmanWordsFoundList = null;
 
@@ -98,7 +98,7 @@ public class HangmanWordWSImpl implements IHangmanWordWS {
     @Override()
     @Path(WebServicePathsContract.HangmanWordContract.FIND_LASTEST_HANGMANS_WORDS_PATH)
     @Produces(value = {MediaType.APPLICATION_JSON})
-    public List<HangmanWord> findLatestWithLimit(
+    public List<HangmanWord> findHangmansWordsLatestWithLimit(
             @QueryParam(WebServicePathsContract.HangmanWordContract.CATEGORY_NAME_QUERY) String categoryName,
             @QueryParam(WebServicePathsContract.HangmanWordContract.LANGUAGES_ISO_CODE_QUERY) String languagesIsoCode,
             @QueryParam(WebServicePathsContract.HangmanWordContract.LIMIT_HANGMANS_WORDS_QUERY) Integer limit) {
