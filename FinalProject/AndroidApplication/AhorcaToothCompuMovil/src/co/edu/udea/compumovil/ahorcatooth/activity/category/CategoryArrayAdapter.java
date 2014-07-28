@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import co.edu.udea.compumovil.ahorcatooth.R;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 
 class CategoryArrayAdapter extends ArrayAdapter<Category> {
@@ -52,6 +53,9 @@ class CategoryArrayAdapter extends ArrayAdapter<Category> {
 	private void fillCategoryData(Category category,
 			CategoryViewHolder categoryViewHolder) {
 		// FIXME: We need to attach the Category's image.
+		categoryViewHolder.getCategoryTextView()
+				.setCompoundDrawablesWithIntrinsicBounds(0,
+						R.drawable.ic_launcher, 0, 0);
 		categoryViewHolder.getCategoryTextView().setText(
 				category.getCategoryPK().getCategoryName());
 	}

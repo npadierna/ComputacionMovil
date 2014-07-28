@@ -14,16 +14,14 @@ public class CategoryWSProcess {
 	public static final int FIND_ALL = 1;
 	public static final int FIND_BY_LANGUAGES_ISO_CODE = 2;
 
-	private CategoryAsyncTask categoryAsyncTask;
-
+	private Context context;
 	private ProgressDialog progressDialog;
 
 	public CategoryWSProcess(Context context, ProgressDialog progressDialog) {
 		super();
 
+		this.context = context;
 		this.progressDialog = progressDialog;
-		this.categoryAsyncTask = new CategoryAsyncTask(
-				CategoryWSImpl.getInstance(context), this.getProgressDialog());
 	}
 
 	public ProgressDialog getProgressDialog() {
@@ -36,12 +34,14 @@ public class CategoryWSProcess {
 	}
 
 	public List<Category> findAll() throws AhorcaToothBusinessException {
-		this.categoryAsyncTask.setProgressDialog(this.getProgressDialog());
-		this.categoryAsyncTask
-				.execute(new Object[] { Integer.valueOf(FIND_ALL) });
+		CategoryAsyncTask categoryAsyncTask = new CategoryAsyncTask(
+				CategoryWSImpl.getInstance(this.context),
+				this.getProgressDialog(), this.context);
+		categoryAsyncTask.setProgressDialog(this.getProgressDialog());
+		categoryAsyncTask.execute(new Object[] { Integer.valueOf(FIND_ALL) });
 
 		try {
-			List<Category> categoriesList = this.categoryAsyncTask.get();
+			List<Category> categoriesList = categoryAsyncTask.get();
 			if (categoriesList == null) {
 				throw new AhorcaToothBusinessException(String.format(
 						"Error while procedure: \"%s\" was in execution.",
@@ -56,14 +56,16 @@ public class CategoryWSProcess {
 
 	public List<Category> findByLanguagesIsoCode(String languagesIsoCode)
 			throws AhorcaToothBusinessException {
-		this.categoryAsyncTask.setProgressDialog(this.getProgressDialog());
-		this.categoryAsyncTask
-				.execute(new Object[] {
+		CategoryAsyncTask categoryAsyncTask = new CategoryAsyncTask(
+				CategoryWSImpl.getInstance(this.context),
+				this.getProgressDialog(), this.context);
+		categoryAsyncTask.setProgressDialog(this.getProgressDialog());
+		categoryAsyncTask.execute(new Object[] {
 						Integer.valueOf(FIND_BY_LANGUAGES_ISO_CODE),
 						languagesIsoCode });
 
 		try {
-			List<Category> categoriesList = this.categoryAsyncTask.get();
+			List<Category> categoriesList = categoryAsyncTask.get();
 			if (categoriesList == null) {
 				throw new AhorcaToothBusinessException(String.format(
 						"Error while procedure: \"%s\" was in execution.",

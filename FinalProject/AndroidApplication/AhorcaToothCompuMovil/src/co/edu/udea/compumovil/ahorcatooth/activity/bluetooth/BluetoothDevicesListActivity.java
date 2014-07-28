@@ -5,6 +5,7 @@ import java.util.Set;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,12 +15,15 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import co.edu.udea.compumovil.ahorcatooth.R;
 
 public class BluetoothDevicesListActivity extends Activity {
 
 	private static final String TAG = BluetoothDevicesListActivity.class
 			.getSimpleName();
+
+	public static final String BLUETOOTH_DEVICE_MAC_ADDRESS = "MAC Address for desired Bluetooth Device";
 
 	private BluetoothDeviceBroadcastReceiver bluetoothDeviceBroadcastReceiver;
 
@@ -51,6 +55,8 @@ public class BluetoothDevicesListActivity extends Activity {
 	}
 
 	private void buildPairedBluetoothDevices() {
+		Log.i(TAG, "buildPairedBluetoothDevices():void");
+
 		this.bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
 		Set<BluetoothDevice> pairedBluetoothDevicesSet = this.bluetoothAdapter
@@ -75,7 +81,19 @@ public class BluetoothDevicesListActivity extends Activity {
 				bluetoothDevice.getAddress()));
 	}
 
+	private void connectWithBluetoothDevice(String bluetoothDeviceMACAddress) {
+		Log.d(TAG, String.format("MAC Address: %s", bluetoothDeviceMACAddress));
+
+		Intent intent = new Intent();
+		intent.putExtra(BLUETOOTH_DEVICE_MAC_ADDRESS, bluetoothDeviceMACAddress);
+
+		super.setResult(Activity.RESULT_OK, intent);
+		super.finish();
+	}
+
 	private void createViewComponents() {
+		Log.i(TAG, "createViewComponents():void");
+
 		this.newBluetoothDevicesArrayAdapter = new ArrayAdapter<String>(
 				super.getApplicationContext(),
 				R.layout.list_item_bluetooth_device);
@@ -99,6 +117,8 @@ public class BluetoothDevicesListActivity extends Activity {
 	}
 
 	private void registerForBluetoothBroadcastReceiver() {
+		Log.i(TAG, "registerForBluetoothBroadcastReceiver():void");
+
 		this.bluetoothDeviceBroadcastReceiver = new BluetoothDeviceBroadcastReceiver(
 				this, this.newBluetoothDevicesArrayAdapter);
 
@@ -142,6 +162,11 @@ public class BluetoothDevicesListActivity extends Activity {
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			Log.i(TAG, "onItemClick(AdapterView<?>, View, int, long):void");
+
+			String bluetoothDeviceInformation = ((TextView) view).getText()
+					.toString();
+			connectWithBluetoothDevice(bluetoothDeviceInformation
+					.substring(bluetoothDeviceInformation.length() - 17));
 		}
 	};
 }

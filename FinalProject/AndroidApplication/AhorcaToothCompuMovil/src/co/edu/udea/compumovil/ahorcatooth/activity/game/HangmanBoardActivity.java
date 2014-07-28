@@ -1,6 +1,8 @@
 package co.edu.udea.compumovil.ahorcatooth.activity.game;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,9 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.edu.udea.compumovil.ahorcatooth.R;
+import co.edu.udea.compumovil.ahorcatooth.activity.game.resume.HangmanResumeActivity;
+import co.edu.udea.compumovil.ahorcatooth.process.game.GameStatusEnum;
+import co.edu.udea.compumovil.ahorcatooth.process.game.HangmanGameProcess;
 
 public class HangmanBoardActivity extends Activity {
 
@@ -19,16 +24,20 @@ public class HangmanBoardActivity extends Activity {
 
 	public static final String HANGMAN_WORD_NAME_SELECTED = "Hangman Word for Game";
 
-	private String hangmanWordName;
+	private HangmanGameProcess hangmanGameProcess;
 
+	private AlertDialog.Builder errorAlertDialogBuilder;
+	private AlertDialog.Builder warningAlertDialogBuilder;
 	private ImageView hangingProcessImageView;
 	private TextView hiddenWordTextView;
 
 	@Override()
 	public void onBackPressed() {
-		super.onBackPressed();
-
-		// FIXME: Show a dialog for confirmation the exit.
+		this.warningAlertDialogBuilder
+				.setMessage(R.string.back_button_pressed_message_alert_dialog);
+		this.warningAlertDialogBuilder
+				.setTitle(R.string.back_button_pressed_title_alert_dialog);
+		this.warningAlertDialogBuilder.show();
 	}
 
 	@Override()
@@ -36,17 +45,48 @@ public class HangmanBoardActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_hangman_board);
 
+		this.createComponents();
 		this.extractHangmanWord(super.getIntent());
 		this.createViewComponents();
 	}
 
+	private void createComponents() {
+		Log.i(TAG, "createComponents():void");
+
+		this.errorAlertDialogBuilder = new AlertDialog.Builder(this);
+		this.errorAlertDialogBuilder.setPositiveButton(
+				R.string.label_accept_button,
+				new DialogInterface.OnClickListener() {
+
+					@Override()
+					public void onClick(DialogInterface dialog, int id) {
+						HangmanBoardActivity.super.finish();
+					}
+				});
+
+		this.warningAlertDialogBuilder = new AlertDialog.Builder(this);
+		this.warningAlertDialogBuilder.setNegativeButton(
+				R.string.label_cancel_button, null);
+		this.warningAlertDialogBuilder.setPositiveButton(
+				R.string.label_accept_button,
+				new DialogInterface.OnClickListener() {
+
+					@Override()
+					public void onClick(DialogInterface dialog, int id) {
+						HangmanBoardActivity.super.finish();
+					}
+				});
+	}
+
 	private void createViewComponents() {
+		Log.i(TAG, "createViewComponents():void");
+
 		this.hangingProcessImageView = (ImageView) super
 				.findViewById(R.id.hanging_process_image_view);
 
 		this.hiddenWordTextView = (TextView) super
 				.findViewById(R.id.hidden_word_text_view);
-		this.hiddenWordTextView.setText(this.maskWord(this.hangmanWordName));
+		this.hiddenWordTextView.setText(this.hangmanGameProcess.maskWord());
 
 		ArrayAdapter<String> arrayAdapter = new KeyboardKeyArrayAdapter(this,
 				R.layout.keyboard_key, super.getResources().getStringArray(
@@ -58,53 +98,50 @@ public class HangmanBoardActivity extends Activity {
 	}
 
 	private void extractHangmanWord(Intent intent) {
+		Log.i(TAG, "extractHangmanWord(Intent):void");
+
 		Bundle bundle = intent.getExtras();
+		String hangmanWordName = null;
+
 		if ((bundle != null)
 				&& (bundle.containsKey(HANGMAN_WORD_NAME_SELECTED))) {
-			this.hangmanWordName = bundle.getString(HANGMAN_WORD_NAME_SELECTED);
+			hangmanWordName = bundle.getString(HANGMAN_WORD_NAME_SELECTED);
 		} else {
-			// FIXME: Show a dialog and finish this activity.
-			this.hangmanWordName = "MOCK";
+			this.errorAlertDialogBuilder
+					.setMessage(R.string.cannot_obtain_hangman_word_message_alert_dialog);
+			this.errorAlertDialogBuilder
+					.setTitle(R.string.cannot_obtain_hangman_word_title_alert_dialog);
+			this.errorAlertDialogBuilder.show();
+
+			return;
 		}
 
-		Log.d(TAG, String.format("Hangman Word Name: %s", this.hangmanWordName));
-	}
+		this.hangmanGameProcess = new HangmanGameProcess(Long.MAX_VALUE,
+				hangmanWordName, super.getString(R.string.mask_char_for_words));
 
-	private String maskWord(String text) {
-		StringBuilder stringBuilder = new StringBuilder(text);
-		String mask = super.getString(R.string.mask_char_for_words);
-
-		for (int i = 0; i < stringBuilder.length(); i++) {
-			stringBuilder.setCharAt(i, mask.charAt(0));
-		}
-
-		return (stringBuilder.toString());
+		Log.d(TAG, String.format("Hangman Word Name: %s",
+				this.hangmanGameProcess.getHangmanWordName().toString()));
 	}
 
 	private void revealLetter(char letter) {
-		Log.i(TAG, "revealLetter(chart):void");
-		Log.i(TAG, String.format("Char: %s", letter));
+		String currentHangmanWordStatus = this.hiddenWordTextView.getText()
+				.toString();
+		String nextHangmanWordStatus = this.hangmanGameProcess.revealLetter(
+				currentHangmanWordStatus, letter);
 
-		StringBuilder wordStringBuilder = new StringBuilder(
-				this.hiddenWordTextView.getText().toString());
-
-		boolean wasIn = false;
-		int index = this.hangmanWordName.indexOf(letter, 0);
-		while (index != -1) {
-			wordStringBuilder.setCharAt(index, letter);
-			index = this.hangmanWordName.indexOf(letter, (index + 1));
-			wasIn = true;
-		}
-
-		if (wasIn) {
-			this.hiddenWordTextView.setText(wordStringBuilder.toString());
+		if (currentHangmanWordStatus.equals(nextHangmanWordStatus)) {
+			// FIXME: Do a punishment.
 		} else {
-			// FIXME: Do a punishment for fail the letter.
+			this.hiddenWordTextView.setText(nextHangmanWordStatus);
 		}
 
-		if (wordStringBuilder.indexOf(super
-				.getString(R.string.mask_char_for_words)) == -1) {
-			// FIXME: Invocation for a resume Activity.
+		if (this.hangmanGameProcess.getGameStatusEnum().equals(
+				GameStatusEnum.FINISHED_GAME)) {
+			// FIXME: Do we need pass some parameters?
+			super.startActivity(new Intent(super.getApplicationContext(),
+					HangmanResumeActivity.class));
+
+			super.finish();
 		}
 	}
 

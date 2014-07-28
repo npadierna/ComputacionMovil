@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
@@ -18,11 +19,11 @@ public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 	private ProgressDialog progressDialog;
 
 	public CategoryAsyncTask(ICategoryWS categoryWS,
-			ProgressDialog progressDialog) {
+			ProgressDialog progressDialog, Context context) {
 		super();
 
 		this.categoryWS = categoryWS;
-		this.progressDialog = progressDialog;
+		this.progressDialog = new ProgressDialog(context);
 	}
 
 	public ProgressDialog getProgressDialog() {
@@ -78,30 +79,30 @@ public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 		return (categoriesList);
 	}
 
-	@Override()
-	protected void onCancelled() {
-		super.onCancelled();
-
-		if (this.progressDialog != null) {
-			this.progressDialog.dismiss();
-		}
-	}
-
-	@Override()
-	protected void onPostExecute(List<Category> result) {
-		super.onPostExecute(result);
-
-		if (this.progressDialog != null) {
-			this.progressDialog.dismiss();
-		}
-	}
-
-	@Override()
-	protected void onPreExecute() {
-		super.onPreExecute();
-
-		if (this.progressDialog != null) {
-			this.progressDialog.show();
-		}
-	}
+//	@Override()
+//	protected void onCancelled() {
+//		super.onCancelled();
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.dismiss();
+//		}
+//	}
+//
+//	@Override()
+//	protected void onPostExecute(List<Category> result) {
+//		super.onPostExecute(result);
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.dismiss();
+//		}
+//	}
+//
+//	@Override()
+//	protected void onPreExecute() {
+//		super.onPreExecute();
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.show();
+//		}
+//	}
 }

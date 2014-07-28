@@ -1,7 +1,9 @@
 package co.edu.udea.compumovil.ahorcatooth.activity.bluetooth;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,7 @@ public class BluetoothMultiplayerActivity extends Activity {
 
 	private static final int REQUEST_ENABLE_BLUETOOTH = 0;
 
+	private AlertDialog.Builder errorAlertDialogBuilder;
 	private BluetoothAdapter bluetoothAdapter;
 
 	@Override()
@@ -24,8 +27,13 @@ public class BluetoothMultiplayerActivity extends Activity {
 		switch (requestCode) {
 		case REQUEST_ENABLE_BLUETOOTH:
 			if (resultCode != Activity.RESULT_OK) {
-				// FIXME: Show a dialog to display the situation and finish this
-				// activity.
+				this.errorAlertDialogBuilder
+						.setMessage(R.string.no_enabled_bluetooth_message_alert_dialog);
+				this.errorAlertDialogBuilder
+						.setTitle(R.string.no_enabled_bluetooth_title_alert_dialog);
+				this.errorAlertDialogBuilder.show();
+
+				return;
 			}
 			break;
 		}
@@ -36,6 +44,7 @@ public class BluetoothMultiplayerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_bluetooth_multiplayer);
 
+		this.createComponents();
 		this.createBluetoothBrigde();
 	}
 
@@ -78,17 +87,35 @@ public class BluetoothMultiplayerActivity extends Activity {
 		this.bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
 		if (this.bluetoothAdapter == null) {
-			// FIXME: Show a dialog to display that Bluetooth is not available
-			// and finish this activity.
+			this.errorAlertDialogBuilder
+					.setMessage(R.string.no_available_bluetooth_message_alert_dialog);
+			this.errorAlertDialogBuilder
+					.setTitle(R.string.no_available_bluetooth_title_alert_dialog);
+			this.errorAlertDialogBuilder.show();
 
 			return;
 		}
 
 		if (!this.bluetoothAdapter.isEnabled()) {
-			Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-
-			super.startActivityForResult(intent, REQUEST_ENABLE_BLUETOOTH);
+			super.startActivityForResult(new Intent(
+					BluetoothAdapter.ACTION_REQUEST_ENABLE),
+					REQUEST_ENABLE_BLUETOOTH);
 		}
+	}
+
+	private void createComponents() {
+		Log.i(TAG, "createComponents():void");
+
+		this.errorAlertDialogBuilder = new AlertDialog.Builder(this);
+		this.errorAlertDialogBuilder.setPositiveButton(
+				R.string.label_accept_button,
+				new DialogInterface.OnClickListener() {
+
+					@Override()
+					public void onClick(DialogInterface dialog, int which) {
+						BluetoothMultiplayerActivity.super.finish();
+					}
+				});
 	}
 
 	public void onPlayerOneSelected(View view) {

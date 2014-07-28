@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Locale;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,17 +34,35 @@ public class CategoryDashboardActivity extends Activity {
 
 	private List<Category> categoriesList;
 
+	private AlertDialog.Builder errorAlertDialogBuilder;
+
 	@Override()
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		super.setContentView(R.layout.activity_category_dashboard);
 
+		this.createComponents();
 		this.findCategories();
 		this.createViewComponents();
 	}
 
-	private void createViewComponents() {
+	private void createComponents() {
 		Log.i(TAG, "createComponents():void");
+
+		this.errorAlertDialogBuilder = new AlertDialog.Builder(this);
+		this.errorAlertDialogBuilder.setPositiveButton(
+				R.string.label_accept_button,
+				new DialogInterface.OnClickListener() {
+
+					@Override()
+					public void onClick(DialogInterface dialog, int which) {
+						CategoryDashboardActivity.super.finish();
+					}
+				});
+	}
+
+	private void createViewComponents() {
+		Log.i(TAG, "createViewComponents():void");
 
 		ArrayAdapter<Category> arrayAdapter = new CategoryArrayAdapter(this,
 				android.R.layout.simple_list_item_1, this.categoriesList);
@@ -75,9 +95,13 @@ public class CategoryDashboardActivity extends Activity {
 					.findByLanguageIsoCode(Locale.getDefault()
 							.getISO3Language());
 		} catch (AhorcaToothBusinessException e) {
-			e.printStackTrace();
+			this.errorAlertDialogBuilder
+					.setMessage(R.string.cannot_load_categories_error_message_alert_dialog);
+			this.errorAlertDialogBuilder
+					.setTitle(R.string.cannot_load_categories_error_title_alert_dialog);
+			this.errorAlertDialogBuilder.show();
 
-			// FIXME: What have we do?
+			return;
 		}
 	}
 
@@ -93,9 +117,13 @@ public class CategoryDashboardActivity extends Activity {
 							.getCategoryPK().getCategoryName(), category
 							.getCategoryPK().getLanguagesIsoCode());
 		} catch (AhorcaToothBusinessException e) {
-			e.printStackTrace();
+			this.errorAlertDialogBuilder
+					.setMessage(R.string.cannot_load_hangman_for_category_error_message_alert_dialog);
+			this.errorAlertDialogBuilder
+					.setTitle(R.string.cannot_load_hangman_for_category_error_title_alert_dialog);
+			this.errorAlertDialogBuilder.show();
 
-			// FIXME: What have we do?
+			return;
 		}
 
 		Intent intent = new Intent(super.getApplicationContext(),

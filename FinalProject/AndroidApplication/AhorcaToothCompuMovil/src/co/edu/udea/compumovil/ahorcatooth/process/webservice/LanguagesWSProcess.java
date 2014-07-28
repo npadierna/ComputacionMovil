@@ -13,16 +13,16 @@ public class LanguagesWSProcess {
 
 	public static final int FIND_ALL = 1;
 
-	private LanguagesAsyncTask languagesAsyncTask;
+	// private LanguagesAsyncTask languagesAsyncTask;
 
+	private Context context;
 	private ProgressDialog progressDialog;
 
 	public LanguagesWSProcess(Context context, ProgressDialog progressDialog) {
 		super();
 
+		this.context = context;
 		this.progressDialog = progressDialog;
-		this.languagesAsyncTask = new LanguagesAsyncTask(
-				LanguagesWSImpl.getInstance(context), this.getProgressDialog());
 	}
 
 	public ProgressDialog getProgressDialog() {
@@ -35,12 +35,14 @@ public class LanguagesWSProcess {
 	}
 
 	public List<Languages> findAll() throws AhorcaToothBusinessException {
-		this.languagesAsyncTask.setProgressDialog(this.getProgressDialog());
-		this.languagesAsyncTask.execute(new Object[] { Integer
-				.valueOf(FIND_ALL) });
+		LanguagesAsyncTask languagesAsyncTask = new LanguagesAsyncTask(
+				LanguagesWSImpl.getInstance(this.context),
+				this.getProgressDialog(), this.context);
+		languagesAsyncTask.setProgressDialog(this.getProgressDialog());
+		languagesAsyncTask.execute(new Object[] { Integer.valueOf(FIND_ALL) });
 
 		try {
-			List<Languages> languagesList = this.languagesAsyncTask.get();
+			List<Languages> languagesList = languagesAsyncTask.get();
 			if (languagesList == null) {
 				throw new AhorcaToothBusinessException(String.format(
 						"Error while procedure: \"%s\" was in execution.",

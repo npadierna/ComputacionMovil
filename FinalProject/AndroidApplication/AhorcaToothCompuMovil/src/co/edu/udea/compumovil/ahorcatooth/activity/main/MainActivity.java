@@ -2,10 +2,10 @@ package co.edu.udea.compumovil.ahorcatooth.activity.main;
 
 import java.util.List;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,13 +29,15 @@ import co.edu.udea.compumovil.ahorcatooth.process.webservice.CategoryWSProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.HangmanWordWSProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.LanguagesWSProcess;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
 
 	private ICategoryProcess categoryProcess;
 	private IHangmanWordProcess hangmanWordProcess;
 	private ILanguagesProcess languagesProcess;
+
+	private ProgressDialog progressDialog;
 
 	@Override()
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,14 @@ public class MainActivity extends Activity {
 				super.getApplicationContext());
 		this.languagesProcess = new LanguagesProcessImpl(
 				super.getApplicationContext());
+
+		this.progressDialog = new ProgressDialog(MainActivity.this);
+		this.progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		this.progressDialog.setTitle(null);
+		this.progressDialog.setMessage(super
+				.getString(R.string.updating_languages_message_spinner));
+		this.progressDialog.setCancelable(false);
+		this.progressDialog.setIndeterminate(true);
 	}
 
 	@Override()
@@ -97,20 +107,22 @@ public class MainActivity extends Activity {
 	private void updateDatabase() {
 		Log.i(TAG, "updateDatabase():void");
 
-		ProgressDialog progressDialog = (new ProgressBarCustomized(this))
-				.createProgressDialog(
-						null,
-						super.getString(R.string.updating_languages_message_spinner),
-						false);
+		ProgressDialog progressDialog = (new ProgressBarCustomized(
+				MainActivity.this)).createProgressDialog(null,
+				super.getString(R.string.updating_languages_message_spinner),
+				false);
+
+//		DialogFragment progressDialogFragment = ProgressDialogFragment
+//				.newInstance();
+//		progressDialogFragment.show(super.getSupportFragmentManager(),
+//				"Progress Dialog Fragment");
+
 		LanguagesWSProcess languagesWSProcess = new LanguagesWSProcess(
 				super.getApplicationContext(), progressDialog);
-
-		progressDialog.setMessage(super
-				.getString(R.string.updating_categories_message_spinner));
 		CategoryWSProcess categoryWSProcess = new CategoryWSProcess(
 				super.getApplicationContext(), progressDialog);
-
-		HangmanWordWSProcess hangmanWordWSProcess = null;
+		HangmanWordWSProcess hangmanWordWSProcess = new HangmanWordWSProcess(
+				super.getApplicationContext(), progressDialog);
 
 		try {
 			List<Languages> languagesFound = languagesWSProcess.findAll();
@@ -126,8 +138,6 @@ public class MainActivity extends Activity {
 
 				this.categoryProcess.save(category);
 
-				hangmanWordWSProcess = new HangmanWordWSProcess(
-						super.getApplicationContext(), null);
 				List<HangmanWord> hangmanWordsList = hangmanWordWSProcess
 						.findLatestWithLimit(category.getCategoryPK()
 								.getCategoryName(), category.getCategoryPK()
@@ -144,5 +154,6 @@ public class MainActivity extends Activity {
 
 			// FIXME: What have we do?
 		}
+//		progressDialogFragment.dismiss();
 	}
 }

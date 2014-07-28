@@ -26,6 +26,7 @@ public class ProgressBarCustomized {
 		ProgressDialog progressDialog = new ProgressDialog(this.getActivity());
 
 		progressDialog.setCancelable(isCancelable);
+		progressDialog.setIndeterminate(true);
 		progressDialog.setMessage(message);
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		progressDialog.setTitle(title);

@@ -13,17 +13,14 @@ public class HangmanWordWSProcess {
 
 	public static final int FIND_LATEST_WITH_LIMIT = 1;
 
-	private HangmanWordAsyncTask hangmanWordAsyncTask;
-
+	private Context context;
 	private ProgressDialog progressDialog;
 
 	public HangmanWordWSProcess(Context context, ProgressDialog progressDialog) {
 		super();
 
+		this.context = context;
 		this.progressDialog = progressDialog;
-		this.hangmanWordAsyncTask = new HangmanWordAsyncTask(
-				HangmanWordWSImpl.getInstance(context),
-				this.getProgressDialog());
 	}
 
 	public ProgressDialog getProgressDialog() {
@@ -38,14 +35,16 @@ public class HangmanWordWSProcess {
 	public List<HangmanWord> findLatestWithLimit(String categoryName,
 			String languageIsoCode, Integer limit)
 			throws AhorcaToothBusinessException {
-		this.hangmanWordAsyncTask.setProgressDialog(this.getProgressDialog());
-		this.hangmanWordAsyncTask.execute(new Object[] {
+		HangmanWordAsyncTask hangmanWordAsyncTask = new HangmanWordAsyncTask(
+				HangmanWordWSImpl.getInstance(this.context),
+				this.getProgressDialog());
+		hangmanWordAsyncTask.setProgressDialog(this.getProgressDialog());
+		hangmanWordAsyncTask.execute(new Object[] {
 				Integer.valueOf(FIND_LATEST_WITH_LIMIT), categoryName,
 				languageIsoCode, limit });
 
 		try {
-			List<HangmanWord> hangmanWordsList = this.hangmanWordAsyncTask
-					.get();
+			List<HangmanWord> hangmanWordsList = hangmanWordAsyncTask.get();
 			if (hangmanWordsList == null) {
 				throw new AhorcaToothBusinessException(
 						String.format(

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.LanguagesWSProcess;
@@ -18,11 +19,11 @@ public class LanguagesAsyncTask extends
 	private ProgressDialog progressDialog;
 
 	public LanguagesAsyncTask(ILanguagesWS languagesWS,
-			ProgressDialog progressDialog) {
+			ProgressDialog progressDialog, Context context) {
 		super();
 
 		this.languagesWS = languagesWS;
-		this.progressDialog = progressDialog;
+		this.progressDialog = new ProgressDialog(context);
 	}
 
 	public ProgressDialog getProgressDialog() {
@@ -67,30 +68,30 @@ public class LanguagesAsyncTask extends
 		return (languagesList);
 	}
 
-	@Override()
-	protected void onCancelled() {
-		super.onCancelled();
-
-		if (this.progressDialog != null) {
-			this.progressDialog.dismiss();
-		}
-	}
-
-	@Override()
-	protected void onPostExecute(List<Languages> result) {
-		super.onPostExecute(result);
-
-		if (this.progressDialog != null) {
-			this.progressDialog.dismiss();
-		}
-	}
-
-	@Override()
-	protected void onPreExecute() {
-		super.onPreExecute();
-
-		if (this.progressDialog != null) {
-			this.progressDialog.show();
-		}
-	}
+//	@Override()
+//	protected void onCancelled() {
+//		super.onCancelled();
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.dismiss();
+//		}
+//	}
+//
+//	@Override()
+//	protected void onPostExecute(List<Languages> result) {
+//		super.onPostExecute(result);
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.dismiss();
+//		}
+//	}
+//
+//	@Override()
+//	protected void onPreExecute() {
+//		super.onPreExecute();
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.show();
+//		}
+//	}
 }

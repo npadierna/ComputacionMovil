@@ -74,6 +74,11 @@
             android:label="@string/web_service_preference_activity_title"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".activity.game.resume.HangmanResumeActivity"
+            android:label="@string/web_service_preference_activity_title"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>

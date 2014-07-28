@@ -78,30 +78,30 @@ public class HangmanWordAsyncTask extends
 		return (hangmanWordsList);
 	}
 
-	@Override()
-	protected void onCancelled() {
-		super.onCancelled();
-
-		if (this.progressDialog != null) {
-			this.progressDialog.dismiss();
-		}
-	}
-
-	@Override()
-	protected void onPostExecute(List<HangmanWord> result) {
-		super.onPostExecute(result);
-
-		if (this.progressDialog != null) {
-			this.progressDialog.dismiss();
-		}
-	}
-
-	@Override()
-	protected void onPreExecute() {
-		super.onPreExecute();
-
-		if (this.progressDialog != null) {
-			this.progressDialog.show();
-		}
-	}
+//	@Override()
+//	protected void onCancelled() {
+//		super.onCancelled();
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.dismiss();
+//		}
+//	}
+//
+//	@Override()
+//	protected void onPostExecute(List<HangmanWord> result) {
+//		super.onPostExecute(result);
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.dismiss();
+//		}
+//	}
+//
+//	@Override()
+//	protected void onPreExecute() {
+//		super.onPreExecute();
+//
+//		if (this.progressDialog != null) {
+//			this.progressDialog.show();
+//		}
+//	}
 }

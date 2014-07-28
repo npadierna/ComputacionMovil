@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Bluetooth Multiplayer Activity -->
     <integer name="bluetooth_device_discoverable_duration">300</integer>
 
-</resources>
+    <!-- Hangman Board Activity -->
+    <integer name="initial_hangman_score">10000</integer>
+</resources>

@@ -7,7 +7,7 @@
     <string name="no_available_devices_found">No Bluetooth Devices found</string>
     <string name="no_paired_devices_title">No Bluetooth Devices have been paired</string>
     <string name="paired_devices_text_view">Paired Devices</string>
-    <string name="scanning_for_devices_title">Scanning for Devices#8230;</string>
+    <string name="scanning_for_devices_title">Scanning for Devices&#8230;</string>
     <string name="select_device_title">Select a Device to connect</string>
 
     <!-- Bluetooth Multiplayer Activity -->
@@ -16,16 +16,30 @@
     <string name="player_one_text_button">Player #1</string>
     <string name="player_two_text_button">Player #2</string>
     <string name="selector_player_title_text_view">Please, select the role to use in the Hangman game:</string>
+    <string name="no_enabled_bluetooth_message_alert_dialog">The Bluetooth was not enable for turning it on. Please, try it later.</string>
+    <string name="no_enabled_bluetooth_title_alert_dialog">Bluetooth Was not Enable</string>
+    <string name="no_available_bluetooth_message_alert_dialog">The system has not a hardware dedicated for supporting Bluetooth.</string>
+    <string name="no_available_bluetooth_title_alert_dialog">No Available Bluetooth</string>
 
     <!-- Category Dashboard Activity -->
     <string name="category_dashboard_activity_label">Categories</string>
+    <string name="cannot_load_categories_error_message_alert_dialog">The \"Categories\" loading for your selected language has not been successful completed.</string>
+    <string name="cannot_load_categories_error_title_alert_dialog">Error Loading Categories</string>
+    <string name="cannot_load_hangman_for_category_error_message_alert_dialog">The selection and loading for a \"Hangman Word\" have not been successful completed for the selected Category and Language.</string>
+    <string name="cannot_load_hangman_for_category_error_title_alert_dialog">Error Loading Hangman Words</string>
 
     <!-- Global Strings Text -->
     <string name="application_name">AhorcaTooth</string>
+    <string name="label_accept_button">Accept</string>
+    <string name="label_cancel_button">Cancel</string>
 
     <!-- Hangman Board Activity -->
     <string name="hanging_process_content_description_image_view">Image for displaying the Hanging Process.</string>
     <string name="mask_char_for_words">-</string>
+    <string name="back_button_pressed_message_alert_dialog">The \"Back Button\" was pressed. Do you really want leave this game?\n\nAll your progress will be discarted.</string>
+    <string name="back_button_pressed_title_alert_dialog">Back Button Pressed</string>
+    <string name="cannot_obtain_hangman_word_message_alert_dialog">The game can not get and load an \"Hangman Word\" for starting the new game.</string>
+    <string name="cannot_obtain_hangman_word_title_alert_dialog">Error Getting a Hangman Word</string>
 
     <!-- Keyboard Keys Text -->
     <string-array name="keyboard_keys_texts_array">
