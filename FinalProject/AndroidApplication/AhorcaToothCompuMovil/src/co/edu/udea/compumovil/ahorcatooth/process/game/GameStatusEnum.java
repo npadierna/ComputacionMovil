@@ -4,7 +4,7 @@ public enum GameStatusEnum {
 
 	STARTED_GAME((short) 0), HEAD((short) 1), BODY((short) 2), RIGHT_ARM(
 			(short) 3), LEFT_ARM((short) 4), RIGHT_LEG((short) 5), LEFT_LEG(
-			(short) 6), FINISHED_GAME((short) 7);
+			(short) 6);
 
 	private short statusId;
 
@@ -32,12 +32,6 @@ public enum GameStatusEnum {
 
 		case RIGHT_LEG:
 			return (LEFT_LEG);
-
-		case LEFT_LEG:
-			return (FINISHED_GAME);
-
-		case FINISHED_GAME:
-			return (FINISHED_GAME);
 
 		default:
 			return (null);

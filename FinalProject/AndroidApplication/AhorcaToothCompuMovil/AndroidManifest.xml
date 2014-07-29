@@ -67,7 +67,8 @@
         <activity
             android:name=".activity.game.resume.HangmanBoardResumeActivity"
             android:label="@string/application_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name=".activity.preference.WebServicePreferenceActivity"

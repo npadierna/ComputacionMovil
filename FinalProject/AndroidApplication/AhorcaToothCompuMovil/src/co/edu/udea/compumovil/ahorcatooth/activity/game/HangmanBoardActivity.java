@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import co.edu.udea.compumovil.ahorcatooth.R;
 import co.edu.udea.compumovil.ahorcatooth.activity.game.resume.HangmanBoardResumeActivity;
+import co.edu.udea.compumovil.ahorcatooth.activity.game.resume.ResumeGame;
 import co.edu.udea.compumovil.ahorcatooth.process.game.GameStatusEnum;
 import co.edu.udea.compumovil.ahorcatooth.process.game.HangmanGameProcess;
 
@@ -135,12 +137,17 @@ public class HangmanBoardActivity extends Activity {
 			this.hiddenWordTextView.setText(nextHangmanWordStatus);
 		}
 
-		if (this.hangmanGameProcess.getGameStatusEnum().equals(
-				GameStatusEnum.FINISHED_GAME)) {
-			// FIXME: Do we need pass some parameters?
-			super.startActivity(new Intent(super.getApplicationContext(),
-					HangmanBoardResumeActivity.class));
+		if (this.hangmanGameProcess.isFinished()) {
+			ResumeGame resumeGame = new ResumeGame(!this.hangmanGameProcess
+					.getGameStatusEnum().equals(GameStatusEnum.LEFT_LEG),
+					0L, 0L, this.hangmanGameProcess.getHangmanWordName());
 
+			Intent intent = new Intent(super.getApplicationContext(),
+					HangmanBoardResumeActivity.class);
+			intent.putExtra(HangmanBoardResumeActivity.RESUME_GAME_KEY,
+					(Parcelable) resumeGame);
+
+			super.startActivity(intent);
 			super.finish();
 		}
 	}

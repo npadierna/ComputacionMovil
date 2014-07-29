@@ -4,16 +4,27 @@ public class HangmanGameProcess {
 
 	public long score;
 
+	private boolean finished;
 	private String hangmanWordName;
 	private String mask;
 
 	private GameStatusEnum gameStatusEnum;
 
 	public HangmanGameProcess(long score, String hangmanWordName, String mask) {
+		this.setFinished(false);
 		this.setScore(score);
 		this.setHangmanWordName(hangmanWordName);
 		this.setMask(mask);
 		this.setGameStatusEnum(GameStatusEnum.STARTED_GAME);
+	}
+
+	public boolean isFinished() {
+
+		return (this.finished);
+	}
+
+	public void setFinished(boolean finished) {
+		this.finished = finished;
 	}
 
 	public long getScore() {
@@ -78,10 +89,11 @@ public class HangmanGameProcess {
 		if (!wasIn) {
 			this.setGameStatusEnum(GameStatusEnum.findNextHangmanStatus(this
 					.getGameStatusEnum()));
-		} else {
-			if (wordStringBuilder.indexOf(this.getMask()) == -1) {
-				this.setGameStatusEnum(GameStatusEnum.FINISHED_GAME);
-			}
+		}
+
+		if ((wordStringBuilder.indexOf(this.getMask()) == -1)
+				|| (this.getGameStatusEnum().equals(GameStatusEnum.LEFT_LEG))) {
+			this.setFinished(true);
 		}
 
 		return (wordStringBuilder.toString());
