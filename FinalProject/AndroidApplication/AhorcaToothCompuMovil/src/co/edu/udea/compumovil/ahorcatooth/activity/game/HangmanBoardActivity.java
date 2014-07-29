@@ -13,7 +13,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import co.edu.udea.compumovil.ahorcatooth.R;
-import co.edu.udea.compumovil.ahorcatooth.activity.game.resume.HangmanResumeActivity;
+import co.edu.udea.compumovil.ahorcatooth.activity.game.resume.HangmanBoardResumeActivity;
 import co.edu.udea.compumovil.ahorcatooth.process.game.GameStatusEnum;
 import co.edu.udea.compumovil.ahorcatooth.process.game.HangmanGameProcess;
 
@@ -139,7 +139,7 @@ public class HangmanBoardActivity extends Activity {
 				GameStatusEnum.FINISHED_GAME)) {
 			// FIXME: Do we need pass some parameters?
 			super.startActivity(new Intent(super.getApplicationContext(),
-					HangmanResumeActivity.class));
+					HangmanBoardResumeActivity.class));
 
 			super.finish();
 		}

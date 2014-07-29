@@ -9,6 +9,87 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".activity.game.HangmanBoardResumeActivity" >
+    tools:context=".activity.game.resume.HangmanBoardResumeActivity" >
+
+    <TextView
+        android:id="@+id/resume_game_main_title_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/lost_game_main_title_text_view"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" >
+    </TextView>
+
+    <ImageView
+        android:id="@+id/resume_game_image_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/resume_game_content_description_image_view"
+        android:src="@drawable/ic_launcher" >
+    </ImageView>
+
+    <TextView
+        android:id="@+id/hidden_hangman_word_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/application_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textScaleX="1.6"
+        android:textStyle="bold" >
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/final_score_title_text_view"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/final_score_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/application_name"
+            android:textAppearance="?android:attr/textAppearanceMedium" >
+        </TextView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/final_time_title_text_view"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/final_time_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/application_name"
+            android:textAppearance="?android:attr/textAppearanceMedium" >
+        </TextView>
+    </LinearLayout>
 
 </LinearLayout>

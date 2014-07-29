@@ -65,17 +65,12 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activity.game.HangmanBoardResumeActivity"
+            android:name=".activity.game.resume.HangmanBoardResumeActivity"
             android:label="@string/application_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".activity.preference.WebServicePreferenceActivity"
-            android:label="@string/web_service_preference_activity_title"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name=".activity.game.resume.HangmanResumeActivity"
             android:label="@string/web_service_preference_activity_title"
             android:screenOrientation="portrait" >
         </activity>
