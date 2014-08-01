@@ -9,6 +9,10 @@ import co.edu.udea.compumovil.ahorcatooth.process.IHangmanWordProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothProcessException;
 import co.edu.udea.compumovil.ahorcatooth.util.TextUtils;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class HangmanWordProcessImpl implements IHangmanWordProcess, Serializable {
@@ -43,15 +47,25 @@ public class HangmanWordProcessImpl implements IHangmanWordProcess, Serializable
             String langugesIsoCode, String description)
             throws AhorcaToothProcessException {
         if (this.isValidBundle(wordName, categoryName, langugesIsoCode)) {
-            HangmanWord hangmanWord = new HangmanWord();
-            hangmanWord.setWordName(TextUtils.toUpperCase(wordName));
-            hangmanWord.setCategory(new Category(new CategoryPK(
-                    TextUtils.toUpperCase(categoryName),
-                    TextUtils.toLowerCase(langugesIsoCode)), null));
-            hangmanWord.setDescription(((description != null)
-                    ? description.trim() : null));
-
             try {
+                List<HangmanWord> hangmansWordsFoundList = this.hangmanWordDAO
+                        .findByAttributes(new Object[]{"wordName", wordName,
+                    "category.categoryPK.categoryName", categoryName,
+                    "category.categoryPK.languagesIsoCode",
+                    langugesIsoCode});
+
+                if (!hangmansWordsFoundList.isEmpty()) {
+                    throw new AhorcaToothProcessException(
+                            "Already exists a HangmanWord entity with the defined attributes.");
+                }
+
+                HangmanWord hangmanWord = new HangmanWord();
+                hangmanWord.setWordName(TextUtils.toUpperCase(wordName));
+                hangmanWord.setCategory(new Category(new CategoryPK(
+                        TextUtils.toUpperCase(categoryName),
+                        TextUtils.toLowerCase(langugesIsoCode)), null));
+                hangmanWord.setDescription((!TextUtils.isEmpty(description))
+                        ? description.trim() : null);
 
                 return (this.hangmanWordDAO.save(hangmanWord).toString());
             } catch (AhorcaToothDatabaseException ex) {

@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -59,22 +61,28 @@ public class LanguagesBean implements Serializable {
                     "initComponents():void",
                     String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
                     ex.getMessage()), ex);
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            String messageTitle = "Grave Error Loading Languages";
+            String messageBody =
+                    "A grave error has thrown while the application was trying to loading the Languages.\n\nPlease, try it later.";
+
+            context.addMessage(null, new FacesMessage(messageTitle, messageBody));
         } finally {
             this.setLanguagesList(languagesFoundList);
+
+            SelectItem[] languagesFountSelectItems =
+                    new SelectItem[languagesFoundList.size()];
+
+            Languages languages;
+            for (int position = 0; position < languagesFoundList.size();
+                    position++) {
+                languages = languagesFoundList.get(position);
+                languagesFountSelectItems[position] = new SelectItem(
+                        languages.getIsoCode(), languages.getIsoCode());
+            }
+
+            this.setLanguagesSelectItems(languagesFountSelectItems);
         }
-
-        SelectItem[] languagesFountSelectItems =
-                new SelectItem[languagesFoundList.size() + 1];
-        languagesFountSelectItems[0] = new SelectItem("", "Select one");
-
-        Languages languages;
-        for (int position = 1; position <= languagesFoundList.size();
-                position++) {
-            languages = languagesFoundList.get(position - 1);
-            languagesFountSelectItems[position] = new SelectItem(
-                    languages.getIsoCode(), languages.getIsoCode());
-        }
-
-        this.setLanguagesSelectItems(languagesFountSelectItems);
     }
 }

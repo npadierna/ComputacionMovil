@@ -7,4 +7,7 @@ import java.util.List;
 public interface ICategoryProcess {
 
     public List<Category> findAll() throws AhorcaToothProcessException;
+
+    public List<Category> findByLanguageIsoCOde(String languageIsoCode)
+            throws AhorcaToothProcessException;
 }

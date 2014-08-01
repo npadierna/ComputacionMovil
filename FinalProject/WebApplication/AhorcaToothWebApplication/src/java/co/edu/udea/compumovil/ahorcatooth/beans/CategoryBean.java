@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -59,22 +61,52 @@ public class CategoryBean implements Serializable {
                     "initComponents():void",
                     String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
                     ex.getMessage()), ex);
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            String messageTitle = "Grave Error Loading Categories";
+            String messageBody =
+                    "A grave error has thrown while the application was trying to loading the Categories.\n\nPlease, try it later.";
+
+            context.addMessage(null, new FacesMessage(messageTitle, messageBody));
         } finally {
             this.setCategoriesList(categoriesFoundList);
         }
+    }
 
-        SelectItem[] categoriesFoundSelectItems =
-                new SelectItem[categoriesFoundList.size()];
+    public void handleLanguageIsoCodeChange(String languageISOCode) {
+        List<Category> categoriesFoundList;
 
-        Category category;
-        for (int position = 0; position < categoriesFoundList.size();
-                position++) {
-            category = categoriesFoundList.get(position);
-            categoriesFoundSelectItems[position] = new SelectItem(
-                    category.getCategoryPK().getCategoryName(),
-                    category.getCategoryPK().getCategoryName());
+        try {
+            categoriesFoundList = this.categoryProcess.findByLanguageIsoCOde(
+                    languageISOCode);
+
+            SelectItem[] categoriesFoundSelectItems =
+                    new SelectItem[categoriesFoundList.size()];
+
+            Category category;
+            for (int position = 0; position < categoriesFoundList.size();
+                    position++) {
+                category = categoriesFoundList.get(position);
+                categoriesFoundSelectItems[position] = new SelectItem(
+                        category.getCategoryPK().getCategoryName(),
+                        category.getCategoryPK().getCategoryName());
+            }
+
+            this.setCategoriesSelectItems(categoriesFoundSelectItems);
+        } catch (AhorcaToothProcessException ex) {
+            Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
+                    "initComponents():void",
+                    String.format("DATE: %s\nCAUSE: %s", (new Date()).toString(),
+                    ex.getMessage()), ex);
+
+            FacesContext context = FacesContext.getCurrentInstance();
+            String messageTitle = "Grave Error Loading Categories";
+            String messageBody =
+                    "A grave error has thrown while the application was trying to loading the Categories.\n\nPlease, try it later.";
+
+            context.addMessage(null, new FacesMessage(messageTitle, messageBody));
+
+            this.setCategoriesSelectItems(new SelectItem[0]);
         }
-
-        this.setCategoriesSelectItems(categoriesFoundSelectItems);
     }
 }

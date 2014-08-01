@@ -2,6 +2,7 @@ package co.edu.udea.compumovil.ahorcatooth.beans;
 
 import co.edu.udea.compumovil.ahorcatooth.process.IHangmanWordProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothProcessException;
+import co.edu.udea.compumovil.ahorcatooth.util.TextUtils;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.logging.Level;
@@ -57,14 +58,14 @@ public class HangmanWordBean implements Serializable {
     }
 
     public String getDescription() {
-        
+
         return (this.description);
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public void saveHangmanWord() {
         FacesContext context = FacesContext.getCurrentInstance();
         String messageTitle = "Successfully Saved!!";
@@ -73,10 +74,16 @@ public class HangmanWordBean implements Serializable {
         try {
             String savingResult = this.hangmanWordProcess.save(
                     this.getWordName(), this.getCategoryName(),
-                    this.getLanguagesIsoCode(), this.getDescription());
-            
+                    this.getLanguagesIsoCode(),
+                    (!TextUtils.isEmpty(this.getDescription()) ? this.getDescription().trim() : null));
+
             messageBody = String.format("The new \"Hangman Word\" has been saved successfully: %s",
                     savingResult);
+
+            this.setCategoryName(null);
+            this.setDescription(null);
+            this.setLanguagesIsoCode(null);
+            this.setWordName(null);
         } catch (AhorcaToothProcessException ex) {
             Logger.getLogger(TAG).logp(Level.SEVERE, TAG,
                     "saveHangmanWord():void",
@@ -84,7 +91,7 @@ public class HangmanWordBean implements Serializable {
                     ex.getMessage()), ex);
 
             messageTitle = "Fatal Exception...";
-            messageBody = "A fatal error has been thrown while the new \"Hangman Word\" was trying to be saved.";
+            messageBody = "A fatal error has been thrown while the new \"Hangman Word\" was trying to be saved.\n\nPlease, try it again later.";
         }
 
         context.addMessage(null, new FacesMessage(messageTitle, messageBody));

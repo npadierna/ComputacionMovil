@@ -16,8 +16,6 @@
                 <h1>AhorcaTooth Dashboard</h1>
             </center>
 
-            <p:growl id="messageGrowl" life="3000" showDetail="true" ></p:growl>
-
             <p:accordionPanel id="mainAccordionPanel" >
                 <p:tab id="categoriesTableTab" title="Categories' Table" >
                     <p:panel id="categoriesTablePanel" >
@@ -71,18 +69,27 @@
                                 id="languagesSelectOneMenu" required="true"
                                 requiredMessage="Please, select a Language's ISO Code for the new Hangman Word."
                                 value="#{hangmanWordBean.languagesIsoCode}" >
+
+                                <f:selectItem
+                                    itemLabel="Select one" itemValue="" >
+                                </f:selectItem>
                                 <f:selectItems
                                     value="#{languagesBean.languagesSelectItems}" >
                                 </f:selectItems>
+                                <p:ajax
+                                    update="newHangmanWordPanel"
+                                    listener="#{categoryBean.handleLanguageIsoCodeChange(hangmanWordBean.languagesIsoCode)}" >
+                                </p:ajax>
                             </p:selectOneMenu>
 
-                            <h:outputText 
+                            <h:outputText
                                 style="font-weight: bold;" value="Category:" >
                             </h:outputText>
                             <p:selectOneMenu
                                 id="categoriesSelectOneMenu" required="true"
                                 requiredMessage="Please, select a Category name for the new Hangman Word."
                                 value="#{hangmanWordBean.categoryName}" >
+
                                 <f:selectItems
                                     value="#{categoryBean.categoriesSelectItems}" >
                                 </f:selectItems>
@@ -117,6 +124,8 @@
                                 style="font-style: italic;" >
                             </h:outputText>
                         </h:panelGrid>
+
+                        <p:growl id="messageGrowl" life="3000" showDetail="true" ></p:growl>
 
                         <p:commandButton
                             action="#{hangmanWordBean.saveHangmanWord}"
