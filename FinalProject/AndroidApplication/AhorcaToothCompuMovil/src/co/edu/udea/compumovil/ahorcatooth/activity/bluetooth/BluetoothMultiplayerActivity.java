@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.ahorcatooth.activity.bluetooth;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,8 @@ public class BluetoothMultiplayerActivity extends Activity {
 	private static final String TAG = BluetoothMultiplayerActivity.class
 			.getSimpleName();
 
-	private static final int REQUEST_ENABLE_BLUETOOTH = 0;
+	private static final int REQUEST_CONNECT_BLUETOOTH_DEVICE = 0;
+	private static final int REQUEST_ENABLE_BLUETOOTH = 1;
 
 	private AlertDialog.Builder errorAlertDialogBuilder;
 	private BluetoothAdapter bluetoothAdapter;
@@ -25,6 +27,12 @@ public class BluetoothMultiplayerActivity extends Activity {
 	@Override()
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
+		case REQUEST_CONNECT_BLUETOOTH_DEVICE:
+			if (resultCode == Activity.RESULT_OK) {
+				connectToBluetoothDevice(data);
+			}
+			break;
+
 		case REQUEST_ENABLE_BLUETOOTH:
 			if (resultCode != Activity.RESULT_OK) {
 				this.errorAlertDialogBuilder
@@ -83,6 +91,15 @@ public class BluetoothMultiplayerActivity extends Activity {
 		}
 	}
 
+	private void connectToBluetoothDevice(Intent data) {
+		Log.i(TAG, "connectToBluetoothDevice(Intent):void");
+
+		String bluetoothDeviceMACAddress = data.getExtras().getString(
+				BluetoothDevicesListActivity.BLUETOOTH_DEVICE_MAC_ADDRESS);
+		BluetoothDevice bluetoothDevice = this.bluetoothAdapter
+				.getRemoteDevice(bluetoothDeviceMACAddress);
+	}
+
 	private void createBluetoothBrigde() {
 		this.bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
@@ -121,8 +138,9 @@ public class BluetoothMultiplayerActivity extends Activity {
 	public void onPlayerOneSelected(View view) {
 		Log.i(TAG, "onPlayerSelected(View):void");
 
-		super.startActivity(new Intent(super.getApplicationContext(),
-				BluetoothDevicesListActivity.class));
+		super.startActivityForResult(new Intent(super.getApplicationContext(),
+				BluetoothDevicesListActivity.class),
+				REQUEST_CONNECT_BLUETOOTH_DEVICE);
 	}
 
 	public void onPlayerTwoSelected(View view) {

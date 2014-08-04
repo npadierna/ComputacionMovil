@@ -14,7 +14,6 @@ import co.edu.udea.compumovil.ahorcatooth.R;
 import co.edu.udea.compumovil.ahorcatooth.activity.bluetooth.BluetoothMultiplayerActivity;
 import co.edu.udea.compumovil.ahorcatooth.activity.category.CategoryDashboardActivity;
 import co.edu.udea.compumovil.ahorcatooth.activity.preference.WebServicePreferenceActivity;
-import co.edu.udea.compumovil.ahorcatooth.activity.util.ProgressBarCustomized;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
@@ -28,14 +27,23 @@ import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessE
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.CategoryWSProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.HangmanWordWSProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.LanguagesWSProcess;
+import co.edu.udea.compumovil.ahorcatooth.process.webservice.interfaces.ICategoryWSResultListener;
+import co.edu.udea.compumovil.ahorcatooth.process.webservice.interfaces.IHangmanWordWSResultListener;
+import co.edu.udea.compumovil.ahorcatooth.process.webservice.interfaces.ILanguagesWSResultListener;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity implements
+		ICategoryWSResultListener, IHangmanWordWSResultListener,
+		ILanguagesWSResultListener {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
 
 	private ICategoryProcess categoryProcess;
 	private IHangmanWordProcess hangmanWordProcess;
 	private ILanguagesProcess languagesProcess;
+
+	private List<Category> categoriesFoundList;
+	private List<HangmanWord> hangmansWordsFoundList;
+	private List<Languages> languagesFoundList;
 
 	private ProgressDialog progressDialog;
 
@@ -51,7 +59,7 @@ public class MainActivity extends FragmentActivity {
 		this.languagesProcess = new LanguagesProcessImpl(
 				super.getApplicationContext());
 
-		this.progressDialog = new ProgressDialog(MainActivity.this);
+		this.progressDialog = new ProgressDialog(this);
 		this.progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		this.progressDialog.setTitle(null);
 		this.progressDialog.setMessage(super
@@ -90,6 +98,29 @@ public class MainActivity extends FragmentActivity {
 		return (false);
 	}
 
+	@Override()
+	public List<Category> categoryWSResultListener(List<Category> categoriesList) {
+		this.categoriesFoundList = categoriesList;
+
+		return (this.categoriesFoundList);
+	}
+
+	@Override()
+	public List<HangmanWord> hangmanWordWSResultListener(
+			List<HangmanWord> hangmansWordsList) {
+		this.hangmansWordsFoundList = hangmansWordsList;
+
+		return (this.hangmansWordsFoundList);
+	}
+
+	@Override()
+	public List<Languages> LanguagesWSResultListener(
+			List<Languages> LanguagesList) {
+		this.languagesFoundList = LanguagesList;
+
+		return (this.languagesFoundList);
+	}
+
 	public void onSinglePlayerGamge(View view) {
 		Log.i(TAG, "onsinglePlayerGame(View):void");
 
@@ -107,53 +138,28 @@ public class MainActivity extends FragmentActivity {
 	private void updateDatabase() {
 		Log.i(TAG, "updateDatabase():void");
 
-		ProgressDialog progressDialog = (new ProgressBarCustomized(
-				MainActivity.this)).createProgressDialog(null,
-				super.getString(R.string.updating_languages_message_spinner),
-				false);
-
-//		DialogFragment progressDialogFragment = ProgressDialogFragment
-//				.newInstance();
-//		progressDialogFragment.show(super.getSupportFragmentManager(),
-//				"Progress Dialog Fragment");
-
 		LanguagesWSProcess languagesWSProcess = new LanguagesWSProcess(
-				super.getApplicationContext(), progressDialog);
+				super.getApplicationContext());
 		CategoryWSProcess categoryWSProcess = new CategoryWSProcess(
-				super.getApplicationContext(), progressDialog);
+				super.getApplicationContext());
 		HangmanWordWSProcess hangmanWordWSProcess = new HangmanWordWSProcess(
-				super.getApplicationContext(), progressDialog);
+				super.getApplicationContext());
 
 		try {
-			List<Languages> languagesFound = languagesWSProcess.findAll();
-			for (Languages languages : languagesFound) {
-				Log.d(TAG, languages.toString());
+			languagesWSProcess.findAll(this, this.progressDialog);
 
-				this.languagesProcess.save(languages);
-			}
-
-			List<Category> categoriesFound = categoryWSProcess.findAll();
-			for (Category category : categoriesFound) {
-				Log.d(TAG, category.toString());
-
-				this.categoryProcess.save(category);
-
-				List<HangmanWord> hangmanWordsList = hangmanWordWSProcess
-						.findLatestWithLimit(category.getCategoryPK()
-								.getCategoryName(), category.getCategoryPK()
-								.getLanguagesIsoCode(), 50);
-				for (HangmanWord hangmanWord : hangmanWordsList) {
-					Log.d(TAG, hangmanWord.toString());
-
-					// FIXME: Do we need delete all Hangman Words?
-					this.hangmanWordProcess.save(hangmanWord);
-				}
+			categoryWSProcess.findAll(this, this.progressDialog);
+			for (Category category : this.categoriesFoundList) {
+//
+//				hangmanWordWSProcess.findLatestWithLimit(this,
+//						this.progressDialog, category.getCategoryPK()
+//								.getCategoryName(), category.getCategoryPK()
+//								.getLanguagesIsoCode(), 50);
 			}
 		} catch (AhorcaToothBusinessException e) {
 			e.printStackTrace();
 
 			// FIXME: What have we do?
 		}
-//		progressDialogFragment.dismiss();
 	}
 }

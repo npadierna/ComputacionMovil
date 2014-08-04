@@ -4,26 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.CategoryWSProcess;
+import co.edu.udea.compumovil.ahorcatooth.process.webservice.interfaces.ICategoryWSResultListener;
 import co.edu.udea.compumovil.ahorcatooth.webservice.ICategoryWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 
 public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 
 	private ICategoryWS categoryWS;
+	private ICategoryWSResultListener categoryWSResultListener;
 
 	private ProgressDialog progressDialog;
 
 	public CategoryAsyncTask(ICategoryWS categoryWS,
-			ProgressDialog progressDialog, Context context) {
+			ICategoryWSResultListener categoryWSResultListener,
+			ProgressDialog progressDialog) {
 		super();
 
 		this.categoryWS = categoryWS;
-		this.progressDialog = new ProgressDialog(context);
+		this.categoryWSResultListener = categoryWSResultListener;
+		this.progressDialog = progressDialog;
 	}
 
 	public ProgressDialog getProgressDialog() {
@@ -79,30 +82,35 @@ public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 		return (categoriesList);
 	}
 
-//	@Override()
-//	protected void onCancelled() {
-//		super.onCancelled();
-//
-//		if (this.progressDialog != null) {
-//			this.progressDialog.dismiss();
-//		}
-//	}
-//
-//	@Override()
-//	protected void onPostExecute(List<Category> result) {
-//		super.onPostExecute(result);
-//
-//		if (this.progressDialog != null) {
-//			this.progressDialog.dismiss();
-//		}
-//	}
-//
-//	@Override()
-//	protected void onPreExecute() {
-//		super.onPreExecute();
-//
-//		if (this.progressDialog != null) {
-//			this.progressDialog.show();
-//		}
-//	}
+	@Override()
+	protected void onCancelled() {
+		super.onCancelled();
+
+		if ((this.getProgressDialog() != null)
+				&& (this.getProgressDialog().isShowing())) {
+			this.getProgressDialog().dismiss();
+		}
+	}
+
+	@Override()
+	protected void onPostExecute(List<Category> result) {
+		super.onPostExecute(result);
+
+		this.categoryWSResultListener.categoryWSResultListener(result);
+
+		if ((this.getProgressDialog() != null)
+				&& (this.getProgressDialog().isShowing())) {
+			this.getProgressDialog().dismiss();
+		}
+	}
+
+	@Override()
+	protected void onPreExecute() {
+		super.onPreExecute();
+
+		if ((this.getProgressDialog() != null)
+				&& (!this.getProgressDialog().isShowing())) {
+			this.getProgressDialog().show();
+		}
+	}
 }
