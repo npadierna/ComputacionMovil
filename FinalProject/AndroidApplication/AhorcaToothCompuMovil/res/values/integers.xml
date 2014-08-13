@@ -5,5 +5,7 @@
     <integer name="bluetooth_device_discoverable_duration">300</integer>
 
     <!-- Hangman Board Activity -->
-    <integer name="initial_hangman_score">10000</integer>
+    <integer name="hit_hangman_score">3000</integer>
+    <integer name="initial_hangman_score">12000</integer>
+    <integer name="miss_hangman_score">2000</integer>
 </resources>

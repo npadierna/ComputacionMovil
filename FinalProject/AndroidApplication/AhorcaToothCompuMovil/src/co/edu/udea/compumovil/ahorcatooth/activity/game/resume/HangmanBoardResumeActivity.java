@@ -1,8 +1,11 @@
 package co.edu.udea.compumovil.ahorcatooth.activity.game.resume;
 
+import java.util.Date;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ public class HangmanBoardResumeActivity extends Activity {
 
 	@Override()
 	public void onBackPressed() {
+		super.onBackPressed();
 		Log.i(TAG, "Back Button Pressed; do nothing.");
 	}
 
@@ -95,7 +99,7 @@ public class HangmanBoardResumeActivity extends Activity {
 		this.finalScoreTextView.setText(String.valueOf(this.resumeGame
 				.getFinalScore()));
 
-		this.finalTimeTextView.setText(String.valueOf(this.resumeGame
-				.getFinalTime()));
+		this.finalTimeTextView.setText(DateFormat.format("mm:ss", new Date(
+				this.resumeGame.getFinalTime())));
 	}
 }

@@ -34,12 +34,14 @@
     <string name="label_cancel_button">Cancel</string>
 
     <!-- Hangman Board Activity -->
-    <string name="hanging_process_content_description_image_view">Image for displaying the Hanging Process.</string>
-    <string name="mask_char_for_words">-</string>
     <string name="back_button_pressed_message_alert_dialog">The \"Back Button\" was pressed. Do you really want leave this game?\n\nAll your progress will be discarted.</string>
     <string name="back_button_pressed_title_alert_dialog">Back Button Pressed</string>
     <string name="cannot_obtain_hangman_word_message_alert_dialog">The game can not get and load an \"Hangman Word\" for starting the new game.</string>
     <string name="cannot_obtain_hangman_word_title_alert_dialog">Error Getting a Hangman Word</string>
+    <string name="hanging_process_content_description_image_view">Image for displaying the Hanging Process.</string>
+    <string name="mask_char_for_words">-</string>
+    <string name="score_title_text_view">Score:</string>
+    <string name="time_title_text_view">Time:</string>
 
     <!-- Hangman Resume Activity -->
     <string name="final_score_title_text_view">Score:</string>
