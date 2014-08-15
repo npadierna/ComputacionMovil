@@ -1,5 +1,6 @@
 package co.edu.udea.compumovil.ahorcatooth.activity.main;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.ProgressDialog;
@@ -41,7 +42,7 @@ public class MainActivity extends FragmentActivity implements
 	private IHangmanWordProcess hangmanWordProcess;
 	private ILanguagesProcess languagesProcess;
 
-	private List<Category> categoriesFoundList;
+	private List<Category> categoriesFoundList = new ArrayList<Category>();
 	private List<HangmanWord> hangmansWordsFoundList;
 	private List<Languages> languagesFoundList;
 
@@ -66,6 +67,10 @@ public class MainActivity extends FragmentActivity implements
 				.getString(R.string.updating_languages_message_spinner));
 		this.progressDialog.setCancelable(false);
 		this.progressDialog.setIndeterminate(true);
+		
+//		this.categoriesFoundList = new ArrayList<Category>();
+//		this.hangmansWordsFoundList = new ArrayList<HangmanWord>();
+//		this.languagesFoundList = new ArrayList<Languages>();
 	}
 
 	@Override()
@@ -149,13 +154,13 @@ public class MainActivity extends FragmentActivity implements
 			languagesWSProcess.findAll(this, this.progressDialog);
 
 			categoryWSProcess.findAll(this, this.progressDialog);
-			for (Category category : this.categoriesFoundList) {
+//			for (Category category : this.categoriesFoundList) { 
 //
 //				hangmanWordWSProcess.findLatestWithLimit(this,
 //						this.progressDialog, category.getCategoryPK()
 //								.getCategoryName(), category.getCategoryPK()
 //								.getLanguagesIsoCode(), 50);
-			}
+//			}
 		} catch (AhorcaToothBusinessException e) {
 			e.printStackTrace();
 

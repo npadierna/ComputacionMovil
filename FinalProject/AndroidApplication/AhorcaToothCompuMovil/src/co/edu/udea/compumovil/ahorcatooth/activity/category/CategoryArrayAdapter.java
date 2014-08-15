@@ -44,18 +44,25 @@ class CategoryArrayAdapter extends ArrayAdapter<Category> {
 			categoryViewHolder = (CategoryViewHolder) convertView.getTag();
 		}
 
-		this.fillCategoryData(this.categoriesList.get(position),
-				categoryViewHolder);
+		this.fillCategoryData(position, categoryViewHolder);
 
 		return (convertView);
 	}
 
-	private void fillCategoryData(Category category,
+	public List<Category> getCategories() {
+		return (this.categoriesList);
+	}
+
+	private void fillCategoryData(int position,
 			CategoryViewHolder categoryViewHolder) {
 		// FIXME: We need to attach the Category's image.
+		Category category = this.getCategories().get(position);
+		CategoryImage categoryImage = CategoryImage.getInstance();
 		categoryViewHolder.getCategoryTextView()
-				.setCompoundDrawablesWithIntrinsicBounds(0,
-						R.drawable.ic_launcher, 0, 0);
+				.setCompoundDrawablesWithIntrinsicBounds(
+						0,
+						categoryImage.getDrawableByCategoryImageName(category
+								.getImageName()), 0, 0);
 		categoryViewHolder.getCategoryTextView().setText(
 				category.getCategoryPK().getCategoryName());
 	}
