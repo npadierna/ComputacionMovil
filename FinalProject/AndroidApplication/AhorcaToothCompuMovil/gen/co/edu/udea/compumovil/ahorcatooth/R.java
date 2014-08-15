@@ -25,8 +25,20 @@ public final class R {
         public static final int hidden_word_text_color=0x7f050002;
         /**  Keyboard Key Button 
          */
-        public static final int keyboard_key_button_text_color=0x7f050003;
-        public static final int used_keyboard_key_button_text_color=0x7f050004;
+        public static final int keyboard_key_button_text_color=0x7f05000d;
+        public static final int resume_game_main_title_text_color=0x7f050008;
+        /**  hangman Board Resume Activity 
+         */
+        public static final int resume_hidden_hangman_word_text_color=0x7f050007;
+        public static final int resume_score_title_text_color=0x7f050009;
+        public static final int resume_score_value_text_color=0x7f05000a;
+        public static final int resume_time_title_text_color=0x7f05000b;
+        public static final int resume_time_value_text_color=0x7f05000c;
+        public static final int score_title_text_color=0x7f050003;
+        public static final int score_value_text_color=0x7f050004;
+        public static final int time_title_text_color=0x7f050005;
+        public static final int time_value_text_color=0x7f050006;
+        public static final int used_keyboard_key_button_text_color=0x7f05000e;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -37,17 +49,25 @@ public final class R {
          */
         public static final int bluetooth_device_padding_text_view=0x7f060002;
         public static final int bluetooth_device_text_size_text_view=0x7f060003;
+        /**  Hangman Board Resume Activity 
+         */
+        public static final int hidden_hangman_word_margin_botton=0x7f060004;
+        public static final int hidden_hangman_word_margin_top=0x7f060005;
+        public static final int hidden_hangman_word_text_size=0x7f060006;
         /**  Keyboard Key Button 
          */
-        public static final int keyboard_key_max_height=0x7f060004;
-        public static final int keyboard_key_max_width=0x7f060005;
-        public static final int keyboard_key_min_height=0x7f060006;
-        public static final int keyboard_key_min_width=0x7f060007;
+        public static final int keyboard_key_max_height=0x7f06000a;
+        public static final int keyboard_key_max_width=0x7f06000b;
+        public static final int keyboard_key_min_height=0x7f06000c;
+        public static final int keyboard_key_min_width=0x7f06000d;
+        public static final int resume_game_main_title_margin_bottom=0x7f060007;
+        public static final int resume_game_main_title_margin_top=0x7f060008;
+        public static final int resume_game_main_title_text_size=0x7f060009;
     }
     public static final class drawable {
-        public static final int background=0x7f020000;
-        public static final int background1=0x7f020001;
-        public static final int ic_body=0x7f020002;
+        public static final int base_hangman_background=0x7f020000;
+        public static final int ic_body=0x7f020001;
+        public static final int ic_chest=0x7f020002;
         public static final int ic_foods_category=0x7f020003;
         public static final int ic_geography_category=0x7f020004;
         public static final int ic_head=0x7f020005;
@@ -66,7 +86,6 @@ public final class R {
         public static final int ic_technology_category=0x7f020012;
         public static final int ic_verbs_category=0x7f020013;
         public static final int ic_winner=0x7f020014;
-        public static final int ic_winner1=0x7f020015;
     }
     public static final class id {
         public static final int categories_grid_view=0x7f0c0004;
@@ -104,10 +123,9 @@ public final class R {
         public static final int activity_category_dashboard=0x7f030002;
         public static final int activity_hangman_board=0x7f030003;
         public static final int activity_hangman_board_resume=0x7f030004;
-        public static final int activity_hangman_resume=0x7f030005;
-        public static final int activity_main=0x7f030006;
-        public static final int keyboard_key=0x7f030007;
-        public static final int list_item_bluetooth_device=0x7f030008;
+        public static final int activity_main=0x7f030005;
+        public static final int keyboard_key=0x7f030006;
+        public static final int list_item_bluetooth_device=0x7f030007;
     }
     public static final class menu {
         public static final int menu_bluetooth_multiplayer=0x7f0b0000;

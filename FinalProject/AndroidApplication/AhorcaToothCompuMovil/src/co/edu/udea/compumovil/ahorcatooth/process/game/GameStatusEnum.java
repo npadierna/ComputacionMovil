@@ -1,15 +1,18 @@
 package co.edu.udea.compumovil.ahorcatooth.process.game;
 
+import co.edu.udea.compumovil.ahorcatooth.R;
+
 public enum GameStatusEnum {
 
-	STARTED_GAME((short) 0), HEAD((short) 1), BODY((short) 2), RIGHT_ARM(
-			(short) 3), LEFT_ARM((short) 4), RIGHT_LEG((short) 5), LEFT_LEG(
-			(short) 6);
+	STARTED_GAME(R.drawable.ic_started_game), HEAD(R.drawable.ic_head), BODY(
+			R.drawable.ic_chest), RIGHT_ARM(R.drawable.ic_right_arm), LEFT_ARM(
+			R.drawable.ic_left_arm), RIGHT_LEG(R.drawable.ic_right_leg), LEFT_LEG(
+			R.drawable.ic_left_leg);
 
-	private short statusId;
+	private int resourceId;
 
-	private GameStatusEnum(Short statusId) {
-		this.setStatusId(statusId);
+	private GameStatusEnum(int statusId) {
+		this.setResourceId(statusId);
 	}
 
 	public static GameStatusEnum findNextHangmanStatus(
@@ -22,28 +25,28 @@ public enum GameStatusEnum {
 			return (BODY);
 
 		case BODY:
-			return (RIGHT_ARM);
-
-		case RIGHT_ARM:
 			return (LEFT_ARM);
 
-		case LEFT_ARM:
-			return (RIGHT_LEG);
-
-		case RIGHT_LEG:
+		case RIGHT_ARM:
 			return (LEFT_LEG);
+
+		case LEFT_ARM:
+			return (RIGHT_ARM);
+
+		case LEFT_LEG:
+			return (RIGHT_LEG);
 
 		default:
 			return (null);
 		}
 	}
 
-	public short getStatusId() {
+	public int getResouceId() {
 
-		return (this.statusId);
+		return (this.resourceId);
 	}
 
-	private void setStatusId(short statusId) {
-		this.statusId = statusId;
+	private void setResourceId(int resouceId) {
+		this.resourceId = resouceId;
 	}
 }

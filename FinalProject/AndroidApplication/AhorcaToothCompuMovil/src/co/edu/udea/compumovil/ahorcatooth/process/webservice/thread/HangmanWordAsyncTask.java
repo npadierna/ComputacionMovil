@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.HangmanWordWSProcess;
-import co.edu.udea.compumovil.ahorcatooth.process.webservice.interfaces.IHangmanWordWSResultListener;
 import co.edu.udea.compumovil.ahorcatooth.webservice.IHangmanWordWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 
@@ -16,17 +15,14 @@ public class HangmanWordAsyncTask extends
 		AsyncTask<Object, Void, List<HangmanWord>> {
 
 	private IHangmanWordWS hangmanWordWS;
-	private IHangmanWordWSResultListener hangmanWordWSResultListener;
 
 	private ProgressDialog progressDialog;
 
 	public HangmanWordAsyncTask(IHangmanWordWS hangmanWordWS,
-			IHangmanWordWSResultListener hangmanWordWSResultListener,
 			ProgressDialog progressDialog) {
 		super();
 
 		this.hangmanWordWS = hangmanWordWS;
-		this.hangmanWordWSResultListener = hangmanWordWSResultListener;
 		this.progressDialog = progressDialog;
 	}
 
@@ -95,8 +91,6 @@ public class HangmanWordAsyncTask extends
 	@Override()
 	protected void onPostExecute(List<HangmanWord> result) {
 		super.onPostExecute(result);
-
-		this.hangmanWordWSResultListener.hangmanWordWSResultListener(result);
 
 		if ((this.getProgressDialog() != null)
 				&& (this.getProgressDialog().isShowing())) {

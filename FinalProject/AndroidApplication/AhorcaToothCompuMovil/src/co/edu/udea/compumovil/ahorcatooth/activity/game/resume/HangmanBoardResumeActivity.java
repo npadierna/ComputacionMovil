@@ -86,7 +86,7 @@ public class HangmanBoardResumeActivity extends Activity {
 			this.mainTitleTextView
 					.setText(R.string.won_game_main_title_text_view);
 
-			 this.resumeGameImageView.setImageResource(R.drawable.ic_winner1);
+			 this.resumeGameImageView.setImageResource(R.drawable.ic_winner);
 		} else {
 			this.mainTitleTextView
 					.setText(R.string.lost_game_main_title_text_view);

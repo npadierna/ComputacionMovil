@@ -6,10 +6,22 @@
     <color name="devices_list_text_color_title_text_view">#FFFFFF</color>
 
     <!-- Hangman Board Activity -->
-    <color name="hidden_word_text_color">#000000</color>
+    <color name="hidden_word_text_color">#FFFFFF</color>
+    <color name="score_title_text_color">#FFFFFF</color>
+    <color name="score_value_text_color">#FFFFFF</color>
+    <color name="time_title_text_color">#FFFFFF</color>
+    <color name="time_value_text_color">#FFFFFF</color>
+
+    <!-- hangman Board Resume Activity -->
+    <color name="resume_hidden_hangman_word_text_color">#FFFFFF</color>
+    <color name="resume_game_main_title_text_color">#FFFFFF</color>
+    <color name="resume_score_title_text_color">#FFFFFF</color>
+    <color name="resume_score_value_text_color">#FFFFFF</color>
+    <color name="resume_time_title_text_color">#FFFFFF</color>
+    <color name="resume_time_value_text_color">#FFFFFF</color>
 
     <!-- Keyboard Key Button -->
-    <color name="keyboard_key_button_text_color">#000000</color>
-    <color name="used_keyboard_key_button_text_color">#C4C4C4</color>
+    <color name="keyboard_key_button_text_color">#FFFFFF</color>
+    <color name="used_keyboard_key_button_text_color">#9E9999</color>
 
 </resources>

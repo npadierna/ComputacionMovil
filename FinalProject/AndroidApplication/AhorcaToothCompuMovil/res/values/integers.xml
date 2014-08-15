@@ -8,4 +8,5 @@
     <integer name="hit_hangman_score">3000</integer>
     <integer name="initial_hangman_score">12000</integer>
     <integer name="miss_hangman_score">2000</integer>
-</resources>
+
+</resources>

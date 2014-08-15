@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/base_hangman_background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -23,6 +24,7 @@
             android:gravity="right"
             android:text="@string/score_title_text_view"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/score_title_text_color"
             android:textStyle="bold" >
         </TextView>
 
@@ -33,7 +35,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@integer/initial_hangman_score"
-            android:textAppearance="?android:attr/textAppearanceMedium" >
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/score_value_text_color" >
         </TextView>
 
         <TextView
@@ -43,6 +46,7 @@
             android:gravity="right"
             android:text="@string/time_title_text_view"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/time_title_text_color"
             android:textStyle="bold" >
         </TextView>
 
@@ -53,16 +57,18 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/time_title_text_view"
-            android:textAppearance="?android:attr/textAppearanceMedium" >
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/time_value_text_color" >
         </Chronometer>
     </LinearLayout>
 
     <ImageView
         android:id="@+id/hanging_process_image_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="260dip"
         android:contentDescription="@string/hanging_process_content_description_image_view"
-        android:src="@drawable/ic_launcher" >
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_started_game" >
     </ImageView>
 
     <TextView

@@ -7,7 +7,6 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Languages;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.LanguagesWSProcess;
-import co.edu.udea.compumovil.ahorcatooth.process.webservice.interfaces.ILanguagesWSResultListener;
 import co.edu.udea.compumovil.ahorcatooth.webservice.ILanguagesWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 
@@ -15,17 +14,14 @@ public class LanguagesAsyncTask extends
 		AsyncTask<Object, Void, List<Languages>> {
 
 	private ILanguagesWS languagesWS;
-	private ILanguagesWSResultListener languagesWSResultListener;
 
 	private ProgressDialog progressDialog;
 
 	public LanguagesAsyncTask(ILanguagesWS languagesWS,
-			ILanguagesWSResultListener languagesWSResultListener,
 			ProgressDialog progressDialog) {
 		super();
 
 		this.languagesWS = languagesWS;
-		this.languagesWSResultListener = languagesWSResultListener;
 		this.progressDialog = progressDialog;
 	}
 
@@ -84,8 +80,6 @@ public class LanguagesAsyncTask extends
 	@Override()
 	protected void onPostExecute(List<Languages> result) {
 		super.onPostExecute(result);
-
-		this.languagesWSResultListener.LanguagesWSResultListener(result);
 
 		if ((this.getProgressDialog() != null)
 				&& (this.getProgressDialog().isShowing())) {

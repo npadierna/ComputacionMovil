@@ -8,24 +8,20 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.CategoryWSProcess;
-import co.edu.udea.compumovil.ahorcatooth.process.webservice.interfaces.ICategoryWSResultListener;
 import co.edu.udea.compumovil.ahorcatooth.webservice.ICategoryWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 
 public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 
 	private ICategoryWS categoryWS;
-	private ICategoryWSResultListener categoryWSResultListener;
 
 	private ProgressDialog progressDialog;
 
 	public CategoryAsyncTask(ICategoryWS categoryWS,
-			ICategoryWSResultListener categoryWSResultListener,
 			ProgressDialog progressDialog) {
 		super();
 
 		this.categoryWS = categoryWS;
-		this.categoryWSResultListener = categoryWSResultListener;
 		this.progressDialog = progressDialog;
 	}
 
@@ -95,8 +91,6 @@ public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 	@Override()
 	protected void onPostExecute(List<Category> result) {
 		super.onPostExecute(result);
-
-		this.categoryWSResultListener.categoryWSResultListener(result);
 
 		if ((this.getProgressDialog() != null)
 				&& (this.getProgressDialog().isShowing())) {

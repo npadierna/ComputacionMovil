@@ -163,6 +163,10 @@ public class HangmanBoardActivity extends Activity {
 		if (currentHangmanWordStatus.equals(nextHangmanWordStatus)) {
 			this.scoreTextView.setText(String.valueOf(currentScore
 					- this.missHangmanScore));
+
+			this.hangingProcessImageView
+					.setImageResource(this.hangmanGameProcess
+							.getGameStatusEnum().getResouceId());
 		} else {
 			this.hiddenWordTextView.setText(nextHangmanWordStatus);
 
@@ -174,7 +178,7 @@ public class HangmanBoardActivity extends Activity {
 			this.timeChronometer.stop();
 
 			ResumeGame resumeGame = new ResumeGame(!this.hangmanGameProcess
-					.getGameStatusEnum().equals(GameStatusEnum.LEFT_LEG),
+					.getGameStatusEnum().equals(GameStatusEnum.RIGHT_LEG),
 					currentScore, this.timeChronometer.getBase(),
 					this.hangmanGameProcess.getHangmanWordName());
 

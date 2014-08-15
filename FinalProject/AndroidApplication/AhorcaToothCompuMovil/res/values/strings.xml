@@ -46,9 +46,9 @@
     <!-- Hangman Resume Activity -->
     <string name="final_score_title_text_view">Score:</string>
     <string name="final_time_title_text_view">Time:</string>
-    <string name="lost_game_main_title_text_view">You LOST!!!</string>
+    <string name="lost_game_main_title_text_view">YOU LOST!!!</string>
     <string name="resume_game_content_description_image_view">Image View for displaying a result image game.</string>
-    <string name="won_game_main_title_text_view">You WON!!!</string>
+    <string name="won_game_main_title_text_view">YOUT WON!!!</string>
 
     <!-- Keyboard Keys Text -->
     <string-array name="keyboard_keys_texts_array">

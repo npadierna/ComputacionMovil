@@ -92,7 +92,7 @@ public class HangmanGameProcess {
 		}
 
 		if ((wordStringBuilder.indexOf(this.getMask()) == -1)
-				|| (this.getGameStatusEnum().equals(GameStatusEnum.LEFT_LEG))) {
+				|| (this.getGameStatusEnum().equals(GameStatusEnum.RIGHT_LEG))) {
 			this.setFinished(true);
 		}
 

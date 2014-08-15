@@ -9,6 +9,14 @@
     <dimen name="bluetooth_device_padding_text_view">5dip</dimen>
     <dimen name="bluetooth_device_text_size_text_view">18sp</dimen>
 
+    <!-- Hangman Board Resume Activity -->
+    <dimen name="hidden_hangman_word_margin_botton">20dip</dimen>
+    <dimen name="hidden_hangman_word_margin_top">20dip</dimen>
+    <dimen name="hidden_hangman_word_text_size">30sp</dimen>
+    <dimen name="resume_game_main_title_margin_bottom">25dip</dimen>
+    <dimen name="resume_game_main_title_margin_top">25dip</dimen>
+    <dimen name="resume_game_main_title_text_size">45sp</dimen>
+
     <!-- Keyboard Key Button -->
     <dimen name="keyboard_key_max_height">34dip</dimen>
     <dimen name="keyboard_key_max_width">34dip</dimen>
