@@ -16,6 +16,12 @@ import co.edu.udea.compumovil.ahorcatooth.webservice.ILanguagesWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 import co.edu.udea.compumovil.ahorcatooth.webservice.restful.contract.WebServicePathsContract;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class LanguagesWSImpl extends AbstractContextWS implements ILanguagesWS {
 
 	private static final String TAG = LanguagesWSImpl.class.getSimpleName();

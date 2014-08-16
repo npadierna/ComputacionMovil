@@ -49,7 +49,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".activity.bluetooth.BluetoothDevicesListActivity"
+            android:name=".activity.bluetooth.devices.BluetoothDevicesListActivity"
             android:label="@string/bluetooth_devices_list_activity_title"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.Dialog" >
@@ -67,6 +67,7 @@
         <activity
             android:name=".activity.game.resume.HangmanBoardResumeActivity"
             android:label="@string/application_name"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>

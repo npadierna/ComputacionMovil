@@ -14,6 +14,12 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.HangmanWor
 import co.edu.udea.compumovil.ahorcatooth.process.business.IHangmanWordProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanWordProcessImpl implements IHangmanWordProcess {
 
 	private static final String TAG = HangmanWordProcessImpl.class

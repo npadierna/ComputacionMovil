@@ -1,10 +1,16 @@
 package co.edu.udea.compumovil.ahorcatooth.process.game;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanGameProcess {
 
 	public long score;
-
 	private boolean finished;
+
 	private String hangmanWordName;
 	private String mask;
 

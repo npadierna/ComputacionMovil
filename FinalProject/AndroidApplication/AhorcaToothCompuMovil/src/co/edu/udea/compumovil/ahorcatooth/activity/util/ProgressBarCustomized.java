@@ -3,6 +3,12 @@ package co.edu.udea.compumovil.ahorcatooth.activity.util;
 import android.app.Activity;
 import android.app.ProgressDialog;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class ProgressBarCustomized {
 
 	private Activity activity;

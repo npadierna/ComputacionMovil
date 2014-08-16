@@ -13,6 +13,7 @@
         android:defaultValue="192.168.0.193"
         android:key="serverIP"
         android:order="2"
+        android:inputType="text"
         android:summary="@string/server_ip_summary_setting"
         android:title="@string/server_ip_title_setting" >
     </EditTextPreference>
@@ -20,6 +21,7 @@
         android:defaultValue="8080"
         android:key="serverPort"
         android:order="3"
+        android:inputType="number"
         android:summary="@string/server_port_summary_setting"
         android:title="@string/server_port_title_setting" >
     </EditTextPreference>

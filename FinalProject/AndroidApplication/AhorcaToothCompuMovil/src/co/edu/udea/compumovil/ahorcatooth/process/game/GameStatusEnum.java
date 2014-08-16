@@ -2,6 +2,12 @@ package co.edu.udea.compumovil.ahorcatooth.process.game;
 
 import co.edu.udea.compumovil.ahorcatooth.R;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public enum GameStatusEnum {
 
 	STARTED_GAME(R.drawable.ic_started_game), HEAD(R.drawable.ic_head), BODY(
@@ -34,11 +40,11 @@ public enum GameStatusEnum {
 			return (RIGHT_ARM);
 
 		case LEFT_LEG:
+		case RIGHT_LEG:
 			return (RIGHT_LEG);
-
-		default:
-			return (null);
 		}
+
+		return (RIGHT_LEG);
 	}
 
 	public int getResouceId() {

@@ -7,12 +7,23 @@ import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 import co.edu.udea.compumovil.ahorcatooth.R;
+import co.edu.udea.compumovil.ahorcatooth.activity.bluetooth.devices.BluetoothDevicesListActivity;
+import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.HangmanBluetoothSupportAbstract;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class BluetoothMultiplayerActivity extends Activity {
 
 	private static final String TAG = BluetoothMultiplayerActivity.class
@@ -146,4 +157,47 @@ public class BluetoothMultiplayerActivity extends Activity {
 	public void onPlayerTwoSelected(View view) {
 		Log.i(TAG, "onPlayerTwoSelected(View):void");
 	}
+
+	private final Handler hangmanbluetoothHandler = new Handler() {
+
+		@Override()
+		public void handleMessage(Message message) {
+			byte[] buffer = (byte[]) message.obj;
+			String hangmanWord = null;
+
+			switch (message.what) {
+			case HangmanBluetoothSupportAbstract.HANGMAN_DEVICE_NAME:
+
+				break;
+
+			case HangmanBluetoothSupportAbstract.HANGMAN_STATE_CHANGED:
+				switch (message.arg1) {
+				// case HangmanBluetoothStateEnum.CONNECTED:
+				// break;
+				}
+				break;
+
+			case HangmanBluetoothSupportAbstract.HANGMAN_TOAST:
+				Toast.makeText(
+						getApplicationContext(),
+						message.getData()
+								.getString(
+										HangmanBluetoothSupportAbstract.HANGMAN_TOAST_MESSAGE),
+						Toast.LENGTH_LONG).show();
+				break;
+
+			case HangmanBluetoothSupportAbstract.HANGMAN_WORD_READ:
+				hangmanWord = new String(buffer, 0, message.arg1);
+
+				// FIXME: What have we do?
+				break;
+
+			case HangmanBluetoothSupportAbstract.HANGMAN_WORD_WRITE:
+				hangmanWord = new String(buffer);
+
+				// FIXME: What have we do?
+				break;
+			}
+		}
+	};
 }

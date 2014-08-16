@@ -12,6 +12,12 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.exception.AhorcaToothPersi
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.AccessorSQLiteOpenHelper;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.IEntityContextDAO;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 abstract class AbstractEntityContextDAO implements IEntityContextDAO {
 
 	private SQLiteOpenHelper sqliteOpenHelper;

@@ -10,6 +10,12 @@ import co.edu.udea.compumovil.ahorcatooth.process.webservice.LanguagesWSProcess;
 import co.edu.udea.compumovil.ahorcatooth.webservice.ILanguagesWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class LanguagesAsyncTask extends
 		AsyncTask<Object, Void, List<Languages>> {
 

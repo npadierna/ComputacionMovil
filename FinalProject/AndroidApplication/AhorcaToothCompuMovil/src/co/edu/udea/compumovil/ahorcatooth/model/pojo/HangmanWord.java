@@ -8,6 +8,12 @@ import org.json.JSONObject;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanWord implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 6812014168916091904L;

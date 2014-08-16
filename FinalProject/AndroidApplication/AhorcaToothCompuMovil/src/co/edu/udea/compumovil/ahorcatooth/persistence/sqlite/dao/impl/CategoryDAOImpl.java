@@ -10,6 +10,12 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.CategoryContract;
 import co.edu.udea.compumovil.ahorcatooth.persistence.exception.AhorcaToothPersistenceException;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ICategoryDAO;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class CategoryDAOImpl extends AbstractEntityContextDAO implements
 		ICategoryDAO {
 

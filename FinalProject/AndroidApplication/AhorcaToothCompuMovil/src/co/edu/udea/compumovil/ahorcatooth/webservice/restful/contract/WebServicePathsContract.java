@@ -1,5 +1,11 @@
 package co.edu.udea.compumovil.ahorcatooth.webservice.restful.contract;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public final class WebServicePathsContract {
 
 	private WebServicePathsContract() {

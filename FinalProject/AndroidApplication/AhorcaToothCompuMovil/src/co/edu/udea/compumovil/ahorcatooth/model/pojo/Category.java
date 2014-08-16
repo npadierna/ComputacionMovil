@@ -9,6 +9,12 @@ import org.json.JSONObject;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class Category implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 2350741601449118720L;

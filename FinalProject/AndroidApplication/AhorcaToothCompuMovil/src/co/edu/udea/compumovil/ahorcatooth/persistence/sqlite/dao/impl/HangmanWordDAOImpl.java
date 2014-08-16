@@ -10,6 +10,12 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.HangmanWordContra
 import co.edu.udea.compumovil.ahorcatooth.persistence.exception.AhorcaToothPersistenceException;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.IHangmanWordDAO;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanWordDAOImpl extends AbstractEntityContextDAO implements
 		IHangmanWordDAO {
 

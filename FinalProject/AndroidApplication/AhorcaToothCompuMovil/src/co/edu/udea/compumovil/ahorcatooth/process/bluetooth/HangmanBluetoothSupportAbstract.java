@@ -8,14 +8,26 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public abstract class HangmanBluetoothSupportAbstract {
 
 	public static final UUID SECURE_UUID = UUID
-			.fromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
+			.fromString("FA87C0D0-AFAC-11DE-8A39-0800200C9A66");
 	public static final String SECURE_CONNECTION_NAME = "Bluetooth Connection Secure";
 
-	public static final int HANGMAN_WORD_READ = 0;
-	public static final int HANGMAN_WORD_WRITE = 1;
+	public static final int HANGMAN_DEVICE_NAME = 0;
+	public static final int HANGMAN_STATE_CHANGED = 1;
+	public static final int HANGMAN_TOAST = 2;
+	public static final int HANGMAN_WORD_READ = 3;
+	public static final int HANGMAN_WORD_WRITE = 4;
+
+	public static final String HANGMAN_DEVICE_NAME_MESSAGE = "Message for the Device Name";
+	public static final String HANGMAN_TOAST_MESSAGE = "Message for displaying any information";
 
 	private HangmanBluetoothStateEnum hangmanBluetoothStateEnum;
 
@@ -36,6 +48,11 @@ public abstract class HangmanBluetoothSupportAbstract {
 	public synchronized void setHangmanBluetoothStateEnum(
 			HangmanBluetoothStateEnum hangmanBluetoothStateEnum) {
 		this.hangmanBluetoothStateEnum = hangmanBluetoothStateEnum;
+
+		this.getHandler()
+				.obtainMessage(HANGMAN_STATE_CHANGED,
+						hangmanBluetoothStateEnum.getState(), -1)
+				.sendToTarget();
 	}
 
 	public final BluetoothAdapter getBluetoothAdapter() {

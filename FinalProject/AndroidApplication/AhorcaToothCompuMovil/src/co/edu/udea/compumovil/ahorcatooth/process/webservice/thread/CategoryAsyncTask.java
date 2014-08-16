@@ -11,6 +11,12 @@ import co.edu.udea.compumovil.ahorcatooth.process.webservice.CategoryWSProcess;
 import co.edu.udea.compumovil.ahorcatooth.webservice.ICategoryWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class CategoryAsyncTask extends AsyncTask<Object, Void, List<Category>> {
 
 	private ICategoryWS categoryWS;

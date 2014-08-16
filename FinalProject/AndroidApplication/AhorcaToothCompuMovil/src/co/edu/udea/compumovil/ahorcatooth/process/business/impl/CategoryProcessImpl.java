@@ -15,6 +15,12 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.CategoryDA
 import co.edu.udea.compumovil.ahorcatooth.process.business.ICategoryProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class CategoryProcessImpl implements ICategoryProcess {
 
 	private static final String TAG = CategoryProcessImpl.class.getSimpleName();

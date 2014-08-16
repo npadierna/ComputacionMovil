@@ -7,6 +7,12 @@ import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.HangmanBluetoothSupp
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class BluetoothConnectedRunnable implements IBluetoothRunnable {
 
 	public static final String TAG = BluetoothConnectedRunnable.class

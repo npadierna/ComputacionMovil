@@ -5,6 +5,12 @@ import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.HangmanBluetoothSupportAbstract;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class BluetoothConnectRunnable implements IBluetoothRunnable {
 
 	private static final String TAG = BluetoothConnectRunnable.class
@@ -77,7 +83,9 @@ public class BluetoothConnectRunnable implements IBluetoothRunnable {
 		}
 
 		synchronized (this.hangmanBluetoothSupportAbstract) {
-			
+			// FIXME: WTTFFFF....
+			// this.hangmanBluetoothSupportAbstract
+			// .setBluetoothConnectRunnable(null);
 		}
 
 		this.hangmanBluetoothSupportAbstract.connectedToBluetoothDevice(

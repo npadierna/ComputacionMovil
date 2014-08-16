@@ -2,6 +2,12 @@ package co.edu.udea.compumovil.ahorcatooth.activity.game;
 
 import android.widget.Button;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 class KeyboardKeyViewHolder {
 
 	private Button keyboardKeyButton;

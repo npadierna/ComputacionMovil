@@ -18,6 +18,12 @@ import co.edu.udea.compumovil.ahorcatooth.webservice.IHangmanWordWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 import co.edu.udea.compumovil.ahorcatooth.webservice.restful.contract.WebServicePathsContract;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanWordWSImpl extends AbstractContextWS implements
 		IHangmanWordWS {
 

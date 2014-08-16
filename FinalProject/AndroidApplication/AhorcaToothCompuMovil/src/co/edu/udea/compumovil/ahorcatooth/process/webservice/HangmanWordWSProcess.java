@@ -9,6 +9,12 @@ import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessE
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.thread.HangmanWordAsyncTask;
 import co.edu.udea.compumovil.ahorcatooth.webservice.restful.impl.HangmanWordWSImpl;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanWordWSProcess {
 
 	public static final int FIND_LATEST_WITH_LIMIT = 1;

@@ -11,6 +11,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import co.edu.udea.compumovil.ahorcatooth.R;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanBoardResumeActivity extends Activity {
 
 	private static final String TAG = HangmanBoardResumeActivity.class
@@ -25,12 +31,6 @@ public class HangmanBoardResumeActivity extends Activity {
 	private TextView finalTimeTextView;
 	private TextView hangmanWordTextView;
 	private TextView mainTitleTextView;
-
-	@Override()
-	public void onBackPressed() {
-		super.onBackPressed();
-		Log.i(TAG, "Back Button Pressed; do nothing.");
-	}
 
 	@Override()
 	protected void onCreate(Bundle savedInstanceState) {

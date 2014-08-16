@@ -11,6 +11,12 @@ import co.edu.udea.compumovil.ahorcatooth.process.webservice.HangmanWordWSProces
 import co.edu.udea.compumovil.ahorcatooth.webservice.IHangmanWordWS;
 import co.edu.udea.compumovil.ahorcatooth.webservice.exception.AhorcaToothWebServiceException;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanWordAsyncTask extends
 		AsyncTask<Object, Void, List<HangmanWord>> {
 

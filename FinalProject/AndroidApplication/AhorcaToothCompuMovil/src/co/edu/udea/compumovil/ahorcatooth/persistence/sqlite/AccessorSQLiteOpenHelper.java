@@ -9,6 +9,12 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.HangmanWordContra
 import co.edu.udea.compumovil.ahorcatooth.persistence.contract.LanguagesContract;
 import co.edu.udea.compumovil.ahorcatooth.persistence.contract.PersistanceContract;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class AccessorSQLiteOpenHelper extends SQLiteOpenHelper {
 
 	private static final String TAG = AccessorSQLiteOpenHelper.class

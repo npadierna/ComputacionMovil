@@ -29,6 +29,12 @@ import co.edu.udea.compumovil.ahorcatooth.process.webservice.CategoryWSProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.HangmanWordWSProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.LanguagesWSProcess;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class MainActivity extends Activity {
 
 	private static final String TAG = MainActivity.class.getSimpleName();

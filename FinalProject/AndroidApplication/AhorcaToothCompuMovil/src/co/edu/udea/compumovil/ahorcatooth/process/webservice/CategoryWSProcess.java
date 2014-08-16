@@ -9,6 +9,12 @@ import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessE
 import co.edu.udea.compumovil.ahorcatooth.process.webservice.thread.CategoryAsyncTask;
 import co.edu.udea.compumovil.ahorcatooth.webservice.restful.impl.CategoryWSImpl;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class CategoryWSProcess {
 
 	public static final int FIND_ALL = 1;

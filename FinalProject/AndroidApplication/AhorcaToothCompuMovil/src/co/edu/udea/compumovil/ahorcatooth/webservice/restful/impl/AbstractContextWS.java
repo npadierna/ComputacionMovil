@@ -17,6 +17,12 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 abstract class AbstractContextWS {
 
 	private static final String TAG = AbstractContextWS.class.getSimpleName();

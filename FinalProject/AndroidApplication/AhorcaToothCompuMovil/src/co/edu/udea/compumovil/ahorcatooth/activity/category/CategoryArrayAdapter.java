@@ -10,6 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 class CategoryArrayAdapter extends ArrayAdapter<Category> {
 
 	private int resource;

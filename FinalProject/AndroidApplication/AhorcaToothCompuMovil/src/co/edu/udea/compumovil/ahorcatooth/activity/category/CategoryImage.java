@@ -5,6 +5,12 @@ import java.util.Map;
 
 import co.edu.udea.compumovil.ahorcatooth.R;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 final class CategoryImage {
 
 	private Map<String, Integer> categoryImagesMap;

@@ -2,6 +2,12 @@ package co.edu.udea.compumovil.ahorcatooth.webservice.exception;
 
 import android.util.Log;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class AhorcaToothWebServiceException extends Exception {
 
 	private static final long serialVersionUID = 204215715359640858L;

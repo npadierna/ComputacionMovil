@@ -10,6 +10,12 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.contract.LanguagesContract
 import co.edu.udea.compumovil.ahorcatooth.persistence.exception.AhorcaToothPersistenceException;
 import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.ILanguagesDAO;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class LanguaguesDAOImpl extends AbstractEntityContextDAO implements
 		ILanguagesDAO {
 

@@ -5,6 +5,12 @@ import java.io.Serializable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public final class ResumeGame implements Parcelable, Serializable {
 
 	private static final long serialVersionUID = 3390331134986238607L;

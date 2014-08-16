@@ -1,6 +1,12 @@
 package co.edu.udea.compumovil.ahorcatooth.persistence.contract;
 
-public final class CategoryContract extends PersistanceContract{
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
+public final class CategoryContract extends PersistanceContract {
 
 	public static final String TABLE_NAME = "CATEGORY";
 

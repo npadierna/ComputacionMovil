@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class WebServicePreferenceFragment extends PreferenceFragment implements
 		OnSharedPreferenceChangeListener {
 

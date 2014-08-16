@@ -24,6 +24,12 @@ import co.edu.udea.compumovil.ahorcatooth.process.business.impl.CategoryProcessI
 import co.edu.udea.compumovil.ahorcatooth.process.business.impl.HangmanWordProcessImpl;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class CategoryDashboardActivity extends Activity {
 
 	private static final String TAG = CategoryDashboardActivity.class

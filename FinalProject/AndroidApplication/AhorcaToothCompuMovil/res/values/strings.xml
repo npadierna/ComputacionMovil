@@ -33,6 +33,10 @@
     <string name="label_accept_button">Accept</string>
     <string name="label_cancel_button">Cancel</string>
 
+    <!-- Hangman Bluetooth Support -->
+    <string name="hangman_bluetooth_support_fail_connection_message">The connection with the Bluetooth Device was failed!!!</string>
+    <string name="hangman_bluetooth_support_lost_connection_message">The connection with the Bluetooth Device was lost!!!</string>
+
     <!-- Hangman Board Activity -->
     <string name="back_button_pressed_message_alert_dialog">The \"Back Button\" was pressed. Do you really want leave this game?\n\nAll your progress will be discarted.</string>
     <string name="back_button_pressed_title_alert_dialog">Back Button Pressed</string>

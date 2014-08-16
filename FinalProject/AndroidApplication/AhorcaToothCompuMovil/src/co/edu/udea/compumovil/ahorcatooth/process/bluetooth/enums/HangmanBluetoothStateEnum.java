@@ -1,5 +1,11 @@
 package co.edu.udea.compumovil.ahorcatooth.process.bluetooth.enums;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public enum HangmanBluetoothStateEnum {
 
 	NOTHING(0, "The Bluetooth Hardware is doing nothing."), LISTENING(1,

@@ -21,6 +21,12 @@ import co.edu.udea.compumovil.ahorcatooth.activity.game.resume.ResumeGame;
 import co.edu.udea.compumovil.ahorcatooth.process.game.GameStatusEnum;
 import co.edu.udea.compumovil.ahorcatooth.process.game.HangmanGameProcess;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class HangmanBoardActivity extends Activity {
 
 	private static final String TAG = HangmanBoardActivity.class
@@ -179,7 +185,9 @@ public class HangmanBoardActivity extends Activity {
 
 			ResumeGame resumeGame = new ResumeGame(!this.hangmanGameProcess
 					.getGameStatusEnum().equals(GameStatusEnum.RIGHT_LEG),
-					currentScore, this.timeChronometer.getBase(),
+					currentScore,
+					(SystemClock.elapsedRealtime() - this.timeChronometer
+							.getBase()),
 					this.hangmanGameProcess.getHangmanWordName());
 
 			Intent intent = new Intent(super.getApplicationContext(),

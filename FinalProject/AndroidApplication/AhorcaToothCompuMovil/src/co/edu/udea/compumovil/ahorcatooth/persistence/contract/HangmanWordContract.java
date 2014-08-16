@@ -1,5 +1,11 @@
 package co.edu.udea.compumovil.ahorcatooth.persistence.contract;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public final class HangmanWordContract extends PersistanceContract {
 
 	public static final String TABLE_NAME = "HANGMAN_WORD";

@@ -14,6 +14,12 @@ import co.edu.udea.compumovil.ahorcatooth.persistence.sqlite.dao.impl.Languagues
 import co.edu.udea.compumovil.ahorcatooth.process.business.ILanguagesProcess;
 import co.edu.udea.compumovil.ahorcatooth.process.exception.AhorcaToothBusinessException;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class LanguagesProcessImpl implements ILanguagesProcess {
 
 	private static final String TAG = LanguagesProcessImpl.class

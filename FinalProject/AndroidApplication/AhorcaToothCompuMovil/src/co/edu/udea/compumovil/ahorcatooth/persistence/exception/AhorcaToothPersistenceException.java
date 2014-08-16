@@ -2,6 +2,12 @@ package co.edu.udea.compumovil.ahorcatooth.persistence.exception;
 
 import android.util.Log;
 
+/**
+ * 
+ * 
+ * @author Neiber Padierna P&eacute;rez
+ * @author Yefry Alexis Calder&oacute;n Yepes
+ */
 public class AhorcaToothPersistenceException extends Exception {
 
 	private static final long serialVersionUID = 4453218535679452873L;
