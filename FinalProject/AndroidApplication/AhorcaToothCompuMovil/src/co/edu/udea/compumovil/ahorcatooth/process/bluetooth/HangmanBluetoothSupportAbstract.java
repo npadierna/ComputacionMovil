@@ -65,6 +65,9 @@ public abstract class HangmanBluetoothSupportAbstract {
 		return (this.handler);
 	}
 
+	public abstract void connectToBluetoothDevice(
+			BluetoothDevice bluetoothDevice);
+
 	public abstract void connectedToBluetoothDevice(
 			BluetoothSocket bluetoothSocket, BluetoothDevice bluetoothDevice);
 

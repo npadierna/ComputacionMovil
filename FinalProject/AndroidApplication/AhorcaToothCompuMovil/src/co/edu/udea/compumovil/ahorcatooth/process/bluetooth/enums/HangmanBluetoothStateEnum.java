@@ -23,6 +23,18 @@ public enum HangmanBluetoothStateEnum {
 		this.setDescription(description);
 	}
 
+	public static HangmanBluetoothStateEnum findByState(int state) {
+		for (HangmanBluetoothStateEnum hangmanBluetoothStateEnum : HangmanBluetoothStateEnum
+				.values()) {
+			if (hangmanBluetoothStateEnum.getState() == state) {
+
+				return (hangmanBluetoothStateEnum);
+			}
+		}
+
+		return (null);
+	}
+
 	public int getState() {
 
 		return (this.state);

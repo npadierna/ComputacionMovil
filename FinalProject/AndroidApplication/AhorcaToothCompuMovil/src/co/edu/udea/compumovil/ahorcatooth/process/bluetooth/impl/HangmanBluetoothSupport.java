@@ -158,6 +158,7 @@ public class HangmanBluetoothSupport extends HangmanBluetoothSupportAbstract {
 		super.setHangmanBluetoothStateEnum(HangmanBluetoothStateEnum.NOTHING);
 	}
 
+	@Override()
 	public synchronized void connectToBluetoothDevice(
 			BluetoothDevice bluetoothDevice) {
 		Log.i(TAG, "connectToBluetoothDevice(BluetoothDevice):void");

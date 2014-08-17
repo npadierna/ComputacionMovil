@@ -17,6 +17,8 @@ import android.widget.Toast;
 import co.edu.udea.compumovil.ahorcatooth.R;
 import co.edu.udea.compumovil.ahorcatooth.activity.bluetooth.devices.BluetoothDevicesListActivity;
 import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.HangmanBluetoothSupportAbstract;
+import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.enums.HangmanBluetoothStateEnum;
+import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.impl.HangmanBluetoothSupport;
 
 /**
  * 
@@ -31,6 +33,8 @@ public class BluetoothMultiplayerActivity extends Activity {
 
 	private static final int REQUEST_CONNECT_BLUETOOTH_DEVICE = 0;
 	private static final int REQUEST_ENABLE_BLUETOOTH = 1;
+
+	private HangmanBluetoothSupportAbstract hangmanBluetoothSupportAbstract = null;
 
 	private AlertDialog.Builder errorAlertDialogBuilder;
 	private BluetoothAdapter bluetoothAdapter;
@@ -65,6 +69,28 @@ public class BluetoothMultiplayerActivity extends Activity {
 
 		this.createComponents();
 		this.createBluetoothBrigde();
+	}
+
+	@Override()
+	protected void onDestroy() {
+		super.onDestroy();
+
+		if (this.hangmanBluetoothSupportAbstract != null) {
+			this.hangmanBluetoothSupportAbstract.stop();
+		}
+	}
+
+	@Override()
+	protected synchronized void onResume() {
+		super.onResume();
+
+		if (this.hangmanBluetoothSupportAbstract != null) {
+			if (this.hangmanBluetoothSupportAbstract
+					.getHangmanBluetoothStateEnum().equals(
+							HangmanBluetoothStateEnum.NOTHING)) {
+				this.hangmanBluetoothSupportAbstract.start();
+			}
+		}
 	}
 
 	@Override()
@@ -109,6 +135,9 @@ public class BluetoothMultiplayerActivity extends Activity {
 				BluetoothDevicesListActivity.BLUETOOTH_DEVICE_MAC_ADDRESS);
 		BluetoothDevice bluetoothDevice = this.bluetoothAdapter
 				.getRemoteDevice(bluetoothDeviceMACAddress);
+
+		this.hangmanBluetoothSupportAbstract
+				.connectToBluetoothDevice(bluetoothDevice);
 	}
 
 	private void createBluetoothBrigde() {
@@ -128,6 +157,11 @@ public class BluetoothMultiplayerActivity extends Activity {
 			super.startActivityForResult(new Intent(
 					BluetoothAdapter.ACTION_REQUEST_ENABLE),
 					REQUEST_ENABLE_BLUETOOTH);
+		}
+
+		if (this.hangmanBluetoothSupportAbstract == null) {
+			this.hangmanBluetoothSupportAbstract = new HangmanBluetoothSupport(
+					super.getApplicationContext(), this.hangmanbluetoothHandler);
 		}
 	}
 
@@ -171,9 +205,21 @@ public class BluetoothMultiplayerActivity extends Activity {
 				break;
 
 			case HangmanBluetoothSupportAbstract.HANGMAN_STATE_CHANGED:
-				switch (message.arg1) {
-				// case HangmanBluetoothStateEnum.CONNECTED:
-				// break;
+				switch (HangmanBluetoothStateEnum.findByState(message.arg1)) {
+				case NOTHING:
+					break;
+
+				case LISTENING:
+					break;
+
+				case CONNECTING:
+					break;
+
+				case CONNECTED:
+					break;
+
+				default:
+					break;
 				}
 				break;
 
