@@ -9,3 +9,7 @@ ClassProject/CompuMovilYambaGrupo11/bin/
 FinalProject/AndroidApplication/AhorcaToothCompuMovil/bin/
 FinalProject/WebApplication/AhorcaToothWebApplication/build/
 FinalProject/AndroidApplication/AhorcaToothCompuMovil/bin/
+FinalProject/AndroidApplication/AhorcaToothCompuMovil/res/layout-normal/activity_bluetooth_devices_list.xml
+FinalProject/AndroidApplication/AhorcaToothCompuMovil/res/layout-normal/activity_bluetooth_devices_list.xml
+FinalProject/AndroidApplication/AhorcaToothCompuMovil/res/layout-normal/activity_bluetooth_devices_list.xml
+*.xml

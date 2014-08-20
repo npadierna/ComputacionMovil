@@ -71,7 +71,7 @@ public class CategoryDashboardActivity extends Activity {
 		Log.i(TAG, "createViewComponents():void");
 
 		ArrayAdapter<Category> arrayAdapter = new CategoryArrayAdapter(this,
-				android.R.layout.simple_list_item_1, this.categoriesList);
+				R.layout.array_adapter, this.categoriesList);
 
 		GridView gridView = (GridView) super
 				.findViewById(R.id.categories_grid_view);

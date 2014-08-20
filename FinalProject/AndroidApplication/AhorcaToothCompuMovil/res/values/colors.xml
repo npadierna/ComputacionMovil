@@ -5,6 +5,9 @@
     <color name="devices_list_background_title_text_view">#666666</color>
     <color name="devices_list_text_color_title_text_view">#FFFFFF</color>
 
+    <!-- Category Dashboard Category -->
+    <color name="category_text_color">#FFFFFF</color>
+
     <!-- Hangman Board Activity -->
     <color name="hidden_word_text_color">#FFFFFF</color>
     <color name="score_title_text_color">#FFFFFF</color>

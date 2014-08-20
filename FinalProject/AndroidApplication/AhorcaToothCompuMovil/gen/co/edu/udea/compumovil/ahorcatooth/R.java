@@ -16,29 +16,32 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        /**  Category Dashboard Category 
+         */
+        public static final int category_text_color=0x7f050002;
         /**  Bluetooth Devices Activity 
          */
         public static final int devices_list_background_title_text_view=0x7f050000;
         public static final int devices_list_text_color_title_text_view=0x7f050001;
         /**  Hangman Board Activity 
          */
-        public static final int hidden_word_text_color=0x7f050002;
+        public static final int hidden_word_text_color=0x7f050003;
         /**  Keyboard Key Button 
          */
-        public static final int keyboard_key_button_text_color=0x7f05000d;
-        public static final int resume_game_main_title_text_color=0x7f050008;
+        public static final int keyboard_key_button_text_color=0x7f05000e;
+        public static final int resume_game_main_title_text_color=0x7f050009;
         /**  hangman Board Resume Activity 
          */
-        public static final int resume_hidden_hangman_word_text_color=0x7f050007;
-        public static final int resume_score_title_text_color=0x7f050009;
-        public static final int resume_score_value_text_color=0x7f05000a;
-        public static final int resume_time_title_text_color=0x7f05000b;
-        public static final int resume_time_value_text_color=0x7f05000c;
-        public static final int score_title_text_color=0x7f050003;
-        public static final int score_value_text_color=0x7f050004;
-        public static final int time_title_text_color=0x7f050005;
-        public static final int time_value_text_color=0x7f050006;
-        public static final int used_keyboard_key_button_text_color=0x7f05000e;
+        public static final int resume_hidden_hangman_word_text_color=0x7f050008;
+        public static final int resume_score_title_text_color=0x7f05000a;
+        public static final int resume_score_value_text_color=0x7f05000b;
+        public static final int resume_time_title_text_color=0x7f05000c;
+        public static final int resume_time_value_text_color=0x7f05000d;
+        public static final int score_title_text_color=0x7f050004;
+        public static final int score_value_text_color=0x7f050005;
+        public static final int time_title_text_color=0x7f050006;
+        public static final int time_value_text_color=0x7f050007;
+        public static final int used_keyboard_key_button_text_color=0x7f05000f;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -66,38 +69,40 @@ public final class R {
     }
     public static final class drawable {
         public static final int base_hangman_background=0x7f020000;
-        public static final int ic_chest=0x7f020001;
-        public static final int ic_foods_category=0x7f020002;
-        public static final int ic_geography_category=0x7f020003;
-        public static final int ic_head=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int ic_left_arm=0x7f020006;
-        public static final int ic_left_leg=0x7f020007;
-        public static final int ic_leisure_category=0x7f020008;
-        public static final int ic_loser=0x7f020009;
-        public static final int ic_main_activity=0x7f02000a;
-        public static final int ic_music_category=0x7f02000b;
-        public static final int ic_nature_category=0x7f02000c;
-        public static final int ic_religions_category=0x7f02000d;
-        public static final int ic_right_arm=0x7f02000e;
-        public static final int ic_right_leg=0x7f02000f;
-        public static final int ic_sports_category=0x7f020010;
-        public static final int ic_started_game=0x7f020011;
-        public static final int ic_technology_category=0x7f020012;
-        public static final int ic_verbs_category=0x7f020013;
-        public static final int ic_winner=0x7f020014;
+        public static final int base_hangman_bluetooth_background=0x7f020001;
+        public static final int ic_chest=0x7f020002;
+        public static final int ic_foods_category=0x7f020003;
+        public static final int ic_geography_category=0x7f020004;
+        public static final int ic_head=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int ic_left_arm=0x7f020007;
+        public static final int ic_left_leg=0x7f020008;
+        public static final int ic_leisure_category=0x7f020009;
+        public static final int ic_loser=0x7f02000a;
+        public static final int ic_main_activity=0x7f02000b;
+        public static final int ic_music_category=0x7f02000c;
+        public static final int ic_nature_category=0x7f02000d;
+        public static final int ic_religions_category=0x7f02000e;
+        public static final int ic_right_arm=0x7f02000f;
+        public static final int ic_right_leg=0x7f020010;
+        public static final int ic_sports_category=0x7f020011;
+        public static final int ic_started_game=0x7f020012;
+        public static final int ic_technology_category=0x7f020013;
+        public static final int ic_verbs_category=0x7f020014;
+        public static final int ic_winner=0x7f020015;
     }
     public static final class id {
         public static final int categories_grid_view=0x7f0c0004;
+        public static final int category_text_view=0x7f0c000f;
         public static final int final_score_text_view=0x7f0c000d;
         public static final int final_time_text_view=0x7f0c000e;
         public static final int hanging_process_image_view=0x7f0c0007;
         public static final int hidden_hangman_word_text_view=0x7f0c000c;
         public static final int hidden_word_text_view=0x7f0c0008;
         public static final int keyboard_grid_view=0x7f0c0009;
-        public static final int menu_action_become_discoverable=0x7f0c000f;
-        public static final int menu_action_update_database_preference=0x7f0c0010;
-        public static final int menu_action_web_service_preference=0x7f0c0011;
+        public static final int menu_action_become_discoverable=0x7f0c0010;
+        public static final int menu_action_update_database_preference=0x7f0c0011;
+        public static final int menu_action_web_service_preference=0x7f0c0012;
         public static final int new_devices_list_view=0x7f0c0003;
         public static final int new_devices_text_view=0x7f0c0002;
         public static final int paired_devices_list_view=0x7f0c0001;
@@ -124,8 +129,9 @@ public final class R {
         public static final int activity_hangman_board=0x7f030003;
         public static final int activity_hangman_board_resume=0x7f030004;
         public static final int activity_main=0x7f030005;
-        public static final int keyboard_key=0x7f030006;
-        public static final int list_item_bluetooth_device=0x7f030007;
+        public static final int array_adapter=0x7f030006;
+        public static final int keyboard_key=0x7f030007;
+        public static final int list_item_bluetooth_device=0x7f030008;
     }
     public static final class menu {
         public static final int menu_bluetooth_multiplayer=0x7f0b0000;

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import co.edu.udea.compumovil.ahorcatooth.R;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 
 /**
@@ -42,7 +43,8 @@ class CategoryArrayAdapter extends ArrayAdapter<Category> {
 			convertView = layoutInflater.inflate(this.resource, null);
 
 			categoryViewHolder = new CategoryViewHolder();
-			categoryViewHolder.setCategoryTextView((TextView) convertView);
+			categoryViewHolder.setCategoryTextView((TextView) convertView
+					.findViewById(R.id.category_text_view));
 
 			convertView.setTag(categoryViewHolder);
 		} else {
