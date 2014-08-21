@@ -27,6 +27,8 @@
     <string name="cannot_load_categories_error_title_alert_dialog">Error Loading Categories</string>
     <string name="cannot_load_hangman_for_category_error_message_alert_dialog">The selection and loading for a \"Hangman Word\" have not been successful completed for the selected Category and Language.</string>
     <string name="cannot_load_hangman_for_category_error_title_alert_dialog">Error Loading Hangman Words</string>
+    <string name="error_loading_categories">Categories could not be loaded</string>
+    
 
     <!-- Global Strings Text -->
     <string name="application_name">AhorcaTooth</string>
@@ -89,10 +91,13 @@
     <string name="logo_content_description_image_view">Image for logo\'s container.</string>
     <string name="menu_action_update_database_preference_text">Refresh</string>
     <string name="menu_action_web_service_preference_text">Web Service Settings</string>
+    <string name="no_conection_message_title">No Internet Connection!!</string>
+    <string name="no_conection_message">Please verify your internet connection</string>
     <string name="single_player_button">Single Player</string>
     <string name="two_players_button">Two Players</string>
     <string name="updating_categories_message_spinner">Downloading new \"Categories\"&#8230;</string>
     <string name="updating_languages_message_spinner">Downloading new \"Languages\"&#8230;</string>
+    
 
     <!-- Web Service Preference Activity -->
     <string name="http_protocol_summary_setting">HTTP Protocol for packages from Internet</string>

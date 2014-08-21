@@ -14,8 +14,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.Toast;
 import co.edu.udea.compumovil.ahorcatooth.R;
 import co.edu.udea.compumovil.ahorcatooth.activity.game.HangmanBoardActivity;
+import co.edu.udea.compumovil.ahorcatooth.activity.util.MessageAlertDialog;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
 import co.edu.udea.compumovil.ahorcatooth.process.business.ICategoryProcess;
@@ -37,6 +39,7 @@ public class CategoryDashboardActivity extends Activity {
 
 	private ICategoryProcess categoryProcess;
 	private IHangmanWordProcess hangmanWordProcess;
+	private final int NO_CATEGORIES_FOUND_MESSAGE = 0;
 
 	private List<Category> categoriesList;
 
@@ -69,23 +72,34 @@ public class CategoryDashboardActivity extends Activity {
 
 	private void createViewComponents() {
 		Log.i(TAG, "createViewComponents():void");
+		MessageAlertDialog messageAlertDialog;
+		if (!categoriesList.isEmpty()) {
 
-		ArrayAdapter<Category> arrayAdapter = new CategoryArrayAdapter(this,
-				R.layout.array_adapter, this.categoriesList);
+			ArrayAdapter<Category> arrayAdapter = new CategoryArrayAdapter(
+					this, R.layout.array_adapter, this.categoriesList);
 
-		GridView gridView = (GridView) super
-				.findViewById(R.id.categories_grid_view);
-		gridView.setAdapter(arrayAdapter);
-		gridView.setOnItemClickListener(new OnItemClickListener() {
+			GridView gridView = (GridView) super
+					.findViewById(R.id.categories_grid_view);
+			gridView.setAdapter(arrayAdapter);
+			gridView.setOnItemClickListener(new OnItemClickListener() {
 
-			@Override()
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Log.i(TAG, "onItemClick(AdapterView<?>, View, int, long):void");
+				@Override()
+				public void onItemClick(AdapterView<?> parent, View view,
+						int position, long id) {
+					Log.i(TAG,
+							"onItemClick(AdapterView<?>, View, int, long):void");
 
-				startHangmanGame(categoriesList.get(position));
-			}
-		});
+					startHangmanGame(categoriesList.get(position));
+				}
+			});
+		} else {
+			messageAlertDialog = new MessageAlertDialog(this);
+			messageAlertDialog
+					.createAlertDialog(
+							super.getString(R.string.cannot_load_categories_error_title_alert_dialog),
+							super.getString(R.string.error_loading_categories),
+							NO_CATEGORIES_FOUND_MESSAGE);
+		}
 	}
 
 	private void findCategories() {

@@ -4,16 +4,21 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 import co.edu.udea.compumovil.ahorcatooth.R;
 import co.edu.udea.compumovil.ahorcatooth.activity.bluetooth.BluetoothMultiplayerActivity;
 import co.edu.udea.compumovil.ahorcatooth.activity.category.CategoryDashboardActivity;
 import co.edu.udea.compumovil.ahorcatooth.activity.preference.WebServicePreferenceActivity;
+import co.edu.udea.compumovil.ahorcatooth.activity.util.MessageAlertDialog;
 import co.edu.udea.compumovil.ahorcatooth.activity.util.ProgressBarCustomized;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.Category;
 import co.edu.udea.compumovil.ahorcatooth.model.pojo.HangmanWord;
@@ -38,6 +43,8 @@ import co.edu.udea.compumovil.ahorcatooth.process.webservice.LanguagesWSProcess;
 public class MainActivity extends Activity {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
+	
+	private final int NO_INTERNET_MESSAGE = 1;
 
 	private ICategoryProcess categoryProcess;
 	private IHangmanWordProcess hangmanWordProcess;
@@ -88,6 +95,16 @@ public class MainActivity extends Activity {
 
 	public void onSinglePlayerGamge(View view) {
 		Log.i(TAG, "onsinglePlayerGame(View):void");
+
+		MessageAlertDialog messageAlertDialog = new MessageAlertDialog(this);
+
+		if (!checkConectivity()) {
+			messageAlertDialog.createAlertDialog(
+					getString(R.string.no_conection_message_title),
+					getString(R.string.no_conection_message), NO_INTERNET_MESSAGE);
+
+			return;
+		}
 
 		super.startActivity(new Intent(super.getApplicationContext(),
 				CategoryDashboardActivity.class));
@@ -150,5 +167,16 @@ public class MainActivity extends Activity {
 
 			// FIXME: What have we do?
 		}
+	}
+
+	public boolean checkConectivity() {
+		ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+
+		if (networkInfo != null && networkInfo.isConnectedOrConnecting()) {
+			return true;
+		}
+
+		return false;
 	}
 }

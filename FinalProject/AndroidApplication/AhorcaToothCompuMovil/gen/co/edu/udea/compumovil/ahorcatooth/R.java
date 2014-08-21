@@ -140,11 +140,11 @@ public final class R {
     public static final class string {
         /**  Global Strings Text 
          */
-        public static final int application_name=0x7f080016;
+        public static final int application_name=0x7f080017;
         /**  Hangman Board Activity 
          */
-        public static final int back_button_pressed_message_alert_dialog=0x7f08001b;
-        public static final int back_button_pressed_title_alert_dialog=0x7f08001c;
+        public static final int back_button_pressed_message_alert_dialog=0x7f08001c;
+        public static final int back_button_pressed_title_alert_dialog=0x7f08001d;
         /**  Bluetooth Devices Activity 
          */
         public static final int bluetooth_devices_list_activity_title=0x7f080000;
@@ -155,65 +155,68 @@ public final class R {
         public static final int cannot_load_categories_error_title_alert_dialog=0x7f080013;
         public static final int cannot_load_hangman_for_category_error_message_alert_dialog=0x7f080014;
         public static final int cannot_load_hangman_for_category_error_title_alert_dialog=0x7f080015;
-        public static final int cannot_obtain_hangman_word_message_alert_dialog=0x7f08001d;
-        public static final int cannot_obtain_hangman_word_title_alert_dialog=0x7f08001e;
+        public static final int cannot_obtain_hangman_word_message_alert_dialog=0x7f08001e;
+        public static final int cannot_obtain_hangman_word_title_alert_dialog=0x7f08001f;
         /**  Category Dashboard Activity 
          */
         public static final int category_dashboard_activity_label=0x7f080011;
+        public static final int error_loading_categories=0x7f080016;
         /**  Hangman Resume Activity 
          */
-        public static final int final_score_title_text_view=0x7f080023;
-        public static final int final_time_title_text_view=0x7f080024;
-        public static final int hanging_process_content_description_image_view=0x7f08001f;
+        public static final int final_score_title_text_view=0x7f080024;
+        public static final int final_time_title_text_view=0x7f080025;
+        public static final int hanging_process_content_description_image_view=0x7f080020;
         /**  Hangman Bluetooth Support 
          */
-        public static final int hangman_bluetooth_support_fail_connection_message=0x7f080019;
-        public static final int hangman_bluetooth_support_lost_connection_message=0x7f08001a;
+        public static final int hangman_bluetooth_support_fail_connection_message=0x7f08001a;
+        public static final int hangman_bluetooth_support_lost_connection_message=0x7f08001b;
         /**  Web Service Preference Activity 
          */
-        public static final int http_protocol_summary_setting=0x7f08002f;
-        public static final int http_protocol_title_setting=0x7f080030;
-        public static final int label_accept_button=0x7f080017;
-        public static final int label_cancel_button=0x7f080018;
+        public static final int http_protocol_summary_setting=0x7f080032;
+        public static final int http_protocol_title_setting=0x7f080033;
+        public static final int label_accept_button=0x7f080018;
+        public static final int label_cancel_button=0x7f080019;
         /**  Main Activity 
          */
-        public static final int logo_content_description_image_view=0x7f080028;
-        public static final int lost_game_main_title_text_view=0x7f080025;
-        public static final int mask_char_for_words=0x7f080020;
+        public static final int logo_content_description_image_view=0x7f080029;
+        public static final int lost_game_main_title_text_view=0x7f080026;
+        public static final int mask_char_for_words=0x7f080021;
         public static final int menu_action_become_discoverable_text=0x7f080009;
-        public static final int menu_action_update_database_preference_text=0x7f080029;
-        public static final int menu_action_web_service_preference_text=0x7f08002a;
+        public static final int menu_action_update_database_preference_text=0x7f08002a;
+        public static final int menu_action_web_service_preference_text=0x7f08002b;
         public static final int new_devices_text_view=0x7f080002;
         public static final int no_available_bluetooth_message_alert_dialog=0x7f08000f;
         public static final int no_available_bluetooth_title_alert_dialog=0x7f080010;
         public static final int no_available_devices_found=0x7f080003;
+        public static final int no_conection_message=0x7f08002d;
+        public static final int no_conection_message_title=0x7f08002c;
         public static final int no_enabled_bluetooth_message_alert_dialog=0x7f08000d;
         public static final int no_enabled_bluetooth_title_alert_dialog=0x7f08000e;
         public static final int no_paired_devices_title=0x7f080004;
         public static final int paired_devices_text_view=0x7f080005;
         public static final int player_one_text_button=0x7f08000a;
         public static final int player_two_text_button=0x7f08000b;
-        public static final int resume_game_content_description_image_view=0x7f080026;
+        public static final int resume_game_content_description_image_view=0x7f080027;
         public static final int scanning_for_devices_title=0x7f080006;
-        public static final int score_title_text_view=0x7f080021;
+        public static final int score_title_text_view=0x7f080022;
         public static final int select_device_title=0x7f080007;
         public static final int selector_player_title_text_view=0x7f08000c;
-        public static final int server_ip_summary_setting=0x7f080033;
-        public static final int server_ip_title_setting=0x7f080034;
-        public static final int server_port_summary_setting=0x7f080031;
-        public static final int server_port_title_setting=0x7f080032;
-        public static final int single_player_button=0x7f08002b;
+        public static final int server_ip_summary_setting=0x7f080036;
+        public static final int server_ip_title_setting=0x7f080037;
+        public static final int server_port_summary_setting=0x7f080034;
+        public static final int server_port_title_setting=0x7f080035;
+        public static final int single_player_button=0x7f08002e;
         public static final int start_scanning_text_button=0x7f080001;
-        public static final int time_title_text_view=0x7f080022;
-        public static final int two_players_button=0x7f08002c;
-        public static final int updating_categories_message_spinner=0x7f08002d;
-        public static final int updating_languages_message_spinner=0x7f08002e;
-        public static final int web_application_context_summary_setting=0x7f080035;
-        public static final int web_application_context_title_setting=0x7f080036;
-        public static final int web_service_context_summary_setting=0x7f080037;
-        public static final int web_service_context_title_setting=0x7f080038;
-        public static final int web_service_preference_activity_title=0x7f080039;
-        public static final int won_game_main_title_text_view=0x7f080027;
+        public static final int time_title_text_view=0x7f080023;
+        public static final int two_players_button=0x7f08002f;
+        public static final int updating_categories_message_spinner=0x7f080030;
+        public static final int updating_languages_message_spinner=0x7f080031;
+        public static final int web_application_context_summary_setting=0x7f080038;
+        public static final int web_application_context_title_setting=0x7f080039;
+        public static final int web_service_context_summary_setting=0x7f08003a;
+        public static final int web_service_context_title_setting=0x7f08003b;
+        public static final int web_service_preference_activity_title=0x7f08003c;
+        public static final int won_game_main_title_text_view=0x7f080028;
     }
     public static final class style {
         /** 
