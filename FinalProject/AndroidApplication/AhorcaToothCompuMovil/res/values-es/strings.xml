@@ -1,0 +1,124 @@
+<resources>
+
+    <!-- About us Activity -->
+    <string name="menu_action_about_us_text">Acerca de</string>
+    <string name="autores_text">Autores:</string>
+    <string name="neiber_text">Neiber Padierna Pérez</string>
+    <string name="yefry_text">Yefry Alexis Calderón Yepes</string>
+    <string name="couse_name_text">Curso:</string>
+    <string name="computacion_movil_text">Computación Móvil</string>
+    <string name="university_name_text">Universidad de Antioquia</string>
+    <string name="medellin_text">Medellín</string>
+    <string name="year_text">2014</string>
+
+    <!-- Bluetooth Devices Activity -->
+    <string name="bluetooth_devices_list_activity_title">Selecciones un dispositivo Bluetooth</string>
+    <string name="start_scanning_text_button">Comenzar escaneo</string>
+    <string name="new_devices_text_view">Otros dispositivos disponibles</string>
+    <string name="no_available_devices_found">Ningún dispositivo Bluetooth encontrado</string>
+    <string name="no_paired_devices_title">Ningún dispositivo Bluetooth se ha emparejado</string>
+    <string name="paired_devices_text_view">Dispositivos emparejados</string>
+    <string name="scanning_for_devices_title">Escaneando por dispositivos&#8230;</string>
+    <string name="select_device_title">Selecciones un dispositivo</string>
+
+    <!-- Bluetooth Multiplayer Activity -->
+    <string name="bluetooth_multiplayer_activity_title">Bluetooth Multijugador</string>
+    <string name="menu_action_become_discoverable_text">Hazte visible</string>
+    <string name="player_one_text_button">Jugador #1</string>
+    <string name="player_two_text_button">Jugador #2</string>
+    <string name="selector_player_title_text_view">Por favor, seleccione el rol a desempeñar en el ahorcado:</string>
+    <string name="no_enabled_bluetooth_message_alert_dialog">El Bluetooth no se pudo encender. Por favor, intente luego.</string>
+    <string name="no_enabled_bluetooth_title_alert_dialog">Bluetooth no disponible</string>
+    <string name="no_available_bluetooth_message_alert_dialog">El sistema no tiene un hardware dedicado para soportar Bluetooth.</string>
+    <string name="no_available_bluetooth_title_alert_dialog">Bluetooth no disponible</string>
+
+    <!-- Category Dashboard Activity -->
+    <string name="category_dashboard_activity_label">Categorias</string>
+    <string name="cannot_load_categories_error_message_alert_dialog">La carga de las \"Categorias\" para tu lenguaje no se ha completado exitosamente.</string>
+    <string name="cannot_load_categories_error_title_alert_dialog">Error cargando las categorias</string>
+    <string name="cannot_load_hangman_for_category_error_message_alert_dialog">La selección y carga para una \"Palabra\" no se ha completado exitosamente para la categoría y lenguaje seleccionado.</string>
+    <string name="cannot_load_hangman_for_category_error_title_alert_dialog">Error cargando las palabras del ahorcado</string>
+    <string name="error_loading_categories">Las categorias no pudieron ser cargados</string>
+
+    <!-- Global Strings Text -->
+    <string name="application_name">AhorcaTooth</string>
+    <string name="label_accept_button">Aceptar</string>
+    <string name="label_cancel_button">Cancelar</string>
+
+    <!-- Hangman Bluetooth Support -->
+    <string name="hangman_bluetooth_support_fail_connection_message">La conexión con el dispositivos Bluetooth ha fallado!!!</string>
+    <string name="hangman_bluetooth_support_lost_connection_message">La conexión con el dispositivo Bluetooth se ha perdido!!!</string>
+
+    <!-- Hangman Board Activity -->
+    <string name="back_button_pressed_message_alert_dialog">El botón \"Atrás\" fue presionado. Realmente deseas abandonar este juego?\n\nTodo tu progreso se perdera.</string>
+    <string name="back_button_pressed_title_alert_dialog">Botón atrás presionado</string>
+    <string name="cannot_obtain_hangman_word_message_alert_dialog">El juego no puede obtener y cargar una \"Palabra del ahorcado\" para comenzar el nuevo juego.</string>
+    <string name="cannot_obtain_hangman_word_title_alert_dialog">Error obteniendo una palabra del Ahorcado</string>
+    <string name="hanging_process_content_description_image_view">Imagen para mostrar el proceso de ahorcado.</string>
+    <string name="mask_char_for_words">-</string>
+    <string name="score_title_text_view">Puntuación:</string>
+    <string name="time_title_text_view">Tiempo:</string>
+
+    <!-- Hangman Resume Activity -->
+    <string name="final_score_title_text_view">Puntuación:</string>
+    <string name="final_time_title_text_view">Tiempo:</string>
+    <string name="lost_game_main_title_text_view">PERDISTE!!!</string>
+    <string name="resume_game_content_description_image_view">Imagen para mostrar el resultado del juego.</string>
+    <string name="won_game_main_title_text_view">GANASTE!!!</string>
+
+    <!-- Keyboard Keys Text -->
+    <string-array name="keyboard_keys_texts_array">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+        <item>I</item>
+        <item>J</item>
+        <item>K</item>
+        <item>L</item>
+        <item>M</item>
+        <item>N</item>
+        <item>Ñ</item>
+        <item>O</item>
+        <item>P</item>
+        <item>Q</item>
+        <item>R</item>
+        <item>S</item>
+        <item>T</item>
+        <item>U</item>
+        <item>V</item>
+        <item>W</item>
+        <item>X</item>
+        <item>Y</item>
+        <item>Z</item>
+    </string-array>
+
+    <!-- Main Activity -->
+    <string name="logo_content_description_image_view">Imagen para el logo.</string>
+    <string name="menu_action_update_database_preference_text">Actualizar</string>
+    <string name="menu_action_web_service_preference_text">Configuraciones del Servicio Web</string>
+    <string name="no_conection_message_title">Sin Conexión a Internet!!</string>
+    <string name="no_conection_message">Por favor verifique su conexión a internet</string>
+    <string name="single_player_button">Un Jugador</string>
+    <string name="two_players_button">Dos Jugadores</string>
+    <string name="updating_categories_message_spinner">Descargando nuevas \"Categorias\"&#8230;</string>
+    <string name="updating_languages_message_spinner">Descargando nuevos \"Lenguajes\"&#8230;</string>
+
+    <!-- Web Service Preference Activity -->
+    <string name="http_protocol_summary_setting">Protocolo HTTP para los paquetes de Internet</string>
+    <string name="http_protocol_title_setting">Protocolo HTTP</string>
+    <string name="server_port_summary_setting">Puerto TCP para conectarse con el servidor</string>
+    <string name="server_port_title_setting">Puerto del servidor</string>
+    <string name="server_ip_summary_setting">IP usada para conexiones con el servidor</string>
+    <string name="server_ip_title_setting">IP del servidor</string>
+    <string name="web_application_context_summary_setting">Contexto de la aplicación Web</string>
+    <string name="web_application_context_title_setting">Aplicación Web</string>
+    <string name="web_service_context_summary_setting">Contexto del Servicio Web</string>
+    <string name="web_service_context_title_setting">Servicio Web</string>
+    <string name="web_service_preference_activity_title">Configuraciones del servicio Web</string>
+
+</resources>
