@@ -65,14 +65,14 @@ public class BluetoothConnectRunnable implements IBluetoothRunnable {
 			this.bluetoothSocket.connect();
 		} catch (Exception ex1) {
 			Log.e(TAG,
-					"Fatal error while the application was trying to connect to the Bluetooth Socket.",
+					"Fatal error while the application was trying to connect to the Bluetooth Socket1.",
 					ex1);
 
 			try {
 				this.bluetoothSocket.close();
 			} catch (Exception ex2) {
 				Log.e(TAG,
-						"Fatal error while the application was trying to close to the Bluetooth Socket.",
+						"Fatal error while the application was trying to close to the Bluetooth Socket2.",
 						ex2);
 			}
 
@@ -84,9 +84,11 @@ public class BluetoothConnectRunnable implements IBluetoothRunnable {
 
 		synchronized (this.hangmanBluetoothSupportAbstract) {
 			// FIXME: WTTFFFF....
-			// this.hangmanBluetoothSupportAbstract
-			// .setBluetoothConnectRunnable(null);
+			this.hangmanBluetoothSupportAbstract
+					.setBluetoothConnectRunnable(null);
 		}
+
+		// this.hangmanBluetoothSupportAbstract.setBluetoothConnectRunnable(null);
 
 		this.hangmanBluetoothSupportAbstract.connectedToBluetoothDevice(
 				this.bluetoothSocket, this.bluetoothDevice);

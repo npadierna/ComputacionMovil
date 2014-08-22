@@ -13,7 +13,6 @@ import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.enums.HangmanBluetoo
 import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.thread.BluetoothAcceptRunnable;
 import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.thread.BluetoothConnectRunnable;
 import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.thread.BluetoothConnectedRunnable;
-import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.thread.IBluetoothRunnable;
 
 /**
  * 
@@ -25,10 +24,6 @@ public class HangmanBluetoothSupport extends HangmanBluetoothSupportAbstract {
 
 	private static final String TAG = HangmanBluetoothSupport.class
 			.getSimpleName();
-
-	private IBluetoothRunnable bluetoothAcceptRunnable;
-	private IBluetoothRunnable bluetoothConnectedRunnable;
-	private IBluetoothRunnable bluetoothConnectRunnable;
 
 	private Context context;
 
@@ -44,14 +39,14 @@ public class HangmanBluetoothSupport extends HangmanBluetoothSupportAbstract {
 		Log.i(TAG,
 				"connectedToBluetoothDevice(BluetoothSocket, BluetoothDevice):void");
 
-		if (this.bluetoothConnectRunnable != null) {
-			this.bluetoothConnectRunnable.cancel();
-			this.bluetoothConnectRunnable = null;
+		if (super.bluetoothConnectRunnable != null) {
+			super.bluetoothConnectRunnable.cancel();
+			super.bluetoothConnectRunnable = null;
 		}
 
-		if (this.bluetoothConnectedRunnable != null) {
-			this.bluetoothConnectedRunnable.cancel();
-			this.bluetoothConnectedRunnable = null;
+		if (super.bluetoothConnectedRunnable != null) {
+			super.bluetoothConnectedRunnable.cancel();
+			super.bluetoothConnectedRunnable = null;
 		}
 
 		if (this.bluetoothAcceptRunnable != null) {
@@ -63,13 +58,14 @@ public class HangmanBluetoothSupport extends HangmanBluetoothSupportAbstract {
 				bluetoothSocket);
 		this.bluetoothConnectedRunnable.run();
 
+		Message message = super.getHandler().obtainMessage(
+				HangmanBluetoothSupportAbstract.HANGMAN_DEVICE_NAME);
+
 		Bundle bundle = new Bundle();
 		bundle.putString(
 				HangmanBluetoothSupportAbstract.HANGMAN_DEVICE_NAME_MESSAGE,
 				bluetoothDevice.getName());
 
-		Message message = super.getHandler().obtainMessage(
-				HangmanBluetoothSupportAbstract.HANGMAN_DEVICE_NAME);
 		message.setData(bundle);
 
 		super.getHandler().sendMessage(message);

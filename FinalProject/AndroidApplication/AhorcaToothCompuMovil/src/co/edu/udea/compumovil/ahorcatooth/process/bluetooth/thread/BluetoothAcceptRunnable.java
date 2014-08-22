@@ -30,7 +30,7 @@ public class BluetoothAcceptRunnable implements IBluetoothRunnable {
 		try {
 			bluetoothServerSocketTemp = this.hangmanBluetoothSupportAbstract
 					.getBluetoothAdapter()
-					.listenUsingInsecureRfcommWithServiceRecord(
+					.listenUsingRfcommWithServiceRecord(
 							HangmanBluetoothSupportAbstract.SECURE_CONNECTION_NAME,
 							HangmanBluetoothSupportAbstract.SECURE_UUID);
 		} catch (Exception ex) {

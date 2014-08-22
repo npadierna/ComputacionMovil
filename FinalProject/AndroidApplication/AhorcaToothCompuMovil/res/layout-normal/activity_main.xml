@@ -25,6 +25,7 @@
         android:layout_height="wrap_content"
         android:onClick="onSinglePlayerGamge"
         android:text="@string/single_player_button"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" >
     </Button>
 
@@ -33,6 +34,7 @@
         android:layout_height="wrap_content"
         android:onClick="onTwoPlayersGame"
         android:text="@string/two_players_button"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" >
     </Button>
 

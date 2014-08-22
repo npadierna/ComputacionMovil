@@ -33,8 +33,7 @@
 
         <activity
             android:name=".activity.main.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" >
                 </action>
@@ -75,6 +74,12 @@
             android:name=".activity.preference.WebServicePreferenceActivity"
             android:label="@string/web_service_preference_activity_title"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.aboutus.AboutActivity"
+            android:label="@string/menu_action_about_us_text"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>
 

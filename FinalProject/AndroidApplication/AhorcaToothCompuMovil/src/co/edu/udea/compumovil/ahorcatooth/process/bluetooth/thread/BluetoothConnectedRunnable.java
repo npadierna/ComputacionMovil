@@ -20,10 +20,10 @@ public class BluetoothConnectedRunnable implements IBluetoothRunnable {
 
 	private HangmanBluetoothSupportAbstract hangmanBluetoothSupportAbstract;
 
+	private final BluetoothSocket bluetoothSocket;
+
 	private final InputStream inputStream;
 	private final OutputStream outputStream;
-
-	private final BluetoothSocket bluetoothSocket;
 
 	public BluetoothConnectedRunnable(
 			HangmanBluetoothSupportAbstract hangmanBluetoothSupportAbstract,

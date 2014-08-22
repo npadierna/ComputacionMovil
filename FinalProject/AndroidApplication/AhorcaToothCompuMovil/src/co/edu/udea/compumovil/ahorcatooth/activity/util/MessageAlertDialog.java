@@ -1,11 +1,10 @@
 package co.edu.udea.compumovil.ahorcatooth.activity.util;
 
-import co.edu.udea.compumovil.ahorcatooth.R;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import co.edu.udea.compumovil.ahorcatooth.R;
 
 /**
  * 
@@ -13,7 +12,6 @@ import android.content.DialogInterface.OnClickListener;
  * @author Neiber Padierna P&eacute;rez
  * @author Yefry Alexis Calder&oacute;n Yepes
  */
-
 public class MessageAlertDialog {
 
 	private Activity activity;
@@ -25,7 +23,8 @@ public class MessageAlertDialog {
 	}
 
 	public Activity getActivity() {
-		return this.activity;
+		
+		return (this.activity);
 	}
 
 	public void setActivity(Activity activity) {
@@ -39,16 +38,17 @@ public class MessageAlertDialog {
 
 		builder.setTitle(title);
 		builder.setIcon(activity.getResources().getDrawable(
-				R.drawable.ic_launcher));
+				android.R.drawable.ic_menu_info_details));
 		builder.setMessage(message);
 		builder.setPositiveButton("OK", new OnClickListener() {
 
-			@Override
+			@Override()
 			public void onClick(DialogInterface dialog, int which) {
 				switch (option) {
 				case 0:
 					getActivity().finish();
 					break;
+
 				default:
 					break;
 				}
@@ -56,7 +56,6 @@ public class MessageAlertDialog {
 		});
 		builder.show();
 
-		return builder;
+		return (builder);
 	}
-
 }

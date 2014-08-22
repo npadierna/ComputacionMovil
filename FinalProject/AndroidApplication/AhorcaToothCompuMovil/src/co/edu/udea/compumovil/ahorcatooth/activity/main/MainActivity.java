@@ -13,8 +13,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 import co.edu.udea.compumovil.ahorcatooth.R;
+import co.edu.udea.compumovil.ahorcatooth.activity.aboutus.AboutActivity;
 import co.edu.udea.compumovil.ahorcatooth.activity.bluetooth.BluetoothMultiplayerActivity;
 import co.edu.udea.compumovil.ahorcatooth.activity.category.CategoryDashboardActivity;
 import co.edu.udea.compumovil.ahorcatooth.activity.preference.WebServicePreferenceActivity;
@@ -43,7 +43,7 @@ import co.edu.udea.compumovil.ahorcatooth.process.webservice.LanguagesWSProcess;
 public class MainActivity extends Activity {
 
 	private static final String TAG = MainActivity.class.getSimpleName();
-	
+
 	private final int NO_INTERNET_MESSAGE = 1;
 
 	private ICategoryProcess categoryProcess;
@@ -86,6 +86,11 @@ public class MainActivity extends Activity {
 
 			super.startActivity(new Intent(super.getApplicationContext(),
 					WebServicePreferenceActivity.class));
+		case R.id.menu_action_about_us:
+			Log.i(TAG, "About us");
+
+			super.startActivity(new Intent(super.getApplicationContext(),
+					AboutActivity.class));
 
 			return (true);
 		}
@@ -101,7 +106,8 @@ public class MainActivity extends Activity {
 		if (!checkConectivity()) {
 			messageAlertDialog.createAlertDialog(
 					getString(R.string.no_conection_message_title),
-					getString(R.string.no_conection_message), NO_INTERNET_MESSAGE);
+					getString(R.string.no_conection_message),
+					NO_INTERNET_MESSAGE);
 
 			return;
 		}

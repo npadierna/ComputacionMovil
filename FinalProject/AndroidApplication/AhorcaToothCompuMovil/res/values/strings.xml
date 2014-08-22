@@ -1,7 +1,18 @@
 <resources>
 
+    <!-- About us Activity -->
+    <string name="menu_action_about_us_text">About us</string>
+    <string name="autores_text">Authors:</string>
+    <string name="neiber_text">Neiber Padierna Perez</string>
+    <string name="yefry_text">Yefry Alexis Calderon Yepes</string>
+    <string name="couse_name_text">Course:</string>
+    <string name="computacion_movil_text">Computación Movil</string>
+    <string name="university_name_text">Universidad de Antioquia</string>
+    <string name="medellin_text">Medellín</string>
+    <string name="year_text">2014</string>
+    
     <!-- Bluetooth Devices Activity -->
-    <string name="bluetooth_devices_list_activity_title">Select a Bluettoh Device</string>
+    <string name="bluetooth_devices_list_activity_title">Select a Bluetooth Device</string>
     <string name="start_scanning_text_button">Start Scanning</string>
     <string name="new_devices_text_view">Other Available Devices</string>
     <string name="no_available_devices_found">No Bluetooth Devices found</string>

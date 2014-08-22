@@ -3,6 +3,7 @@ package co.edu.udea.compumovil.ahorcatooth.process.bluetooth;
 import java.util.UUID;
 
 import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.enums.HangmanBluetoothStateEnum;
+import co.edu.udea.compumovil.ahorcatooth.process.bluetooth.thread.IBluetoothRunnable;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -19,6 +20,10 @@ public abstract class HangmanBluetoothSupportAbstract {
 	public static final UUID SECURE_UUID = UUID
 			.fromString("FA87C0D0-AFAC-11DE-8A39-0800200C9A66");
 	public static final String SECURE_CONNECTION_NAME = "Bluetooth Connection Secure";
+
+	protected IBluetoothRunnable bluetoothAcceptRunnable;
+	protected IBluetoothRunnable bluetoothConnectedRunnable;
+	protected IBluetoothRunnable bluetoothConnectRunnable;
 
 	public static final int HANGMAN_DEVICE_NAME = 0;
 	public static final int HANGMAN_STATE_CHANGED = 1;
@@ -63,6 +68,35 @@ public abstract class HangmanBluetoothSupportAbstract {
 	public Handler getHandler() {
 
 		return (this.handler);
+	}
+
+	public IBluetoothRunnable getBluetoothAcceptRunnable() {
+		return bluetoothAcceptRunnable;
+	}
+
+	public void setBluetoothAcceptRunnable(
+			IBluetoothRunnable bluetoothAcceptRunnable) {
+		this.bluetoothAcceptRunnable = bluetoothAcceptRunnable;
+	}
+
+	public IBluetoothRunnable getBluetoothConnectedRunnable() {
+
+		return bluetoothConnectedRunnable;
+	}
+
+	public void setBluetoothConnectedRunnable(
+			IBluetoothRunnable bluetoothConnectedRunnable) {
+		this.bluetoothConnectedRunnable = bluetoothConnectedRunnable;
+	}
+
+	public IBluetoothRunnable getBluetoothConnectRunnable() {
+
+		return bluetoothConnectRunnable;
+	}
+
+	public void setBluetoothConnectRunnable(
+			IBluetoothRunnable bluetoothConnectRunnable) {
+		this.bluetoothConnectRunnable = bluetoothConnectRunnable;
 	}
 
 	public abstract void connectToBluetoothDevice(
