@@ -86,6 +86,8 @@ public class MainActivity extends Activity {
 
 			super.startActivity(new Intent(super.getApplicationContext(),
 					WebServicePreferenceActivity.class));
+			break;
+			
 		case R.id.menu_action_about_us:
 			Log.i(TAG, "About us");
 
